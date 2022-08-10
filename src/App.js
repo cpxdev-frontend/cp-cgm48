@@ -253,7 +253,7 @@ function App() {
                           color="secondary"
                         />
                       }
-                      label="Focus on Efficiency"
+                      label={Reduce ? "Focus on Efficiency" : "Focus on Modern"}
                     />
                       </div>
                     )}

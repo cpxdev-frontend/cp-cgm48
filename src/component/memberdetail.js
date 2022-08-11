@@ -354,6 +354,32 @@ function capitalizeFirstLetter(string) {
             return i + "th";
         }
         const tokenrateexchange = 90;
+         const session12thSingle = (url) => {
+            if (url == "") {
+                Swal.fire({
+                    title: "Image Not Found",
+                    icon: 'error',
+                    text: 'This member is in-queue to released image.',
+                  })
+            } else {
+                Swal.fire({
+                    title: "BNK48 12th Single Image",
+                    imageUrl: url,
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Download',
+                    denyButtonColor: '#3085d6',
+                    denyButtonText: `See General Election Ranking`,
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      window.open(url, '_blank')
+                    } else if (result.isDenied) {
+                      window.location.href ='https://bnk48fan.cpxdev.tk'
+                    }
+                  })
+            }
+        }
         return (  
         <>
             <div className="pt-5 pb-2">
@@ -385,7 +411,7 @@ function capitalizeFirstLetter(string) {
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]</h4>
                                         {item.ge != null && (
-                                            <a className='cur' href="https://bnk48fan.cpxdev.tk/ge3">{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
+                                            <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />

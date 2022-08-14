@@ -31,6 +31,7 @@ import Offici from './component/official';
 import MamSam from './component/memberdetail';
 import Api from './component/apisupport';
 import PageErr from './component/404'
+import Swal from 'sweetalert2'
 
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -84,7 +85,7 @@ const SmallAvatar = withStyles((theme) => ({
   },
 }))(Avatar);
 
-
+var checkloop;
 function App() {
   const cls = useStyles();
   const History = useHistory()
@@ -127,6 +128,22 @@ function App() {
       setReduce(false)
     }
   }
+
+  React.useEffect(() => {
+    checkloop = setInterval(() => {
+     fetch(Fet().ul + '/home/status').catch(() => {
+         clearInterval(checkloop)
+         document.getElementById("root").style.display = "none";
+         Swal.fire({
+           title: 'System is under maintenance',
+           text: 'You can contact us for ask more information.',
+           icon: 'error',
+           allowOutsideClick: false,
+           showConfirmButton: false
+         })
+     })
+    }, 5000)
+   }, []);
 
   React.useEffect(() => {
     if (localStorage.getItem("lowgraphic") == null) {

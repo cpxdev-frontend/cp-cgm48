@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, ListItemText, List , ListItem,Divider } from '@material-ui/core';
+import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , ListItem,Divider } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -20,6 +20,7 @@ import moment from 'moment'
 
 import { Fireworks } from 'fireworks-js/dist/react'
 import Swal from 'sweetalert2'
+import AOS from "aos";
 
 var pm = new Audio('https://p.scdn.co/mp3-preview/26031551568cba193fbb55d6e4dcf3eb8fb99b04?cid=774b29d4f13844c495f206cafdad9c86')
 
@@ -71,6 +72,7 @@ function capitalizeFirstLetter(string) {
         const [Loaded, setLoaded] = React.useState(false);
         const [birthday, setBirthday] = React.useState(false);
         const [kami, setKami] = React.useState(0);
+        const [newspop, setNewspop] = React.useState(null);
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
@@ -155,7 +157,7 @@ function capitalizeFirstLetter(string) {
             } else {
                 if (arr[0].graduated == true) {
                     Swal.fire({
-                        title: arr[0].name +" CGM48 is graduated",
+                        title: arr[0].name +" BNK48 is graduated",
                         icon: 'error',
                         text: 'This member is graduated. You cannot select this member to your Kami-Oshi anymore.',
                       })
@@ -225,7 +227,7 @@ function capitalizeFirstLetter(string) {
                               }).then((result) => {
                                 if (result.isConfirmed) {
                                     setLoaded(false)
-                                    fetch(fet + '/bnk48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
+                                    fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                         method: 'POST', // or 'PUT'
                                         headers: {
                                             'Accept': 'application/json',
@@ -271,11 +273,13 @@ function capitalizeFirstLetter(string) {
         }
 
         React.useEffect(() => {
+            AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
             var url_string = window.location.href; 
             var url = new URL(url_string);
             var c = url.searchParams.get("name");
             if (c != null && c != "") {
+                setSec('Loading Member description')
                 if (localStorage.getItem("glog") != null) {
                     fetch(fet + '/cgm48/getFanMem?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString()  , {
                       method :'get'
@@ -300,6 +304,22 @@ function capitalizeFirstLetter(string) {
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {
+                        fetch(fet + '/cgm48/getadsupdate', {
+                            method :'post'
+                        })
+                            .then(response => response.json())
+                            .then(dataads => {
+                                if (data.response.ge != "") {
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1)
+                                    setNewspop(obj)
+                                } else {
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
+                                    setNewspop(obj)
+                                }
+                            }).catch(() => {
+                                setNewspop([])
+                            })
+                        setSec(data.response.name)
                         const temp =[]
                         temp.push(data.response)
                         setArr(temp)
@@ -324,10 +344,10 @@ function capitalizeFirstLetter(string) {
                     setArr([])
                     setLoaded(true)
                 })
-         
             } else {
                 History.push("/")
             }
+
             return (() => {
                 pm.pause()
             })
@@ -354,7 +374,8 @@ function capitalizeFirstLetter(string) {
             return i + "th";
         }
         const tokenrateexchange = 90;
-         const session12thSingle = (url) => {
+
+        const session12thSingle = (url) => {
             if (url == "") {
                 Swal.fire({
                     title: "Image Not Found",
@@ -375,7 +396,7 @@ function capitalizeFirstLetter(string) {
                     if (result.isConfirmed) {
                       window.open(url, '_blank')
                     } else if (result.isDenied) {
-                      window.location.href ='https://bnk48fan.cpxdev.tk'
+                      History.push('/ge3')
                     }
                   })
             }
@@ -383,7 +404,7 @@ function capitalizeFirstLetter(string) {
         return (  
         <>
             <div className="pt-5 pb-2">
-                <h3 className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' CGM48' : 'Fetching Header'}</h3>
+                <h3 className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' BNK48' : 'Fetching Header'}</h3>
                 <Breadcrumbs className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
                     <Link color="inherit" onClick={() => History.push("/memberlist")}>
                         Members
@@ -410,21 +431,23 @@ function capitalizeFirstLetter(string) {
                             <Fade in={true} timeout={1200} style={{ transitionDelay: 600}}>
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]</h4>
-                                        {item.ge != null && (
+                                        {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
-                                    <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
+                                    <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />
                                     <>
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (
                                             <h6><CakeIcon fontSize="small"/> Today is her birthday! ({new Date().getFullYear() - new Date(item.birthday).getFullYear() + ' years old'})</h6>
                                         ) : (
-                                            <h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY')}</h6>
+                                                 <>
+                                                       {moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (<h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY') + ' (' + (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go)'}</h6>) : (<h6><CakeIcon fontSize="small"/> {moment(item.birthday).format('DD MMMM YYYY')}</h6>)}
+                                                  </>
                                         )}
                                         {!item.graduated && (
                                             <>
-                                            <p><GroupIcon fontSize="small"/> {item.team != ''?item.team : 'TBA'}</p>
+                                            <p><GroupIcon fontSize="small"/> {item.team != "" ? item.team : 'Trainee'}</p>
                                             <p><AccountCircleIcon fontSize="small"/> {ordinal_suffix_of(item.gen)} Generation</p>
                                             </>
                                         )}
@@ -459,41 +482,7 @@ function capitalizeFirstLetter(string) {
                                 </div>
                         </Fade>
                     </Card>
-                    <Dialog fullScreen open={open} onClose={() => setOpen(false)} TransitionComponent={Transition}>
-                        <AppBar className={classes.appBar}>
-                        <Toolbar>
-                            <IconButton edge="start" color="inherit" onClick={() => setOpen(false)} aria-label="close">
-                            <CloseIcon />
-                            </IconButton>
-                            <Typography variant="h6" className={classes.title}>
-                            BNK48 12th Single General Election Promote
-                            </Typography>
-                        </Toolbar>
-                        </AppBar>
-                        <div className='container mt-3 pb-3'>
-                        <div className='row'>
-                            <div className='col-md-4'>
-                                <Slide direction='right' in={open} timeout={600} style={open ? { transitionDelay: 400 } : {}}>
-                                    <img src={GEPoster} width='100%' className='imgge' onDoubleClick={() => downGEPost(item.name)} />
-                                </Slide>
-                            </div>
-                            <div className={'col-md' + (window.innerWidth < 600 ? ' mt-3' : '')}>
-                                <Slide direction='left' in={open} timeout={600} style={open ? { transitionDelay: 400 } : {}}>
-                                    {item.ge != '' ? (
-                                    <CardMedia
-                                        component='iframe'
-                                        height={600}
-                                        src={'https://www.youtube.com/embed/' + item.ge +'?mute=1' + (window.innerWidth <= 600 ? '' : '&autoplay=1')}
-                                        allowFullScreen
-                                    />
-                                    ) : (
-                                        <h5 className='mt-3'>GE Appeal Comment Video of "{item.name} CGM48" is coming soon</h5>
-                                    )}
-                                </Slide>
-                            </div>
-                        </div>
-                        </div>
-                    </Dialog>
+                 
                             </div>
                     ))}
                     </>
@@ -529,7 +518,83 @@ function capitalizeFirstLetter(string) {
                             </div>
                     </Grow>
                 )}
-                
+                <div className='container mt-5'>
+                    {newspop != null && newspop.length > 0 && (<h3 className='mb-4' data-aos="flip-up">Incoming events for {capitalizeFirstLetter(mem)} CGM48</h3>)}
+                    {newspop != null && (
+                    <>
+                        {
+                            newspop.length > 0 ?  newspop.map((ita, i) => (
+                                <Card className='mb-3' data-aos="fade-right">
+                                    <CardContent className='row'>
+                                        <div className='col-md-5'>
+                                            <img src={ita.src} width="100%" />
+                                        </div>
+                                        <div className='col-md mt-3'>
+                                            <h4 data-aos="zoom-out-right">{ita.title}&nbsp;
+                                            {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
+                                                <span className='badge badge-success'>
+                                                    Event has been started
+                                                </span>
+                                                )}
+                                                {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&
+                                                moment().unix() >= ita.timerange[0] && moment().unix() <= ita.timerange[1] && (
+                                                <span className='badge badge-success'>
+                                                     Event is starting
+                                                </span>
+                                                )}
+                                            </h4>
+                                            {ita.timerange[0] > 0 && ita.timerange[0] > moment().unix() && (
+                                                <p className='mt-1 mb-3'>
+                                                    Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                </p>
+                                                )}
+                                                {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
+                                                <p className='mt-1 mb-3'>
+                                                    Event has been started since <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy')}</b>
+                                                </p>
+                                                )}
+                                                {ita.timerange[0] > 0 && ita.timerange[1] > 0 && ita.timerange[0] < ita.timerange[1] &&
+                                                moment().unix() >= ita.timerange[0] && moment().unix() <= ita.timerange[1] && (
+                                                <p className='mt-1 mb-3'>
+                                                     Event is starting until <b>{moment.unix(ita.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                </p>
+                                                )}
+                                            <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}</p>
+                                            {
+                                                ita.link != '' && (
+                                                    <div data-aos="fade-down">
+                                                    <a href={ita.link} target='_blank'>More detail of this event</a>
+                                                    </div>
+                                                )
+                                            }
+                                            {
+                                                ita.place != '' && (
+                                                    <div className='mt-1' data-aos="fade-down">
+                                                    <a href={ita.place} target='_blank'>See event location on Google Maps</a>
+                                                    </div>
+                                                )
+                                            }
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            )) : (
+                                <Card className="text-center" data-aos="zoom-out-up">
+                                    <CardContent>
+                                    {capitalizeFirstLetter(mem)} CGM48 doesn't have incoming events right now.
+                                    </CardContent>
+                                </Card>
+                            )
+        
+                        }
+                        </>
+                    )}
+                </div>
+               
+                <Zoom in={newspop == null ? true : false} timeout={{ enter: 200, exit: 200}}>
+                        <div className='text-center pb-3'>
+                            <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                        </div>
+                    </Zoom>
             </div>
         </>
          );

@@ -5,8 +5,10 @@ import vPack from './pack.json'
 import moment from 'moment'
 import AOS from "aos";
 
-const Memberlist = ({fet}) => {
-
+const Memberlist = ({fet, setSec}) => {
+    React.useEffect(() => {
+        setSec('Members')
+      },[])
     const History = useHistory()
 
     const [seGroup, setGr] = React.useState('-');
@@ -107,7 +109,7 @@ const Memberlist = ({fet}) => {
                  </Card>
              </Zoom>
             
-            {Loaded ? (
+             {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
                 {mem.length > 0 ? mem.map((item, i) => (
                       <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>

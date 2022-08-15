@@ -86,11 +86,11 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
           <Card className="col-md-4 m-5">
               <CardContent>
                 <Typography variant="h5" component="h2">
-                  Welcome to BNK48 Fan Space
+                  Welcome to CGM48 Fan Space
                 </Typography>
                 <hr />
                 <Typography color="textSecondary">
-                  This is your space for join with BNK48 fans around the world. Let's enjoy!
+                  This is your space for join with CGM48 fans around the world. Let's enjoy!
                 </Typography>
                 <hr />
                 <Typography variant="body1" component="p">
@@ -102,7 +102,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                     <ListItemText primary="2. Who are member born today. You can know. (Reference from local timezone)" />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="3. See fresh news about BNK48 here. (Powered by Google News)" />
+                    <ListItemText primary="3. See fresh news about CGM48 here. (Powered by Google News)" />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="4. You can contact us to help promote favorite member's event without any cost." />
@@ -120,32 +120,32 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
     <Grow in={true} timeout={1000}>
   <Card className="bnktheme ml-2 mr-2">
       <CardContent>
-        <Typography variant="h5" component="h2">
-          Welcome to BNK48 Fan Space
-        </Typography>
-        <hr />
-        <Typography color="textSecondary">
-          This is your space for join with BNK48 fans around the world. Let's enjoy!
-        </Typography>
-        <hr />
-        <Typography variant="body1" component="p">
-          How do you do in this space?
-          <ListItem>
-            <ListItemText primary="1. See current all members and view her profile." />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="2. Who are member born today. You can know. (Reference from local timezone)" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="3. See fresh news about BNK48 here. (Powered by Google News)" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="4. You can contact us to help promote favorite member's event without any cost." />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Notes: Your donation and feedback is primary phase to help our online space work better." />
-          </ListItem>
-        </Typography>
+      <Typography variant="h5" component="h2">
+                  Welcome to CGM48 Fan Space
+                </Typography>
+                <hr />
+                <Typography color="textSecondary">
+                  This is your space for join with CGM48 fans around the world. Let's enjoy!
+                </Typography>
+                <hr />
+                <Typography variant="body1" component="p">
+                  How do you do in this space?
+                  <ListItem>
+                    <ListItemText primary="1. See current all members and view her profile." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="2. Who are member born today. You can know. (Reference from local timezone)" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="3. See fresh news about CGM48 here. (Powered by Google News)" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="4. You can contact us to help promote favorite member's event without any cost." />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Notes: Your donation and feedback is primary phase to help our online space work better." />
+                  </ListItem>
+                </Typography>
       </CardContent>
     </Card>
     </Grow>

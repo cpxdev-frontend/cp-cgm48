@@ -151,8 +151,17 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
-  React.useEffect(() => {
-    fetch(Fet().ul + '/home/status').catch(() => {
+   React.useEffect(() => {
+    fetch(Fet().ul + '/home/status', {
+      method: 'GET'
+    })
+      .then((response) => {
+          if (response.status == 404) {
+            throw new Error('Something went wrong');
+          }
+           return response.text()
+        })
+      .then((result) => {}).catch(()=> {
         clearInterval(checkloop)
         document.getElementById("root").style.display = "none";
         Swal.fire({
@@ -162,19 +171,28 @@ function App() {
           allowOutsideClick: false,
           showConfirmButton: false
         })
-    })
+      });
     checkloop = setInterval(() => {
-     fetch(Fet().ul + '/home/status').catch(() => {
-         clearInterval(checkloop)
-         document.getElementById("root").style.display = "none";
-         Swal.fire({
-           title: 'System is under maintenance',
-           text: 'You can contact us for ask more information.',
-           icon: 'error',
-           allowOutsideClick: false,
-           showConfirmButton: false
-         })
-     })
+      fetch(Fet().ul + '/home/status', {
+      method: 'GET'
+    })
+      .then((response) => {
+          if (response.status == 404) {
+            throw new Error('Something went wrong');
+          }
+           return response.text()
+        })
+      .then((result) => {}).catch(()=> {
+        clearInterval(checkloop)
+        document.getElementById("root").style.display = "none";
+        Swal.fire({
+          title: 'System is under maintenance',
+          text: 'You can contact us for ask more information.',
+          icon: 'error',
+          allowOutsideClick: false,
+          showConfirmButton: false
+        })
+      });
     }, 10000)
    }, []);
 

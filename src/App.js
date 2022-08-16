@@ -152,6 +152,17 @@ function App() {
   const [styleFade, setSty] = React.useState(0);
   
   React.useEffect(() => {
+    fetch(Fet().ul + '/home/status').catch(() => {
+        clearInterval(checkloop)
+        document.getElementById("root").style.display = "none";
+        Swal.fire({
+          title: 'System is under maintenance',
+          text: 'You can contact us for ask more information.',
+          icon: 'error',
+          allowOutsideClick: false,
+          showConfirmButton: false
+        })
+    })
     checkloop = setInterval(() => {
      fetch(Fet().ul + '/home/status').catch(() => {
          clearInterval(checkloop)

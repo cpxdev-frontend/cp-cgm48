@@ -164,7 +164,7 @@ function App() {
            showConfirmButton: false
          })
      })
-    }, 5000)
+    }, 10000)
    }, []);
 
   const FetchKami = (fetdata) => {

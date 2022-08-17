@@ -205,8 +205,8 @@ function App() {
       .then(response => response.json())
       .then(data => {
         if (data.obj != 'none') {
-          setKami(data.obj.response.img)
-          setKname(data.obj.response.name)
+          setKami(data.obj.img)
+          setKname(data.obj.name)
           setToken(data.wallet)
           // FetchWallet(fetdata, data.wallet)
         } else {

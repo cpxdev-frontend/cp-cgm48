@@ -286,7 +286,7 @@ function capitalizeFirstLetter(string) {
                   })
                     .then(response => response.json())
                     .then(data => {
-                      if (data.obj != 'none' && (data.obj.response.name).toLowerCase() == c) {
+                      if (data.obj != 'none' && (data.obj.name).toLowerCase() == c) {
                         setKami(2)
                       } else {
                         setKami(1)

@@ -210,13 +210,13 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       </div>
     </>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
   <hr />
   {onMonth ? (
-  <h3 className='mb-5' data-aos="zoom-in-up">BNK48 Members Birthday in this month</h3>
+  <h3 className='mb-5' data-aos="zoom-in-up">CGM48 Members Birthday in this month</h3>
   ) : (
-    <h3 className='mb-5' data-aos="zoom-in-up">BNK48 Members Birthday in today</h3>
+    <h3 className='mb-5' data-aos="zoom-in-up">CGM48 Members Birthday in today</h3>
   )}
   {Loaded1 ? (
       <div className='row ml-3 mr-3 justify-content-center'>
@@ -241,7 +241,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
   </div>
         </>

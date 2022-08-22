@@ -383,7 +383,14 @@ function capitalizeFirstLetter(string) {
                     text: 'This member is in-queue to released image.',
                   })
             } else {
-                Swal.fire({
+                 if (localStorage.getItem("glog") == null) {
+                 Swal.fire({
+                    title: "BNK48 12th Single Image",
+                    text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
+                    icon: 'error',
+                  })
+                } else {
+                 Swal.fire({
                     title: "BNK48 12th Single Image",
                     imageUrl: url,
                     showDenyButton: true,
@@ -396,9 +403,10 @@ function capitalizeFirstLetter(string) {
                     if (result.isConfirmed) {
                       window.open(url, '_blank')
                     } else if (result.isDenied) {
-                      History.push('/ge3')
+                      window.open('//bnk48fan.cpxdev.tk/ge3', '_blank')
                     }
                   })
+                }
             }
         }
         return (  

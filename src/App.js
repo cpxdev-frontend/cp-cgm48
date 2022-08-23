@@ -151,6 +151,13 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
+    React.useEffect(() => {
+    const currentP = document.documentElement.scrollTop || document.body.scrollTop;
+    window.scrollTo(0, currentP + 1);
+     window.scrollTo(0, currentP - 1);
+     window.scrollTo(0, currentP);
+   }, [Reduce]);
+  
    React.useEffect(() => {
     fetch(Fet().ul + '/home/status', {
       method: 'GET'

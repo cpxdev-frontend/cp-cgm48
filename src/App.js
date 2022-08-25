@@ -158,49 +158,22 @@ function App() {
      window.scrollTo(0, currentP);
    }, [Reduce]);
   
-   React.useEffect(() => {
-    fetch(Fet().ul + '/home/status', {
-      method: 'GET'
-    })
-      .then((response) => {
-          if (response.status == 404) {
-            throw new Error('Something went wrong');
-          }
-           return response.text()
-        })
-      .then((result) => {}).catch(()=> {
-        clearInterval(checkloop)
-        document.getElementById("root").style.display = "none";
-        Swal.fire({
-          title: 'System is under maintenance',
-          text: 'You can contact us for ask more information.',
-          icon: 'error',
-          allowOutsideClick: false,
-          showConfirmButton: false
-        })
-      });
+    React.useEffect(() => {
     checkloop = setInterval(() => {
-      fetch(Fet().ul + '/home/status', {
-      method: 'GET'
-    })
-      .then((response) => {
-          if (response.status == 404) {
-            throw new Error('Something went wrong');
-          }
-           return response.text()
-        })
-      .then((result) => {}).catch(()=> {
+      if (Fet().ul != '') {
         clearInterval(checkloop)
-        document.getElementById("root").style.display = "none";
-        Swal.fire({
-          title: 'System is under maintenance',
-          text: 'You can contact us for ask more information.',
-          icon: 'error',
-          allowOutsideClick: false,
-          showConfirmButton: false
+         fetch(Fet().ul + '/home/status').catch(() => {
+         document.getElementById("root").style.display = "none";
+         Swal.fire({
+           title: 'System is under maintenance',
+           text: 'You can contact us for ask more information.',
+           icon: 'error',
+           allowOutsideClick: false,
+           showConfirmButton: false
+         })
         })
-      });
-    }, 10000)
+      }
+    }, 1)
    }, []);
 
   const FetchKami = (fetdata) => {

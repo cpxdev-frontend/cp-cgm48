@@ -487,7 +487,7 @@ function capitalizeFirstLetter(string) {
                                     <a className='text-dark' href={item.ref} target='_blank'>Reference from CGM48 official Site</a>
                                     <br />
                                     {birthday && (
-                                        <div className='row mt-3'>
+                                        <div className='row p-3 mt-3'>
                                             <Button onClick={()=> PlaySong()}color="primary" variant="contained">Click here see effect</Button> 
                                             <div className='ml-3 pt-2'>
                                             <Share 

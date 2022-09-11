@@ -34,8 +34,8 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
             method :'post'
         })
   .then(response => response.json())
-  .then(data => {
-    setBirth(data.response)
+  .then(datamonth => {
+    setBirth(datamonth.response.sort((a, b) => parseInt(a.birthday.slice(5,10).replace('-', '')) - parseInt(b.birthday.slice(5,10).replace('-', ''))))
         setLoaded1(true)
   });
     } else {

@@ -37,7 +37,7 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
 import Home from './component/home';
 import MemberList from './component/members';
-// import LiveCom from './component/livestream'
+import LiveCom from './component/livestream'
 import MamSam from './component/memberdetail';
 import News from './component/news';
 import MvCom from './component/music';
@@ -46,6 +46,7 @@ import Offici from './component/official';
 import Api from './component/apisupport';
 // import FollowCom from './component/follow';
 import PageErr from './component/404'
+import Mana from './component/geevent/gemanage'
 
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -151,6 +152,8 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
+
+  
     React.useEffect(() => {
     const currentP = document.documentElement.scrollTop || document.body.scrollTop;
     window.scrollTo(0, currentP + 1);
@@ -212,7 +215,21 @@ function App() {
   }
 
   const FetLive = (fet) => {
-    setLive(false)
+    fetch(fet + '/bnk48/getstream?ch=3', {
+      method :'post'
+  })
+      .then(response => response.json())
+      .then(data => {
+        if (data.link != '') {
+          setStream(data)
+          setImageThumb(data.src)
+          setLive(true)
+        } else {
+          setLive(false)
+        }
+      }).catch(() => {
+        setLive(false)
+      })
   }
 
   const FetchPopNews = (fet) => {
@@ -489,12 +506,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
-                {/* <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <LiveTvIcon className={spcLive ? 'text-success' : ''} />
                   </ListItemIcon>
                   <ListItemText primary="Special Live" secondary={spcLive ? 'Livestream is launching' : ''} />
-                </ListItem> */}
+                </ListItem>
                 <ListItem component={Link} to='/mv' className={window.location.pathname == '/mv' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <YouTubeIcon />
@@ -608,13 +625,14 @@ function App() {
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  {/* <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} /> */}
+                  <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   {/* <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} /> */}
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />

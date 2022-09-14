@@ -215,7 +215,7 @@ function App() {
   }
 
   const FetLive = (fet) => {
-    fetch(fet + '/bnk48/getstream?ch=3', {
+    fetch(fet + '/cgm48/getstream?ch=3', {
       method :'post'
   })
       .then(response => response.json())

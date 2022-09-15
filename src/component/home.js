@@ -74,7 +74,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
             <iframe src="https://www.youtube.com/embed/Wb_4uhAEaSc?autoplay=1&mute=1&controls=0&loop=1&playlist=Wb_4uhAEaSc" frameborder="0"></iframe>
           </div>
           ) : (
-         <div data-aos="zoom-out-up">
+         <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/makmain.webp" width={window.innerWidth} />
                </Fade>
@@ -84,8 +84,8 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
         )}
              {window.innerWidth >1200 ? (
             <div className="cover mt-4">
-            <Grow in={true} timeout={1000}>
-          <Card className="col-md-4 m-5">
+        
+          <Card data-aos="zoom-in" className="col-md-4 m-5">
               <CardContent>
                 <Typography variant="h5" component="h2">
                   Welcome to CGM48 Fan Space
@@ -115,12 +115,12 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                 </Typography>
               </CardContent>
             </Card>
-            </Grow>
+   
           </div>
           ) : (
         <div className="pb-5 pt-2">
-    <Grow in={true} timeout={1000}>
-  <Card className="bnktheme ml-2 mr-2">
+  
+  <Card data-aos="zoom-in" className="bnktheme ml-2 mr-2">
       <CardContent>
       <Typography variant="h5" component="h2">
                   Welcome to CGM48 Fan Space
@@ -150,7 +150,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                 </Typography>
       </CardContent>
     </Card>
-    </Grow>
+
   </div>
           )}
   

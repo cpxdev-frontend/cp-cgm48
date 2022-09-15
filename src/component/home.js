@@ -21,7 +21,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
   },[])
 
     React.useEffect(() => {
-      AOS.init({ duration: 1000 });
+      AOS.init({ duration: 700 });
       document.body.scrollTop = document.documentElement.scrollTop = 0;
         fetch(fet + '/cgm48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
             method :'post'

@@ -216,9 +216,9 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
   )}
   <hr />
   {onMonth ? (
-  <h3 className='mb-5' data-aos="zoom-in-up">CGM48 Members Birthday in this month</h3>
+  <h3 className='mb-5' data-aos="flip-up">CGM48 Members Birthday in this month</h3>
   ) : (
-    <h3 className='mb-5' data-aos="zoom-in-up">CGM48 Members Birthday in today</h3>
+    <h3 className='mb-5' data-aos="flip-up">CGM48 Members Birthday in today</h3>
   )}
   {Loaded1 ? (
       <div className='row ml-3 mr-3 justify-content-center'>

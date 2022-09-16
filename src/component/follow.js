@@ -83,7 +83,7 @@ const Contact = ({fet, setSec}) => {
                     <ListItemText primary="Twitter" secondary={(<a href='//twitter.com/cgm48official' target='_blank'>cgm48official</a>)} />
                   </ListItem>
                   <ListItem>
-                    <ListItemText primary="Tiktok" secondary={(<a href='//www.tiktok.com/@cgm4848official_th' target='_blank'>@cgm48official_th</a>)} />
+                    <ListItemText primary="Tiktok" secondary={(<a href='//www.tiktok.com/@cgm48official_th' target='_blank'>@cgm48official_th</a>)} />
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Youtube" secondary={(<a href='//www.youtube.com/c/CGM48Official' target='_blank'>CGM48Official</a>)} />

@@ -44,7 +44,7 @@ import MvCom from './component/music';
 import MusicCom from './component/streaming';
 import Offici from './component/official';
 import Api from './component/apisupport';
-// import FollowCom from './component/follow';
+import FollowCom from './component/follow';
 import PageErr from './component/404'
 import Mana from './component/geevent/gemanage'
 
@@ -542,12 +542,12 @@ function App() {
                   </ListItemIcon>
                   <ListItemText primary='API' />
                 </ListItem>
-                {/* <ListItem component={Link} to='/follow' className={window.location.pathname == '/follow' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/follow' className={window.location.pathname == '/follow' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <ThumbUpAltIcon />
                   </ListItemIcon>
                   <ListItemText primary='Follow and Support' />
-                </ListItem> */}
+                </ListItem>
                 </d>
                 <Divider />
                 <ListItem onClick={() => {
@@ -633,7 +633,7 @@ function App() {
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  {/* <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} /> */}
+                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>

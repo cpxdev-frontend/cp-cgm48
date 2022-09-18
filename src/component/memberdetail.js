@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , ListItem,Divider } from '@material-ui/core';
+import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , ListItem,Backdrop } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -51,6 +51,10 @@ const fwoptions = {
       marginLeft: theme.spacing(2),
       flex: 1,
     },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+      },
   }));
 
   const hbdparse = [
@@ -72,6 +76,7 @@ function capitalizeFirstLetter(string) {
         const [arr, setArr] = React.useState([]); 
         const [geResult, setGE] = React.useState(null); 
         const [Loaded, setLoaded] = React.useState(false);
+        const [change, setChange] = React.useState(false);
         const [birthday, setBirthday] = React.useState(false);
         const [kami, setKami] = React.useState(0);
         const [newspop, setNewspop] = React.useState(null);
@@ -174,7 +179,7 @@ function capitalizeFirstLetter(string) {
                         showCancelButton: true
                       }).then((result) => {
                         if (result.isConfirmed) {
-                            setLoaded(false)
+                            setChange(true)
                             fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                 method: 'POST', // or 'PUT'
                                 headers: {
@@ -188,13 +193,13 @@ function capitalizeFirstLetter(string) {
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")
-                                    setLoaded(true)
+                                    setChange(false)
                                     setKami(1)
                                 });
                         }
                       })
                 } else if (kamio == '-') {
-                    setLoaded(false)
+                    setChange(true)
                     fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                         method: 'POST', // or 'PUT'
                         headers: {
@@ -208,7 +213,7 @@ function capitalizeFirstLetter(string) {
                         })
                         .catch((error) => {
                             alert("System will be temporary error for a while. Please try again")
-                            setLoaded(true)
+                            setChange(false)
                             setKami(1)
                         });
                   } else {
@@ -228,7 +233,7 @@ function capitalizeFirstLetter(string) {
                                 showCancelButton: true
                               }).then((result) => {
                                 if (result.isConfirmed) {
-                                    setLoaded(false)
+                                    setChange(true)
                                     fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                         method: 'POST', // or 'PUT'
                                         headers: {
@@ -242,13 +247,13 @@ function capitalizeFirstLetter(string) {
                                         })
                                         .catch((error) => {
                                             alert("System will be temporary error for a while. Please try again")
-                                            setLoaded(true)
+                                            setChange(false)
                                             setKami(1)
                                         });
                                 }
                               })
                         } else {
-                            setLoaded(false)
+                            setChange(true)
                             fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
                                 method: 'POST', // or 'PUT'
                                 headers: {
@@ -259,11 +264,10 @@ function capitalizeFirstLetter(string) {
                                 .then(response => response.text())
                                 .then(data => {
                                     window.location.reload()
-                                    setLoaded(true)
                                 })
                                 .catch((error) => {
                                     alert("System will be temporary error for a while. Please try again")
-                                    setLoaded(true)
+                                    setChange(false)
                                     setKami(1)
                                 });
                         }
@@ -619,6 +623,9 @@ function capitalizeFirstLetter(string) {
                             <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                         </div>
                     </Zoom>
+                    <Backdrop className={classes.backdrop} open={change}>
+                        <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" />
+                    </Backdrop>
             </div>
         </>
          );

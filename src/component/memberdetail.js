@@ -433,7 +433,7 @@ function capitalizeFirstLetter(string) {
                             <Fade in={play} timeout={{enter:300,exit:500}}>
                             <Fireworks options={fwoptions} style={fwstyle} />
                             </Fade>
-                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " bnktheme row"} key={i}>
+                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
                               <div className={window.innerWidth > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
                                 <Fade in={true} timeout={600} style={{ transitionDelay: 300}}>
                                     <CardMedia

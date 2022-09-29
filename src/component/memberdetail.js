@@ -434,11 +434,12 @@ function capitalizeFirstLetter(string) {
                             <Fireworks options={fwoptions} style={fwstyle} />
                             </Fade>
                             <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " bnktheme row"} key={i}>
-                            <div className={window.innerWidth > 1600 ? 'col-lg-3 mb-1' : 'col-lg-4 mb-1'}>
+                              <div className={window.innerWidth > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
                                 <Fade in={true} timeout={600} style={{ transitionDelay: 300}}>
                                     <CardMedia
                                     src={item.img}
                                     component="img"
+                                    className='mt-3 border rounded'
                                     />
                                 </Fade>
                             </div>

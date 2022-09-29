@@ -521,8 +521,8 @@ function capitalizeFirstLetter(string) {
                 ) : (
                     <Grow in={!Loaded} timeout={600}>
                             <div>
-                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " bnktheme row"}>
-                            <div className={window.innerWidth > 1600 ? 'col-lg-3 mb-1' : 'col-lg-4 mb-1'}>
+                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"}>
+                            <div className={window.innerWidth > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
                                 <Skeleton height={530} />
                             </div>
                                 <div className='col-md mt-5 mb-5'>

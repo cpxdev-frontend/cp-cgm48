@@ -65,8 +65,12 @@ const CardLoop = ({item, i, gp}) => {
   }
 
   const handleClick = (id, til) => {
-    navigator.clipboard.writeText('https://www.youtube.com/watch?v=' + id);
-    alert('Link of song '+alt +' has copied to clipboard');
+     navigator.clipboard.writeText('https://www.youtube.com/watch?v=' + id).then(() => {
+      alert('Link of song '+alt +' has copied to clipboard');
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
   };
 
   const handleExpandClick = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , ListItem,Backdrop } from '@material-ui/core';
+import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , ListItem,Backdrop,Avatar } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -434,14 +434,12 @@ function capitalizeFirstLetter(string) {
                             <Fireworks options={fwoptions} style={fwstyle} />
                             </Fade>
                             <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
-                              <div className={window.innerWidth > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
-                                <Fade in={true} timeout={600} style={{ transitionDelay: 300}}>
-                                    <CardMedia
-                                    src={item.img}
-                                    component="img"
-                                    className='mt-3 border rounded'
-                                    />
-                                </Fade>
+                              <div className={window.innerWidth > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
+                                <Zoom in={true} timeout={600} style={{ transitionDelay: 0}}>
+                                        <div className='p-3 pt-5'>
+                                        <Avatar src={item.img} style={{width: '100%', height: '100%'}} />
+                                        </div>
+                                </Zoom>
                             </div>
                             <Fade in={true} timeout={1200} style={{ transitionDelay: 600}}>
                                 <div className='col-md mt-5 mb-5'>

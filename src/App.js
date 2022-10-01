@@ -338,7 +338,7 @@ function App() {
 
   const responseGoogle = (response) => {
     localStorage.setItem("glog", JSON.stringify(response.profileObj))
-    fetch(Fet().ul + '/cgm48/addFanMember?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString(), {
+    fetch(Fet().ul + '/cgm48/addFanMember?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + "&usname=" + (JSON.parse(localStorage.getItem("glog")).name).toString(), {
       method: 'POST', // or 'PUT'
       headers: {
           'Accept': 'application/json',

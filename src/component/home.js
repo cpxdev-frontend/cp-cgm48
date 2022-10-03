@@ -233,8 +233,8 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                  />
                <CardContent>
                    <h5>{item.name}</h5>
-                   <p>Birthday: {moment(item.birthday).format('ddd DD MMMM YYYY')} ({moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | ' + (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go' : (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old'})</p>
-               </CardContent>
+                    <p>Birthday: {moment(item.birthday).format('ddd DD MMMM YYYY')} ({moment(item.birthday).format('M') == new Date().getMonth() + 1 && parseInt(moment(item.birthday).format('D')) - new Date().getDate() > 0 ? (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old | ' + ((parseInt(moment(item.birthday).format('D')) - new Date().getDate()) == 1 ? 'in tomorrow' : (parseInt(moment(item.birthday).format('D')) - new Date().getDate()) + ' day(s) to go') : (new Date().getFullYear() - new Date(item.birthday).getFullYear()) + ' years old'})</p>
+                </CardContent>
              </CardActionArea>
               </Card> 
            </div>

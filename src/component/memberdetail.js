@@ -5,6 +5,7 @@ import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Butto
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
+import CountUp from 'react-countup';
 
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CakeIcon from '@material-ui/icons/Cake';

@@ -457,7 +457,11 @@ function capitalizeFirstLetter(string) {
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
+                                        {follower > -1 ? (
                                           <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram<br /></p>
+                                        ): (
+                                            <a onClick={() => window.location.reload()}>Something went wrong, please click here to refresh page</a>
+                                        )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />
                                     {item.captain != undefined && (

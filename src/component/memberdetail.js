@@ -83,24 +83,30 @@ function capitalizeFirstLetter(string) {
         const [newspop, setNewspop] = React.useState(null);
         const [follower, setFol] = React.useState(0);
         const [countstep, setCount] = React.useState(false);
+        const [loadfollow, setFollow] = React.useState(true);
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
 
 
         const numberWithCommasx = (x) => {
-            return x.toLocaleString('en-US');
+            return parseInt(x).toLocaleString('en-US');
         }
 
-        const downGEPost = (name) => {
-            let a = document.createElement('a');
-            a.href = GEPoster;
-            a.download = name + ".webp";
-            a.target = '_blank'
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            alert('Downloading ' + name + '.webp')
+
+        const fetchfollower = (name) => {
+            setFollow(true)
+            fetch(fet + '/cgm48/getfollower?name=' + name  , {
+                method :'post'
+            })
+              .then(response => response.text())
+              .then(data => {
+                setFol(data)
+                setFollow(false)
+              }).catch(() => {
+                setFol(-1)
+                setFollow(false)
+              });
         }
 
     //    const GEdown = (mem) => {
@@ -326,11 +332,13 @@ function capitalizeFirstLetter(string) {
                                 if (data.response.ge != "") {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1)
                                     setNewspop(obj)
-                                    setFol(data.follower)
+                                    setGEPoster(data.follower)
+                                    fetchfollower(data.follower)
                                 } else {
                                     const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
                                     setNewspop(obj)
-                                    setFol(data.follower)
+                                    setGEPoster(data.follower)
+                                    fetchfollower(data.follower)
                                 }
                             }).catch(() => {
                                 setNewspop([])
@@ -457,10 +465,18 @@ function capitalizeFirstLetter(string) {
                                         {item.ge != '' && (
                                             <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
                                         )}
-                                        {follower > -1 ? (
-                                          <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram<br /></p>
-                                        ): (
-                                            <a className='cur' onClick={() => window.location.reload()}>Something went wrong, please click here to refresh page<br /></a>
+                                        {loadfollow ? (
+                                            <Skeleton />
+                                        ):(
+                                            <>
+                                            {follower > -1 ? (
+                                                <Zoom in={true}>
+                                                    <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram<br /></p>
+                                                </Zoom>
+                                            ): (
+                                                <a className='cur' onClick={() => fetchfollower(GEPoster)}>Something went wrong, please click here to refresh page<br /></a>
+                                            )}
+                                            </>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />

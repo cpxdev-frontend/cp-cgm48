@@ -34,6 +34,7 @@ import LiveTvIcon from '@material-ui/icons/LiveTv';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import TheatersIcon from '@material-ui/icons/Theaters';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -45,6 +46,7 @@ import MusicCom from './component/streaming';
 import Offici from './component/official';
 import Api from './component/apisupport';
 import FollowCom from './component/follow';
+import RequestCom from './component/requesthour'
 import PageErr from './component/404'
 import Mana from './component/geevent/gemanage'
 
@@ -534,7 +536,13 @@ function App() {
                   <ListItemIcon>
                     <HowToVoteIcon />
                   </ListItemIcon>
-                  <ListItemText primary='BNK48 12th Single General Election' />
+                  <ListItemText primary='BNK48 12th Single General Election' secondary='External link: BNK48 fan Space' />
+                </ListItem>
+                <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/requesthour' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <TheatersIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 and CGM48 Request Hour 2022' />
                 </ListItem>
                 <ListItem component={Link} to='/api' className={window.location.pathname == '/api' ? 'activeNav' : ''} button>
                   <ListItemIcon>
@@ -634,6 +642,7 @@ function App() {
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>

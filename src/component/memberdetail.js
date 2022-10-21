@@ -168,7 +168,7 @@ function capitalizeFirstLetter(string) {
         }
 
         const Subsc = (val) =>{
-            if (localStorage.getItem("glog") == null)
+            if (localStorage.getItem("loged") == null)
             {
                 Swal.fire({
                     title: "You need to login to set this member to your Kami-Oshi.",
@@ -184,7 +184,7 @@ function capitalizeFirstLetter(string) {
                       })
                     return false
                 }
-                if (localStorage.getItem("glog") != null && kamio != ''  && kamio != '-') {
+                if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
                     Swal.fire({
                         title: 'Confirm to Change your Kami-Oshi',
                         text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
@@ -194,7 +194,7 @@ function capitalizeFirstLetter(string) {
                       }).then((result) => {
                         if (result.isConfirmed) {
                             setChange(true)
-                            fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
+                            fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
                                 method: 'POST', // or 'PUT'
                                 headers: {
                                     'Accept': 'application/json',
@@ -214,7 +214,7 @@ function capitalizeFirstLetter(string) {
                       })
                 } else if (kamio == '-') {
                     setChange(true)
-                    fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
+                    fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
                         method: 'POST', // or 'PUT'
                         headers: {
                             'Accept': 'application/json',
@@ -232,7 +232,7 @@ function capitalizeFirstLetter(string) {
                         });
                   } else {
                       setKami(0)
-                    fetch(fet + '/cgm48/getFanMem?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString()  , {
+                    fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).googleId).toString()  , {
                         method :'get'
                     })
                       .then(response => response.json())
@@ -248,7 +248,7 @@ function capitalizeFirstLetter(string) {
                               }).then((result) => {
                                 if (result.isConfirmed) {
                                     setChange(true)
-                                    fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
+                                    fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
                                         method: 'POST', // or 'PUT'
                                         headers: {
                                             'Accept': 'application/json',
@@ -268,7 +268,7 @@ function capitalizeFirstLetter(string) {
                               })
                         } else {
                             setChange(true)
-                            fetch(fet + '/cgm48/uptkami?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&name=' + val, {
+                            fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
                                 method: 'POST', // or 'PUT'
                                 headers: {
                                     'Accept': 'application/json',
@@ -300,8 +300,8 @@ function capitalizeFirstLetter(string) {
             var c = url.searchParams.get("name");
             if (c != null && c != "") {
                 setSec('Loading Member description')
-                if (localStorage.getItem("glog") != null) {
-                    fetch(fet + '/cgm48/getFanMem?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString()  , {
+                if (localStorage.getItem("loged") != null) {
+                    fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                       method :'get'
                   })
                     .then(response => response.json())
@@ -407,7 +407,7 @@ function capitalizeFirstLetter(string) {
                     text: 'This member is in-queue to released image.',
                   })
             } else {
-                 if (localStorage.getItem("glog") == null) {
+                 if (localStorage.getItem("loged") == null) {
                  Swal.fire({
                     title: "BNK48 12th Single Image",
                     text: "This content is exclusively for CGM48 Fan Space Membership only, please login as Google Account and try again",
@@ -476,7 +476,6 @@ function capitalizeFirstLetter(string) {
                                             ): (
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(GEPoster)}>Something went wrong, please click here to refresh page</button>
                                             )}
-                                            <br />
                                             </>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 

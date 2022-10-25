@@ -54,6 +54,7 @@ import MamSam from './component/memberdetail';
 import News from './component/news';
 import MvCom from './component/music';
 import MusicCom from './component/streaming';
+import Account from './component/account';
 import Offici from './component/official';
 import Api from './component/apisupport';
 import FollowCom from './component/follow';
@@ -458,8 +459,8 @@ function App() {
     setOpen(false)
     setKname('')
     setKami('')
-    if (window.location.pathname == '/fandom' || window.location.pathname == '/fandomroom') {
-      window.location.href = '/'
+    if (window.location.pathname == '/account') {
+      History.push('/')
     }
   }
 
@@ -729,6 +730,11 @@ function App() {
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  {
+                    login && (
+                      <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                    )
+                  }
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
@@ -793,8 +799,8 @@ function App() {
            <Button onClick={(e) => {Signout(e)}} className="text-danger">
                Sign out
            </Button>
-           <Button onClick={(e) => {setMemDl(false)}} className="text-dark" disabled={true}>
-               Account Studio (Coming Soon)
+           <Button onClick={(e) => {History.push('/account'); setMemDl(false); setOpen(false)}} className="text-dark">
+               Account Studio (Beta)
            </Button>
            <Button onClick={(e) => {setMemDl(false)}} className="text-dark">
                Close

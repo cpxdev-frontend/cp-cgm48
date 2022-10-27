@@ -844,7 +844,7 @@ transitionDuration={500}
             </p>
             )}
 
-              <a onClick={() => item.link.includes('https://') ? window.open(item.link, '_blank') : History.push(item.link)} className='mt-1'>
+              <a onClick={() => item.link.includes('https://') ? window.open(item.link, '_blank') : {History.push(item.link); setpopup(false)}} className='mt-1'>
                   Reference Link
               </a>
             <br />
@@ -889,7 +889,7 @@ transitionDuration={500}
                 This event has been started in <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(newspop[0].timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
             </p>
             )}
-            <a onClick={() => newspop[0].link.includes('https://') ? window.open(newspop[0].link, '_blank') : History.push(newspop[0].link)} className='mt-1'>
+            <a onClick={() => newspop[0].link.includes('https://') ? window.open(newspop[0].link, '_blank') : {History.push(newspop[0].link); setpopup(false)}} className='mt-1'>
                 Reference Link
             </a>
             <br />

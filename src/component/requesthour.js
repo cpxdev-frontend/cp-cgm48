@@ -30,7 +30,54 @@ const RequestHr = ({fet, setSec}) => {
     return ( 
         <>
 
-
+{window.innerWidth > 1200 && (
+              <div class="video-background">
+               <Fade in={true} timeout={800}>
+                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/mainoff.jpg"  width={window.innerWidth} />
+                  </Fade>
+          </div>
+            )}
+                {window.innerWidth >1200 ? (
+                <div className="cover mt-4">
+                <Grow in={true} timeout={1000}>
+              <Card className="col-md-4 m-5">
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                BNK48 and CGM48 Request Hour 2022
+                </Typography>
+                <hr />
+                <Typography color="textSecondary">
+                The first concert of BNK48 and CGM48 that you can participate in voting <b>25 songs</b> from <b>124 songs</b> of BNK48 and CGM48 songs for this concert. 
+                </Typography>
+                <hr />
+                <Typography variant="body1" component="p">
+                 You can check voting summary and virtualization chart result below.
+                </Typography>
+              </CardContent>
+                </Card>
+                </Grow>
+              </div>
+              ) : (
+            <div className="bnktheme pb-5 pt-2">
+        <Grow in={true} timeout={1000}>
+      <Card className="ml-2 mr-2">
+      <CardContent>
+                <Typography variant="h5" component="h2">
+                BNK48 and CGM48 Request Hour 2022
+                </Typography>
+                <hr />
+                <Typography color="textSecondary">
+                The first concert of BNK48 and CGM48 that you can participate in voting <b>25 songs</b> from <b>124 songs</b> of BNK48 and CGM48 songs for this concert. 
+                </Typography>
+                <hr />
+                <Typography variant="body1" component="p">
+                 You can check voting summary and virtualization chart result below.
+                </Typography>
+              </CardContent>
+        </Card>
+        </Grow>
+      </div>
+          )}
         <div className={'stage text-center ' + (window.innerWidth > 700 ? 'p-5' : 'p-2')}>
 
         <TableContainer>
@@ -38,7 +85,7 @@ const RequestHr = ({fet, setSec}) => {
                   <TableHead>
                     <TableRow>
                       <TableCell>Rank</TableCell>
-                      <TableCell align="center">Member Image</TableCell>
+                      <TableCell align="center">Album Image</TableCell>
                       <TableCell align="center">Song Name</TableCell>
                       <TableCell align="center">Song Artist</TableCell>
                       <TableCell align="right">Spent Token</TableCell>
@@ -47,7 +94,7 @@ const RequestHr = ({fet, setSec}) => {
           {
             arr == null ? (
               <TableBody>
-              <TableCell colSpan={5} align='center'><img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="40px" /></TableCell>
+              <TableCell colSpan={5} align='center'><img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="40px" /></TableCell>
         </TableBody>
             ) : ((arr.length == 0) ? (
               <TableBody>

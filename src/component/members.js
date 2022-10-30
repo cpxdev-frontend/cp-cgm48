@@ -202,7 +202,7 @@ const Memberlist = ({fet, setSec}) => {
                    
                 )) : (
                     <div className='text-center col-md-12'>
-                        <h6>No BNK48 members to show. Please try different keyword</h6>
+                        <h6>No CGM48 members to show. Please try different keyword</h6>
                     </div>
                 )}
                 </div>

@@ -7,31 +7,9 @@
             "label": "Choose Group"
         },
         {
-          "value": "team",
-          "label": "Theater Stage Team"
-        },
-        {
           "value": "gen",
           "label": "Generation"
         }
-      ],
-      "team": [
-        {
-            "value": "-",
-            "label": "Choose Stage Team"
-        },
-        {
-          "value": "b3",
-          "label": "B Three (BIII)"
-        },
-        {
-          "value": "nv",
-          "label": "N Five (NV)"
-        },
-        {
-            "value": "under",
-            "label": "Trainee (Undergirl)"
-          }
       ],
       "gen": [
         {
@@ -40,15 +18,25 @@
         },
         {
           "value": 1,
-          "label": "Generation 1"
+          "label": "1st Generation"
         },
         {
             "value": 2,
-            "label": "Generation 2"
+            "label": "2nd Generation"
+        }
+      ],
+      "graduation": [
+        {
+            "value": "-",
+            "label": "All Status"
         },
         {
-            "value": 3,
-          "label": "Generation 3"
-          }
+          "value": 1,
+          "label": "Only Non-Graduated"
+        },
+        {
+            "value": 2,
+            "label": "Graduated"
+        }
       ]
   }

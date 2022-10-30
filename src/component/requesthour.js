@@ -18,7 +18,7 @@ const RequestHr = ({fet, setSec}) => {
       })
           .then(response => response.json())
           .then(data => {
-            if (data.status == true) {
+            if (data.status == 200) {
               setArr(data.res)
             } else {
               setArr([])
@@ -32,11 +32,6 @@ const RequestHr = ({fet, setSec}) => {
 
 
         <div className={'stage text-center ' + (window.innerWidth > 700 ? 'p-5' : 'p-2')}>
-            <Card>
-                <CardContent>
-                    Voting is end. The voting are being collected. Please come back again in November 1, 2022
-                </CardContent>
-            </Card>
 
         <TableContainer>
                 <Table stickyHeader aria-label="simple table">

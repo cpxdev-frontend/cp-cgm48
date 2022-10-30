@@ -843,7 +843,14 @@ transitionDuration={500}
               </a>
             <br />
               {
-                item.place != '' && (
+                item.place != '' && item.place.includes('IAMP') && (
+                  <a href={item.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={item.placeobj.placeDesc}>
+                     <LocationOnIcon/> Location: {item.placeobj.placeName + ", " + item.placeobj.placeProvince}
+                  </a>
+                )
+              }
+               {
+                item.place != '' && !item.place.includes('IAMP') && (
                   <a href={item.place} target='_blank' className='mt-1'>
                      <LocationOnIcon/> Where is this event?
                   </a>
@@ -887,10 +894,17 @@ transitionDuration={500}
                 Reference Link
             </a>
             <br />
-            {
-                newspop[0].place != '' && (
+              {
+                newspop[0].place != '' && newspop[0].place.includes('IAMP') && (
+                  <a href={newspop[0].placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={newspop[0].placeobj.placeDesc}>
+                     <LocationOnIcon/> Location: {newspop[0].placeobj.placeName + ", " + newspop[0].placeobj.placeProvince}
+                  </a>
+                )
+              }
+               {
+                newspop[0].place != '' && !newspop[0].place.includes('IAMP') && (
                   <a href={newspop[0].place} target='_blank' className='mt-1'>
-                       <LocationOnIcon/> Where is this event?
+                     <LocationOnIcon/> Where is this event?
                   </a>
                 )
               }

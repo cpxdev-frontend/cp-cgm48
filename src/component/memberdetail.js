@@ -628,11 +628,18 @@ function capitalizeFirstLetter(string) {
                                                     </div>
                                                 )
                                             }
+                                             {
+                                                ita.place != '' && ita.place.includes('IAMP') && (
+                                                <a href={ita.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={ita.placeobj.placeDesc}>
+                                                    <LocationOnIcon/> Location: {ita.placeobj.placeName + ", " + ita.placeobj.placeProvince}
+                                                </a>
+                                                )
+                                            }
                                             {
-                                                ita.place != '' && (
-                                                    <div className='mt-1' data-aos="fade-down">
-                                                    <a href={ita.place} target='_blank'>See event location on Google Maps</a>
-                                                    </div>
+                                                ita.place != '' && !ita.place.includes('IAMP') && (
+                                                <a href={ita.place} target='_blank' className='mt-1'>
+                                                    <LocationOnIcon/> Where is this event?
+                                                </a>
                                                 )
                                             }
                                         </div>

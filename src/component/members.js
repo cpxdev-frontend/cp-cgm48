@@ -13,6 +13,7 @@ const Memberlist = ({fet, setSec}) => {
 
     const [seGroup, setGr] = React.useState('-');
     const [seFill, setFr] = React.useState('-');
+    const [seGrad, setGrad] = React.useState('-');
     const [search, setSearch] = React.useState('');
     const [Loaded, setLoaded] = React.useState(false);
     const [Filter, setFilter] = React.useState([]);
@@ -45,21 +46,71 @@ const Memberlist = ({fet, setSec}) => {
     }
 
     const SearchEng = (val) => {
-        if (val !== '') {
-            const txt = val.toLowerCase()
-            setSearch(txt)
-            const d = Arr.filter(x => (x.name.toLowerCase()).includes(txt));
-            setmem(d)
-          } else {
-            setSearch('')
+        const txt = val.toLowerCase()
+        setSearch(txt)
+        if (txt == '') {
             setmem(Arr)
-          }
+        } else {
+            const data = Arr.filter(x => (x.name.toLowerCase()).includes(txt));
+            setmem(data)
+        }
     }
 
+    const handleChangeGroup = (event) => {
+        setFr('-')
+        setGr(event.target.value);
+        if (event.target.value == 'gen') {
+           setFilter(vPack.gen)
+        } else {
+            setFilter([])
+        }
+      };
+
+      const onSearch = () => {
+          if (seGroup != '-' && seFill != "-") {
+          setLoaded(false)
+          fetch(fet + '/cgm48/getmemberby?filter=' + seGroup + '&param=' + seFill + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+            method :'post'
+        })
+            .then(response => response.json())
+            .then(async data => {
+                setArr(data.response)
+                if (search !== '') {
+                    const txt = search.toLowerCase()
+                    setSearch(txt)
+                    const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
+                    setmem(d)
+                } else {
+                    setmem(data.response)
+                    setArr(data.response)
+                }
+                setLoaded(true)
+            }); 
+
+          }
+      }
     
       const onReset = () => {
-        setSearch('')
-        setmem(Arr)
+        if (seGroup != '-' || seFill != "-" || search != '') {
+        setLoaded(false)
+        fetch(fet + '/cgm48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+            method :'get'
+        })
+            .then(response => response.json())
+            .then(data => {
+                setmem(data.response)
+                setArr(data.response)
+                setLoaded(true)
+            }).catch(() => {
+                setmem([])
+                setArr([])
+                setLoaded(true)
+            })
+            setFilter([])
+            setGr('-')
+            setFr('-')
+            setSearch('')
+        }
     }
 
     return ( 
@@ -69,7 +120,7 @@ const Memberlist = ({fet, setSec}) => {
         <div className="stage text-center pt-5 pb-2">
             <Card className={"text-left " + (window.innerWidth > 700 ? 'ml-5 mr-5' : 'ml-2 mr-2')}>
             <TextField label="Search Member" value={search} className="m-3" onChange={(e) => SearchEng(e.target.value)} />
-            {/* <TextField
+            <TextField
                 select
                 label="Choose Group"
                 value={seGroup || '-'}
@@ -81,8 +132,8 @@ const Memberlist = ({fet, setSec}) => {
                         {option.label}
                         </MenuItem>
                     ))}
-             </TextField> */}
-             {/* {Filter.length > 0 && seGroup != '-' && (
+             </TextField>
+             {Filter.length > 0 && seGroup != '-' && (
                  <TextField
                  select
                  label="Choose Filter type"
@@ -96,22 +147,38 @@ const Memberlist = ({fet, setSec}) => {
                          </MenuItem>
                      ))}
               </TextField>
-             )} */}
+             )}
+              <TextField
+                 select
+                 label="Graduation Status"
+                 value={seGrad || '-'}
+                 className="m-3"
+                 onChange={(e) => setGrad(e.target.value)}
+                 >
+                     {vPack.graduation.map((option) => (
+                         <MenuItem key={option.value} value={option.value}>
+                         {option.label}
+                         </MenuItem>
+                     ))}
+              </TextField>
              <ButtonGroup>
-                <Button className={'ml-5 mt-4 mb-3 mr-2'} color="secondary" onClick={() => onReset()} variant="contained">Reset</Button>
+             {seGroup != '-' && seFill != '-' && (
+                 <Button className='ml-5 mt-4 mb-3' color="primary" onClick={() => onSearch()} variant="contained">Search</Button>
+             )}
+              <Button className={(seGroup != '-' && seFill != '-' ? 'ml-3' : 'ml-5') + ' mt-4 mb-3 mr-2'} color="secondary" onClick={() => onReset()} variant="contained">Reset</Button>
              </ButtonGroup>
              </Card>
              <Zoom in={mem.length > 0 ? Loaded : false}>
              <Card className='mt-2 ml-5 mr-5'>
-                     <CardContent>
-                         Found {mem.length} matched BNK48 members
+                        <CardContent>
+                         Found {seGrad == 2 ? mem.filter(x => x.graduated == true).length : seGrad == 1 ? mem.filter(x => x.graduated == false).length : mem.length} matched BNK48 members
                      </CardContent>
                  </Card>
              </Zoom>
             
              {Loaded ? (
                 <div className='row ml-3 mr-3 mt-5 justify-content-center'>
-                {mem.length > 0 ? mem.map((item, i) => (
+                {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                       <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
@@ -135,7 +202,7 @@ const Memberlist = ({fet, setSec}) => {
                    
                 )) : (
                     <div className='text-center col-md-12'>
-                        <h6>No BNK48 members to show. Please try different keyword</h6>
+                        <h6>No CGM48 members to show. Please try different keyword</h6>
                     </div>
                 )}
                 </div>

@@ -42,7 +42,7 @@ const RequestHr = ({fet, setSec}) => {
 {window.innerWidth > 1200 && (
               <div class="video-background">
                <Fade in={true} timeout={800}>
-                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48/mainoff.jpg"  width={window.innerWidth} />
+                <img src="https://pbs.twimg.com/media/FgS1W--VsAAvv0R?format=jpg&name=4096x4096"  width={window.innerWidth} />
                   </Fade>
           </div>
             )}

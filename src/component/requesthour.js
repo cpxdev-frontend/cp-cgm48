@@ -92,6 +92,7 @@ const RequestHr = ({fet, setSec}) => {
 
         <TableContainer>
                 <Table stickyHeader aria-label="simple table">
+                <caption className='text-right'>Result maybe inaccurated. You can check correct in IAM48 Mobile Application in Token tab</caption>
                   <TableHead data-aos='fade-down'>
                     <TableRow>
                       <TableCell>Rank</TableCell>

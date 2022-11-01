@@ -137,7 +137,7 @@ const RequestHr = ({fet, setSec}) => {
             </Table>
               </TableContainer>
 
-          <Card className='mt-5' data-aos='zoom-in-up'>
+          <Card className='mt-5 text-left' data-aos='zoom-in-up'>
             <CardContent>
             <CardHeader title="Election Report" subheader="Reported by Token X. Visualization Statistic by Google Data Studio" data-aos='flip-down' />
               <hr />

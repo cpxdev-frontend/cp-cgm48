@@ -868,8 +868,8 @@ transitionDuration={500}
               {item.memtag.length > 0 && (<div>
                 Member included {
                   (item.memtag.map((nametag, ii) => (
-                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist"): ("/member?name=" + nametag)} target='_blank'>
-                    {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : (ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag))}
+                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) : ("/member?name=" + nametag)} target='_blank'>
+                    {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : nametag.includes('gen') === true ? 'CGM48 Generation ' + nametag.replace("gen" , "") : (ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag))}
                     </a>
                   )))
                 }
@@ -918,6 +918,15 @@ transitionDuration={500}
                   </a>
                 )
               }
+               {newspop[0].memtag.length > 0 && (<div>
+                Member included {
+                  (newspop[0].memtag.map((nametag, ii) => (
+                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")): ("/member?name=" + nametag)} target='_blank'>
+                    {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : (ii == 0 ? capitalizeFirstLetter(nametag) : nametag.includes('gen') ? 'CGM48 Generation ' + nametag.replace("gen" , "") : ', ' + capitalizeFirstLetter(nametag))}
+                    </a>
+                  )))
+                }
+              </div>)}
           </CardContent>
         </DialogContent>
       </>

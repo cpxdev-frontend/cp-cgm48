@@ -24,19 +24,44 @@ const Memberlist = ({fet, setSec}) => {
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(fet + '/cgm48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'get'
-        })
-  .then(response => response.json())
-  .then(data => {
-    setmem(data.response)
-    setArr(data.response)
-    setLoaded(true)
-  }).catch(() => {
-    setmem([])
-    setArr([])
-    setLoaded(true)
-  })
+        var url = new URL(window.location.href);
+        if (url.searchParams.get("filter") != null && url.searchParams.get("val") != null) {
+            setFilter(vPack[url.searchParams.get("filter")])
+            setGr(url.searchParams.get("filter") );
+            setFr(url.searchParams.get("val"))
+            setLoaded(false)
+            fetch(fet + '/cgm48/getmemberby?filter=' + url.searchParams.get("filter") + '&param=' + url.searchParams.get("val") + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+              method :'post'
+          })
+              .then(response => response.json())
+              .then(async data => {
+                  setArr(data.response)
+                  if (search !== '') {
+                      const txt = search.toLowerCase()
+                      setSearch(txt)
+                      const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
+                      setmem(d)
+                  } else {
+                      setmem(data.response)
+                      setArr(data.response)
+                  }
+                  setLoaded(true)
+              }); 
+        } else {
+            fetch(fet + '/cgm48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+                method :'get'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setmem(data.response)
+                    setArr(data.response)
+                    setLoaded(true)
+                }).catch(() => {
+                    setmem([])
+                    setArr([])
+                    setLoaded(true)
+                })
+        }
  
     }, [])
 

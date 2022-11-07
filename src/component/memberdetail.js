@@ -330,12 +330,12 @@ function capitalizeFirstLetter(string) {
                             .then(response => response.json())
                             .then(dataads => {
                                 if (data.response.ge != "") {
-                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1)
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
                                     setNewspop(obj)
                                     setGEPoster(data.follower)
                                     fetchfollower(data.follower)
                                 } else {
-                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1)
+                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
                                     setNewspop(obj)
                                     setGEPoster(data.follower)
                                     fetchfollower(data.follower)

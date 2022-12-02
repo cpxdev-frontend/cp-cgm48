@@ -344,7 +344,7 @@ function capitalizeFirstLetter(string) {
                             }).catch(() => {
                                 setNewspop([])
                             })
-                            fetch(fet + '/bnk48/memberlivelist', {
+                            fetch(fet + '/cgm48/memberlivelist', {
                                 method :'post'
                             })
                                 .then(response => response.json())
@@ -670,7 +670,7 @@ function capitalizeFirstLetter(string) {
 
 
                 <div className='container mt-5'>
-                    {memLive != null && memLive.length > 0 && (<h3 className='mb-4' data-aos="flip-up">LIVE Schedule for {capitalizeFirstLetter(mem)} BNK48 in IAM48 Application</h3>)}
+                    {memLive != null && memLive.length > 0 && (<h3 className='mb-4' data-aos="flip-up">LIVE Schedule for {capitalizeFirstLetter(mem)} CGM48 in IAM48 Application</h3>)}
                     {memLive != null && (
                     <>
                         {
@@ -694,7 +694,7 @@ function capitalizeFirstLetter(string) {
                             )) : (
                                 <Card className="text-center" data-aos="zoom-out-up">
                                     <CardContent>
-                                    {capitalizeFirstLetter(mem)} BNK48 doesn't have scheduled LIVE in IAM48 Application right now.
+                                    {capitalizeFirstLetter(mem)} CGM48 doesn't have scheduled LIVE in IAM48 Application right now.
                                     </CardContent>
                                 </Card>
                             )

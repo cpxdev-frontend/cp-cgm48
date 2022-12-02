@@ -27,7 +27,7 @@ const Memberlist = ({fet, setSec}) => {
         var url = new URL(window.location.href);
         if (url.searchParams.get("filter") != null && url.searchParams.get("val") != null) {
             setFilter(vPack[url.searchParams.get("filter")])
-            setGr(url.searchParams.get("filter") );
+            setGr(url.searchParams.get("filter"));
             setFr(url.searchParams.get("val"))
             setLoaded(false)
             fetch(fet + '/cgm48/getmemberby?filter=' + url.searchParams.get("filter") + '&param=' + url.searchParams.get("val") + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {

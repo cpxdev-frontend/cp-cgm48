@@ -84,6 +84,7 @@ function capitalizeFirstLetter(string) {
         const [follower, setFol] = React.useState(0);
         const [countstep, setCount] = React.useState(false);
         const [loadfollow, setFollow] = React.useState(true);
+        const [memLive, setMemLive] = React.useState(null);
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
@@ -343,6 +344,15 @@ function capitalizeFirstLetter(string) {
                             }).catch(() => {
                                 setNewspop([])
                             })
+                            fetch(fet + '/bnk48/memberlivelist', {
+                                method :'post'
+                            })
+                                .then(response => response.json())
+                                .then(dataads => {
+                                    setMemLive(dataads)
+                                }).catch(() => {
+                                    setMemLive([])
+                                })
                         setSec(data.response.name)
                         const temp =[]
                         temp.push(data.response)
@@ -657,8 +667,44 @@ function capitalizeFirstLetter(string) {
                         </>
                     )}
                 </div>
+
+
+                <div className='container mt-5'>
+                    {memLive != null && memLive.length > 0 && (<h3 className='mb-4' data-aos="flip-up">LIVE Schedule for {capitalizeFirstLetter(mem)} BNK48 in IAM48 Application</h3>)}
+                    {memLive != null && (
+                    <>
+                        {
+                            memLive.length > 0 ?  memLive.map((ita, i) => mem.toLowerCase() == ita.member && (
+                                <Card className='mb-3' data-aos="fade-right">
+                                    <CardContent className='row'>
+                                        <div className='col-md-5'>
+                                            <img src={ita.src} width="100%" />
+                                        </div>
+                                        <div className='col-md mt-3'>
+                                            <h4 data-aos="zoom-out-right">{ita.title}</h4>
+                                            <h6 className='mt-1 mb-3'>
+                                                LIVE will be started in <b>{moment.utc(ita.date).local().format('DD MMMM YYYY HH:mm:ss')}</b>
+                                            </h6>
+                                            <p className='mt-1 mb-3'>
+                                                LIVE Streaming Platform: <b>{ita.platform}</b>
+                                            </p>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            )) : (
+                                <Card className="text-center" data-aos="zoom-out-up">
+                                    <CardContent>
+                                    {capitalizeFirstLetter(mem)} BNK48 doesn't have scheduled LIVE in IAM48 Application right now.
+                                    </CardContent>
+                                </Card>
+                            )
+        
+                        }
+                        </>
+                    )}
+                </div>
                
-                <Zoom in={newspop == null ? true : false} timeout={{ enter: 200, exit: 200}}>
+                <Zoom in={newspop == null || memLive == null ? true : false} timeout={{ enter: 200, exit: 200}}>
                         <div className='text-center pb-3'>
                             <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                         </div>

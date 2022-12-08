@@ -22,7 +22,7 @@ ReactDOM.render(
         width: '100vw',
         height: '100vh',
       }}
-      snowflakeCount={30}
+      snowflakeCount={10}
     />
   </ThemeProvider>
   </BrowserRouter>,

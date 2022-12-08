@@ -738,8 +738,7 @@ function App() {
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
-                
-                      
+                    
                   
         <footer className="bg-white text-center pt-2 pb-2 bnktheme">
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved

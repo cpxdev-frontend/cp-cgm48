@@ -9,11 +9,21 @@ import theme from './theme';
 import {
   BrowserRouter
 } from "react-router-dom";
+import Snowfall from 'react-snowfall'
 
 ReactDOM.render(
   <BrowserRouter>
   <ThemeProvider theme={theme}>
     <App />
+    <Snowfall
+    color="#fffafa"
+      style={{
+        position: 'fixed',
+        width: '100vw',
+        height: '100vh',
+      }}
+      snowflakeCount={30}
+    />
   </ThemeProvider>
   </BrowserRouter>,
   document.getElementById('root')

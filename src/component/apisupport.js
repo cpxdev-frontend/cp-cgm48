@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardActionArea} from '@material-ui/core'
 const API = () => {
     const [ stat, setstat] = React.useState(null);
     const APITest = () => {
-        fetch('https://api.cpxdev.tk/Home/status')
+        fetch('https://api.cpxdev.tk/cgm48/status')
         .then(function () {
             setstat(true)
         }).catch(function () {

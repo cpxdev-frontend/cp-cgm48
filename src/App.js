@@ -169,7 +169,8 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
-
+  const ref = React.useRef(null)
+  const [footerHeight, setFooterH] = React.useState(0)
   
     React.useEffect(() => {
     const currentP = document.documentElement.scrollTop || document.body.scrollTop;
@@ -195,6 +196,12 @@ function App() {
       }
     }, 1)
    }, []);
+
+   React.useEffect(() => {
+    if (ref.current != null){
+      setFooterH(ref.current.clientHeight)
+    } 
+  })
 
    const FetchKami = (fetdata) => {
     if (localStorage.getItem("loged") != null) {
@@ -716,6 +723,7 @@ function App() {
                 
                 
                 </Drawer>
+                <div style={{marginBottom: (footerHeight+5) + 'px'}}>
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -738,9 +746,10 @@ function App() {
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
+                </div>
                     
                   
-        <footer className="bg-white text-center pt-2 pb-2 bnktheme">
+        <footer className="bg-white text-center pt-2 pb-2 bnktheme fixed-bottom" ref={ref}>
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.
         </footer>

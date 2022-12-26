@@ -975,7 +975,7 @@ transitionDuration={500}
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+             <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
                Double click or tap on image to skip this page
              </Alert>
              </div>
@@ -983,7 +983,7 @@ transitionDuration={500}
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+             <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
                      Double click/tap here on image or wait 5 seconds to skip this page
              </Alert>
              </div>
@@ -1073,7 +1073,7 @@ transitionDuration={500}
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+              <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
               Double click or tap on image to skip this page
             </Alert>
             </div>
@@ -1081,7 +1081,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+            <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
                     Double click/tap here on image or wait 5 seconds to skip this page
             </Alert>
             </div>

@@ -76,7 +76,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/makmain.webp" width={window.innerWidth} />
+                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
                </Fade>
               </div>
           )}

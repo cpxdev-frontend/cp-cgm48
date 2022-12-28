@@ -601,7 +601,7 @@ function capitalizeFirstLetter(string) {
                                             <img src={ita.src} width="100%" />
                                         </div>
                                         <div className='col-md mt-3'>
-                                            <h4 data-aos="zoom-out-right">{ita.title}&nbsp;
+                                            <h4 data-aos="zoom-in-right">{ita.title}&nbsp;
                                             {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (
                                                 <span className='badge badge-success'>
                                                     Event has been started
@@ -656,7 +656,7 @@ function capitalizeFirstLetter(string) {
                                     </CardContent>
                                 </Card>
                             )) : (
-                                <Card className="text-center" data-aos="zoom-out-up">
+                                <Card className="text-center" data-aos="zoom-in-up">
                                     <CardContent>
                                     {capitalizeFirstLetter(mem)} CGM48 doesn't have incoming events right now.
                                     </CardContent>
@@ -681,7 +681,7 @@ function capitalizeFirstLetter(string) {
                                             <img src={ita.src} width="100%" />
                                         </div>
                                         <div className='col-md mt-3'>
-                                            <h4 data-aos="zoom-out-right">{ita.title}</h4>
+                                            <h4 data-aos="zoom-in-right">{ita.title}</h4>
                                             <h6 className='mt-1 mb-3'>
                                                 LIVE will be started in <b>{moment.utc(ita.date).local().format('DD MMMM YYYY HH:mm:ss')}</b>
                                             </h6>
@@ -692,7 +692,7 @@ function capitalizeFirstLetter(string) {
                                     </CardContent>
                                 </Card>
                             )) : (
-                                <Card className="text-center" data-aos="zoom-out-up">
+                                <Card className="text-center" data-aos="zoom-in-up">
                                     <CardContent>
                                     {capitalizeFirstLetter(mem)} CGM48 doesn't have scheduled LIVE in IAM48 Application right now.
                                     </CardContent>

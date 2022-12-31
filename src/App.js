@@ -309,7 +309,7 @@ function App() {
             }
             }
             const withprio = data.filter(x => x.priority != undefined && (moment.unix() < x.timerange[1]));
-            const nonprio = data.filter(x => x.priority == undefined);
+            const nonprio = data.filter(x => x.priority == undefined && (moment.unix() < x.timerange[1]));
             for (let i = 0; i< withprio.length; i++) {
                 tempd.push(data[i])
             }

@@ -18,7 +18,7 @@ const Contact = ({fet, setSec}) => {
         {window.innerWidth >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/makmain.webp" width={window.innerWidth} />
+           <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
               </Fade>
       </div>
         )}

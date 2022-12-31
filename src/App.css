@@ -162,6 +162,7 @@ iframe[id*="twitter-widget"] {
 
 .swal2-container {
   z-index: 2147483647 !important;
+  width: 100vw !important;
 }
 
 .cur{

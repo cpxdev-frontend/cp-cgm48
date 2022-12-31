@@ -313,8 +313,8 @@ function App() {
             for (let i = 0; i< withprio.length; i++) {
                 tempd.push(withprio[i])
             }
-            for (let i = 0; i< nonprio.length; i++) {
-              tempd.push(nonprio[i])
+            for (let ij = 0; ij< nonprio.length; ij++) {
+              tempd.push(nonprio[ij])
             }
             setNewspop(tempd)
             if (kamin !== '') {

@@ -734,6 +734,7 @@ function App() {
                 
                 
                 </Drawer>
+                <div style={{marginBottom: footerHeight + 'px'}}>
                 <BasicSwitch>
                   <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -756,6 +757,7 @@ function App() {
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
                 </BasicSwitch>
+                </div>
                 
                       
                   

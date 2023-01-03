@@ -290,6 +290,11 @@ function App() {
             setNewspop(data)
           } else {
             let tempd = []
+            const withprio = data.filter(x => x.priority != undefined && (moment().unix() >= (x.timerange[0] - 259200) && moment().unix() < x.timerange[1]));
+            const nonprio = data.filter(x => x.priority == undefined);
+            for (let i = 0; i< withprio.length; i++) {
+                tempd.push(withprio[i])
+            }
             for (let i = 0; i< dres.response.length; i++) {
               if (dres.response[i].graduated == false) {
               tempd.push({
@@ -307,11 +312,6 @@ function App() {
                 ]
               })
             }
-            }
-            const withprio = data.filter(x => x.priority != undefined && (moment().unix() >= (x.timerange[0] - 86400) && moment().unix() < x.timerange[1]));
-            const nonprio = data.filter(x => x.priority == undefined);
-            for (let i = 0; i< withprio.length; i++) {
-                tempd.push(withprio[i])
             }
             for (let ij = 0; ij< nonprio.length; ij++) {
               tempd.push(nonprio[ij])

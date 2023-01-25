@@ -339,7 +339,7 @@ function App() {
     } else {
       setReduce(true)
     }
-    if (localStorage.getItem("glog") == null) {
+    if (localStorage.getItem("loged") == null) {
       setLogin(false)
     } else {
       setLogin(true)
@@ -376,8 +376,8 @@ function App() {
 
 
   const responseGoogle = (response) => {
-    localStorage.setItem("glog", JSON.stringify(response.profileObj))
-    fetch(Fet().ul + '/cgm48/addFanMember?i=' + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + "&usname=" + (JSON.parse(localStorage.getItem("glog")).name).toString() + "&email=" + (JSON.parse(localStorage.getItem("glog")).email).toString(), {
+    localStorage.setItem("loged", JSON.stringify(response.profileObj))
+    fetch(Fet().ul + '/cgm48/addFanMember?i=' + (JSON.parse(localStorage.getItem("loged")).googleId).toString() + "&usname=" + (JSON.parse(localStorage.getItem("loged")).name).toString() + "&email=" + (JSON.parse(localStorage.getItem("loged")).email).toString(), {
       method: 'POST', // or 'PUT'
       headers: {
           'Accept': 'application/json',
@@ -396,7 +396,7 @@ function App() {
           setLogLoad(false)
           setMemDl(false)
           setLogin(false)
-          localStorage.removeItem("glog")
+          localStorage.removeItem("loged")
           setOpen(false)
         }
       })
@@ -405,7 +405,7 @@ function App() {
           setLogLoad(false)
           setMemDl(false)
           setLogin(false)
-          localStorage.removeItem("glog")
+          localStorage.removeItem("loged")
           setOpen(false)
       });
   }
@@ -484,7 +484,7 @@ function App() {
 
   const setTokenDialog = () => {
     setLoadToken(true)
-    fetch(uri + '/bnk48/upttokenid?i='  + (JSON.parse(localStorage.getItem("glog")).googleId).toString() + '&wallet=' + survey, {
+    fetch(uri + '/bnk48/upttokenid?i='  + (JSON.parse(localStorage.getItem("loged")).googleId).toString() + '&wallet=' + survey, {
       method :'post'
   })
       .then(response => response.text())

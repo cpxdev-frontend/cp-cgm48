@@ -69,7 +69,7 @@ const MusicSt = ({fet, setSec}) => {
       </div>
         )}
   <Container>
-         <Grid container spacing={2} className='mt-3'>
+         <Grid container spacing={2} className='justify-content-center mt-3'>
               {data.length > 0 ? data.map((item,i) => (item.release_date.includes(new Date().getFullYear()) || item.release_date.includes(new Date().getFullYear() - 1)) ? (
                 <Grid key={item.id} item md={3}>
                  <Card key={item.id} className={'text-center mb-3' + (window.innerWidth < 700 ? ' bnktheme' : '')} data-aos="zoom-in" >

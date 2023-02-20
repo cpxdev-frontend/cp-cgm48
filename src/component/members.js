@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem, Button, ButtonGroup } from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia, TextField, Zoom, MenuItem, Button, ButtonGroup, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import moment from 'moment'
@@ -202,9 +202,10 @@ const Memberlist = ({fet, setSec}) => {
              </Zoom>
             
              {Loaded ? (
-                <div className='row ml-3 mr-3 mt-5 justify-content-center'>
+               <Grid container spacing={2} className='mt-3'>
                 {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
-                      <div data-aos="zoom-in" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
+                  <Grid item md={3}>
+                      <div data-aos="zoom-in" className='mb-5' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
                             <CardMedia
@@ -214,9 +215,14 @@ const Memberlist = ({fet, setSec}) => {
                                     />
                                 <CardContent>
                                     <h5>{item.name}</h5>
+                                     {item.shihainin != undefined && (
+                                         <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>CGM48 Manager (Shihainin)</p>
+                                     )}
+                                     <br />
                                     {item.captain != undefined && (
                                         <p class="badge badge-pill badge-info">CGM48 Captain</p>
                                     )}
+                                    <br />
                                     {item.graduated == true && (
                                         <p class="badge badge-pill badge-warning">Graduating Announced</p>
                                     )}
@@ -224,13 +230,13 @@ const Memberlist = ({fet, setSec}) => {
                                 </CardActionArea>
                                 </Card> 
                             </div>
-                   
+                   </Grid>
                 )) : (
                     <div className='text-center col-md-12'>
                         <h6>No CGM48 members to show. Please try different keyword</h6>
                     </div>
                 )}
-                </div>
+                </Grid>
             ) : (
                 <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
                 <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />

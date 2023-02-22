@@ -87,7 +87,7 @@ const CardLoop = ({item, i, gp}) => {
         <CardMedia
         component='iframe'
         height={i == 0 ? 700 : 350}
-        src={'https://www.youtube.com/embed/' + item.snippet.resourceId.videoId +'?mute=1' + (window.innerWidth <= 600 || gp == true ? '' : '&autoplay=1')}
+        src={'https://www.youtube.com/embed/' + item.snippet.resourceId.videoId +'?mute=1'}
         allowFullScreen
     />
       <CardActions disableSpacing>

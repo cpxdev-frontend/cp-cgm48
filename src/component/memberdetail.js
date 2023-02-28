@@ -137,6 +137,7 @@ function capitalizeFirstLetter(string) {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    setFollow(true)
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {

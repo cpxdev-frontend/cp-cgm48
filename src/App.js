@@ -780,7 +780,10 @@ function App() {
            <DialogTitle id="alert-dialog-title">Are you sure to sign-out</DialogTitle>
            <DialogContent>
              {kamin != '-' ? (
-           <ListItem onClick={() => History.push("/member?name=" + kamin.toLowerCase())} button>
+           <ListItem onClick={() => {
+            History.push("/member?name=" + kamin.toLowerCase())
+            setMemDl(false)
+           }} button>
                <ListItemIcon>
                <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
              </ListItemIcon>

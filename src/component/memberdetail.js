@@ -68,7 +68,7 @@ const fwoptions = {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-    const MemDetail = ({fet, kamio, setSec}) => {
+    const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
 
         const classes = useStyles();
         const [open, setOpen] = React.useState(false);
@@ -110,192 +110,7 @@ function capitalizeFirstLetter(string) {
               });
         }
 
-    //    const GEdown = (mem) => {
-    //         fetch('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp', {
-    //             method :'get'
-    //         })
-    //             .then(response => {
-    //                 if (response.status === 200 || response.status === 304) {
-    //                     return response.text()
-    //                 }
-    //                 throw new Error('Something went wrong');
-    //             })
-    //             .then(data => {
-    //                 setGEPoster('https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@latest/bnk48thirdge/' + mem + '1.webp')
-    //             }).catch(() => {
-    //                 setGEPoster('')
-    //             });
-    //     }
-
-        const BirthdayCheck = (val) => {
-            fetch(fet + '/cgm48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'post'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.count > 0) {
-                     const arr = (data.response)
-                     const i = arr.findIndex(x => x.name == val)
-                     if (i > -1) {
-                        setBirthday(true)
-                     }
-                } else {
-                    setBirthday(false)
-                }
-            });
-        }
-
-        const PlaySong = () => {
-            if (pm.paused) { 
-                pm.play()
-                onPlay(true)
-                if ('mediaSession' in navigator) {
-                    navigator.mediaSession.metadata = new window.MediaMetadata({
-                        title: 'Happy Birthday, ' + arr[0].name +'!',
-                        artist: hbdparse[Math.floor(Math.random() * 4)],
-                        artwork: [
-                            { src: arr[0].img, sizes: '500x500' },
-                        ],
-                        album: 'CGM48 Fans Space platform'
-                    });
-                }
-                var loop = setInterval(function () {
-                    if (pm.paused) { 
-                        clearInterval(loop)
-                        onPlay(false)
-                    }
-                }, 100);
-            }
-        }
-
-        const Subsc = (val) =>{
-            if (localStorage.getItem("loged") == null)
-            {
-                Swal.fire({
-                    title: "You need to login to set this member to your Kami-Oshi.",
-                    icon: 'warning',
-                    iconColor: 'rgb(203, 150, 194)',
-                  })
-            } else {
-                if (arr[0].graduated == true) {
-                    Swal.fire({
-                        title: arr[0].name +" BNK48 is graduated",
-                        icon: 'error',
-                        text: 'This member is graduated. You cannot select this member to your Kami-Oshi anymore.',
-                      })
-                    return false
-                }
-                if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
-                    Swal.fire({
-                        title: 'Confirm to Change your Kami-Oshi',
-                        text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
-                        icon: 'question',
-                        iconColor: 'rgb(203, 150, 194)',
-                        showCancelButton: true
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                            setChange(true)
-                            fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                                method: 'POST', // or 'PUT'
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                },
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                   window.location.reload()
-                                })
-                                .catch((error) => {
-                                    alert("System will be temporary error for a while. Please try again")
-                                    setChange(false)
-                                    setKami(1)
-                                });
-                        }
-                      })
-                } else if (kamio == '-') {
-                    setChange(true)
-                    fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                        method: 'POST', // or 'PUT'
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        })
-                        .then(response => response.text())
-                        .then(data => {
-                            window.location.reload()
-                        })
-                        .catch((error) => {
-                            alert("System will be temporary error for a while. Please try again")
-                            setChange(false)
-                            setKami(1)
-                        });
-                  } else {
-                      setKami(0)
-                    fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).googleId).toString()  , {
-                        method :'get'
-                    })
-                      .then(response => response.json())
-                      .then(data => {
-                        setKami(1)
-                        if (data.obj != 'none') {
-                            Swal.fire({
-                                title: 'Confirm to Change your Kami-Oshi',
-                                text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
-                                icon: 'question',
-                                iconColor: 'rgb(203, 150, 194)',
-                                showCancelButton: true
-                              }).then((result) => {
-                                if (result.isConfirmed) {
-                                    setChange(true)
-                                    fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                                        method: 'POST', // or 'PUT'
-                                        headers: {
-                                            'Accept': 'application/json',
-                                            'Content-Type': 'application/json'
-                                        },
-                                        })
-                                        .then(response => response.text())
-                                        .then(data => {
-                                           window.location.reload()
-                                        })
-                                        .catch((error) => {
-                                            alert("System will be temporary error for a while. Please try again")
-                                            setChange(false)
-                                            setKami(1)
-                                        });
-                                }
-                              })
-                        } else {
-                            setChange(true)
-                            fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
-                                method: 'POST', // or 'PUT'
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                },
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                    window.location.reload()
-                                })
-                                .catch((error) => {
-                                    alert("System will be temporary error for a while. Please try again")
-                                    setChange(false)
-                                    setKami(1)
-                                });
-                        }
-                      }).catch(() => {
-                        setKami(1)
-                      })
-                  }
-            }
-        }
-
-        React.useEffect(() => {
-            AOS.init({ duration: 1000 });
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        const fetchLoad = () => {
             var url_string = window.location.href; 
             var url = new URL(url_string);
             var c = url.searchParams.get("name");
@@ -381,7 +196,191 @@ function capitalizeFirstLetter(string) {
             } else {
                 History.push("/")
             }
+        }
 
+        const BirthdayCheck = (val) => {
+            fetch(fet + '/cgm48/getmemberbybirth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+            method :'post'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.count > 0) {
+                     const arr = (data.response)
+                     const i = arr.findIndex(x => x.name == val)
+                     if (i > -1) {
+                        setBirthday(true)
+                     }
+                } else {
+                    setBirthday(false)
+                }
+            });
+        }
+
+        const PlaySong = () => {
+            if (pm.paused) { 
+                pm.play()
+                onPlay(true)
+                if ('mediaSession' in navigator) {
+                    navigator.mediaSession.metadata = new window.MediaMetadata({
+                        title: 'Happy Birthday, ' + arr[0].name +'!',
+                        artist: hbdparse[Math.floor(Math.random() * 4)],
+                        artwork: [
+                            { src: arr[0].img, sizes: '500x500' },
+                        ],
+                        album: 'CGM48 Fans Space platform'
+                    });
+                }
+                var loop = setInterval(function () {
+                    if (pm.paused) { 
+                        clearInterval(loop)
+                        onPlay(false)
+                    }
+                }, 100);
+            }
+        }
+
+        const Subsc = (val) =>{
+            if (localStorage.getItem("loged") == null)
+            {
+                Swal.fire({
+                    title: "You need to login to set this member to your Kami-Oshi.",
+                    icon: 'warning',
+                    iconColor: 'rgb(203, 150, 194)',
+                  })
+            } else {
+                if (arr[0].graduated == true) {
+                    Swal.fire({
+                        title: arr[0].name +" BNK48 is graduated",
+                        icon: 'error',
+                        text: 'This member is graduated. You cannot select this member to your Kami-Oshi anymore.',
+                      })
+                    return false
+                }
+                if (localStorage.getItem("loged") != null && kamio != ''  && kamio != '-') {
+                    Swal.fire({
+                        title: 'Confirm to Change your Kami-Oshi',
+                        text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
+                        icon: 'question',
+                        iconColor: 'rgb(203, 150, 194)',
+                        showCancelButton: true
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            setChange(true)
+                            fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
+                                method: 'POST', // or 'PUT'
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                })
+                                .then(response => response.text())
+                                .then(data => {
+                                    setChange(false)
+                                    triggerUpdate()
+                                    setLoaded(false)
+                                    fetchLoad()
+                                })
+                                .catch((error) => {
+                                    alert("System will be temporary error for a while. Please try again")
+                                    setChange(false)
+                                    setKami(1)
+                                });
+                        }
+                      })
+                } else if (kamio == '-') {
+                    setChange(true)
+                    fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
+                        method: 'POST', // or 'PUT'
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        })
+                        .then(response => response.text())
+                        .then(data => {
+                            setChange(false)
+                            triggerUpdate()
+                            setLoaded(false)
+                            fetchLoad()
+                        })
+                        .catch((error) => {
+                            alert("System will be temporary error for a while. Please try again")
+                            setChange(false)
+                            setKami(1)
+                        });
+                  } else {
+                      setKami(0)
+                    fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).googleId).toString()  , {
+                        method :'get'
+                    })
+                      .then(response => response.json())
+                      .then(data => {
+                        setKami(1)
+                        if (data.obj != 'none') {
+                            Swal.fire({
+                                title: 'Confirm to Change your Kami-Oshi',
+                                text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
+                                icon: 'question',
+                                iconColor: 'rgb(203, 150, 194)',
+                                showCancelButton: true
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                    setChange(true)
+                                    fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
+                                        method: 'POST', // or 'PUT'
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        })
+                                        .then(response => response.text())
+                                        .then(data => {
+                                            setChange(false)
+                                            triggerUpdate()
+                                            setLoaded(false)
+                                            fetchLoad()
+                                        })
+                                        .catch((error) => {
+                                            alert("System will be temporary error for a while. Please try again")
+                                            setChange(false)
+                                            setKami(1)
+                                        });
+                                }
+                              })
+                        } else {
+                            setChange(true)
+                            fetch(fet + '/cgm48/uptcgmKami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString() + '&name=' + val, {
+                                method: 'POST', // or 'PUT'
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                })
+                                .then(response => response.text())
+                                .then(data => {
+                                    setChange(false)
+                                    triggerUpdate()
+                                    setLoaded(false)
+                                    fetchLoad()
+                                })
+                                .catch((error) => {
+                                    alert("System will be temporary error for a while. Please try again")
+                                    setChange(false)
+                                    setKami(1)
+                                });
+                        }
+                      }).catch(() => {
+                        setKami(1)
+                      })
+                  }
+            }
+        }
+
+        React.useEffect(() => {
+            AOS.init({ duration: 1000 });
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+           
+            fetchLoad()
             return (() => {
                 pm.pause()
             })

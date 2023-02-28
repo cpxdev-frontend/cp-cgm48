@@ -92,45 +92,27 @@ const Memberlist = ({fet, setSec}) => {
       };
 
       const onSearch = () => {
-          if (seGroup != '-' && seFill != "-") {
-          setLoaded(false)
-          fetch(fet + '/cgm48/getmemberby?filter=' + seGroup + '&param=' + seFill + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'post'
-        })
-            .then(response => response.json())
-            .then(async data => {
-                setArr(data.response)
-                if (search !== '') {
-                    const txt = search.toLowerCase()
-                    setSearch(txt)
-                    const d = data.response.filter(x => (x.name.toLowerCase()).includes(txt));
-                    setmem(d)
-                } else {
-                    setmem(data.response)
-                    setArr(data.response)
-                }
-                setLoaded(true)
-            }); 
+        let newfilter = [];
+        if (seGroup != '-' && seFill != "-") {
 
-          }
+        if (seGroup == "gen") {
+          newfilter = Arr.filter(x => x.gen == seFill)
+        }
+
+        if (search !== '') {
+          const txt = search.toLowerCase()
+          setSearch(txt)
+          const d = newfilter.filter(x => (x.name.toLowerCase()).includes(txt));
+          setmem(d)
+      } else {
+          setmem(newfilter)
+      }
+        }
       }
     
       const onReset = () => {
         if (seGroup != '-' || seFill != "-" || search != '') {
-        setLoaded(false)
-        fetch(fet + '/cgm48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'get'
-        })
-            .then(response => response.json())
-            .then(data => {
-                setmem(data.response)
-                setArr(data.response)
-                setLoaded(true)
-            }).catch(() => {
-                setmem([])
-                setArr([])
-                setLoaded(true)
-            })
+            setmem(Arr)
             setFilter([])
             setGr('-')
             setFr('-')

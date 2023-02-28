@@ -207,8 +207,6 @@ function capitalizeFirstLetter(string) {
                                 .then(data => {
                                     setChange(false)
                                     triggerUpdate()
-                                    setLoaded(false)
-                                    setFollow(true)
                                     fetchLoad()
                                 })
                                 .catch((error) => {
@@ -231,8 +229,6 @@ function capitalizeFirstLetter(string) {
                         .then(data => {
                             setChange(false)
                             triggerUpdate()
-                            setLoaded(false)
-                            setFollow(true)
                             fetchLoad()
                         })
                         .catch((error) => {
@@ -269,8 +265,6 @@ function capitalizeFirstLetter(string) {
                                         .then(data => {
                                             setChange(false)
                                             triggerUpdate()
-                                            setLoaded(false)
-                                            setFollow(true)
                                             fetchLoad()
                                         })
                                         .catch((error) => {
@@ -293,8 +287,6 @@ function capitalizeFirstLetter(string) {
                                 .then(data => {
                                     setChange(false)
                                     triggerUpdate()
-                                    setLoaded(false)
-                                    setFollow(true)
                                     fetchLoad()
                                 })
                                 .catch((error) => {

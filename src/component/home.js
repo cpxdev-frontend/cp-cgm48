@@ -289,7 +289,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
   </div>
         </>

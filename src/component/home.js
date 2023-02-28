@@ -20,6 +20,21 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
     setSec('Homepage')
   },[])
 
+  function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
     React.useEffect(() => {
       AOS.init({ duration: 700 });
       document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -30,21 +45,23 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
   .then(data => {
     if (data.count == 0) {
         setMonth(true)
-        fetch(fet + '/cgm48/getmemberbybirthmonth?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
-            method :'post'
-        })
-  .then(response => response.json())
-  .then(datamonth => {
-    setBirth(datamonth.response.sort((a, b) => parseInt(a.birthday.slice(5,10).replace('-', '')) - parseInt(b.birthday.slice(5,10).replace('-', ''))))
+        setBirth(data.monthList.sort((a, b) => parseInt(a.birthday.slice(5,10).replace('-', '')) - parseInt(b.birthday.slice(5,10).replace('-', ''))))
         setLoaded1(true)
-  });
     } else {
         setBirth(data.response)
         setLoaded1(true)
     }
   });
- const ran = Math.floor(Math.random() * 3) + 1;
- 
+  const ran = Math.floor(Math.random() * 2) + 1;
+ fetch(fet + '/cgm48/getmemberby?filter=gen&param=' + ran + '&tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+            method :'post'
+        })
+  .then(response => response.json())
+  .then(data => {
+      setGenRan(ran)
+      setMem(data.response)
+      setLoaded2(true)
+  });
 
   fetch(encodeURI(fet + '/cgm48/getVideo?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
     method: 'post', // or 'PUT'
@@ -244,6 +261,35 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       </div>
   ) : (
     <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
+  )}
+  <hr />
+  <CardHeader title={(<h3 data-aos="flip-up">Sample Members</h3>)} subheader={GenRan != 0 ? ordinal_suffix_of(GenRan) + ' Generation' : ''} className='mb-5' />
+  {Loaded2 ? (
+      <div className='row ml-3 mr-3 justify-content-center'>
+      {samplemem.length > 0 ? samplemem.map((item, i) => (
+          <div data-aos="zoom-in-down" className='col-md-3 mb-5' onClick={() => ChangeRoute(item.name)}>
+          <Card>
+          <CardActionArea>
+          <CardMedia
+                src={item.img}
+                component="img"
+                className={item.graduated == true ? 'grayimg' : ''}
+                />
+              <CardContent>
+                  <h5>{item.name}</h5>
+                  {item.graduated == true && (
+                      <p class="badge badge-pill badge-warning">Graduating Announced</p>
+                  )}
+              </CardContent>
+            </CardActionArea>
+             </Card> 
+          </div>
+      )) : (
+          <h6>No BNK48 member birthday in today.</h6>
+      )}
+      </div>
+  ) : (
+    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
   )}
   </div>
         </>

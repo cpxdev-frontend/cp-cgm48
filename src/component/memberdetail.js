@@ -111,6 +111,9 @@ function capitalizeFirstLetter(string) {
         }
 
         const fetchLoad = () => {
+            var url_string = window.location.href; 
+            var url = new URL(url_string);
+            var c = url.searchParams.get("name");
             setKami(0)
             fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                 method :'get'

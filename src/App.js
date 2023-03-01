@@ -287,7 +287,20 @@ function App() {
         .then(dres => {
           sessionStorage.setItem("ads", 'i')
           if (dres.count == 0) {
-            setNewspop(data)
+            let tempd = []
+            const withprio = data.filter(x => x.priority != undefined);
+            const nonprio = data.filter(x => x.priority == undefined);
+            for (let i = 0; i< withprio.length; i++) {
+                tempd.push(withprio[i])
+            }
+           
+            for (let ij = 0; ij< nonprio.length; ij++) {
+              tempd.push(nonprio[ij])
+            }
+            setNewspop(tempd)
+            if (kamin !== '') {
+                setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
+            }
           } else {
             let tempd = []
             const withprio = data.filter(x => x.priority != undefined);

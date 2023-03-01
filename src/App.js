@@ -290,9 +290,9 @@ function App() {
             let tempd = []
             const withprio = data.filter(x => x.priority != undefined);
             const nonprio = data.filter(x => x.priority == undefined);
-            for (let i = 0; i< withprio.length; i++) {
-                tempd.push(withprio[i])
-            }
+            for (let iw = 0; iw< withprio.length; iw++) {
+              tempd.push(withprio[iw])
+          }
            
             for (let ij = 0; ij< nonprio.length; ij++) {
               tempd.push(nonprio[ij])
@@ -305,8 +305,8 @@ function App() {
             let tempd = []
             const withprio = data.filter(x => x.priority != undefined);
             const nonprio = data.filter(x => x.priority == undefined);
-            for (let i = 0; i< withprio.length; i++) {
-                tempd.push(withprio[i])
+            for (let iw = 0; iw< withprio.length; iw++) {
+                tempd.push(withprio[iw])
             }
             for (let i = 0; i< dres.response.length; i++) {
               if (dres.response[i].graduated == false) {

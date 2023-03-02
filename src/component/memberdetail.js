@@ -354,15 +354,16 @@ function capitalizeFirstLetter(string) {
                             }).catch(() => {
                                 setNewspop([])
                             })
-                            fetch(fet + '/cgm48/memberlivelist', {
-                                method :'post'
-                            })
-                                .then(response => response.json())
-                                .then(dataads => {
-                                    setMemLive(dataads)
-                                }).catch(() => {
-                                    setMemLive([])
-                                })
+                            // fetch(fet + '/cgm48/memberlivelist', {
+                            //     method :'post'
+                            // })
+                            //     .then(response => response.json())
+                            //     .then(dataads => {
+                            //         setMemLive(dataads)
+                            //     }).catch(() => {
+                            //         setMemLive([])
+                            //     })
+                            setMemLive([])
                         setSec(data.response.name)
                         const temp =[]
                         temp.push(data.response)

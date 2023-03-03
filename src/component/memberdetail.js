@@ -192,7 +192,7 @@ function capitalizeFirstLetter(string) {
                         text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
                         icon: 'question',
                         iconColor: 'rgb(203, 150, 194)',
-                        footer: 'Notes: Since 2 March 2023, You can change your Kami-Oshi only one time per month for reduce system workload.',
+                        footer: 'Notes: Since 2 March 2023, You can change your Kami-Oshi only one time per month.',
                         showCancelButton: true
                       }).then((result) => {
                         if (result.isConfirmed) {
@@ -267,7 +267,7 @@ function capitalizeFirstLetter(string) {
                                 text: "You will change Kami-Oshi from \"" + capitalizeFirstLetter(kamio) + "\" to \"" + capitalizeFirstLetter(val) + "\". Are you sure?",
                                 icon: 'question',
                                 iconColor: 'rgb(203, 150, 194)',
-                                footer: 'Notes: Since 2 March 2023, You can change your Kami-Oshi only one time per month for reduce system workload.',
+                                footer: 'Notes: Since 2 March 2023, You can change your Kami-Oshi only one time per month.',
                                 showCancelButton: true
                               }).then((result) => {
                                 if (result.isConfirmed) {

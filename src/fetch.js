@@ -17,14 +17,14 @@ var reg = 'Loading';
 //         break;
 //       }
 //       default: {
-//         ul = 'https://apiweb.cpxdev.tk'
+//         ul = 'https://cpxdevapi.azurewebsites.net'
 //         reg = 'US'
 //         break;
 //       }
 //     }
 // });
 
-ul = 'https://apiweb.cpxdev.tk'
+ul = 'https://cpxdevapi.azurewebsites.net'
 reg = 'Worldwide'
 
 function Flowup() {

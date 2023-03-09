@@ -1,6 +1,6 @@
 # CGM48 Fan Space Front-End Souce Code
 
-![CGM48(https://edge.cpxdev.tk/iam48/cgm.jpg)
+![CGM48](https://edge.cpxdev.tk/iam48/cgm.jpg)
 
 CGM48 Fan Space is sub-project of Fan Space project. Our objective are merge CGM48 fanclub from around the world to join this platform at once.
 

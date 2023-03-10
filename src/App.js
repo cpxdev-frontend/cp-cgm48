@@ -794,8 +794,12 @@ function App() {
            <DialogContent>
              {kamin != '-' ? (
            <ListItem onClick={() => {
-            History.push("/member?name=" + kamin.toLowerCase())
-            setMemDl(false)
+            const last = window.location.href
+              History.push("/member?name=" + kamin.toLowerCase())
+              if (last.includes('/member')) {
+                History.go(0)
+              }
+              setMemDl(false)
            }} button>
                <ListItemIcon>
                <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />

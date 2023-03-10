@@ -31,7 +31,7 @@ const News = ({fet}) => {
         {window.innerWidth >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
               </Fade>
       </div>
         )}
@@ -100,7 +100,7 @@ const News = ({fet}) => {
       ) : (
         <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
             <div className='text-center'>
-                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
             </div>
         </Zoom>
       )}

@@ -98,7 +98,7 @@ const Offi = ({fet}) => {
                         {fetLLoad && (
                              <Zoom in={fetLLoad} timeout={{ enter: 200, exit: 200}}>
                         <div className='text-center'>
-                             <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                             <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                              </div>
                              </Zoom>
                         )}
@@ -113,7 +113,7 @@ const Offi = ({fet}) => {
         ) : (
             <div className='text-center'>
             <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
-            <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
             </Zoom>
             </div>
         )}

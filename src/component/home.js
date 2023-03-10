@@ -93,7 +93,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
                </Fade>
               </div>
           )}
@@ -229,7 +229,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       </div>
     </>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
   <hr />
   {onMonth ? (
@@ -260,7 +260,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
   <hr />
   <CardHeader title={(<h3 data-aos="flip-up">Sample Members</h3>)} subheader={GenRan != 0 ? ordinal_suffix_of(GenRan) + ' Generation' : ''} className='mb-5' />
@@ -289,7 +289,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
       )}
       </div>
   ) : (
-    <img src="https://cdn.jsdelivr.net/gh/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
+    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
   </div>
         </>

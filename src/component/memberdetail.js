@@ -402,21 +402,7 @@ function capitalizeFirstLetter(string) {
                         const temp =[]
                         temp.push(data.response)
                         setArr(temp)
-                        if (data.response.ge != "") {
-                            fetch(fet + '/bnk48/getge?rankid=' + data.response.ge, {
-                                method :'post'
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    setGE(data.response)
-                                    setLoaded(true)
-                                }).catch(() => {
-                                  setGE([])
-                                  setLoaded(true)
-                                })
-                        } else {
-                            setLoaded(true)
-                        }
+                       
                         BirthdayCheck(data.response.name)
                     }
                 }).catch(() => {

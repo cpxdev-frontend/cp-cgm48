@@ -69,6 +69,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
     const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
+        let { c } = useParams()
 
         const classes = useStyles();
         const [open, setOpen] = React.useState(false);
@@ -111,9 +112,7 @@ function capitalizeFirstLetter(string) {
         }
 
         const fetchLoad = () => {
-            var url_string = window.location.href; 
-            var url = new URL(url_string);
-            var c = url.searchParams.get("name");
+           
             setKami(0)
             fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                 method :'get'
@@ -340,9 +339,6 @@ function capitalizeFirstLetter(string) {
             AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
            
-            var url_string = window.location.href; 
-            var url = new URL(url_string);
-            var c = url.searchParams.get("name");
             if (c != null && c != "") {
                 setSec('Loading Member description')
                 if (localStorage.getItem("loged") != null) {
@@ -574,7 +570,7 @@ function capitalizeFirstLetter(string) {
                                             <Button onClick={()=> PlaySong()}color="primary" variant="contained">Click here see effect</Button> 
                                             <div className='ml-3 pt-2'>
                                             <Share 
-                                                  url={"https://cgm48fan.cpxdev.tk/member?name=" + item.name.toLowerCase()}
+                                                  url={"https://cgm48fan.cpxdev.tk/member/" + item.name.toLowerCase()}
                                                   options={{ text: "(You can custom your blessing here)", hashtags: item.name+"CGM48,fanspaceplatform,48groupthailand", size:"large"}}
                                                 id='blessingshare'
                                             />

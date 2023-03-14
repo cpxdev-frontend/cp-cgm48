@@ -313,7 +313,7 @@ function App() {
               tempd.push({
                 title: 'Happy birthday! ' +  dres.response[i].name + ' CGM48',
                 desc: 'Today is her birthday! Let\'s celebrate each other together.',
-                link: '/member?name=' + dres.response[i].name.toLowerCase(),
+                link: '/member/' + dres.response[i].name.toLowerCase(),
                 src: dres.response[i].img,
                 place: '',
                 timerange: [
@@ -752,7 +752,7 @@ function App() {
                   <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/member" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} />} />
+                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
@@ -795,7 +795,7 @@ function App() {
              {kamin != '-' ? (
            <ListItem onClick={() => {
             const last = window.location.href
-              History.push("/member?name=" + kamin.toLowerCase())
+              History.push("/member/" + kamin.toLowerCase())
               if (last.includes('/member')) {
                 History.go(0)
               }
@@ -908,7 +908,7 @@ transitionDuration={500}
               {item.memtag.length > 0 && (<div>
                 Member included {
                   (item.memtag.map((nametag, ii) => (
-                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) : ("/member?name=" + nametag)} target='_blank'>
+                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")) : ("/member/" + nametag)} target='_blank'>
                     {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : nametag.includes('gen') === true ? 'CGM48 Generation ' + nametag.replace("gen" , "") : (ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag))}
                     </a>
                   )))
@@ -961,7 +961,7 @@ transitionDuration={500}
                {newspop[0].memtag.length > 0 && (<div>
                 Member included {
                   (newspop[0].memtag.map((nametag, ii) => (
-                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")): ("/member?name=" + nametag)} target='_blank'>
+                    <a href={nametag == 'All' || nametag == 'ge' ? ("/memberlist") :nametag.includes('gen') ? ("/memberlist?filter=gen&val=" + nametag.replace("gen" , "")): ("/member/" + nametag)} target='_blank'>
                     {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : (ii == 0 ? capitalizeFirstLetter(nametag) : nametag.includes('gen') ? 'CGM48 Generation ' + nametag.replace("gen" , "") : ', ' + capitalizeFirstLetter(nametag))}
                     </a>
                   )))

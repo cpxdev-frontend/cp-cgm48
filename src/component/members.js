@@ -67,7 +67,7 @@ const Memberlist = ({fet, setSec}) => {
 
 
     const ChangeRoute = (name) =>{
-        History.push("/member?name=" + name.toLowerCase())
+        History.push("/member/" + name.toLowerCase())
     }
 
     const SearchEng = (val) => {

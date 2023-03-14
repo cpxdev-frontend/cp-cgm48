@@ -191,7 +191,7 @@ const AccountMana = ({fet, setSec}) => {
                     {data.obj == null ? (
                         <p>You don't have any Kami-Oshi right now</p>
                     ) : (
-                        <p>Your Kami-Oshi is <a className='cur' onClick={() => History.push('/member?name=' + data.obj.name.toLowerCase())}>{data.obj.fullnameEn[0]} {data.obj.fullnameEn[1]} ({data.obj.name} CGM48)</a></p>
+                        <p>Your Kami-Oshi is <a className='cur' onClick={() => History.push('/member/' + data.obj.name.toLowerCase())}>{data.obj.fullnameEn[0]} {data.obj.fullnameEn[1]} ({data.obj.name} CGM48)</a></p>
                     )}
                     {/* {window.innerWidth > 1100 && data.obj != null && data.obj.twelvethsingle != undefined && data.obj.twelvethsingle.includes('bnk12thsing/main') && (
                           <FormControlLabel

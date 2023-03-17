@@ -189,7 +189,7 @@ function App() {
     checkloop = setInterval(() => {
       if (Fet().ul != '') {
         clearInterval(checkloop)
-         fetch(Fet().ul + '/cgm48/status').catch(() => {
+         fetch(Fet().ul + '/home/ping').catch(() => {
          document.getElementById("root").style.display = "none";
          Swal.fire({
            title: 'System is under maintenance',

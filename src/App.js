@@ -10,6 +10,8 @@ import {
 import { Alert, AlertTitle } from '@material-ui/lab';
 import "aos/dist/aos.css";
 
+import { HubConnectionBuilder } from "@microsoft/signalr";
+
 import {
   GoogleAuthProvider,
   TwitterAuthProvider,
@@ -46,6 +48,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import SlideshowIcon from '@material-ui/icons/Slideshow';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -141,7 +144,7 @@ var imgget = url.searchParams.get("imgstar");
 
 function App() {
   const [Section, setSec] = React.useState('');
-
+  const [con, setConnection] = React.useState(null);
   const cls = useStyles();
   const History = useHistory()
   const [ Reduce, setReduce] = React.useState(false)
@@ -185,23 +188,55 @@ function App() {
     } 
   })
   
-    React.useEffect(() => {
-    checkloop = setInterval(() => {
-      if (Fet().ul != '') {
-        clearInterval(checkloop)
-         fetch(Fet().ul + '/home/ping').catch(() => {
-         document.getElementById("root").style.display = "none";
-         Swal.fire({
-           title: 'System is under maintenance',
-           text: 'You can contact us for ask more information.',
-           icon: 'error',
-           allowOutsideClick: false,
-           showConfirmButton: false
-         })
-        })
-      }
-    }, 1)
-   }, []);
+  React.useEffect(() => {
+    const newConnection = new HubConnectionBuilder()
+        .withUrl("https://cpxdevapi.azurewebspites.net/status")
+        .build();
+
+    setConnection(newConnection);
+}, []);
+
+React.useEffect(() => {
+  if (con) {
+      con.start()
+          .then(result => {
+            con.on("responsestatus", function (res) {
+              if (res =='fail') {
+                 document.getElementById("root").style.display = "none";
+                   Swal.fire({
+                     title: 'System is under maintenance',
+                     text: 'You can contact us for ask more information.',
+                     icon: 'error',
+                     allowOutsideClick: false,
+                     showConfirmButton: false
+                   })
+              }
+          });
+          })
+          .catch(e => {
+            document.getElementById("root").style.display = "none";
+                   Swal.fire({
+                     title: 'System is under maintenance',
+                     text: 'You can contact us for ask more information.',
+                     icon: 'error',
+                     allowOutsideClick: false,
+                     showConfirmButton: false
+                   })
+          });
+          
+          con.onclose(error => {
+            document.getElementById("root").style.display = "none";
+            Swal.fire({
+              title: 'System is under maintenance',
+              text: 'You can contact us for ask more information.',
+              icon: 'error',
+              allowOutsideClick: false,
+              showConfirmButton: false
+            })
+        });
+  }
+}, [con]);
+
 
    React.useEffect(() => {
     if (ref.current != null){
@@ -613,6 +648,12 @@ function App() {
                     <ListAltIcon />
                   </ListItemIcon>
                   <ListItemText primary="News" />
+                </ListItem>
+                <ListItem component={Link} onClick={()=> window.open('//bnk48fan.cpxdev.tk/janken', '_blank')} button>
+                  <ListItemIcon>
+                    <HowToVoteIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' secondary='External link: BNK48 fan Space' />
                 </ListItem>
                 <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
                   <ListItemIcon>

@@ -190,7 +190,7 @@ function App() {
   
   React.useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-        .withUrl("https://cpxdevapi.azurewebspites.net/status")
+        .withUrl("https://cpxdevapi.azurewebsites.net/status")
         .build();
 
     setConnection(newConnection);

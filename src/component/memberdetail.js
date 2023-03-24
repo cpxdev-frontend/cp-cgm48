@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardMedia, Typography, Zoom, Link, Breadcrumbs, Button, AppBar, Toolbar, IconButton, Slide, CardContent, List , Grid,Backdrop,Avatar } from '@material-ui/core';
+import { Card, Fade, Grow, CardActionArea, Typography, Zoom, Link, Breadcrumbs, Button, Drawer, Toolbar, IconButton, Slide, CardContent, List , Grid,Backdrop,Avatar } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -24,6 +24,8 @@ import { Share } from 'react-twitter-widgets'
 import { Fireworks } from 'fireworks-js/dist/react'
 import Swal from 'sweetalert2'
 import AOS from "aos";
+
+import IRBio from './ir/bio'
 
 var pm = new Audio('https://p.scdn.co/mp3-preview/26031551568cba193fbb55d6e4dcf3eb8fb99b04?cid=774b29d4f13844c495f206cafdad9c86')
 
@@ -48,6 +50,13 @@ const fwoptions = {
     appBar: {
       position: 'relative',
     },
+    drawer: {
+        width: window.innerWidth < 700 ? '85%' : 400,
+        flexShrink: 0,
+      },
+      drawerPaper: {
+          width: window.innerWidth < 700 ? '85%' : 400,
+      },
     title: {
       marginLeft: theme.spacing(2),
       flex: 1,
@@ -73,6 +82,7 @@ function capitalizeFirstLetter(string) {
 
         const classes = useStyles();
         const [open, setOpen] = React.useState(false);
+        const [irtog, setIRtog] = React.useState(false);
         const History = useHistory()
         const [mem, setmem] = React.useState('');
         const [arr, setArr] = React.useState([]); 
@@ -498,9 +508,6 @@ function capitalizeFirstLetter(string) {
                             <Fade in={true} timeout={1200} style={{ transitionDelay: 600}}>
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]</h4>
-                                        {item.ge != '' && (
-                                            <a className='cur' onClick={() => session12thSingle(item.twelvethsingle)}>{geResult.rank == 1 ? 'The winner of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!' : ordinal_suffix_of(geResult.rank) + ' of BNK48 12th Single Senbutsu General Election by ' + numberWithCommas(geResult.score) + ' tokens!'}<br/></a>
-                                        )}
                                         {loadfollow ? (
                                             <Skeleton />
                                         ):(
@@ -522,8 +529,10 @@ function capitalizeFirstLetter(string) {
                                     {item.captain != undefined && (
                                         <p className="mb-3 badge badge-pill badge-warning">CGM48 Captain</p>
                                     )}
-                                      {item.ir != undefined && (
-                                        <p className="mb-3 badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
+                                     {item.ir != undefined && (
+                                        <CardActionArea className="mb-3" onClick={() => setIRtog(true)}>
+                                            <p className="badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
+                                        </CardActionArea>
                                     )}
                                     <>
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
@@ -582,7 +591,23 @@ function capitalizeFirstLetter(string) {
                                 </div>
                         </Fade>
                     </Card>
-                 
+                    {
+                    item.ir != undefined && (
+                        <Drawer
+                        className={classes.drawer}
+                                anchor='right'
+                                variant="temporary"
+                                color="primary"
+                                open={irtog}
+                                onClose={()=> setIRtog(false)}
+                                classes={{
+                                    paper: classes.drawerPaper
+                                  }}
+                            >
+                               <IRBio fet={fet} irItem={item.ir} /> 
+                        </Drawer>
+                    )
+                }
                             </div>
                     ))}
                     </>

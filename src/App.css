@@ -221,3 +221,12 @@ iframe[id*="twitter-widget"] {
   -o-animation: up-right 1.5s infinite;
   animation: up-right 1.5s infinite;
 }
+
+.zoomx {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.zoomx:hover {
+  transform: scale(1.6);
+}

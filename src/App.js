@@ -65,6 +65,7 @@ import RequestCom from './component/requesthour'
 import PageErr from './component/404'
 import Mana from './component/geevent/gemanage'
 import RegisCom from './component/register';
+import Fenetwork from './component/48groupnetwork';
 
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -815,6 +816,7 @@ React.useEffect(() => {
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   {
                     login && (
                       <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

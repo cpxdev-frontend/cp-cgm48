@@ -3,7 +3,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     Card, CardHeader, CardContent, CardMedia, Grow, Fade } from '@material-ui/core';
     import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-const Contact = ({fet, setSec}) => {
+const Contact = ({fet, setSec, width}) => {
 
     const [Loaded, setLoaded] = React.useState(false);
     const [news, setNews] = React.useState([]);
@@ -15,14 +15,14 @@ const Contact = ({fet, setSec}) => {
 
     return ( 
         <>
-        {window.innerWidth >1200 && (
+        {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={width} />
               </Fade>
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
             <Grow in={true} timeout={1000}>
           <Card className="col-md-4 m-5">

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-const IRBio = ({fet, irItem}) => {
+const IRBio = ({fet, irItem, width}) => {
     const classes = useStyles();
     const [Loaded, setLoaded] = React.useState(true);
     const [data, setData] = React.useState(true);
@@ -56,14 +56,14 @@ const IRBio = ({fet, irItem}) => {
         <CardContent className='mt-4'>
           <Typography>
             Member Included{name}
-            <AvatarGroup className='zoommas mt-2' spacing={5} max={window.innerWidth < 600 ? 8 : 10}>
+            <AvatarGroup className='zoommas mt-2' spacing={5} max={width < 600 ? 8 : 10}>
               {
                 data.members.map((items) => (
                   <Avatar onMouseEnter={() => setHover(': '+capitalizeFirstLetter(items.name))} onMouseLeave={() => setHover('')} className='zoomx' alt={items.name + items.band} src={items.band == 'bnk' ? (bnk.path + items.name + bnk.type) : items.band == 'cgm' ? (cgm.path + items.name + cgm.type) : ''} />
                 ))
               }
             </AvatarGroup>
-            <Typography className='mt-1' variant='subtitles1'>Notes: {window.innerWidth > 700 ? 'Please leave your mouse over member image avatar to view name' : 'You maybe cannot see all members for limitation of screen size.'}</Typography>
+            <Typography className='mt-1' variant='subtitles1'>Notes: {width > 700 ? 'Please leave your mouse over member image avatar to view name' : 'You maybe cannot see all members for limitation of screen size.'}</Typography>
           </Typography>
         </CardContent>
       </div>

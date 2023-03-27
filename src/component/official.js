@@ -5,7 +5,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AOS from "aos";
 
-const Offi = ({fet}) => {
+const Offi = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [Arr, setArr] = React.useState([]);
     const [open, setOpen] = React.useState(false);
@@ -14,6 +14,7 @@ const Offi = ({fet}) => {
 
     React.useEffect(() => {
         AOS.init({ duration: 800 });
+        setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         fetch(encodeURI(fet + '/cgm48/getoffnews?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
             method: 'post', // or 'PUT'
@@ -51,14 +52,14 @@ const Offi = ({fet}) => {
         <h3 className='text-center mt-5'>Official Update</h3>
         <p className='text-center'>News or announcement update from CGM48 Official. Powered by Twitter</p>
         {Loaded ? (
-             <div className={"stage justify-content-center pt-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
+             <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
              <div className='row'>
              {Arr.length > 0 ? Arr.map((item,i) => (
-                 <div data-aos="fade-down-right" className={"col-md-12 mb-5" + (window.innerWidth > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
+                 <div className={"col-md-12 mb-5" + (width > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
                  <Card onClick={() => hand(true,{ id: item.id, name: 'More tweet about "' + item.text.substring(0, 60) + '..."' })}>
                 <CardContent>
-                    <Typography variant="h6" dangerouslySetInnerHTML={window.innerWidth < 700 ? { __html: removeurl(item.text.replace(new RegExp('\n', 'g'), '<br />')) } : { __html: removeurl(item.text) }}>
+                    <Typography variant="h6" dangerouslySetInnerHTML={width < 700 ? { __html: removeurl(item.text.replace(new RegExp('\n', 'g'), '<br />')) } : { __html: removeurl(item.text) }}>
                     </Typography>
                
                     <hr />

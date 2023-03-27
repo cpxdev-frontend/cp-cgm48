@@ -77,7 +77,7 @@ const fwoptions = {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-    const MemDetail = ({fet, kamio, setSec, triggerUpdate}) => {
+    const MemDetail = ({fet, kamio, setSec, triggerUpdate, width}) => {
         let { c } = useParams()
 
         const classes = useStyles();
@@ -482,8 +482,8 @@ function capitalizeFirstLetter(string) {
         return (  
         <>
             <div className="pt-5 pb-2">
-                <h3 className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' CGM48' : 'Fetching Header'}</h3>
-                <Breadcrumbs className={window.innerWidth > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
+                <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' CGM48' : 'Fetching Header'}</h3>
+                <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
                     <Link color="inherit" onClick={() => History.push("/memberlist")}>
                         Members
                     </Link>
@@ -497,8 +497,8 @@ function capitalizeFirstLetter(string) {
                             <Fade in={play} timeout={{enter:300,exit:500}}>
                             <Fireworks options={fwoptions} style={fwstyle} />
                             </Fade>
-                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
-                              <div className={window.innerWidth > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
+                            <Card className={(width > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
+                              <div className={width > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
                                 <Zoom in={true} timeout={600} style={{ transitionDelay: 0}}>
                                         <div className='p-3 pt-5'>
                                         <Avatar src={item.img} style={{width: '100%', height: '100%'}} />
@@ -614,8 +614,8 @@ function capitalizeFirstLetter(string) {
                 ) : (
                     <Grow in={!Loaded} timeout={600}>
                             <div>
-                            <Card className={(window.innerWidth > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"}>
-                            <div className={window.innerWidth > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
+                            <Card className={(width > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"}>
+                            <div className={width > 1600 ? 'col-md-4 mb-1' : 'col-lg-4 mb-1'}>
                                 <Skeleton height={530} />
                             </div>
                                 <div className='col-md mt-5 mb-5'>

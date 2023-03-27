@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import React from 'react'
 import AOS from "aos";
 
-const RequestHr = ({fet, setSec}) => {
+const RequestHr = ({fet, setSec, width}) => {
   const [arr, setArr] = React.useState(null)
 
   function numberWithCommas(x) {
@@ -39,14 +39,14 @@ const RequestHr = ({fet, setSec}) => {
     },[])
     return ( 
         <>
-{window.innerWidth > 1200 && (
+{width > 1200 && (
               <div class="video-background">
                <Fade in={true} timeout={800}>
-                <img src="https://pbs.twimg.com/media/FgS1W--VsAAvv0R?format=jpg&name=4096x4096"  width={window.innerWidth} />
+                <img src="https://pbs.twimg.com/media/FgS1W--VsAAvv0R?format=jpg&name=4096x4096"  width={width} />
                   </Fade>
           </div>
             )}
-                {window.innerWidth >1200 ? (
+                {width >1200 ? (
                 <div className="cover mt-4">
                 <Grow in={true} timeout={1000}>
               <Card className="col-md-4 m-5">
@@ -88,7 +88,7 @@ const RequestHr = ({fet, setSec}) => {
       </div>
           )}
 
-        <div className={'stage text-center ' + (window.innerWidth > 700 ? 'p-5' : 'p-2')}>
+        <div className={'stage text-center ' + (width > 700 ? 'p-5' : 'p-2')}>
 
         <TableContainer>
                 <Table stickyHeader aria-label="simple table">
@@ -144,13 +144,13 @@ const RequestHr = ({fet, setSec}) => {
               <hr />
               <div className='text-center' data-aos='zoom-out'>
                 {
-                  window.innerWidth >1200 ? (
-                    <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="90%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                  width >1200 ? (
+                    <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="90%" height={width< 600 ? "500px" : '700px'} />
                   ) : (
-                    <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="100%" height={window.innerWidth< 600 ? "500px" : '700px'} />
+                    <iframe src="https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C" frameborder="0" width="100%" height={width< 600 ? "500px" : '700px'} />
                   )
                 }
-              {window.innerWidth < 800 && (
+              {width < 800 && (
                   <a className='mt-3' href='https://datastudio.google.com/embed/reporting/cc4745e7-3ad7-4bf2-8af6-f19a6ac77915/page/JXU6C'>Click here to view Virtualization (Powered by Google Data Studio)</a>
               )}
               </div>

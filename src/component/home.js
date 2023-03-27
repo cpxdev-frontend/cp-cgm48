@@ -5,7 +5,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import moment from 'moment'
     import AOS from "aos";
 
-const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
+const HomeCom = ({fet, gp, ImgThumb, stream, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
     const [Loaded2, setLoaded2] = React.useState(false);
@@ -84,7 +84,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
 
     return ( 
         <>
-          {window.innerWidth > 1100 && (
+          {width > 1100 && (
           <div class="video-background">
           {localStorage.getItem('lowgraphic') == null ? (
             <div class="video-foreground" data-aos="zoom-out-up">
@@ -93,13 +93,13 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={window.innerWidth} />
+                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png" width={width} />
                </Fade>
               </div>
           )}
       </div>
         )}
-             {window.innerWidth >1200 ? (
+             {width >1200 ? (
             <div className="cover mt-4">
         
           <Card data-aos="zoom-in" className="col-md-4 m-5">
@@ -213,7 +213,7 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec}) => {
                         <CardMedia
                         component='iframe'
                         height={600}
-                        src={'https://www.youtube.com/embed/' + highMV[0].snippet.resourceId.videoId +'?mute=1' + (window.innerWidth <= 600 || gp == true ? '' : '&autoplay=1')}
+                        src={'https://www.youtube.com/embed/' + highMV[0].snippet.resourceId.videoId +'?mute=1' + (width <= 600 || gp == true ? '' : '&autoplay=1')}
                         allowFullScreen
                         />
                        )

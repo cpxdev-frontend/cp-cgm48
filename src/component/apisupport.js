@@ -1,23 +1,26 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardActionArea} from '@material-ui/core'
 
-const API = () => {
+const API = ({setSec, width}) => {
     const [ stat, setstat] = React.useState(null);
     const APITest = () => {
-        fetch('https://api.cpxdev.tk/home/status')
-        .then(function () {
-            setstat(true)
-        }).catch(function () {
-          // handle error
-          setstat(false)
-        });
+      setSec('API Service')
+      fetch('https://api.cpxdev.tk/home/status')
+      .then(function () {
+          setSec('API Service [System health is good]')
+          setstat(true)
+      }).catch(function () {
+        setSec('API Service [System maybe lost]')
+        // handle error
+        setstat(false)
+      });
       }
       React.useEffect(() => {
         APITest();
       }, [])
     return ( 
         <Card>
-            <CardContent className={window.innerWidth > 700 ? 'pl-5 pr-5' : 'pl-2 pr-2'}>
+            <CardContent className={width > 700 ? 'pl-5 pr-5' : 'pl-2 pr-2'}>
                 <CardHeader title='API Service' subheader='Unofficial CGM48 Members Public API' />
                 <hr />
                 <p>We also serve CGM48 members profile on Public API service. Member profile contents which you see in website are using this service also. Please see our <a href='https://apicenter.cpxdev.tk/cgm48' target='_blank'>documentation</a> here</p>

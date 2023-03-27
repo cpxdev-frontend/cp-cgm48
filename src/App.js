@@ -175,6 +175,18 @@ function App() {
   const ref = React.useRef(null)
   const [footerHeight, setFooterH] = React.useState(0)
   
+
+  const [width, setRealwidth] = React.useState(window.innerWidth);
+  function handleWindowResize() {
+    setRealwidth(window.innerWidth);
+  }
+  React.useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
     React.useEffect(() => {
     const currentP = document.documentElement.scrollTop || document.body.scrollTop;
     window.scrollTo(0, currentP + 1);
@@ -567,7 +579,7 @@ React.useEffect(() => {
 
   if (uri != '' && allDone) {
     return (<>
-       <Slide in={localStorage.getItem('lowgraphic') == null && window.innerWidth > 1100 ? !open : true} timeout={600} direction='down'>
+       <Slide in={localStorage.getItem('lowgraphic') == null && width > 1100 ? !open : true} timeout={600} direction='down'>
        <AppBar position="sticky" className='bnktheme app-barcurve'>
           <Toolbar>
             {open == false && (
@@ -581,7 +593,7 @@ React.useEffect(() => {
               </Typography>
             </div>
                 <div className={cls.search + ' mt-2'}>
-              {window.innerWidth >1200 && (
+              {width >1200 && (
                 <FormControlLabel
                 className={login ? 'pb-3' : ''}
                 control={
@@ -596,7 +608,7 @@ React.useEffect(() => {
               />
               )}
                {login&& (
-                 <ListItemIcon onClick={() => setMemDl(true)} className={(window.innerWidth >1200 ? 'mt-2' : '') + ' cur'}>
+                 <ListItemIcon onClick={() => setMemDl(true)} className={(width >1200 ? 'mt-2' : '') + ' cur'}>
                  <Badge
                    overlap="circular"
                    anchorOrigin={{
@@ -790,26 +802,26 @@ React.useEffect(() => {
                 </Drawer>
                 <div style={{marginBottom: footerHeight + 'px'}}>
                 <BasicSwitch>
-                  <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} />} />
-                  <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} />} />
-                  <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
-                  <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                  <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
+                  <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   {
                     login && (
-                      <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} />} />
+                      <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                     )
                   }
 
-                  <Route exact render={() => <PageErr setSec={(v) => setSec(v)} />} />
+                  <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />
                 </BasicSwitch>
                 </div>
                 
@@ -1028,7 +1040,7 @@ transitionDuration={500}
   
   return (
     <div className="container mt-5 mb-5">
-      {window.innerWidth > 900 ? (
+      {width > 900 ? (
          <div className="row" onDoubleClick={() => setAllDone(true)}>
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
            <div className="col pr-0">

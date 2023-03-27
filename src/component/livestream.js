@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const Stream = ({fet, setSec}) => {
+const Stream = ({fet, setSec, width}) => {
     const classes = useStyles();
     const [urlstream, setStream] = React.useState('');
     const [streaminfo, setInfo] = React.useState(null);
@@ -47,7 +47,7 @@ const Stream = ({fet, setSec}) => {
                
                 <div className='container' data-aos="zoom-out-up">
                     {urlstream != '' ? (
-                        <iframe src={urlstream} width="100%" height={window.innerWidth >1200 ? 700 : '100%'} allowFullScreen />
+                        <iframe src={urlstream} width="100%" height={width >1200 ? 700 : '100%'} allowFullScreen />
                     ) : (
                         <h6>Stream not found</h6>
                     )}

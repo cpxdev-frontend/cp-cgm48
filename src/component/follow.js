@@ -2,11 +2,9 @@ import React from 'react';
 import { Typography, ListItem, Zoom, ListItemText,
     Card, CardHeader, CardContent, CardMedia, Grow, Fade } from '@material-ui/core';
     import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+    import { useHistory } from 'react-router-dom';
 const Contact = ({fet, setSec, width}) => {
-
-    const [Loaded, setLoaded] = React.useState(false);
-    const [news, setNews] = React.useState([]);
+  const History = useHistory()
     React.useEffect(() => {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
        
@@ -54,6 +52,9 @@ const Contact = ({fet, setSec, width}) => {
                   <ListItem>
                     <ListItemText primary="Also Streaming Platform" secondary={(<a href='/music' target='_blank'>Go to Music page</a>)} />
                   </ListItem>
+                  <ListItem onClick={() => History.push('/48group')} className='cur'>
+                    <ListItemText primary="48 Group Network" secondary='See another 48 group band in here.' />
+                  </ListItem>
                 </Typography>
               </CardContent>
             </Card>
@@ -90,6 +91,9 @@ const Contact = ({fet, setSec, width}) => {
                   </ListItem>
                   <ListItem>
                     <ListItemText primary="Also Streaming Platform" secondary={(<a href='/music' target='_blank'>Go to Music page</a>)} />
+                  </ListItem>
+                  <ListItem onClick={() => History.push('/48group')} className='cur'>
+                    <ListItemText primary="48 Group Network" secondary='See another 48 group band in here.' />
                   </ListItem>
                 </Typography>
               </CardContent>

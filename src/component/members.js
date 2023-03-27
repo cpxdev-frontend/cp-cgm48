@@ -184,10 +184,10 @@ const Memberlist = ({fet, setSec}) => {
              </Zoom>
             
              {Loaded ? (
-               <Grid container spacing={2} className='justify-content-center mt-3'>
+               <Grid container className='mt-3'>
                 {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                   <Grid data-aos="zoom-in" item md={3}>
-                      <div className='mb-5' onClick={() => ChangeRoute(item.name)}>
+                      <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
                             <CardMedia

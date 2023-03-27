@@ -230,3 +230,13 @@ iframe[id*="twitter-widget"] {
 .zoomx:hover {
   transform: scale(1.6);
 }
+
+.map-container {
+  height: 700px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .map-container {
+      height: 400px;
+      }
+  }

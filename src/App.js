@@ -227,14 +227,7 @@ React.useEffect(() => {
           });
           })
           .catch(e => {
-            document.getElementById("root").style.display = "none";
-                   Swal.fire({
-                     title: 'System is under maintenance',
-                     text: 'You can contact us for ask more information.',
-                     icon: 'error',
-                     allowOutsideClick: false,
-                     showConfirmButton: false
-                   })
+          
           });
           
           con.onclose(error => {

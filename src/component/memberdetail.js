@@ -27,7 +27,7 @@ import AOS from "aos";
 
 import IRBio from './ir/bio'
 
-var pm = new Audio('https://p.scdn.co/mp3-preview/26031551568cba193fbb55d6e4dcf3eb8fb99b04?cid=774b29d4f13844c495f206cafdad9c86')
+var pm = new Audio('https://cdn.pixabay.com/download/audio/2022/03/14/audio_a791c6fdc8.mp3?filename=firework-show-short-64657.mp3')
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -723,7 +723,7 @@ function capitalizeFirstLetter(string) {
                 </div>
 
 
-                <div className='container mt-5'>
+                {/* <div className='container mt-5'>
                     {memLive != null && memLive.length > 0 && (<h3 className='mb-4' data-aos="flip-up">LIVE Schedule for {capitalizeFirstLetter(mem)} CGM48 in IAM48 Application</h3>)}
                     {memLive != null && (
                     <>
@@ -756,7 +756,7 @@ function capitalizeFirstLetter(string) {
                         }
                         </>
                     )}
-                </div>
+                </div> */}
                
                 <Zoom in={newspop == null || memLive == null ? true : false} timeout={{ enter: 200, exit: 200}}>
                         <div className='text-center pb-3'>

@@ -215,10 +215,11 @@ React.useEffect(() => {
           .then(result => {
             con.on("responsestatus", function (res) {
               if (res =='fail') {
+                setpopup(false)
                  document.getElementById("root").style.display = "none";
                    Swal.fire({
                      title: 'System is under maintenance',
-                     text: 'You can contact us for ask more information.',
+                     text: 'Please check your internet connection and try again. Or you can contact us at chinnathorn.p@gmail.com for ask more information.',
                      icon: 'error',
                      allowOutsideClick: false,
                      showConfirmButton: true,
@@ -227,13 +228,14 @@ React.useEffect(() => {
                      window.location.reload()
                    })
               }
-          });
+          })
           })
           .catch(e => {
+            setpopup(false)
             document.getElementById("root").style.display = "none";
             Swal.fire({
               title: 'System is under maintenance',
-              text: 'You can contact us for ask more information.',
+              text: 'Please check your internet connection and try again. Or you can contact us at chinnathorn.p@gmail.com for ask more information.',
               icon: 'error',
               allowOutsideClick: false,
               showConfirmButton: true,
@@ -244,10 +246,11 @@ React.useEffect(() => {
           });
           
           con.onclose(error => {
+            setpopup(false)
             document.getElementById("root").style.display = "none";
             Swal.fire({
-              title: 'System is under maintenance',
-              text: 'You can contact us for ask more information.',
+              title: 'Connection lost',
+              text: 'Please check your internet connection and click refresh button and try again.',
               icon: 'error',
               allowOutsideClick: false,
               showConfirmButton: true,

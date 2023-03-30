@@ -221,13 +221,26 @@ React.useEffect(() => {
                      text: 'You can contact us for ask more information.',
                      icon: 'error',
                      allowOutsideClick: false,
-                     showConfirmButton: false
+                     showConfirmButton: true,
+                     confirmButtonText: 'Refresh'
+                   }).then(() => {
+                     window.location.reload()
                    })
               }
           });
           })
           .catch(e => {
-          
+            document.getElementById("root").style.display = "none";
+            Swal.fire({
+              title: 'System is under maintenance',
+              text: 'You can contact us for ask more information.',
+              icon: 'error',
+              allowOutsideClick: false,
+              showConfirmButton: true,
+              confirmButtonText: 'Refresh'
+            }).then(() => {
+              window.location.reload()
+            })
           });
           
           con.onclose(error => {
@@ -237,7 +250,10 @@ React.useEffect(() => {
               text: 'You can contact us for ask more information.',
               icon: 'error',
               allowOutsideClick: false,
-              showConfirmButton: false
+              showConfirmButton: true,
+              confirmButtonText: 'Refresh'
+            }).then(() => {
+              window.location.reload()
             })
         });
   }

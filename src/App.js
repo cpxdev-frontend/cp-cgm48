@@ -674,7 +674,7 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
-                <ListItem component={Link} onClick={()=> window.open('//bnk48fan.cpxdev.tk/janken', '_blank')} button>
+                <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/janken', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
                   </ListItemIcon>
@@ -704,7 +704,7 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
                 </ListItem>
-                <ListItem component={Link} onClick={()=> window.open('//bnk48fan.cpxdev.tk/ge3', '_blank')} button>
+                <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge3', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
                   </ListItemIcon>

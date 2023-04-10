@@ -178,6 +178,13 @@ function capitalizeFirstLetter(string) {
             }
         }
 
+        const JankenCong = () => {
+            onPlay(true)
+            setTimeout(() => {
+                onPlay(false)
+            }, 3000);
+        }
+
         const Subsc = (val) =>{
             if (localStorage.getItem("loged") == null)
             {
@@ -355,7 +362,7 @@ function capitalizeFirstLetter(string) {
                         setJanken(datastatus.response)
                         
                         if (datastatus.response.jankenRank == 1) {
-                            PlaySong()
+                            JankenCong()
                         }
                     }
                 }).catch(() => {

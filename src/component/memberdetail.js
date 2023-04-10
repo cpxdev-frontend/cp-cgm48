@@ -86,7 +86,7 @@ function capitalizeFirstLetter(string) {
         const History = useHistory()
         const [mem, setmem] = React.useState('');
         const [arr, setArr] = React.useState([]); 
-        const [geResult, setGE] = React.useState(null); 
+        const [janken, setJanken] = React.useState(null); 
         const [Loaded, setLoaded] = React.useState(false);
         const [change, setChange] = React.useState(false);
         const [birthday, setBirthday] = React.useState(false);
@@ -345,6 +345,20 @@ function capitalizeFirstLetter(string) {
             }
         }
 
+        const getJanken = (mem) => {
+            fetch(fet + '/bnk48/getjanken2023?member=' + mem, {
+                method :'post'
+            })
+                .then(response => response.json())
+                .then(datastatus => {
+                    if (datastatus.inRank) {
+                        setJanken(datastatus.response)
+                    }
+                }).catch(() => {
+                    
+                })
+        }
+
         React.useEffect(() => {
             AOS.init({ duration: 1000 });
             document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -375,6 +389,7 @@ function capitalizeFirstLetter(string) {
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {
+                        getJanken(data.response.name)
                         fetch(fet + '/cgm48/getadsupdate', {
                             method :'post'
                         })
@@ -534,6 +549,13 @@ function capitalizeFirstLetter(string) {
                                             <p className="badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
                                         </CardActionArea>
                                     )}
+
+                                        {janken != null && width <= 600 && (
+                                            <marquee className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></marquee>
+                                        )}
+                                         {janken != null && width > 600 && (
+                                            <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></p>
+                                        )}
                                     <>
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (

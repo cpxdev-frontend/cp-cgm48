@@ -536,6 +536,13 @@ function capitalizeFirstLetter(string) {
                                             )}
                                             </>
                                         )}
+
+                                        {janken != null && width <= 600 && (
+                                            <marquee className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} CGM48 {janken.jankenRank == 1 ? 'is the Janken Queen (the winner of BNK48 Janken Tournament 2023) and one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result' : 'is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result'} by winning {janken.jankenScore} times.<br/></marquee>
+                                        )}
+                                         {janken != null && width > 600 && (
+                                            <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} CGM48 {janken.jankenRank == 1 ? 'is the Janken Queen (the winner of BNK48 Janken Tournament 2023) and one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result' : 'is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result'} by winning {janken.jankenScore} times.<br/></p>
+                                        )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />
                                      {item.shihainin != undefined && (
@@ -549,13 +556,6 @@ function capitalizeFirstLetter(string) {
                                             <p className="badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
                                         </CardActionArea>
                                     )}
-
-                                        {janken != null && width <= 600 && (
-                                            <marquee className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></marquee>
-                                        )}
-                                         {janken != null && width > 600 && (
-                                            <p className='cur' onClick={() => History.push('/janken')}>[BNK48 Janken Tounament 2023] {item.name} BNK48 is one of Senbatsu of BNK48 4th Single by Janken Tournament 2023 result by winning {janken.jankenScore} times.<br/></p>
-                                        )}
                                     <>
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (

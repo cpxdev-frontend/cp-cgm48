@@ -353,6 +353,10 @@ function capitalizeFirstLetter(string) {
                 .then(datastatus => {
                     if (datastatus.inRank) {
                         setJanken(datastatus.response)
+                        
+                        if (datastatus.response.jankenRank == 1) {
+                            PlaySong()
+                        }
                     }
                 }).catch(() => {
                     

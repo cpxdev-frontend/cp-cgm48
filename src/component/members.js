@@ -125,7 +125,7 @@ const Memberlist = ({fet, setSec, width}) => {
         <h3 className='text-center mt-4'>Members</h3>
         <br />
         <div className="stage text-center pt-5 pb-2">
-        {Loaded && mem.length > 0 && (
+        {Loaded && Arr.length > 0 && (
             <Card className={"text-left " + (width > 700 ? 'ml-5 mr-5' : 'ml-2 mr-2')}>
             <TextField label="Search Member" value={search} className="m-3" onChange={(e) => SearchEng(e.target.value)} />
             <TextField

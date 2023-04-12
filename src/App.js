@@ -1061,20 +1061,25 @@ transitionDuration={500}
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/1.jpg" width="100%" />
            </div>
          </Fade>
-         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 200 : 200 }}>
+         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 200 : 300 }}>
            <div className="col p-0">
                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/2.jpg" width="100%" />
            </div>
          </Fade>
+         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 200 }}>
+           <div className="col p-0">
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/3.jpg" width="100%" />
+           </div>
+         </Fade>
            <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 :  0 }}>
            <div className="col pl-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/3.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/4.jpg" width="100%" />
            </div>
          </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+             <AlertTitle>Let's fun and beat the heat with CGM48 6th single "Sensei Kawaii!" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
                Double click or tap on image to skip this page
              </Alert>
              </div>
@@ -1082,7 +1087,7 @@ transitionDuration={500}
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+             <AlertTitle>Let's fun and beat the heat with CGM48 6th single "Sensei Kawaii!" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
                      Double click/tap here on image or wait 5 seconds to skip this page
              </Alert>
              </div>

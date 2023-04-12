@@ -1142,42 +1142,10 @@ transitionDuration={500}
               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/9.jpg" width="100%" />
           </div>
         </Fade>
-          <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 450 :  1250 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/10.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 950 :  1350 }}>
-          <div className="col p-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/11.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1650 :  1450 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/12.jpg" width="100%" />
-          </div>
-        </Fade>
-          <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 550 :  1550 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/13.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 850 :  1650 }}>
-          <div className="col p-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/14.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1650 :  1450 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/phone/15.jpg" width="100%" />
-          </div>
-        </Fade>
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-              <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+            <AlertTitle>Let's fun and beat the heat with CGM48 6th single "Sensei Kawaii!" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
               Double click or tap on image to skip this page
             </Alert>
             </div>
@@ -1185,7 +1153,7 @@ transitionDuration={500}
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>Move forward to 2023 with 3rd Original song of CGM48 "2565" on both Youtube Music Video and Music Streaming Platform</AlertTitle>
+            <AlertTitle>Let's fun and beat the heat with CGM48 6th single "Sensei Kawaii!" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
                     Double click/tap here on image or wait 5 seconds to skip this page
             </Alert>
             </div>

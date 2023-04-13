@@ -1,6 +1,6 @@
 # CGM48 Fan Space Front-End Souce Code
 
-![CGM48](https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm_2565.png)
+![CGM48](https://i.scdn.co/image/ab676186000010162544516f8f98bdb7a12e87ea)
 
 CGM48 Fan Space is sub-project of Fan Space project. Our objective are merge CGM48 fanclub from around the world to join this platform at once.
 

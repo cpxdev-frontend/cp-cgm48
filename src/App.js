@@ -142,7 +142,7 @@ const timesch = {
 
 var url = new URL(window.location.href);
 var imgget = url.searchParams.get("imgstar");
-
+var iiake
 function App() {
   const [Section, setSec] = React.useState('');
   const [con, setConnection] = React.useState(null);
@@ -165,7 +165,9 @@ function App() {
   const [memUpdate, setUpdate] = React.useState([]);
   const [stream, setStream] = React.useState(null);
   const [tokenID, setToken] = React.useState('');
-  const [point, setPoint] = React.useState(0);
+  const [time, setTime] = React.useState(0);
+  const [memDate, setMemBirth] = React.useState('');
+
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   
@@ -173,6 +175,8 @@ function App() {
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
   
+  const [Prof, setPro] = React.useState('');
+
   const ref = React.useRef(null)
   const [footerHeight, setFooterH] = React.useState(0)
   
@@ -181,6 +185,25 @@ function App() {
   function handleWindowResize() {
     setRealwidth(window.innerWidth);
   }
+
+  React.useEffect(() => {
+    iiake = setInterval(function(){ 
+      if (Fet().ul != '') {
+        clearInterval(iiake)
+       
+        fetch(Fet().ul + '/tpop/time', {
+          method :'get'
+      })
+          .then(response => response.text())
+          .then(data => {
+            setTime(parseInt(data))
+          }).catch(() => {
+            
+          })
+      }
+    }, 10);
+  }, [])
+
   React.useEffect(() => {
     window.addEventListener('resize', handleWindowResize);
     return () => {
@@ -278,9 +301,11 @@ React.useEffect(() => {
       .then(data => {
         setLogLoad(false)
         setOpen(false)
+        setPro(data.img)
         if (data.obj != 'none') {
           setKami(data.obj.img)
           setKname(data.obj.name)
+          setMemBirth(data.obj.birth)
           localStorage.setItem('i', data.uname)
           // FetchWallet(fetdata, data.wallet)
         } else {
@@ -630,7 +655,7 @@ React.useEffect(() => {
                    }}
                    badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
                  >
-                  <Avatar alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} />
+                  <Avatar alt={localStorage.getItem("i")} src={Prof} />
                  </Badge>
                  </ListItemIcon>
               )}
@@ -800,7 +825,7 @@ React.useEffect(() => {
                     }}
                     badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
                   >
-                    <Avatar alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} />
+                    <Avatar alt={localStorage.getItem("i")} src={Prof} />
                   </Badge>
                   
                   </ListItemIcon>
@@ -898,6 +923,11 @@ React.useEffect(() => {
                 </ListItem>
                </>
              )} */}
+                    {kamin != "-" && memDate == moment.unix(time).local().format('YYYY-M-DD') && (
+                      <ListItem className='text-muted' button>
+                        <ListItemText primary={"Today is " + kamin + " Birthday. Click her profile to view info and bless her on Twitter."}/>
+                      </ListItem>
+                     )}
                      <ListItem className='text-info' button>
                        <ListItemText primary='Feature will be unavaliable when you not sign in' secondary='Choose and share your Kami-Oshi member, Fandom group view and add new event' />
                      </ListItem>

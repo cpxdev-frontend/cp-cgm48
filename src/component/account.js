@@ -36,6 +36,8 @@ const AccountMana = ({fet, setSec, width}) => {
     const [ uid, setID ] = React.useState('')
     const [customback, setBack] = React.useState(false);
 
+    const [ Prof, setPro ] = React.useState('')
+
         React.useEffect(() => {
             if (customback) {
                 localStorage.setItem('customback', '')
@@ -56,6 +58,7 @@ const AccountMana = ({fet, setSec, width}) => {
                     if (data != null) {
                         setData(data)
                         setID(data.memId)
+                        setPro(data.img)
                         setSec(data.memUser + '\'s Account Studio')
                     } else {
                         setData(null)
@@ -184,7 +187,7 @@ const AccountMana = ({fet, setSec, width}) => {
             <CardHeader title={'Welcome back, ' + data.memUser} subheader={'Fan Space Support ID: ' + data.memId} />
             <div className='mt-4 mb-3 row'>
                 <div className='col-md-3'>
-                     <img alt={localStorage.getItem("i")} src={JSON.parse(localStorage.getItem("loged")).user.photoURL} width='100%' className='cir' />
+                     <img alt={localStorage.getItem("i")} src={Prof} width='100%' className='cir' />
                 </div>
                 <div className='col-md pt-4'>
                     <p>Registration Date: {moment.utc(data.registered).local().format('DD MMMM yyyy HH:mm')}</p>

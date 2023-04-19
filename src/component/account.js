@@ -196,6 +196,9 @@ const AccountMana = ({fet, setSec, width}) => {
                     ) : (
                         <p>Your Kami-Oshi is <a className='cur' onClick={() => History.push('/member/' + data.obj.name.toLowerCase())}>{data.obj.fullnameEn[0]} {data.obj.fullnameEn[1]} ({data.obj.name} CGM48)</a></p>
                     )}
+                    <div className='cur' onClick={() => window.open('//cp-tpop.pages.dev', '_blank')}>
+                    Notes: You can change your profile image by Login with same account credential on T-POP Megaverse Platform (Click here to Continue)
+                  </div>
                     {/* {width > 1100 && data.obj != null && data.obj.twelvethsingle != undefined && data.obj.twelvethsingle.includes('bnk12thsing/main') && (
                           <FormControlLabel
                           className='ml-2 pt-4'

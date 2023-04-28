@@ -455,6 +455,17 @@ function capitalizeFirstLetter(string) {
             };
             return Number(x).toLocaleString('en', options);
         }
+
+        const remainEvent = (unixStart) => {
+            let start = moment(); // some random moment in time (in ms)
+            let end = moment.unix(unixStart); // some random moment after start (in ms)
+            const ms = end.diff(start)
+            const date = moment.duration(ms)
+            // execution
+            let f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) ';
+            return f
+        }
+
         function ordinal_suffix_of(i) {
             var j = i % 10,
                 k = i % 100;
@@ -703,7 +714,11 @@ function capitalizeFirstLetter(string) {
                                             </h4>
                                             {ita.timerange[0] > 0 && ita.timerange[0] > moment().unix() && (
                                                 <p className='mt-1 mb-3'>
-                                                    Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                                    Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')} {moment().unix() >= ita.timerange[0] -259200 && moment().unix() < ita.timerange[0] && (
+                                                    <i>
+                                                        <br /> Please be patient in {remainEvent(ita.timerange[0])}
+                                                    </i>
+                                                )}</b>
                                                 </p>
                                                 )}
                                                 {ita.timerange[0] > 0 && ita.timerange[1] == 0 && ita.timerange[0] <= moment().unix() && (

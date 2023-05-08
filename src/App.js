@@ -48,7 +48,7 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
-import SlideshowIcon from '@material-ui/icons/Slideshow';
+import EventIcon from '@material-ui/icons/Event';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -57,6 +57,7 @@ import MamSam from './component/memberdetail';
 import News from './component/news';
 import MvCom from './component/music';
 import MusicCom from './component/streaming';
+import EventFind from './component/eventfinder';
 import Account from './component/account';
 import Offici from './component/official';
 import Api from './component/apisupport';
@@ -727,6 +728,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Music Video" />
                 </ListItem>
+                <ListItem component={Link} to='/event' className={window.location.pathname == '/event' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <EventIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Event Finder' />
+                </ListItem>
                 <ListItem component={Link} to='/music' className={window.location.pathname == '/music' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <MusicNoteIcon />
@@ -860,6 +867,7 @@ React.useEffect(() => {
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/event" render={() => <EventFind fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

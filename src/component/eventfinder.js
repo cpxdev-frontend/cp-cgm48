@@ -125,7 +125,7 @@ const Finder = ({fet, setSec, width}) => {
         <>
         <h3 className='text-center mt-5'>CGM48 Event Finder</h3>
         {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
-        <p className='text-center'>New feature for CGM48 Fans who want to see BNK48 events from your nearby.</p>
+        <p className='text-center'>New feature for CGM48 Fans who want to see CGM48 events from your nearby.</p>
         <div className='container'>
             
         {Loaded && nearest != null ? (

@@ -192,7 +192,11 @@ const Finder = ({fet, setSec, width}) => {
                            </a>
                            )
                        }
-                       <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
+                       {nearest.distance >= 0.5 ? (
+                        <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
+                       ) : (
+                        <p data-aos="zoom-in-right" className='mt-3'>You maybe are here!</p>
+                       )}
                    </div>
                </CardContent>
            </Card>

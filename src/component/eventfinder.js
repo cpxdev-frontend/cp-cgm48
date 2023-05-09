@@ -7,11 +7,11 @@ import { Typography, ListItem, Zoom, ListItemText,
     import LocationOnIcon from '@material-ui/icons/LocationOn';
     import CachedIcon from '@material-ui/icons/Cached';
 
-const Finder = ({fet, setSec, width}) => {
+const Finder = ({fet, setSec, width, kamin}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [Arr, setArr] = React.useState([]);
     const [nearest, setSignal] = React.useState(null);
-    const [estimatedis, setDistance] = React.useState(0);
+    const [eventPlace, setEventPlace] = React.useState('');
 
     function degToRad(deg) {
         return deg * (Math.PI / 180.0);
@@ -88,9 +88,38 @@ const Finder = ({fet, setSec, width}) => {
                 return current < min ? current : min;
             });
 
-            const nearest = arr.filter(x=> x.distance == smallestNumber)[0]
+            const nearesttemp = arr.filter(x=> x.distance == smallestNumber)[0]
+            const position1 = nearesttemp.data
 
-            setSignal(nearest);
+            if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {
+                if (eventPlace == '') {
+                 fetch(encodeURI(fet + '/locator/getlocate?lat=' + position1.locate[0] + '&lon=' + position1.locate[1]), {
+                     method: 'post', // or 'PUT'
+                     })
+                     .then(response => response.json())
+                     .then(data => {
+                         setEventPlace(data.display_name.split(", ")[0])
+                     })
+                     .catch((error) => {
+                     console.error('Error:', error);
+                     });
+                }
+             }else if ((position1.locate == undefined || position1.locate == null) && position1.place.includes('IAMP')) {
+                 if (eventPlace == '') {
+                     fetch(encodeURI(fet + '/locator/getlocate?lat=' + position1.placeobj.placeCoodinate[0] + '&lon=' + position1.placeobj.placeCoodinate[1]), {
+                         method: 'post', // or 'PUT'
+                         })
+                         .then(response => response.json())
+                         .then(data => {
+                             setEventPlace(data.display_name.split(", ")[0])
+                         })
+                         .catch((error) => {
+                         console.error('Error:', error);
+                         });
+                    }
+             }
+
+            setSignal(nearesttemp);
         } 
         setLoaded(true)
     }
@@ -195,10 +224,15 @@ const Finder = ({fet, setSec, width}) => {
                        {
                            nearest.data.place != '' && !nearest.data.place.includes('IAMP') && (
                            <a href={nearest.data.place} target='_blank' className='mt-1'>
-                               <LocationOnIcon/> Where is this event?
+                                  <LocationOnIcon/> {eventPlace != '' ?eventPlace : 'Locating event place'}
                            </a>
                            )
                        }
+                        {kamin != '-' && nearest != null && nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 && (
+                        <div className="alert alert-info mt-3" role="alert">
+                            <p>Your Kami-Oshi ({kamin} BNK48) has joined to this event. You should not miss it!</p>
+                        </div>
+                       )}
                        {nearest.distance >= 0.5 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
                        ) : (

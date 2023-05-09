@@ -96,6 +96,7 @@ const Finder = ({fet, setSec, width}) => {
     }
 
     const FindAction = (data) => {
+        setLoaded(false)
         navigator.geolocation.getCurrentPosition(function(position) {
             progress(position.coords, data)
           });

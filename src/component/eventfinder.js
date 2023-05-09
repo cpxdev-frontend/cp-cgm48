@@ -12,6 +12,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const [Arr, setArr] = React.useState([]);
     const [nearest, setSignal] = React.useState(null);
     const [eventPlace, setEventPlace] = React.useState('');
+    const [refresh, setRefresh] = React.useState(false);
 
     function degToRad(deg) {
         return deg * (Math.PI / 180.0);
@@ -73,7 +74,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const progress = (cood, data) => {
         let arr = []
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && distance(data[i],cood) <= 30000 && moment().unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -126,7 +127,11 @@ const Finder = ({fet, setSec, width, kamin}) => {
 
     const FindAction = (data) => {
         setLoaded(false)
+        setRefresh(false)
         navigator.geolocation.getCurrentPosition(function(position) {
+            setTimeout(() => {
+                setRefresh(true)
+            }, 10000);
             progress(position.coords, data)
           });
     }
@@ -156,11 +161,13 @@ const Finder = ({fet, setSec, width, kamin}) => {
         <>
        <CardHeader className='container mt-5' title='CGM48 Event Finder' subheader='New feature for CGM48 Fans who want to see CGM48 events from your nearby.'
          action={
-            <IconButton onClick={() =>
-                Loaded == true ? FindAction(Arr) : null
-            }>
-              <CachedIcon />
-            </IconButton>
+            refresh ? (
+                <IconButton onClick={() =>
+                    Loaded == true ? FindAction(Arr) : null
+                }>
+                  <CachedIcon />
+                </IconButton>
+            ) : null
           } />
         <div className='container'>
             

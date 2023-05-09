@@ -72,7 +72,7 @@ const Finder = ({fet, setSec, width}) => {
     const progress = (cood, data) => {
         let arr = []
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null) {
+            if (distance(data[i],cood) != null && moment.unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]

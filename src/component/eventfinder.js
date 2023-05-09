@@ -230,7 +230,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                        }
                         {kamin != '-' && nearest != null && nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 && (
                         <div className="alert alert-info mt-3" role="alert">
-                            <p>Your Kami-Oshi ({kamin} BNK48) has joined to this event. You should not miss it!</p>
+                            <p>Your Kami-Oshi ({kamin} CGM48) has joined to this event. You should not miss it!</p>
                         </div>
                        )}
                        {nearest.distance >= 0.5 ? (

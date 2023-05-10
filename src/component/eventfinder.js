@@ -220,7 +220,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                            </a>
                            )
                        }
-                        {kamin != '-' && nearest != null && nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 && (
+                        {kamin != '-' && nearest != null && (nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.data.memtag.indexOf('All') != -1 || nearest.data.memtag.indexOf('all') != -1) && (
                         <div className="alert alert-info mt-3" role="alert">
                             <p>Your Kami-Oshi ({kamin} CGM48) has joined to this event. You should not miss it!</p>
                         </div>

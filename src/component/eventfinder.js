@@ -74,7 +74,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const progress = (cood, data) => {
         let arr = []
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && distance(data[i],cood) <= 30000 && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && distance(data[i],cood) <= 25000 && moment().unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -93,7 +93,6 @@ const Finder = ({fet, setSec, width, kamin}) => {
             const position1 = nearesttemp.data
 
             if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {
-                if (eventPlace == '') {
                  fetch(encodeURI(fet + '/locator/getlocate?lat=' + position1.locate[0] + '&lon=' + position1.locate[1]), {
                      method: 'post', // or 'PUT'
                      })
@@ -104,20 +103,6 @@ const Finder = ({fet, setSec, width, kamin}) => {
                      .catch((error) => {
                      console.error('Error:', error);
                      });
-                }
-             }else if ((position1.locate == undefined || position1.locate == null) && position1.place.includes('IAMP')) {
-                 if (eventPlace == '') {
-                     fetch(encodeURI(fet + '/locator/getlocate?lat=' + position1.placeobj.placeCoodinate[0] + '&lon=' + position1.placeobj.placeCoodinate[1]), {
-                         method: 'post', // or 'PUT'
-                         })
-                         .then(response => response.json())
-                         .then(data => {
-                             setEventPlace(data.display_name.split(", ")[0])
-                         })
-                         .catch((error) => {
-                         console.error('Error:', error);
-                         });
-                    }
              }
 
             setSignal(nearesttemp);

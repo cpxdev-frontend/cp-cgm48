@@ -74,7 +74,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const progress = (cood, data) => {
         let arr = []
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && distance(data[i],cood) <= 25000 && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && moment().unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -225,7 +225,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
                             <p>Your Kami-Oshi ({kamin} CGM48) has joined to this event. You should not miss it!</p>
                         </div>
                        )}
-                       {nearest.distance >= 0.5 ? (
+                        {nearest.distance >= 25000 ? (
+                        <p data-aos="zoom-in-right" className='mt-3'>The event place is quite far (about {(nearest.distance / 1000).toFixed(2)} kilometers). However, you can take a taxi or drive yourself and suggested to planning your trip ahead of time.</p>
+                       ) :nearest.distance >= 0.5 && nearest <= 25000 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
                        ) : (
                         <p data-aos="zoom-in-right" className='mt-3'>You maybe are here!</p>

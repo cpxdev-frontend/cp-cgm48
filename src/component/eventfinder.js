@@ -74,7 +74,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const progress = (cood, data) => {
         let arr = []
         for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && moment().unix() >= data[i].timerange[0] - 604800) {
+            if (distance(data[i],cood) != null && distance(data[i],cood) <= 100000 && moment().unix() >= data[i].timerange[0] - 604800) {
                 arr.push({
                  distance: distance(data[i],cood),
                  data: data[i]
@@ -93,6 +93,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
             const position1 = nearesttemp.data
 
             if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {
+                setEventPlace('')
                  fetch(encodeURI(fet + '/locator/getlocate?lat=' + position1.locate[0] + '&lon=' + position1.locate[1]), {
                      method: 'post', // or 'PUT'
                      })
@@ -116,7 +117,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
         navigator.geolocation.getCurrentPosition(function(position) {
             setTimeout(() => {
                 setRefresh(true)
-            }, 10000);
+            }, 30000);
             progress(position.coords, data)
           });
     }

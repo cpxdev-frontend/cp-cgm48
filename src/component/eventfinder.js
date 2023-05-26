@@ -239,7 +239,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
         ) : Loaded && nearest == null ? (
             <Card className='mb-3 text-center'>
             <CardContent className='row'>
-               <h5>Not found the nearest BNK48 event from here.</h5>
+               <h5>Not found the nearest CGM48 event from here.</h5>
             </CardContent>
         </Card>
      )  : (

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     type: '.jpg'
   }
   const cgm = {
-    path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/cgm485thsing/',
+    path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/cgm486thsing/',
     type: '.jpg'
   }
   function capitalizeFirstLetter(string) {

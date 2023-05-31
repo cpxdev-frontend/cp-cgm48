@@ -147,6 +147,7 @@ function capitalizeFirstLetter(string) {
                      const arr = (data.response)
                      const i = arr.findIndex(x => x.name == val)
                      if (i > -1) {
+                        //navigator.vibrate(1000);
                         setBirthday(true)
                      }
                 } else {
@@ -362,6 +363,7 @@ function capitalizeFirstLetter(string) {
                         setJanken(datastatus.response)
                         
                         if (datastatus.response.jankenRank == 1) {
+                            navigator.vibrate([500, 200]);
                             JankenCong()
                         }
                     }

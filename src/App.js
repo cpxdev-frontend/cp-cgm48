@@ -629,7 +629,7 @@ React.useEffect(() => {
   if (uri != '' && allDone) {
     return (<>
        <Slide in={localStorage.getItem('lowgraphic') == null && width > 1100 ? !open : true} timeout={600} direction='down'>
-       <AppBar position="sticky" className='bnktheme app-barcurve'>
+       <AppBar position="sticky" className='bnktheme app-barcurve' style={{background: 'linear-gradient(to left, violet, indigo, green, yellow, orange, red)'}}>
           <Toolbar>
             {open == false && (
             <IconButton onClick={() => setOpen(true)} edge="start" color="inherit" aria-label="menu">

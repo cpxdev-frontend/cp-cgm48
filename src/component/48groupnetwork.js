@@ -30,7 +30,7 @@ const Memberlist = ({fet, setSec, width}) => {
           minZoom: 0
           });
           
-          fetch('https://cpxdevapi.azurewebsites.net/cgm48/fortyeightgnetwork')
+          fetch('https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net/cgm48/fortyeightgnetwork')
           .then(response => response.json())
           .then((res) => {
             if (map.current != null) {

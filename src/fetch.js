@@ -24,7 +24,7 @@ var reg = 'Loading';
 //     }
 // });
 
-ul = 'https://cpxdevapi.azurewebsites.net'
+ul = 'https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net'
 reg = 'Worldwide'
 
 function Flowup() {

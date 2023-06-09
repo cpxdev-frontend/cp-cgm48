@@ -4,6 +4,7 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AOS from "aos";
+import moment from 'moment'
 
 const Offi = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
@@ -64,7 +65,7 @@ const Offi = ({fet, setSec, width}) => {
                
                     <hr />
                     <Typography color="textSecondary">
-                    {new Date(item.created_at).toLocaleString()}
+                    {moment.utc(Update[Currentshow].created_at).local().locale(lang).format("DD MMMM YYYY HH:mm")}
                     </Typography>
                     </CardContent>
                 <CardActions disableSpacing>

@@ -65,7 +65,7 @@ const Offi = ({fet, setSec, width}) => {
                
                     <hr />
                     <Typography color="textSecondary">
-                    {moment.utc(item.created_at).local().locale(lang).format("DD MMMM YYYY HH:mm")}
+                    {moment.utc(item.created_at).local().locale('en').format("DD MMMM YYYY HH:mm")}
                     </Typography>
                     </CardContent>
                 <CardActions disableSpacing>

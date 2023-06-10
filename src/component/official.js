@@ -65,7 +65,7 @@ const Offi = ({fet, setSec, width}) => {
                
                     <hr />
                     <Typography color="textSecondary">
-                    {moment.utc(item.created_at).local().locale('en').format("DD MMMM YYYY HH:mm")}
+                     Tweeted in {moment.unix(item.createdAt/1000).local().locale('en').format("DD MMMM YYYY HH:mm")}
                     </Typography>
                     </CardContent>
                 <CardActions disableSpacing>

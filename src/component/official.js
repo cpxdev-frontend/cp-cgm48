@@ -5,12 +5,14 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AOS from "aos";
 import moment from 'moment'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const Offi = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [Arr, setArr] = React.useState([]);
     const [open, setOpen] = React.useState(false);
-    const [para, setpara] = React.useState({});
+    const [para, setpara] = React.useState('');
     const [fetLLoad, setFet] = React.useState(false);
 
     React.useEffect(() => {
@@ -58,14 +60,21 @@ const Offi = ({fet, setSec, width}) => {
              <div className='row'>
              {Arr.length > 0 ? Arr.map((item,i) => item.pinned == false && (
                  <div className={"col-md-12 mb-5" + (width > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
-                 <Card onClick={() => hand(true,{ id: item.id, name: 'More tweet about "' + item.text.substring(0, 60) + '..."' })}>
+                 <Card onClick={() => item.mediaEntities.length == 0 ? hand(true,item) : null}>
                 <CardContent>
                     <Typography variant="h6" dangerouslySetInnerHTML={width < 700 ? { __html: removeurl(item.text.replace(new RegExp('\n', 'g'), '<br />')) } : { __html: removeurl(item.text) }}>
                     </Typography>
-               
+                    <Carousel className='container pt-3'>
+                        {item.mediaEntities.map((img)=> (
+                            <img src={img.mediaURL} width='150px' />
+                        ))}
+                    </Carousel>
                     <hr />
-                    <Typography color="textSecondary">
-                     Tweeted in {moment.unix(item.createdAt/1000).local().locale('en').format("DD MMMM YYYY HH:mm")}
+                    {item.mediaEntities.length > 0 && (
+                        <Button variant="outlined" color='primary' onClick={() => hand(true,item)}>View Info</Button>
+                    )}
+                    <Typography className='pt-1' color="textSecondary">
+                    Tweeted in {moment.unix(item.createdAt/1000).local().locale('en').format("DD MMMM YYYY HH:mm")}
                     </Typography>
                     </CardContent>
                 <CardActions disableSpacing>
@@ -75,42 +84,46 @@ const Offi = ({fet, setSec, width}) => {
                  </div>
              )) : (
                  <div className='text-center col-md-12'>
-                     No update from Official
+                     No update from CGM48 Official
                  </div>
              )}
              </div>
-             <Dialog
-                    open={open}
-                    onClose={() => hand(false)}
-                    fullWidth={true}
-                    maxWidth='md'
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">{para.name}</DialogTitle>
-                    <DialogContent>
-                    <Grow in={!fetLLoad} timeout={300}>
-                        <div className='d-flex justify-content-center'>
-                    <TwitterTweetEmbed
-                        tweetId={para.id}
-                        onLoad={() => setFet(false)}
-                        />
-                        </div>
-                        </Grow>
-                        {fetLLoad && (
-                             <Zoom in={fetLLoad} timeout={{ enter: 200, exit: 200}}>
-                        <div className='text-center'>
-                             <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
-                             </div>
-                             </Zoom>
-                        )}
-                    </DialogContent>
-                    <DialogActions>
-                    <Button onClick={() => hand(false)} className="text-dark">
-                        Close
-                    </Button>
-                    </DialogActions>
-                </Dialog>
+             {
+                para != '' && (
+                    <Dialog
+                           open={open}
+                           onClose={() => hand('')}
+                           fullWidth={true}
+                           maxWidth='md'
+                           aria-labelledby="alert-dialog-title"
+                           aria-describedby="alert-dialog-description"
+                       >
+                           <DialogTitle id="alert-dialog-title">{'More tweet about "' + para.text.substring(0, 60) + '..."'}</DialogTitle>
+                           <DialogContent>
+                           <Grow in={!fetLLoad} timeout={300}>
+                               <div className='d-flex justify-content-center'>
+                           <TwitterTweetEmbed
+                               tweetId={para.id}
+                               onLoad={() => setFet(false)}
+                               />
+                               </div>
+                               </Grow>
+                               {fetLLoad && (
+                                    <Zoom in={fetLLoad} timeout={{ enter: 200, exit: 200}}>
+                               <div className='text-center'>
+                                    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                                    </div>
+                                    </Zoom>
+                               )}
+                           </DialogContent>
+                           <DialogActions>
+                           <Button onClick={() => hand('')} className="text-dark">
+                               Close
+                           </Button>
+                           </DialogActions>
+                       </Dialog>
+                )
+             }
              </div>
         ) : (
             <div className='text-center'>

@@ -25,7 +25,7 @@ const Offi = ({fet, setSec, width}) => {
             .then(response => response.json())
             .then(data => {
                 setLoaded(true)
-                setArr(data.data)
+                setArr(data.rss.channel.item)
             })
             .catch((error) => {
                 setLoaded(true)
@@ -58,28 +58,17 @@ const Offi = ({fet, setSec, width}) => {
              <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
              <div className='row'>
-             {Arr.length > 0 ? Arr.map((item,i) => item.pinned == false && (
+             {Arr.length > 0 ? Arr.map((item,i) => (
                  <div className={"col-md-12 mb-5" + (width > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
-                 <Card onClick={() => item.mediaEntities.length == 0 ? hand(true,item) : null}>
+                 <Card onClick={() => hand(true,item)}>
                 <CardContent>
-                    <Typography variant="h6" dangerouslySetInnerHTML={width < 700 ? { __html: removeurl(item.text.replace(new RegExp('\n', 'g'), '<br />')) } : { __html: removeurl(item.text) }}>
+                <Typography variant="h6" dangerouslySetInnerHTML={{ __html: removeurl(item.description["#cdata-section"].replace(new RegExp('\n', 'g'), '')) }}>
                     </Typography>
-                    <Carousel className='container pt-3'>
-                        {item.mediaEntities.map((img)=> (
-                            <img src={img.mediaURL} width='150px' />
-                        ))}
-                    </Carousel>
                     <hr />
-                    {item.mediaEntities.length > 0 && (
-                        <Button variant="outlined" color='primary' onClick={() => hand(true,item)}>View Info</Button>
-                    )}
                     <Typography className='pt-1' color="textSecondary">
-                    Tweeted in {moment.unix(item.createdAt/1000).local().locale('en').format("DD MMMM YYYY HH:mm")}
+                    Tweeted in {moment(item.pubDate).local().locale('en').format("DD MMMM YYYY HH:mm")}
                     </Typography>
                     </CardContent>
-                <CardActions disableSpacing>
-                <FavoriteIcon /> {item.favoriteCount} Liked
-                </CardActions>
                  </Card>
                  </div>
              )) : (

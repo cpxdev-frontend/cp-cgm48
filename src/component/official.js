@@ -58,7 +58,7 @@ const Offi = ({fet, setSec, width}) => {
              <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
              <div className='row'>
-             {Arr.length > 0 ? Arr.map((item,i) => (
+             {Arr.length > 0 ? Arr.map((item,i) => item.link.include('cgm48offcial') && (
                  <div className={"col-md-12 mb-5" + (width > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
                  <Card onClick={() => hand(true,item)}>
                 <CardContent>

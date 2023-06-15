@@ -87,7 +87,7 @@ const Offi = ({fet, setSec, width}) => {
                            aria-labelledby="alert-dialog-title"
                            aria-describedby="alert-dialog-description"
                        >
-                           <DialogTitle id="alert-dialog-title">{'More tweet about "' + para.text.substring(0, 60) + '..."'}</DialogTitle>
+                           <DialogTitle id="alert-dialog-title">{'More tweet about "' + para.title.substring(0, 60) + '..."'}</DialogTitle>
                            <DialogContent>
                            <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>

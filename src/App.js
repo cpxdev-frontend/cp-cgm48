@@ -792,7 +792,7 @@ React.useEffect(() => {
                   }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-                      window.open('//status.cpxdev.tk', '_blank')
+                      window.open('//cp-cpxdevstatus.vercel.app', '_blank')
                     }
                   })
                 }} button>

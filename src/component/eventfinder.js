@@ -79,6 +79,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
                  distance: distance(data[i],cood),
                  data: data[i]
                 })
+                if (distance(data[i],cood) <= 300) {
+                    navigator.vibrate(600);
+                }
             }
         }
 
@@ -228,7 +231,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                        )}
                         {nearest.distance >= 25000 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>The event place is quite far (about {(nearest.distance / 1000).toFixed(2)} kilometers). However, you can take a taxi or drive yourself and suggested to planning your trip ahead of time.</p>
-                        ) :nearest.distance >= 0.5 && nearest.distance <= 25000 ? (
+                        ) :nearest.distance >= 300 && nearest.distance <= 25000 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
                        ) : (
                         <p data-aos="zoom-in-right" className='mt-3'>You maybe are here!</p>

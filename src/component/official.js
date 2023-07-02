@@ -19,18 +19,8 @@ const Offi = ({fet, setSec, width}) => {
         AOS.init({ duration: 800 });
         setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(encodeURI(fet + '/cgm48/getoffnews?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
-            method: 'post', // or 'PUT'
-            })
-            .then(response => response.json())
-            .then(data => {
-                setLoaded(true)
-                setArr(data.rss.channel.item)
-            })
-            .catch((error) => {
-                setLoaded(true)
-            console.error('Error:', error);
-            });
+        setLoaded(true)
+        setArr([])
     }, [])
 
     function removeurl(text) {
@@ -73,7 +63,7 @@ const Offi = ({fet, setSec, width}) => {
                  </div>
              )) : (
                  <div className='text-center col-md-12'>
-                     No update from CGM48 Official
+                      Announced from Fan Space Team: Due to the policy changes implemented by Twitter, there are now restrictions on accessing the feed system of CGM48 Official. Therefore, the team has decided to discontinue the official update service starting from today. However, you can still click the button below to access the menu page and stay updated with news related to CGM48. Thank you for your continued support.
                  </div>
              )}
              </div>

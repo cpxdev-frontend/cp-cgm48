@@ -19,8 +19,18 @@ const Offi = ({fet, setSec, width}) => {
         AOS.init({ duration: 800 });
         setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        setLoaded(true)
-        setArr([])
+        fetch(encodeURI(fet + '/cgm48/getoffnews?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
+            method: 'post', // or 'PUT'
+            })
+            .then(response => response.json())
+            .then(data => {
+                setLoaded(true)
+                setArr(data.rss.channel.item)
+            })
+            .catch((error) => {
+                setLoaded(true)
+            console.error('Error:', error);
+            });
     }, [])
 
     function removeurl(text) {
@@ -63,7 +73,7 @@ const Offi = ({fet, setSec, width}) => {
                  </div>
              )) : (
                  <div className='text-center col-md-12'>
-                      Announced from Fan Space Team: Due to the policy changes implemented by Twitter, there are now restrictions on accessing the feed system of CGM48 Official. Therefore, the team has decided to discontinue the official update service starting from today. However, you can still click the button below to access the menu page and stay updated with news related to CGM48. Thank you for your continued support.
+                      No update from CGM48 Official
                  </div>
              )}
              </div>
@@ -82,7 +92,7 @@ const Offi = ({fet, setSec, width}) => {
                            <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>
                            <TwitterTweetEmbed
-                                 tweetId={para.link.replace("https://nitter.net/cgm48official/status/", "").replace("#m", "")}
+                                 tweetId={para.link.replace("https://nitter.x86-64-unknown-linux-gnu.zip/cgm48official/status/", "").replace("#m", "")}
                                onLoad={() => setFet(false)}
                                />
                                </div>

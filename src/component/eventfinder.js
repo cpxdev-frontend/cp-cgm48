@@ -2,7 +2,7 @@ import React from 'react'
 import AOS from 'aos'
 import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
-    Card, CardHeader, CardContent, IconButton, Grow, Fade, Tooltip } from '@material-ui/core';
+    Card, CardActionArea, CardContent, IconButton, Grow, Fade, Tooltip, CardHeader } from '@material-ui/core';
 
     import LocationOnIcon from '@material-ui/icons/LocationOn';
     import CachedIcon from '@material-ui/icons/Cached';
@@ -149,8 +149,8 @@ const Finder = ({fet, setSec, width, kamin}) => {
 
     return ( 
         <>
-       <CardHeader className='container mt-5' title='CGM48 Event Finder' subheader='New feature for CGM48 Fans who want to see CGM48 events from your nearby.'
-         action={
+        <CardHeader className='container mt-5' title='CGM48 Event Finder' subheader='New feature for CGM48 Fans who want to see CGM48 events from your nearby.'
+        action={
             refresh ? (
                 <IconButton onClick={() =>
                     Loaded == true ? FindAction(Arr) : null
@@ -159,7 +159,10 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 </IconButton>
             ) : null
           } />
-        <div className='container'>
+       
+        {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
+ 
+        <div className='container mb-3'>
             
         {Loaded && nearest != null ? (
                <Card className='mb-3' data-aos="fade-right">
@@ -221,18 +224,18 @@ const Finder = ({fet, setSec, width, kamin}) => {
                        {
                            nearest.data.place != '' && !nearest.data.place.includes('IAMP') && (
                            <a href={nearest.data.place} target='_blank' className='mt-1'>
-                                  <LocationOnIcon/> {eventPlace != '' ?eventPlace : 'Locating event place'}
+                               <LocationOnIcon/> {eventPlace != '' ?eventPlace : 'Locating event place'}
                            </a>
                            )
                        }
-                        {kamin != '-' && nearest != null && (nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.data.memtag.indexOf('All') != -1 || nearest.data.memtag.indexOf('all') != -1) && (
+                       {kamin != '-' && nearest != null && (nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.data.memtag.indexOf('All') != -1 || nearest.data.memtag.indexOf('all') != -1) && (
                         <div className="alert alert-info mt-3" role="alert">
                             <p>Your Kami-Oshi ({kamin} CGM48) has joined to this event. You should not miss it!</p>
                         </div>
                        )}
-                        {nearest.distance >= 25000 ? (
+                       {nearest.distance >= 25000 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>The event place is quite far (about {(nearest.distance / 1000).toFixed(2)} kilometers). However, you can take a taxi or drive yourself and suggested to planning your trip ahead of time.</p>
-                        ) :nearest.distance >= 100 && nearest.distance <= 25000 ? (
+                       ) :nearest.distance >= 100 && nearest.distance <= 25000 ? (
                         <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
                        ) : (
                         <p data-aos="zoom-in-right" className='mt-3'>You have arrived at this event!</p>
@@ -249,7 +252,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
      )  : (
             <div className='text-center'>
             <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
-            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
             </Zoom>
             </div>
         )}

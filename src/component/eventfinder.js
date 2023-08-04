@@ -93,7 +93,12 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 return current < min ? current : min;
             });
 
-            const nearesttemp = arr.filter(x=> x.distance == smallestNumber)[0]
+            const incoming = arr.reduce((min, obj) => {
+                const timestampValue = obj.data.timerange[0];
+                return Math.min(min, timestampValue);
+              }, Infinity);
+
+            const nearesttemp = arr.filter(x=> x.distance == smallestNumber && x.data.timerange[0] == incoming)[0]
             const position1 = nearesttemp.data
 
             if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {

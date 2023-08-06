@@ -84,29 +84,35 @@ const Memberlist = ({fet, setSec, width}) => {
     const handleChangeGroup = (event) => {
         setFr('-')
         setGr(event.target.value);
-        if (event.target.value == 'gen') {
-           setFilter(vPack.gen)
+        if (event.target.value == 'team') {
+            setFilter(vPack.team)
+        } else if (event.target.value == 'gen') {
+            setFilter(vPack.gen)
         } else {
             setFilter([])
         }
       };
 
       const onSearch = () => {
-        let newfilter = [];
-        if (seGroup != '-' && seFill != "-") {
-
-        if (seGroup == "gen") {
-          newfilter = Arr.filter(x => x.gen == seFill)
-        }
-
-        if (search !== '') {
-          const txt = search.toLowerCase()
-          setSearch(txt)
-          const d = newfilter.filter(x => (x.name.toLowerCase()).includes(txt));
-          setmem(d)
-      } else {
-          setmem(newfilter)
-      }
+        if (Arr.length > 0 && mem.length > 0) {
+            let newfilter = [];
+             if (seGroup != '-' && seFill != "-") {
+   
+                if (seGroup == "team") {
+                    newfilter = Arr.filter(x => x.team == seFill)
+                } else if (seGroup == "gen") {
+                    newfilter = Arr.filter(x => x.gen == seFill)
+                }
+        
+                 if (search !== '') {
+                    const txt = search.toLowerCase()
+                    setSearch(txt)
+                    const d = newfilter.filter(x => (x.name.toLowerCase()).includes(txt));
+                    setmem(d)
+                } else {
+                    setmem(newfilter)
+                }
+             }
         }
       }
     

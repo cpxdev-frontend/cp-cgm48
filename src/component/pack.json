@@ -7,9 +7,27 @@
             "label": "Choose Group"
         },
         {
+          "value": "team",
+          "label": "Theater Stage Team"
+        },
+        {
           "value": "gen",
           "label": "Generation"
         }
+      ],
+      "team": [
+        {
+            "value": "-",
+            "label": "Choose Stage Team"
+        },
+        {
+          "value": "C",
+          "label": "Team C"
+        },
+        {
+            "value": "Trainee",
+            "label": "Trainee (Undergirl)"
+          }
       ],
       "gen": [
         {

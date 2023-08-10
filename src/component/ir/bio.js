@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
 
   }));
   const bnk = {
-    path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk13thsing/',
+    path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk4thalbum/profile/bnk/',
     type: '.jpg'
   }
   const cgm = {

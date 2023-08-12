@@ -128,7 +128,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 setRefresh(true)
             }, 30000);
             progress(position.coords, data)
-          });
+          }, function(ex) {
+            alert(ex.message)
+          }, {timeout: 10000});
     }
 
     React.useEffect(() => {

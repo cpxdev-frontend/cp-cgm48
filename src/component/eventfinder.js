@@ -123,7 +123,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
           map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
-            center: [98.997207641, 18.785381317],
+            center: [98.99720764160156, 18.785381317138672],
             zoom: 10,
             maxZoom:20,
             minZoom: 8
@@ -162,7 +162,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                                 break;
                             }
                             case 1 : {
-                                props = { "color": "#cb96c2",easeId: data[i].newsId }
+                                props = { "color": "#49C5A8",easeId: data[i].newsId }
                                 break;
                             }
                             default : {
@@ -185,7 +185,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                                 break;
                             }
                             case 1 : {
-                                props = { "color": "#cb96c2",easeId: data[i].newsId }
+                                props = { "color": "#49C5A8",easeId: data[i].newsId }
                                 break;
                             }
                             default : {
@@ -247,9 +247,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
 
     return ( 
         <>
-        <CardHeader className='container mt-5' title='BNK48 Event Finder' subheader='New feature for BNK48 Fans who want to see BNK48 events from your nearby.' />
+        <CardHeader className='container mt-5' title='CGM48 Event Finder' subheader='New feature for CGM48 Fans who want to see CGM48 events from your nearby.' />
        
-        {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
+        {/* <p className='text-center'>All upcoming CGM48 Theater Stage showtime at CGM48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
  
         <div className='container mb-3'>
         <Card className='pt-3 pb-3 mb-3' data-aos="zoom-in">
@@ -332,7 +332,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                </CardContent>
            </Card>
         ) : Loaded && nearest == null ? (
-            <Card className='mb-3'>
+            <Card className='text-center mb-3'>
             <CardContent className='row text-center'>
                <h5>Please click marker on map to view CGM48 event detail.</h5>
             </CardContent>

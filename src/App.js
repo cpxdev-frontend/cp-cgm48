@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
+import 'mapbox-gl/dist/mapbox-gl.css';
 import {
   GoogleAuthProvider,
   TwitterAuthProvider,

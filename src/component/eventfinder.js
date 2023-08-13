@@ -3,20 +3,21 @@ import AOS from 'aos'
 import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
     Card, CardActionArea, CardContent, IconButton, Grow, Fade, Tooltip, CardHeader } from '@material-ui/core';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import CachedIcon from '@material-ui/icons/Cached';
 
-    import LocationOnIcon from '@material-ui/icons/LocationOn';
-    import CachedIcon from '@material-ui/icons/Cached';
+mapboxgl.accessToken = 'pk.eyJ1IjoiY3B4dGgyMDE3IiwiYSI6ImNsZHY0MzN6bTBjNzEzcXJmamJtN3BsZ3AifQ.mYNwWaYKsiLeYXngFDtaWQ';
 
 const Finder = ({fet, setSec, width, kamin}) => {
     const [Loaded, setLoaded] = React.useState(false);
+    const [refresh, setRe] = React.useState(true);
     const [Arr, setArr] = React.useState([]);
     const [nearest, setSignal] = React.useState(null);
     const [eventPlace, setEventPlace] = React.useState('');
-    const [refresh, setRefresh] = React.useState(false);
 
-    function degToRad(deg) {
-        return deg * (Math.PI / 180.0);
-    }
+    const mapContainer = React.useRef(null);
+    const map = React.useRef(null);
 
     const remainEvent = (unixStart) => {
         let start = moment(); // some random moment in time (in ms)
@@ -28,82 +29,12 @@ const Finder = ({fet, setSec, width, kamin}) => {
         return f
     }
 
-    function distance(position1,position2){
-
-        var lat2=position2.latitude;
-        var lon2=position2.longitude;
-        var R = 10000000; // metres
-
-        if (position1.place != undefined) {
-            if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {
-                var lat1=parseFloat(position1.locate[0]);
-                var lon1=parseFloat(position1.locate[1]);
-                var φ1 = degToRad(lat1);
-                var φ2 = degToRad(lat2);
-                var Δφ = degToRad(lat2-lat1);
-                var Δλ = degToRad(lon2-lon1);
-            
-                var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-                    Math.cos(φ1) * Math.cos(φ2) *
-                    Math.sin(Δλ/2) * Math.sin(Δλ/2);
-                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            
-                var d = R * c;
-                return d;
-            }
-            if ((position1.locate == undefined || position1.locate == null) && position1.place.includes('IAMP')) {
-                var lat1=position1.placeobj.placeCoodinate[0];
-                var lon1=position1.placeobj.placeCoodinate[1];
-                var φ1 = degToRad(lat1);
-                var φ2 = degToRad(lat2);
-                var Δφ = degToRad(lat2-lat1);
-                var Δλ = degToRad(lon2-lon1);
-            
-                var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-                    Math.cos(φ1) * Math.cos(φ2) *
-                    Math.sin(Δλ/2) * Math.sin(Δλ/2);
-                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            
-                var d = R * c;
-                return d;
-            }
-        }
-        return null
-    }
-
-    const progress = (cood, data) => {
-        let arr = []
-
-        for(var i=0;i<data.length;i++){
-            if (distance(data[i],cood) != null && distance(data[i],cood) <= 100000 && moment().unix() >= data[i].timerange[0] - 604800) {
-                arr.push({
-                 distance: distance(data[i],cood),
-                 data: data[i]
-                })
-                if (distance(data[i],cood) <= 100) {
-                    navigator.vibrate(600);
-                }
-            }
-        }
-
-        const numbers = arr.map((item) => item.distance);
-
-        if (arr.length > 0) {
-            const smallestNumber = numbers.reduce((min, current) => {
-                return current < min ? current : min;
-            });
-
-            const incoming = arr.reduce((min, obj) => {
-                const timestampValue = obj.data.timerange[0];
-                return Math.min(min, timestampValue);
-              }, Infinity);
-
-            const nearesttemp = arr.filter(x=> x.distance == smallestNumber && x.data.timerange[0] == incoming)[0]
-            const position1 = nearesttemp.data
-
-            if ((position1.locate != undefined || position1.locate != null) && !position1.place.includes('IAMP')) {
+    const progress = (data) => {
+        if (data.place.includes('IAMP') || (!data.place.includes('IAMP')  && data.locate != null)) {
+            setRe(false)
+            if (data.place.includes('IAMP') ) {
                 setEventPlace('')
-                 fetch(encodeURI(fet + '/locator/getlocate?lat=' + position1.locate[0] + '&lon=' + position1.locate[1]), {
+                 fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.placeObj.placeCoodinate[0] + '&lon=' + data.placeObj.placeCoodinate[1]), {
                      method: 'post', // or 'PUT'
                      })
                      .then(response => response.json())
@@ -113,42 +44,200 @@ const Finder = ({fet, setSec, width, kamin}) => {
                      .catch((error) => {
                      console.error('Error:', error);
                      });
-             }
-
-            setSignal(nearesttemp);
-        } 
-        setLoaded(true)
-    }
-
-    const FindAction = (data) => {
-        setLoaded(false)
-        setRefresh(false)
-        navigator.geolocation.getCurrentPosition(function(position) {
+            } else {
+                setEventPlace('')
+                 fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.locate[0] + '&lon=' + data.locate[1]), {
+                     method: 'post', // or 'PUT'
+                     })
+                     .then(response => response.json())
+                     .then(data => {
+                         setEventPlace(data.display_name.split(", ")[0])
+                     })
+                     .catch((error) => {
+                     console.error('Error:', error);
+                     });
+            }
             setTimeout(() => {
-                setRefresh(true)
-            }, 30000);
-            progress(position.coords, data)
-          }, function(ex) {
-            alert(ex.message)
-          }, {timeout: 10000});
+                setRe(true)
+            }, 20000)
+         }
     }
+
+
+
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+ 
+
+    const checkeventStart = (start, end) => {
+       if (moment().unix() < start) {
+            return 0
+       } else if (moment().unix() >= start && moment().unix() <= end) {
+            return 1
+       } else {
+            return 2
+       }
+    }
+
+    // เลื่อน scroll ไปล่างสุดแบบ smooth ที่เข้ากันได้กับทุกเบราว์เซอร์
+    function scrollToBottom() {
+        if ('scrollBehavior' in document.documentElement.style) {
+        // ใช้ smooth scroll ถ้าเบราว์เซอร์รองรับ
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+            block: 'end'
+        });
+        } else {
+        // ใช้ scroll ปกติถ้าไม่รองรับ
+        window.scrollTo(0, document.body.scrollHeight);
+        }
+    }
+    // เลื่อน scroll ไปบนสุดแบบ smooth ที่เข้ากันได้กับทุกเบราว์เซอร์
+    function scrollToTop() {
+        if ('scrollBehavior' in document.documentElement.style) {
+        // ใช้ smooth scroll ถ้าเบราว์เซอร์รองรับ
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        } else {
+        // ใช้ scroll ปกติถ้าไม่รองรับ
+        window.scrollTo(0, 0);
+        }
+        setEventPlace('')
+        setSignal(null)
+    }
+  
+  
+  
+
+  
 
     React.useEffect(() => {
-        AOS.init({ duration: 800 });
-        setSec('CGM48 Event Finder')
+        AOS.init({ duration: 1000 });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(encodeURI(fet + '/cgm48/getadsupdate'), {
-            method: 'post', // or 'PUT'
+        if (map.current) return; // initialize map only once
+          map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [100.4935089, 13.7524938],
+            zoom: 10,
+            maxZoom:20,
+            minZoom: 8
+          });
+          
+          map.current.addControl(
+            new mapboxgl.GeolocateControl({
+                fitBoundsOptions: {
+                    maxZoom: 9
+                },
+              positionOptions: {
+              enableHighAccuracy: false
+              },
+              trackUserLocation: true,
             })
-            .then(response => response.json())
-            .then(data => {
-                setArr(data)
-                FindAction(data)
-            })
-            .catch((error) => {
-                setLoaded(true)
-            console.error('Error:', error);
-            });
+            );
+          fetch('https://cpxdevapi' + (Math.floor(Math.random() * 2) + 1).toString() +'.azurewebsites.net/cgm48/getadsupdate',{
+            method: 'post'
+          })
+          .then(response => response.json())
+          .then((data) => {
+            if (map.current != null) {
+              let geo = []
+              for (let i=0; i< data.length; i++){
+                if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
+                    if (data[i].place.includes('IAMP') ) {
+                        const coodinate = [data[i].placeObj.placeCoodinate[1], data.placeObj.placeCoodinate[0]]
+                        const popup = new mapboxgl.Popup()
+                          .setHTML('<p id="'+ data[i].newsId + '">' + data[i].title +'</p>')
+                          .addTo(map.current);
+                        popup.remove();
+                        let props; 
+                        switch(checkeventStart(data[i].timerange[0], data[i].timerange[1])) {
+                            case 0 : {
+                                props = { "color": "#00aeff",easeId: data[i].newsId }
+                                break;
+                            }
+                            case 1 : {
+                                props = { "color": "#cb96c2",easeId: data[i].newsId }
+                                break;
+                            }
+                            default : {
+                                props = { "color": "#747575",easeId: data[i].newsId }
+                                break;
+                            }
+                        }
+                        new mapboxgl.Marker(props)
+                          .setLngLat(coodinate).addTo(map.current).setPopup(popup)
+                    } else {
+                        const coodinate = [data[i].locate[1], data[i].locate[0]]
+                        const popup = new mapboxgl.Popup()
+                          .setHTML('<p id="'+ data[i].newsId + '">' + data[i].title +'</p>')
+                          .addTo(map.current);
+                        popup.remove();
+                        let props; 
+                        switch(checkeventStart(data[i].timerange[0], data[i].timerange[1])) {
+                            case 0 : {
+                                props = { "color": "#00aeff",easeId: data[i].newsId }
+                                break;
+                            }
+                            case 1 : {
+                                props = { "color": "#cb96c2",easeId: data[i].newsId }
+                                break;
+                            }
+                            default : {
+                                props = { "color": "#747575",easeId: data[i].newsId }
+                                break;
+                            }
+                        }
+                        new mapboxgl.Marker(props)
+                          .setLngLat(coodinate).addTo(map.current).setPopup(popup)
+                    }
+                 }
+              }
+              setArr(data)
+              setLoaded(true)
+              map.current.on("click", (e) => {
+                if (e.target._popups[0] == undefined || refresh == false) {
+                    return;
+                }
+                const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
+                let d = null;
+                for (let i=0; i< data.length; i++){
+                    if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
+                        if (data[i].place.includes('IAMP') ) {
+                            if (data[i].placeObj.placeCoodinate[0] == marker.lat && data[i].placeObj.placeCoodinate[1] == marker.lng) {
+                                d = data[i]
+                                break;
+                            }
+                        } else {
+                            if (data[i].locate[0] == marker.lat && data[i].locate[1] == marker.lng) {
+                                    d = data[i]
+                                    break;
+                            }
+                        }
+                     }
+                  }
+                
+                if (d != null) {
+                    if (d.place.includes('IAMP') ) {
+                        map.current.setCenter([d.placeObj.placeCoodinate[1], d.placeObj.placeCoodinate[0]]);
+                    } else {
+                        map.current.setCenter([d.locate[1], d.locate[0]]);
+                    }
+                  setSignal(d)
+                  progress(d)
+                  setTimeout(() => {
+                    scrollToBottom()
+                  }, 2000);
+                }
+              });
+            }
+          })
+          .catch(() => {});
     }, [])
 
    
@@ -156,104 +245,94 @@ const Finder = ({fet, setSec, width, kamin}) => {
 
     return ( 
         <>
-        <CardHeader className='container mt-5' title='CGM48 Event Finder' subheader='New feature for CGM48 Fans who want to see CGM48 events from your nearby.'
-        action={
-            refresh ? (
-                <IconButton onClick={() =>
-                    Loaded == true ? FindAction(Arr) : null
-                }>
-                  <CachedIcon />
-                </IconButton>
-            ) : null
-          } />
+        <CardHeader className='container mt-5' title='BNK48 Event Finder' subheader='New feature for BNK48 Fans who want to see BNK48 events from your nearby.' />
        
         {/* <p className='text-center'>All upcoming BNK48 Theater Stage showtime at BNK48 Campus, 4th Floor at The Mall Bangkapi. See navigate to Theater from <a href="https://goo.gl/maps/CFvM1PSbY7smBPkh9" target="_blank">here</a></p> */}
  
         <div className='container mb-3'>
-            
+        <Card className='pt-3 pb-3 mb-3' data-aos="zoom-in">
+            <div ref={mapContainer} className="map-container" />
+           </Card>
         {Loaded && nearest != null ? (
-               <Card className='mb-3' data-aos="fade-right">
+               <Card className='mb-5' data-aos="fade-right">
                <CardContent className='row'>
                    <div className='col-md-5'>
-                       <img src={nearest.data.src} width="100%" />
+                       <img src={nearest.src} width="100%" />
                    </div>
                    <div className='col-md mt-3'>
-                       <h4 data-aos="zoom-in-right">{nearest.data.title}&nbsp;
-                       {nearest.data.timerange[0] > 0 && nearest.data.timerange[1] == 0 && nearest.data.timerange[0] <= moment().unix() && (
+                       <h4 data-aos="zoom-in-right">{nearest.title}&nbsp;
+                       {nearest.timerange[0] > 0 && nearest.timerange[1] == 0 && nearest.timerange[0] <= moment().unix() && (
                            <span className='badge badge-success'>
                                Event has been started
                            </span>
                            )}
-                           {nearest.data.timerange[0] > 0 && nearest.data.timerange[1] > 0 && nearest.data.timerange[0] < nearest.data.timerange[1] &&
-                           moment().unix() >= nearest.data.timerange[0] && moment().unix() <= nearest.data.timerange[1] && (
+                           {nearest.timerange[0] > 0 && nearest.timerange[1] > 0 && nearest.timerange[0] < nearest.timerange[1] &&
+                           moment().unix() >= nearest.timerange[0] && moment().unix() <= nearest.timerange[1] && (
                            <span className='badge badge-success'>
                                 Event is starting
                            </span>
                            )}
                        </h4>
-                       {nearest.data.timerange[0] > 0 && nearest.data.timerange[0] > moment().unix() && (
+                       {nearest.timerange[0] > 0 && nearest.timerange[0] > moment().unix() && (
                            <p className='mt-1 mb-3'>
-                               Event is coming soon in <b>{moment.unix(nearest.data.timerange[0]).format('ddd DD MMMM yyyy H:mm A')} {moment().unix() >= nearest.data.timerange[0] -259200 && moment().unix() < nearest.data.timerange[0] && (
+                               Event is coming soon in <b>{moment.unix(nearest.timerange[0]).format('ddd DD MMMM yyyy H:mm A')} {moment().unix() >= nearest.timerange[0] -259200 && moment().unix() < nearest.timerange[0] && (
                                <i>
-                                   <br /> Please be patient in {remainEvent(nearest.data.timerange[0])}
+                                   <br /> Please be patient in {remainEvent(nearest.timerange[0])}
                                </i>
                            )}</b>
                            </p>
                            )}
-                           {nearest.data.timerange[0] > 0 && nearest.data.timerange[1] == 0 && nearest.data.timerange[0] <= moment().unix() && (
+                           {nearest.timerange[0] > 0 && nearest.timerange[1] == 0 && nearest.timerange[0] <= moment().unix() && (
                            <p className='mt-1 mb-3'>
-                               Event has been started since <b>{moment.unix(nearest.data.timerange[0]).format('ddd DD MMMM yyyy')}</b>
+                               Event has been started since <b>{moment.unix(nearest.timerange[0]).format('ddd DD MMMM yyyy')}</b>
                            </p>
                            )}
-                           {nearest.data.timerange[0] > 0 && nearest.data.timerange[1] > 0 && nearest.data.timerange[0] < nearest.data.timerange[1] &&
-                           moment().unix() >= nearest.data.timerange[0] && moment().unix() <= nearest.data.timerange[1] && (
+                           {nearest.timerange[0] > 0 && nearest.timerange[1] > 0 && nearest.timerange[0] < nearest.timerange[1] &&
+                           moment().unix() >= nearest.timerange[0] && moment().unix() <= nearest.timerange[1] && (
                            <p className='mt-1 mb-3'>
-                                Event is starting until <b>{moment.unix(nearest.data.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
+                                Event is starting until <b>{moment.unix(nearest.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
                            </p>
                            )}
                            
                            
-                       <p className='text-muted mt-3' data-aos="zoom-in">{nearest.data.desc}</p>
+                       <p className='text-muted mt-3' data-aos="zoom-in">{nearest.desc}</p>
                        {
-                           nearest.data.link != '' && (
+                           nearest.link != '' && (
                                <div data-aos="fade-down">
-                               <a href={nearest.data.link} target='_blank'>More detail of this event</a>
+                               <a href={nearest.link} target='_blank'>More detail of this event</a>
                                </div>
                            )
                        }
                        {
-                           nearest.data.place != '' && nearest.data.place.includes('IAMP') && (
-                           <a href={nearest.data.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={nearest.data.placeobj.placeDesc}>
-                               <LocationOnIcon/> Location: {nearest.data.placeobj.placeName + ", " + nearest.data.placeobj.placeProvince}
+                           nearest.place != '' && nearest.place.includes('IAMP') && (
+                           <a href={nearest.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={nearest.placeobj.placeDesc}>
+                               <LocationOnIcon/> {nearest.placeobj.placeName + ", " + nearest.placeobj.placeProvince}
                            </a>
                            )
                        }
                        {
-                           nearest.data.place != '' && !nearest.data.place.includes('IAMP') && (
-                           <a href={nearest.data.place} target='_blank' className='mt-1'>
-                               <LocationOnIcon/> {eventPlace != '' ?eventPlace : 'Locating event place'}
+                           nearest.place != '' && !nearest.place.includes('IAMP') && (
+                           <a href={nearest.place} target='_blank' className='mt-1'>
+                               <LocationOnIcon/> {eventPlace != '' ? eventPlace : 'Locating event place'}
                            </a>
                            )
                        }
-                       {kamin != '-' && nearest != null && (nearest.data.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.data.memtag.indexOf('All') != -1 || nearest.data.memtag.indexOf('all') != -1) && (
+                       {kamin != '-' && nearest != null && (nearest.memtag.indexOf(kamin.toLowerCase()) != -1 || nearest.memtag.indexOf('All') != -1 || nearest.memtag.indexOf('all') != -1) && (
                         <div className="alert alert-info mt-3" role="alert">
                             <p>Your Kami-Oshi ({kamin} CGM48) has joined to this event. You should not miss it!</p>
                         </div>
                        )}
-                       {nearest.distance >= 25000 ? (
-                        <p data-aos="zoom-in-right" className='mt-3'>The event place is quite far (about {(nearest.distance / 1000).toFixed(2)} kilometers). However, you can take a taxi or drive yourself and suggested to planning your trip ahead of time.</p>
-                       ) :nearest.distance >= 100 && nearest.distance <= 25000 ? (
-                        <p data-aos="zoom-in-right" className='mt-3'>Approximate distance of {(nearest.distance / 1000).toFixed(2)} kilometers from your current address.</p>
-                       ) : (
-                        <p data-aos="zoom-in-right" className='mt-3'>You have arrived at this event!</p>
-                       )}
+                       <br />
+                       <div onClick={() => scrollToTop()} className='cur mt-3'>
+                            <a>Click to choose another CGM48 events</a>
+                       </div>
                    </div>
                </CardContent>
            </Card>
         ) : Loaded && nearest == null ? (
-            <Card className='mb-3 text-center'>
-            <CardContent className='row'>
-               <h5>Not found the nearest CGM48 event from here.</h5>
+            <Card className='mb-3'>
+            <CardContent className='row text-center'>
+               <h5>Please click marker on map to view CGM48 event detail.</h5>
             </CardContent>
         </Card>
      )  : (

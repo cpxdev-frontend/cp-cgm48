@@ -206,34 +206,36 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 }
                 const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
                 let d = null;
-                for (let i=0; i< data.length; i++){
-                    if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
-                        if (data[i].place.includes('IAMP') ) {
-                            if (data[i].placeObj.placeCoodinate[0] == marker.lat && data[i].placeObj.placeCoodinate[1] == marker.lng) {
-                                d = data[i]
-                                break;
-                            }
-                        } else {
-                            if (data[i].locate[0] == marker.lat && data[i].locate[1] == marker.lng) {
+               
+                setTimeout(() => {
+                    for (let i=0; i< data.length; i++){
+                        if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
+                            if (data[i].place.includes('IAMP') ) {
+                                if (data[i].placeObj.placeCoodinate[0] == marker.lat && data[i].placeObj.placeCoodinate[1] == marker.lng) {
                                     d = data[i]
                                     break;
+                                }
+                            } else {
+                                if (data[i].locate[0] == marker.lat && data[i].locate[1] == marker.lng) {
+                                        d = data[i]
+                                        break;
+                                }
                             }
+                         }
+                      }
+                    
+                    if (d != null) {
+                        if (d.place.includes('IAMP') ) {
+                            map.current.setCenter([d.placeObj.placeCoodinate[1], d.placeObj.placeCoodinate[0]]);
+                        } else {
+                            map.current.setCenter([d.locate[1], d.locate[0]]);
                         }
-                     }
-                  }
-                
-                if (d != null) {
-                    if (d.place.includes('IAMP') ) {
-                        map.current.setCenter([d.placeObj.placeCoodinate[1], d.placeObj.placeCoodinate[0]]);
-                    } else {
-                        map.current.setCenter([d.locate[1], d.locate[0]]);
+                      setSignal(d)
+                      progress(d)
                     }
-                  setSignal(d)
-                  progress(d)
-                  setTimeout(() => {
-                    scrollToBottom()
-                  }, 2000);
-                }
+                    
+                  scrollToBottom()
+                }, 2000);
               });
             }
           })

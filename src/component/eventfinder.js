@@ -107,14 +107,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
     function scrollToBottom() {
         if ('scrollBehavior' in document.documentElement.style) {
         // ใช้ smooth scroll ถ้าเบราว์เซอร์รองรับ
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth',
-            block: 'end'
-        });
-        } else {
-        // ใช้ scroll ปกติถ้าไม่รองรับ
-        window.scrollTo(0, document.body.scrollHeight);
+        document.getElementById('card').scrollIntoView({
+            behavior: 'smooth'
+          });
         }
     }
     // เลื่อน scroll ไปบนสุดแบบ smooth ที่เข้ากันได้กับทุกเบราว์เซอร์
@@ -279,7 +274,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
             <div ref={mapContainer} className="map-container" />
            </Card>
         {Loaded && nearest != null ? (
-               <Card className='mb-5' data-aos="fade-right">
+               <Card className='mb-5' data-aos="fade-right" id="card">
                <CardContent className='row'>
                    <div className='col-md-5'>
                        <img src={nearest.src} width="100%" />

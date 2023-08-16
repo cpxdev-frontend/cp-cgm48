@@ -13,6 +13,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [refresh, setRe] = React.useState(true);
     const [Arr, setArr] = React.useState([]);
+    const [loc, setLocate] = React.useState([]);
     const [nearest, setSignal] = React.useState(null);
     const [eventPlace, setEventPlace] = React.useState('');
 
@@ -34,32 +35,53 @@ const Finder = ({fet, setSec, width, kamin}) => {
             setRe(false)
             if (data.place.includes('IAMP') ) {
                 setEventPlace('')
-                 fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.placeObj.placeCoodinate[0] + '&lon=' + data.placeObj.placeCoodinate[1]), {
-                     method: 'post', // or 'PUT'
-                     })
-                     .then(response => response.json())
-                     .then(data => {
-                         setEventPlace(data.display_name.split(", ")[0])
-                     })
-                     .catch((error) => {
-                     console.error('Error:', error);
-                     });
+                if (loc.filter(x => x.id == data.newsId).length > 0) {
+                    setRe(true)
+                    setEventPlace(loc.filter(x => x.id == data.newsId)[0].place)
+                } else {
+                    fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.placeObj.placeCoodinate[0] + '&lon=' + data.placeObj.placeCoodinate[1]), {
+                        method: 'post', // or 'PUT'
+                        })
+                        .then(response => response.json())
+                        .then(res => {
+                            setEventPlace(res.display_name.split(", ")[0])
+                            let t = loc
+                            t.push({
+                                id: data.newsId,
+                                place: res.display_name.split(", ")[0]
+                            })
+                            setRe(true)
+                            setLocate(t)
+                        })
+                        .catch((error) => {
+                        console.error('Error:', error);
+                        });
+                }
             } else {
                 setEventPlace('')
-                 fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.locate[0] + '&lon=' + data.locate[1]), {
-                     method: 'post', // or 'PUT'
-                     })
-                     .then(response => response.json())
-                     .then(data => {
-                         setEventPlace(data.display_name.split(", ")[0])
-                     })
-                     .catch((error) => {
-                     console.error('Error:', error);
-                     });
+                if (loc.filter(x => x.id == data.newsId).length > 0) {
+                    setRe(true)
+                    setEventPlace(loc.filter(x => x.id == data.newsId)[0].place)
+                } else {
+                    fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.locate[0] + '&lon=' + data.locate[1]), {
+                        method: 'post', // or 'PUT'
+                        })
+                        .then(response => response.json())
+                        .then(res => {
+                            setEventPlace(res.display_name.split(", ")[0])
+                            let t = loc
+                            t.push({
+                                id: data.newsId,
+                                place: res.display_name.split(", ")[0]
+                            })
+                            setRe(true)
+                            setLocate(t)
+                        })
+                        .catch((error) => {
+                        console.error('Error:', error);
+                        });
+                }
             }
-            setTimeout(() => {
-                setRe(true)
-            }, 20000)
          }
     }
 
@@ -85,14 +107,9 @@ const Finder = ({fet, setSec, width, kamin}) => {
     function scrollToBottom() {
         if ('scrollBehavior' in document.documentElement.style) {
         // ใช้ smooth scroll ถ้าเบราว์เซอร์รองรับ
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth',
-            block: 'end'
-        });
-        } else {
-        // ใช้ scroll ปกติถ้าไม่รองรับ
-        window.scrollTo(0, document.body.scrollHeight);
+        document.getElementById('card').scrollIntoView({
+            behavior: 'smooth'
+          });
         }
     }
     // เลื่อน scroll ไปบนสุดแบบ smooth ที่เข้ากันได้กับทุกเบราว์เซอร์
@@ -206,30 +223,31 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 }
                 const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
                 let d = null;
-               
-                setTimeout(() => {
-                    for (let i=0; i< data.length; i++){
-                        if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
-                            if (data[i].place.includes('IAMP') ) {
-                                if (data[i].placeObj.placeCoodinate[0] == marker.lat && data[i].placeObj.placeCoodinate[1] == marker.lng) {
+                for (let i=0; i< data.length; i++){
+                    if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
+                        if (data[i].place.includes('IAMP') ) {
+                            if (data[i].placeObj.placeCoodinate[0] == marker.lat && data[i].placeObj.placeCoodinate[1] == marker.lng) {
+                                d = data[i]
+                                break;
+                            }
+                        } else {
+                            if (data[i].locate[0] == marker.lat && data[i].locate[1] == marker.lng) {
                                     d = data[i]
                                     break;
-                                }
-                            } else {
-                                if (data[i].locate[0] == marker.lat && data[i].locate[1] == marker.lng) {
-                                        d = data[i]
-                                        break;
-                                }
                             }
-                         }
-                      }
-                    
-                    if (d != null) {
-                        if (d.place.includes('IAMP') ) {
-                            map.current.setCenter([d.placeObj.placeCoodinate[1], d.placeObj.placeCoodinate[0]]);
-                        } else {
-                            map.current.setCenter([d.locate[1], d.locate[0]]);
                         }
+                     }
+                  }
+                
+                  if (d != null) {
+                    if (d.place.includes('IAMP') ) {
+                        map.current.setCenter([d.placeObj.placeCoodinate[1], d.placeObj.placeCoodinate[0]]);
+                    } else {
+                        map.current.setCenter([d.locate[1], d.locate[0]]);
+                    }
+                }
+                setTimeout(() => {
+                    if (d != null) {
                       setSignal(d)
                       progress(d)
                     }
@@ -256,7 +274,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
             <div ref={mapContainer} className="map-container" />
            </Card>
         {Loaded && nearest != null ? (
-               <Card className='mb-5' data-aos="fade-right">
+               <Card className='mb-5' data-aos="fade-right" id="card">
                <CardContent className='row'>
                    <div className='col-md-5'>
                        <img src={nearest.src} width="100%" />

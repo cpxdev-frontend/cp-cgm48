@@ -2,13 +2,24 @@ import React from 'react'
 import AOS from 'aos'
 import moment from 'moment';
 import { Typography, ListItem, Zoom, ListItemText,
-    Card, CardActionArea, CardContent, IconButton, Grow, Fade, Tooltip, CardHeader } from '@material-ui/core';
+    Card, CardActionArea, CardContent, IconButton, Grow, Fade, Tooltip, CardHeader, Avatar } from '@material-ui/core';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CachedIcon from '@material-ui/icons/Cached';
+import {bnklink, bnktype,cgmlink,cgmtype} from '../config'
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3B4dGgyMDE3IiwiYSI6ImNsZHY0MzN6bTBjNzEzcXJmamJtN3BsZ3AifQ.mYNwWaYKsiLeYXngFDtaWQ';
 
+const bnk = {
+    path: bnklink,
+    type: bnktype
+  }
+  const cgm = {
+    path: cgmlink,
+    type: cgmtype
+  }
+  
 const Finder = ({fet, setSec, width, kamin}) => {
     const [Loaded, setLoaded] = React.useState(false);
     const [refresh, setRe] = React.useState(true);
@@ -135,6 +146,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
 
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
+        setSec('Event Finder')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         if (map.current) return; // initialize map only once
           map.current = new mapboxgl.Map({
@@ -341,6 +353,16 @@ const Finder = ({fet, setSec, width, kamin}) => {
                         <div className="alert alert-info mt-3" role="alert">
                             <p>Your Kami-Oshi ({kamin} CGM48) has joined to this event. You should not miss it!</p>
                         </div>
+                       )}
+                       {nearest.memtag.indexOf('All') != "All" && !nearest.memtag[0].includes("gen") && (
+                        <div className='container mt-2 row'>
+                            <p className='pt-2'>CGM48 Member(s):&nbsp;</p>
+                            <AvatarGroup max={6}>
+                            {nearest.memtag.map((img) => (
+                                <Avatar alt={img} src={bnk.path + img + bnk.type} />
+                            ))}
+                        </AvatarGroup>
+                            </div>
                        )}
                        <br />
                        <div onClick={() => scrollToTop()} className='cur mt-3'>

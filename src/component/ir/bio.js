@@ -2,17 +2,18 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, CardHeader, CardMedia, Typography, Avatar } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import {bnklink, bnktype,cgmlink,cgmtype} from '../../config'
 
 const useStyles = makeStyles((theme) => ({
 
   }));
   const bnk = {
-    path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk4thalbum/profile/bnk/',
-    type: '.jpg'
+    path: bnklink,
+    type: bnktype
   }
   const cgm = {
-    path: 'https://cdn.statically.io/gl/cpx2017/iamprofile@main/cgm486thsing/',
-    type: '.jpg'
+    path: cgmlink,
+    type: cgmtype
   }
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

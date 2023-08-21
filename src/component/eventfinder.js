@@ -359,7 +359,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                             <p className='pt-2'>CGM48 Member(s):&nbsp;</p>
                             <AvatarGroup max={6}>
                             {nearest.memtag.map((img) => (
-                                <Avatar alt={img} src={bnk.path + img + bnk.type} />
+                                <Avatar alt={img} src={cgm.path + img + cgm.type} />
                             ))}
                         </AvatarGroup>
                             </div>

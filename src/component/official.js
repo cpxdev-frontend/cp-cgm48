@@ -24,7 +24,7 @@ const Offi = ({fet, setSec, width}) => {
         setTimeout(() => {
             setLoaded(true)
             setArr([])
-        }, 1000);
+        }, 3000);
         // fetch(encodeURI(fet + '/cgm48/getoffnewsnew?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
         //     method: 'post', // or 'PUT'
         //     })
@@ -72,7 +72,7 @@ const Offi = ({fet, setSec, width}) => {
         {Loaded ? (
              <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
-             <div className='row'>
+             <div className='col-12'>
              {Arr != null ? (
                  <Timeline
                  dataSource={{

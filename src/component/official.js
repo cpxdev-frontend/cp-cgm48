@@ -20,27 +20,31 @@ const Offi = ({fet, setSec, width}) => {
         AOS.init({ duration: 800 });
         setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        fetch(encodeURI(fet + '/cgm48/getoffnewsnew?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
-            method: 'post', // or 'PUT'
-            })
-            .then(response => response.text())
-            .then(data => {
-                setLoaded(true)
-                setArr(data.replaceAll("twstalker", "twitter"))
-                const elements = document.querySelectorAll(".activity-posts");
-                elements.forEach(function(element) {
-                    element.setAttribute('data-aos', 'zoom-in-down');
-                });
+        setTimeout(() => {
+            setLoaded(true)
+            setArr([])
+        }, 1000);
+        // fetch(encodeURI(fet + '/cgm48/getoffnewsnew?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
+        //     method: 'post', // or 'PUT'
+        //     })
+        //     .then(response => response.text())
+        //     .then(data => {
+        //         setLoaded(true)
+        //         setArr(data.replaceAll("twstalker", "twitter"))
+        //         const elements = document.querySelectorAll(".activity-posts");
+        //         elements.forEach(function(element) {
+        //             element.setAttribute('data-aos', 'zoom-in-down');
+        //         });
 
-                const img = document.querySelectorAll(".main-photo");
-                img.forEach(function(element) {
-                    element.classList.add('text-center');
-                });
-            })
-            .catch((error) => {
-                setLoaded(true)
-            console.error('Error:', error);
-            });
+        //         const img = document.querySelectorAll(".main-photo");
+        //         img.forEach(function(element) {
+        //             element.classList.add('text-center');
+        //         });
+        //     })
+        //     .catch((error) => {
+        //         setLoaded(true)
+        //     console.error('Error:', error);
+        //     });
     }, [])
 
     function removeurl(text) {
@@ -69,8 +73,7 @@ const Offi = ({fet, setSec, width}) => {
              <br />
              <div className='row'>
              {Arr != null ? (
-                 <div className='container' dangerouslySetInnerHTML={{__html: Arr}}>         
-                 </div>
+                 <a class="twitter-timeline" href="https://twitter.com/cgm48official"></a>
              ) : (
                  <div className='text-center col-md-12'>
                     No update from CGM48 Official

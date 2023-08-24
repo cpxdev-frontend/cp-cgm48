@@ -70,7 +70,7 @@ const Offi = ({fet, setSec, width}) => {
         {Loaded ? (
              <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
-             <div className='col-12'>
+             <div className='col-12 mb-5'>
              {Arr != null ? (
                  <Timeline
                  dataSource={{

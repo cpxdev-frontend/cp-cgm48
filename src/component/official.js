@@ -24,7 +24,7 @@ const Offi = ({fet, setSec, width}) => {
         setTimeout(() => {
             setLoaded(true)
             setArr([])
-        }, 3000);
+        }, 5000);
         // fetch(encodeURI(fet + '/cgm48/getoffnewsnew?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
         //     method: 'post', // or 'PUT'
         //     })

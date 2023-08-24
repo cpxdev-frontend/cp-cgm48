@@ -8,6 +8,7 @@ import moment from 'moment'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import "../../src/official.css"; // requires a loader
+import { Timeline } from 'react-twitter-widgets'
 
 const Offi = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
@@ -73,7 +74,12 @@ const Offi = ({fet, setSec, width}) => {
              <br />
              <div className='row'>
              {Arr != null ? (
-                 <a class="twitter-timeline" href="https://twitter.com/cgm48official"></a>
+                 <Timeline
+                 dataSource={{
+                   sourceType: 'profile',
+                   screenName: 'cgm48official'
+                 }}
+               />
              ) : (
                  <div className='text-center col-md-12'>
                     No update from CGM48 Official

@@ -21,10 +21,8 @@ const Offi = ({fet, setSec, width}) => {
         AOS.init({ duration: 800 });
         setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        setTimeout(() => {
-            setLoaded(true)
+        setLoaded(true)
             setArr([])
-        }, 8000);
         // fetch(encodeURI(fet + '/cgm48/getoffnewsnew?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
         //     method: 'post', // or 'PUT'
         //     })

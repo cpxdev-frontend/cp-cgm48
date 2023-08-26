@@ -741,12 +741,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Released album and single" />
                 </ListItem>
-                <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
+                {/* <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <LanguageIcon />
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
-                </ListItem>
+                </ListItem> */}
                 <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge3', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
@@ -865,7 +865,7 @@ React.useEffect(() => {
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  {/* <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} /> */}
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/event" render={() => <EventFind fet={Fet().ul} setSec={(v) => setSec(v)} width={width} kamin={kamin} />} />

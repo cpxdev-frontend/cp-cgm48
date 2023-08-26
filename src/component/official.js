@@ -7,12 +7,10 @@ import AOS from "aos";
 import moment from 'moment'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import "../../src/official.css"; // requires a loader
-import { Timeline } from 'react-twitter-widgets'
 
 const Offi = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
-    const [Arr, setArr] = React.useState(null);
+    const [Arr, setArr] = React.useState([]);
     const [open, setOpen] = React.useState(false);
     const [para, setpara] = React.useState('');
     const [fetLLoad, setFet] = React.useState(false);
@@ -21,29 +19,18 @@ const Offi = ({fet, setSec, width}) => {
         AOS.init({ duration: 800 });
         setSec('Official Update')
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-        setLoaded(true)
-            setArr([])
-        // fetch(encodeURI(fet + '/cgm48/getoffnewsnew?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
-        //     method: 'post', // or 'PUT'
-        //     })
-        //     .then(response => response.text())
-        //     .then(data => {
-        //         setLoaded(true)
-        //         setArr(data.replaceAll("twstalker", "twitter"))
-        //         const elements = document.querySelectorAll(".activity-posts");
-        //         elements.forEach(function(element) {
-        //             element.setAttribute('data-aos', 'zoom-in-down');
-        //         });
-
-        //         const img = document.querySelectorAll(".main-photo");
-        //         img.forEach(function(element) {
-        //             element.classList.add('text-center');
-        //         });
-        //     })
-        //     .catch((error) => {
-        //         setLoaded(true)
-        //     console.error('Error:', error);
-        //     });
+        fetch(encodeURI(fet + '/cgm48/getoffnews?tstamp=' + Math.floor( new Date().getTime()  / 1000)), {
+            method: 'post', // or 'PUT'
+            })
+            .then(response => response.json())
+            .then(data => {
+                setLoaded(true)
+                setArr(data.rss.channel.item)
+            })
+            .catch((error) => {
+                setLoaded(true)
+            console.error('Error:', error);
+            });
     }, [])
 
     function removeurl(text) {
@@ -70,17 +57,23 @@ const Offi = ({fet, setSec, width}) => {
         {Loaded ? (
              <div className={"stage justify-content-center pt-5" + (width > 600 ? ' pl-5 pr-5' : ' pl-3 pr-3')}>
              <br />
-             <div className='col-12 mb-5'>
-             {Arr != null ? (
-                 <Timeline
-                 dataSource={{
-                   sourceType: 'profile',
-                   screenName: 'cgm48official'
-                 }}
-               />
-             ) : (
+             <div className='row'>
+             {Arr.length > 0 ? Arr.map((item,i) => item.link.includes('cgm48official') && (
+                 <div className={"col-md-12 mb-5" + (width > 600 ? ' pl-5 pr-5' : '')} data-aos="zoom-in-down">
+                 <Card onClick={() => hand(true,item)}>
+                <CardContent>
+                <Typography variant="h6" dangerouslySetInnerHTML={{ __html: removeurl(item.title.replace(new RegExp('\n', 'g'), '<br/>')) }}>
+                    </Typography>
+                    <hr />
+                    <Typography className='pt-1' color="textSecondary">
+                    Tweeted in {moment(item.pubDate).local().locale('en').format("DD MMMM YYYY HH:mm")}
+                    </Typography>
+                    </CardContent>
+                 </Card>
+                 </div>
+             )) : (
                  <div className='text-center col-md-12'>
-                    No update from CGM48 Official
+                      No update from CGM48 Official
                  </div>
              )}
              </div>
@@ -99,7 +92,7 @@ const Offi = ({fet, setSec, width}) => {
                            <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>
                            <TwitterTweetEmbed
-                               tweetId={para.link.replace("https://india.unofficialbird.com/bnk48official/status/", "").replace("#m", "")}
+                                 tweetId={para.link.replace("https://nitter.net/cgm48official/status/", "").replace("#m", "")}
                                onLoad={() => setFet(false)}
                                />
                                </div>
@@ -107,7 +100,7 @@ const Offi = ({fet, setSec, width}) => {
                                {fetLLoad && (
                                     <Zoom in={fetLLoad} timeout={{ enter: 200, exit: 200}}>
                                <div className='text-center'>
-                                    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                                    <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                                     </div>
                                     </Zoom>
                                )}

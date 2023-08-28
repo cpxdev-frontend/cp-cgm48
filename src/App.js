@@ -741,12 +741,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Released album and single" />
                 </ListItem>
-                {/* <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
+                <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <LanguageIcon />
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
-                </ListItem> */}
+                </ListItem>
                 <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge3', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />

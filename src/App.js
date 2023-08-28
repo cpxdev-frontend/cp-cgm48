@@ -865,7 +865,7 @@ React.useEffect(() => {
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  {/* <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} /> */}
+                  <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/event" render={() => <EventFind fet={Fet().ul} setSec={(v) => setSec(v)} width={width} kamin={kamin} />} />

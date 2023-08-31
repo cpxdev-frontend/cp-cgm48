@@ -50,7 +50,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                     setRe(true)
                     setEventPlace(loc.filter(x => x.id == data.newsId)[0].place)
                 } else {
-                    fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.placeObj.placeCoodinate[0] + '&lon=' + data.placeObj.placeCoodinate[1]), {
+                    fetch(encodeURI(fet + '/locator/getlocate?lat=' + data.placeobj.placeCoodinate[0] + '&lon=' + data.placeobj.placeCoodinate[1]), {
                         method: 'post', // or 'PUT'
                         })
                         .then(response => response.json())
@@ -179,7 +179,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
               for (let i=0; i< data.length; i++){
                 if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                     if (data[i].place.includes('IAMP') ) {
-                        const coodinate = [data[i].placeObj.placeCoodinate[1], data.placeObj.placeCoodinate[0]]
+                        const coodinate = [data[i].placeobj.placeCoodinate[1], data[i].placeobj.placeCoodinate[0]]
                         const popup = new mapboxgl.Popup()
                           .setHTML('<p id="'+ data[i].newsId + '">' + data[i].title +'</p>')
                           .addTo(map.current);
@@ -238,7 +238,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 for (let i=0; i< data.length; i++){
                     if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                         if (data[i].place.includes('IAMP') ) {
-                            if (data[i].placeObj.placeCoodinate[0] == marker.lat && data[i].placeObj.placeCoodinate[1] == marker.lng) {
+                            if (data[i].placeobj.placeCoodinate[0] == marker.lat && data[i].placeobj.placeCoodinate[1] == marker.lng) {
                                 d = data[i]
                                 break;
                             }
@@ -253,7 +253,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 
                   if (d != null) {
                     if (d.place.includes('IAMP') ) {
-                        map.current.setCenter([d.placeObj.placeCoodinate[1], d.placeObj.placeCoodinate[0]]);
+                        map.current.setCenter([d.placeobj.placeCoodinate[1], d.placeobj.placeCoodinate[0]]);
                     } else {
                         map.current.setCenter([d.locate[1], d.locate[0]]);
                     }
@@ -269,7 +269,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
               });
             }
           })
-          .catch(() => {});
+          .catch((a) => {console.log(a)});
     }, [])
 
    

@@ -49,6 +49,21 @@ const Offi = ({fet, setSec, width}) => {
             }
         }
 
+        function getxurl(url) {
+            if (url.includes('nitter.d420.de')) {
+                return url.replace("https://nitter.d420.de/bnk48official/status/", "").replace("#m", "")
+            }
+            if (url.includes('nitter.nicfab.eu')) {
+                return url.replace("https://nitter.d420.de/bnk48official/status/", "").replace("#m", "")
+            }
+            if (url.includes('nitter.unixfox.eu')) {
+                return url.replace("https://nitter.unixfox.eu/bnk48official/status/", "").replace("#m", "")
+            }
+            if (url.includes('nitter.poast.org')) {
+                return url.replace("https://nitter.poast.org/bnk48official/status/", "").replace("#m", "")
+            }
+            return url;
+        }
 
     return ( 
         <>
@@ -92,7 +107,7 @@ const Offi = ({fet, setSec, width}) => {
                            <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>
                            <TwitterTweetEmbed
-                                 tweetId={para.link.replace("https://nitter.d420.de/cgm48official/status/", "").replace("#m", "")}
+                               tweetId={getxurl(para.link)}
                                onLoad={() => setFet(false)}
                                />
                                </div>

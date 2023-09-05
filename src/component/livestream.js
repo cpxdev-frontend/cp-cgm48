@@ -116,7 +116,11 @@ const Stream = ({fet, setSec, width}) => {
             </Card>
         </TabPanel>
         )}
-        
+         <Card className='mt-3'>
+          <CardContent className="text-center">
+            New feature: This is CGM48 LIVE Room. The new feature of watching CGM48 LIVE Sreaming event. The first Room can be detected from CGM48 Youtube official and another sponsership platform (for Press Promote etc.). The second Room can be detected from another sponsership platform (for Press Promote etc. - if included). You can switch LIVE Room which you want seamlessly.
+          </CardContent>
+        </Card>
             <Backdrop className={classes.backdrop} open={Load}>
             <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" />
         </Backdrop>

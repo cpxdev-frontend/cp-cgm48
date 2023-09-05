@@ -343,17 +343,28 @@ React.useEffect(() => {
   }
 
   const FetLive = (fet) => {
-    fetch(fet + '/cgm48/getstream?ch=3', {
+    fetch(fet + '/cgm48/getstreamlist?ch=2', {
       method :'post'
   })
       .then(response => response.json())
       .then(data => {
-        if (data.link != '') {
-          setStream(data)
-          setImageThumb(data.src)
-          setLive(true)
-        } else {
+        if (data.length == 1 && data[0].link == '-') {
           setLive(false)
+        } else {
+          if (data.filter(x => x.link != '').length == 2) {
+            const randomNumber = Math.random(); 
+            if (randomNumber < 0.5) {
+              setStream(data[0])
+              setImageThumb(data[0].src)
+            } else {
+              setStream(data[1])
+              setImageThumb(data[1].src)
+            }
+          } else {
+            setStream(data[0])
+            setImageThumb(data[0].src)
+          }
+          setLive(true)
         }
       }).catch(() => {
         setLive(false)

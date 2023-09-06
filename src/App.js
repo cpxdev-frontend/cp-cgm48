@@ -348,7 +348,7 @@ React.useEffect(() => {
   })
       .then(response => response.json())
       .then(data => {
-        if (data.length == 1 && data[0].link == '-') {
+        if (data.length == 1 && data[0].link == '') {
           setLive(false)
         } else {
           if (data.filter(x => x.link != '').length == 2) {

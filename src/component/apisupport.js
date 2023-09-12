@@ -5,7 +5,7 @@ const API = ({setSec, width}) => {
     const [ stat, setstat] = React.useState(null);
     const APITest = () => {
       setSec('API Service')
-      fetch('https://api-qcw7.onrender.com/home/status')
+      fetch('https://cpxdevconnect.azurewebsites.net/home/status')
       .then(function () {
           setSec('API Service [System health is good]')
           setstat(true)

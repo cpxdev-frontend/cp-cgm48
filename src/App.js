@@ -235,7 +235,7 @@ function App() {
   
   React.useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-        .withUrl("https://cpxdevapi" + (Math.floor(Math.random() * 2) + 1).toString() +".azurewebsites.net/status")
+        .withUrl("https://cpxdevservice.onrender.com/status")
         .build();
 
     setConnection(newConnection);

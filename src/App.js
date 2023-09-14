@@ -343,6 +343,10 @@ React.useEffect(() => {
   }
 
   const FetLive = (fet) => {
+    if (window.location.pathname.includes('/mana')) {
+      setLive(false)
+      return;
+    }
     fetch(fet + '/cgm48/getstreamlist?ch=2', {
       method :'post'
   })

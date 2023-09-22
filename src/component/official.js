@@ -53,11 +53,11 @@ const Offi = ({fet, setSec, width}) => {
             if (url.includes('nitter.d420.de')) {
                 return url.replace("https://nitter.d420.de/cgm48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.nicfab.eu')) {
-                return url.replace("https://nitter.nicfab.eu/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.privacydev.net')) {
+                return url.replace("https://nitter.privacydev.net/cgm48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.unixfox.eu')) {
-                return url.replace("https://nitter.unixfox.eu/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.services.woodland.cafe')) {
+                return url.replace("https://nitter.services.woodland.cafe/cgm48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.poast.org')) {
                 return url.replace("https://nitter.poast.org/cgm48official/status/", "").replace("#m", "")

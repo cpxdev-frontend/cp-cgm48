@@ -1135,28 +1135,28 @@ transitionDuration={500}
          <div className="row">
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
            <div className="col pr-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/1.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/1.jpg" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 200 : 300 }}>
            <div className="col p-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/2.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/2.jpg" width="100%" />
            </div>
          </Fade>
          <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 200 }}>
            <div className="col p-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/3.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/3.jpg" width="100%" />
            </div>
          </Fade>
            <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 :  0 }}>
            <div className="col pl-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/pc/4.jpg" width="100%" />
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/4.jpg" width="100%" />
            </div>
          </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>Let's fun and beat the heat with CGM48 6th single "Sensei Kawaii!" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+            <AlertTitle>CGM48 2nd Album "Hisashiburino Lip Gloss" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
                Double click or tap on image to skip this page
              </Alert>
              </div>
@@ -1164,7 +1164,7 @@ transitionDuration={500}
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-             <AlertTitle>Let's fun and beat the heat with CGM48 6th single "Sensei Kawaii!" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+            <AlertTitle>CGM48 2nd Album "Hisashiburino Lip Gloss" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
                      Double click/tap here on image or wait 5 seconds to skip this page
              </Alert>
              </div>

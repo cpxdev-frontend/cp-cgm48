@@ -851,7 +851,6 @@ React.useEffect(() => {
                           onClose={() => setAnchorEl(null)}
                         >
                           <MenuItem onClick={(e) => loginAction(1)}>Google Account</MenuItem>
-                          <MenuItem onClick={(e) => loginAction(2)}>Twitter Account</MenuItem>
                           <MenuItem onClick={(e) => loginAction(3)}>Yahoo Account</MenuItem>
                         </Menu>
                         </>

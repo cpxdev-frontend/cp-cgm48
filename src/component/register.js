@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 const Registype = [
     {label: "Choose service", value: 0},
     {label: "Google Account", value: 1},
-    {label: "Twitter Account", value: 2},
     {label: "Yahoo Account", value: 3}
 ]
 

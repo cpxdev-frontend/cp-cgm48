@@ -16,7 +16,7 @@ const Contact = ({fet, setSec, width}) => {
         {width >1200 && (
           <div class="video-background">
            <Fade in={true} timeout={800}>
-           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgmsanseikawaii.png" width={width} />
+           <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm4thalbum.png" width={width} />
               </Fade>
       </div>
         )}

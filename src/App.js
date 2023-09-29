@@ -740,6 +740,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' secondary='External link: BNK48 fan Space' />
                 </ListItem>
+                <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge4', '_blank')} button>
+                  <ListItemIcon>
+                    <HowToVoteIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='BNK48 16th Single General Election' secondary='External link: BNK48 fan Space' />
+                </ListItem>
                 <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
                   <ListItemIcon>
                     <LiveTvIcon className={spcLive ? 'text-success' : ''} />

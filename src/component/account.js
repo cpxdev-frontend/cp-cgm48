@@ -218,7 +218,7 @@ const AccountMana = ({fet, setSec, width}) => {
             <div className='row'>
                     <p className='pt-3'>Account Link: </p>
                     <Button onClick={() => Updateparam(0)} className='m-1' variant='contained' color='primary' disabled={data.googleId != '' ? true : false}>{data.googleId != '' ? 'Google Account: Already Linked' : 'Link to Google Account'}</Button>
-                    <Button onClick={() => Updateparam(1)} className='m-1' variant='contained' color='primary' disabled={data.tweetId != '' ? true : false}>{data.tweetId != '' ? 'Microsoft Account: Already Registered' : 'Link to Microsoft Account'}</Button>
+                    <Button onClick={() => Updateparam(1)} className='m-1' variant='contained' color='primary' disabled={data.msId != '' ? true : false}>{data.msId != '' ? 'Microsoft Account: Already Registered' : 'Link to Microsoft Account'}</Button>
                     <Button onClick={() => Updateparam(2)} className='m-1' variant='contained' color='primary' disabled={data.yahooId != '' ? true : false}>{data.yahooId != '' ? 'Yahoo Account: Already Linked' : 'Link to Yahoo Account'}</Button>
             </div>
             <Backdrop className={classes.backdrop} open={Load}>

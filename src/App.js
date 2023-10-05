@@ -650,6 +650,23 @@ React.useEffect(() => {
    
   }
 
+
+  const checkUser = () => {
+    if (window.localStorage.getItem("loged") != null) {
+        switch (JSON.parse(window.localStorage.getItem("loged")).providerId) {
+          case "google.com":
+            return "Google"
+          case "microsoft.com":
+            return "Microsoft"
+          case "yahoo.com":
+            return "Yahoo"
+          default:
+            break;
+        }
+    }
+    return ''
+  }
+
   if (uri != '' && allDone) {
     return (<>
        <Slide in={localStorage.getItem('lowgraphic') == null && width > 1100 ? !open : true} timeout={600} direction='down'>
@@ -876,7 +893,7 @@ React.useEffect(() => {
                   </Badge>
                   
                   </ListItemIcon>
-                  <ListItemText primary="You're logged in" secondary={localStorage.getItem("i")} />
+                  <ListItemText primary={"You're logged in as " + checkUser() + " account"} secondary={localStorage.getItem("i")} />
                 </ListItem>
                 )}
                     </>

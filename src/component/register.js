@@ -34,7 +34,7 @@ const RegisterMember = ({fet, setSec}) => {
         name: "",
         email: "",
         googleid: "",
-        twitterid: "",
+        msid: "",
         yahooid: ""
     })
     const [Load, setLoad] = React.useState(false);
@@ -147,7 +147,7 @@ const RegisterMember = ({fet, setSec}) => {
               UpdateParam('googleid', result.user.uid);
               break;
             case 2:
-              UpdateParam('twitterid', result.user.uid);
+              UpdateParam('msid', result.user.uid);
               break;
             case 3:
               UpdateParam('yahooid', result.user.uid);

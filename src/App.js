@@ -985,7 +985,7 @@ React.useEffect(() => {
                Sign out
            </Button>
            <Button onClick={(e) => {History.push('/account'); setMemDl(false); setOpen(false)}} className="text-dark">
-               Account Studio (Beta)
+               Account Studio
            </Button>
            <Button onClick={(e) => {setMemDl(false)}} className="text-dark">
                Close

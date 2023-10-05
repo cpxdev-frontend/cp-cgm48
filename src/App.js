@@ -805,7 +805,7 @@ React.useEffect(() => {
                   <ListItemIcon>
                     <AssignmentReturnedIcon />
                   </ListItemIcon>
-                  <ListItemText primary='Register Membership' secondary='Public Beta State' />
+                  <ListItemText primary='Register Membership' secondary='Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need' />
                 </ListItem>
                 )}
                 </d>

@@ -149,6 +149,22 @@ function capitalizeFirstLetter(string) {
                      if (i > -1) {
                         //navigator.vibrate(1000);
                         setBirthday(true)
+                        if (val == capitalizeFirstLetter(kamio)) {
+                            navigator.vibrate([500, 200]);
+                            JankenCong()
+
+                            setTimeout(() => {
+                                if (localStorage.getItem('kamibirth') == null) {
+                                    Swal.fire({
+                                        title: "Don't be alarmed. This is new feature for Fan Space Membership. you maybe feel vibrate from your device when today is youe Kami-Oshi's birthday.",
+                                        icon: 'info',
+                                        iconColor: '#49C5A8',
+                                      }).then(() => {
+                                        window.localStorage.setItem('kamibirth', '')
+                                      })
+                                }
+                            }, 7000);
+                        }
                      }
                 } else {
                     setBirthday(false)
@@ -183,7 +199,7 @@ function capitalizeFirstLetter(string) {
             onPlay(true)
             setTimeout(() => {
                 onPlay(false)
-            }, 3000);
+            }, 5000);
         }
 
         const Subsc = (val) =>{
@@ -362,10 +378,10 @@ function capitalizeFirstLetter(string) {
                     if (datastatus.inRank) {
                         setJanken(datastatus.response)
                         
-                        if (datastatus.response.jankenRank == 1) {
-                            navigator.vibrate([500, 200]);
-                            JankenCong()
-                        }
+                        // if (datastatus.response.jankenRank == 1) {
+                        //     navigator.vibrate([500, 200]);
+                        //     JankenCong()
+                        // }
                     }
                 }).catch(() => {
                     

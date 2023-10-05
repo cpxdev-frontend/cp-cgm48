@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const Registype = [
     {label: "Choose service", value: 0},
     {label: "Google Account", value: 1},
+    {label: "Microsoft Account", value: 2},
     {label: "Yahoo Account", value: 3}
 ]
 
@@ -129,7 +130,7 @@ const RegisterMember = ({fet, setSec}) => {
         provider = new GoogleAuthProvider();
         break;
       case 2:
-        provider = new TwitterAuthProvider();
+        provider = new OAuthProvider("microsoft.com");
         break;
       case 3:
         provider = new OAuthProvider("yahoo.com");

@@ -953,7 +953,7 @@ React.useEffect(() => {
        >
            <DialogTitle id="alert-dialog-title">Are you sure to sign-out</DialogTitle>
            <DialogContent>
-             {kamin != '-' ? (
+             {kamin != undefined && kamin != '' && kamin != '-' ? (
            <ListItem onClick={() => {
             const last = window.location.href
               History.push("/member/" + kamin.toLowerCase())

@@ -453,7 +453,7 @@ React.useEffect(() => {
     if (link.includes('https:') || link.includes('http:')) {
       window.open(link, '_blank')
     } else {
-      history.push(link)
+      History.push(link)
     }
   }
 
@@ -843,7 +843,7 @@ React.useEffect(() => {
                     confirmButtonText: 'View System Status',
                     denyButtonText: `Close`,
                     icon: 'info',
-                    iconColor: 'rgb(203, 150, 194)'
+                    iconColor: '#49C5A8'
                   }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {

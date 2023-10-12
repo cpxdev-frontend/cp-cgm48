@@ -484,6 +484,14 @@ function capitalizeFirstLetter(string) {
             return f
         }
 
+        const pageDirect = (link) => {
+            if (link.includes('https:') || link.includes('http:')) {
+              window.open(link, '_blank')
+            } else {
+              History.push(link)
+            }
+          }
+
         function ordinal_suffix_of(i) {
             var j = i % 10,
                 k = i % 100;
@@ -751,7 +759,7 @@ function capitalizeFirstLetter(string) {
                                             {
                                                 ita.link != '' && (
                                                     <div data-aos="fade-down">
-                                                    <a href={ita.link} target='_blank'>More detail of this event</a>
+                                                          <a onClick={() => pageDirect(ita.link)}>More detail of this event</a>
                                                     </div>
                                                 )
                                             }

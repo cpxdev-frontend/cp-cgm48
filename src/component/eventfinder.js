@@ -8,6 +8,9 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CachedIcon from '@material-ui/icons/Cached';
 import {bnklink, bnktype,cgmlink,cgmtype} from '../config'
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import {
+    useHistory,
+  } from "react-router-dom";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3B4dGgyMDE3IiwiYSI6ImNsZHY0MzN6bTBjNzEzcXJmamJtN3BsZ3AifQ.mYNwWaYKsiLeYXngFDtaWQ';
 
@@ -21,6 +24,7 @@ const bnk = {
   }
   
 const Finder = ({fet, setSec, width, kamin}) => {
+    const History = useHistory()
     const [Loaded, setLoaded] = React.useState(false);
     const [refresh, setRe] = React.useState(true);
     const [Arr, setArr] = React.useState([]);
@@ -140,7 +144,13 @@ const Finder = ({fet, setSec, width, kamin}) => {
     }
   
   
-  
+    const pageDirect = (link) => {
+        if (link.includes('https:') || link.includes('http:')) {
+          window.open(link, '_blank')
+        } else {
+          History.push(link)
+        }
+      }
 
   
 
@@ -331,7 +341,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                        {
                            nearest.link != '' && (
                                <div data-aos="fade-down">
-                               <a href={nearest.link} target='_blank'>More detail of this event</a>
+                               <a onClick={() => pageDirect(nearest.link)}>More detail of this event</a>
                                </div>
                            )
                        }

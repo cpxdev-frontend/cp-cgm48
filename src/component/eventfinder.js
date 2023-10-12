@@ -118,7 +118,6 @@ const Finder = ({fet, setSec, width, kamin}) => {
        }
     }
 
-    // เลื่อน scroll ไปล่างสุดแบบ smooth ที่เข้ากันได้กับทุกเบราว์เซอร์
     function scrollToBottom() {
         if ('scrollBehavior' in document.documentElement.style) {
         // ใช้ smooth scroll ถ้าเบราว์เซอร์รองรับ
@@ -127,7 +126,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
           });
         }
     }
-    // เลื่อน scroll ไปบนสุดแบบ smooth ที่เข้ากันได้กับทุกเบราว์เซอร์
+  
     function scrollToTop() {
         if ('scrollBehavior' in document.documentElement.style) {
         // ใช้ smooth scroll ถ้าเบราว์เซอร์รองรับ

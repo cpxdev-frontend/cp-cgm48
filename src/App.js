@@ -449,6 +449,14 @@ React.useEffect(() => {
       })
   }
 
+  const pageDirect = (link) => {
+    if (link.includes('https:') || link.includes('http:')) {
+      window.open(link, '_blank')
+    } else {
+      history.push(link)
+    }
+  }
+
   React.useEffect(() => {
     function isOdd() {
       const ran = Math.floor((Math.random() * 1000) + 1);
@@ -1050,9 +1058,7 @@ transitionDuration={500}
             </p>
             )}
 
-              <a onClick={() => {
-                if (item.link.includes('https://')) { window.open(item.link, '_blank') } else {History.push(item.link); setpopup(false);
-              }}} className='mt-1'>
+              <a onClick={() => pageDirect(item.link)} className='mt-1'>
                   Reference Link
               </a>
             <br />
@@ -1104,11 +1110,9 @@ transitionDuration={500}
                 This event has been started in <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(newspop[0].timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
             </p>
             )}
-            <a onClick={() => {
-                if (newspop[0].link.includes('https://')) { window.open(newspop[0].link, '_blank') } else {History.push(newspop[0].link); setpopup(false);
-              }}} className='mt-1'>
-                Reference Link
-            </a>
+             <a onClick={() => pageDirect(newspop[0].link)} className='mt-1'>
+                  Reference Link
+              </a>
             <br />
               {
                 newspop[0].place != '' && newspop[0].place.includes('IAMP') && (

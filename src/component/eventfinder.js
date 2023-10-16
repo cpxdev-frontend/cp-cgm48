@@ -382,7 +382,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                             </div>
                        )}
                        <br />
-                       <div onClick={() => scrollToTop()} className='cur mt-3'>
+                       <div onClick={() => scrollToTop()} className='cur mt-3 hoversense'>
                             <a>Click to choose another CGM48 events</a>
                        </div>
                    </div>

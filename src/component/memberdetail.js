@@ -758,7 +758,7 @@ function capitalizeFirstLetter(string) {
                                             <p className='text-muted mt-3' data-aos="zoom-in">{ita.desc}</p>
                                             {
                                                 ita.link != '' && (
-                                                    <div data-aos="fade-down">
+                                                    <div data-aos="fade-down" className='hoversense'>
                                                           <a onClick={() => pageDirect(ita.link)}>More detail of this event</a>
                                                     </div>
                                                 )

@@ -240,3 +240,10 @@ iframe[id*="twitter-widget"] {
       height: 400px;
       }
   }
+
+  .hoversense{
+    color: #49C5A8;
+  }
+  .hoversense:hover{
+    color: #037a5f;
+  }

@@ -44,7 +44,7 @@ import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import CodeIcon from '@material-ui/icons/Code';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
@@ -53,6 +53,7 @@ import EventIcon from '@material-ui/icons/Event';
 
 import Home from './component/home';
 import MemberList from './component/members';
+import Shi from './component/shihainin';
 import LiveCom from './component/livestream'
 import MamSam from './component/memberdetail';
 import News from './component/news';
@@ -623,41 +624,6 @@ React.useEffect(() => {
     }
   }
 
-  const setTokenDialog = () => {
-    setLoadToken(true)
-    fetch(uri + '/bnk48/upttokenid?i='  + (JSON.parse(localStorage.getItem("loged")).googleId).toString() + '&wallet=' + survey, {
-      method :'post'
-  })
-      .then(response => response.text())
-      .then(data => {
-        if (data == "true") {
-          setMemDl(false)
-          Swal.fire({
-            title: 'Your iAM Wallet code has been link to Fan Space successfully.',
-            icon: 'success',
-            iconColor: 'rgb(203, 150, 194)'
-          }).then(() => {
-            window.location.reload()
-          })
-        } else {
-          setLoadToken(false)
-          Swal.fire({
-            title: 'Your iAM Wallet code is incorrect.',
-            icon: 'error',
-            iconColor: 'rgb(203, 150, 194)'
-          })
-        }
-      }).catch(() => {
-        setLoadToken(false)
-        Swal.fire({
-          title: 'Cannot connect to server. please try again',
-          icon: 'error',
-          iconColor: 'rgb(203, 150, 194)'
-        })
-      })
-   
-  }
-
 
   const checkUser = () => {
     if (window.localStorage.getItem("loged") != null) {
@@ -752,6 +718,12 @@ React.useEffect(() => {
                     <PeopleIcon />
                   </ListItemIcon>
                   <ListItemText primary="Members" />
+                </ListItem>
+                <ListItem component={Link} to='/shihainin' className={window.location.pathname == '/shihainin' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Shihainin Palace' />
                 </ListItem>
                 <ListItem component={Link} to='/news' className={window.location.pathname == '/news' ? 'activeNav' : ''} button>
                   <ListItemIcon>
@@ -917,6 +889,7 @@ React.useEffect(() => {
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                  <Route path="/shihainin" render={() => <Shi fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />

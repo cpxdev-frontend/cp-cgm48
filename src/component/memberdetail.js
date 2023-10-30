@@ -636,9 +636,9 @@ function capitalizeFirstLetter(string) {
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />
-                                     {item.shihainin != undefined && (
-                                         <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>CGM48 Manager (Shihainin)</p>
-                                     )}
+                                    <CardActionArea className="mb-3" onClick={() => History.push('/shihainin')}>
+                                            <p class="badge text-light" style={{backgroundColor: "#BF953F"}}>CGM48 Manager (Shihainin)</p>
+                                         </CardActionArea>
                                     {item.captain != undefined && (
                                         <p className="mb-3 badge badge-pill badge-warning">CGM48 Captain</p>
                                     )}

@@ -196,7 +196,7 @@ function capitalizeFirstLetter(string) {
         return (  
         <>
             <div className="pt-5 pb-2">
-                <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{'Shihainin Palace'}</h3>
+                <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{'Shihainin House'}</h3>
                 <hr />
                 {Loaded ? (
                     <>

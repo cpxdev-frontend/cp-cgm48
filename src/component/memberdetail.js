@@ -101,6 +101,7 @@ function capitalizeFirstLetter(string) {
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
+        const [GEPro, setGEPromote] = React.useState('');
         const [fol, setFollowName] = React.useState('');
 
 
@@ -398,21 +399,21 @@ function capitalizeFirstLetter(string) {
            
             if (c != null && c != "") {
                 setSec('Loading Member description')
+
+                fetch(fet + '/cgm48/getge4poster?name=' + c.toLowerCase()  , {
+                    method :'post'
+                 })
+                 .then(response => response.json())
+                  .then(data => {
+                    if (data.status == true) {
+                        setGEPoster(data.src)
+                        setGEPromote(data.video)
+                    }
+                 }).catch(() => {
+                    
+                  });
+
                 if (localStorage.getItem("loged") != null) {
-
-                    fetch(fet + '/cgm48/getge4poster?name=' + c.toLowerCase()  , {
-                        method :'post'
-                     })
-                     .then(response => response.json())
-                      .then(data => {
-                        if (data.status == true) {
-                            setGEPoster(data.src)
-                        }
-                     }).catch(() => {
-                        
-                      });
-
-
                     fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                       method :'get'
                   })
@@ -553,6 +554,19 @@ function capitalizeFirstLetter(string) {
                }
         }
 
+        const showge4Promote = (u) => {
+            Swal.fire({
+                title: "BNK48 16th Single Senbatsu General Election Promote Video", html:
+                '<iframe width="100%" height="315" src="' + u +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                confirmButtonText: 'Go to GE4 Lobby page'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                History.push('/ge4')
+              }
+            })
+        }
+
         const showge4 = (u) => {
             Swal.fire({
                 title: "BNK48 16th Single Senbatsu General Election Poster Image",
@@ -579,7 +593,8 @@ function capitalizeFirstLetter(string) {
                 message={capitalizeFirstLetter(mem) +' CGM48 is candidated of BNK48 16th Single Senbatsu General Election. Click VIEW to see her poster.'}
                 action={
                     <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-                    <Button onClick={()=> showge4(GEPoster)}>View</Button>
+                       <Button onClick={()=> showge4(GEPoster)}>View Poster</Button>
+                        <Button onClick={()=> showge4Promote(GEPro)}>View Video Promote</Button>
                     <IconButton size="small" onClick={() => setGEPoster('')} aria-label="close" color="inherit">
                 <CloseIcon fontSize="small" />
                 </IconButton>

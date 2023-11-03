@@ -238,9 +238,9 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec, width}) => {
   )}
   <hr />
   {onMonth ? (
-    <CardHeader title={(<h3 className='mb-5' data-aos="flip-up">CGM48 Members Birthday on this month</h3>)} subheader={moment().format('MMMM YYYY')} />
+    <CardHeader className='mb-5' title={(<h3 data-aos="flip-up">CGM48 Members Birthday on this month</h3>)} subheader={moment().format('MMMM YYYY')} />
   ) : (
-    <CardHeader title={(<h3 className='mb-5' data-aos="flip-up">CGM48 Members Birthday in today</h3>)} subheader={moment().format('DD MMMM YYYY')} />
+    <CardHeader className='mb-5' title={(<h3 data-aos="flip-up">CGM48 Members Birthday in today</h3>)} subheader={moment().format('DD MMMM YYYY')} />
   )}
   {Loaded1 ? (
       <div className='row ml-3 mr-3 justify-content-center'>

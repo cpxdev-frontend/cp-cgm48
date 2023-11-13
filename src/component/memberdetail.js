@@ -98,6 +98,8 @@ function capitalizeFirstLetter(string) {
         const [countstep, setCount] = React.useState(false);
         const [loadfollow, setFollow] = React.useState(true);
         const [memLive, setMemLive] = React.useState(null);
+
+        const [v, setV] = React.useState(false);
         
         const [play, onPlay] = React.useState(false);
         const [GEPoster, setGEPoster] = React.useState('');
@@ -134,6 +136,7 @@ function capitalizeFirstLetter(string) {
             })
               .then(response => response.json())
               .then(data => {
+                setV(data.verified)
                 if (data.obj != 'none' && (data.obj.name).toLowerCase() == c) {
                   setKami(2)
                 } else {
@@ -299,6 +302,7 @@ function capitalizeFirstLetter(string) {
                       .then(response => response.json())
                       .then(data => {
                         setKami(1)
+                        setV(data.verified)
                         if (data.obj != 'none') {
                             Swal.fire({
                                 title: 'Confirm to Change your Kami-Oshi',
@@ -419,6 +423,7 @@ function capitalizeFirstLetter(string) {
                   })
                     .then(response => response.json())
                     .then(data => {
+                        setV(data.verified)
                       if (data.obj != 'none' && (data.obj.name).toLowerCase() == c) {
                         setKami(2)
                       } else {
@@ -589,7 +594,7 @@ function capitalizeFirstLetter(string) {
 
         return (  
         <>
-          <Snackbar open={GEPoster != '' ? true : false}  anchorOrigin={{ vertical:  window.innerWidth > 700 ? 'top' : 'bottom', horizontal:'center' }}
+          <Snackbar open={v && GEPoster != '' ? true : false}  anchorOrigin={{ vertical:  window.innerWidth > 700 ? 'top' : 'bottom', horizontal:'center' }}
                 message={capitalizeFirstLetter(mem) +' CGM48 is candidated of BNK48 16th Single Senbatsu General Election. Click VIEW to see her poster.'}
                 action={
                     <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
@@ -642,13 +647,6 @@ function capitalizeFirstLetter(string) {
                                             )}
                                             </>
                                         )}
-
-                                        {item["4tha"] != undefined && item["4tha"] == '' && width <= 600 && (
-                                            <marquee className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></marquee>
-                                        )}
-                                         {item["4tha"] != undefined && item["4tha"] == '' && width > 600 && (
-                                            <p className='cur' onClick={() => session4thAl(item)}>BNK48 4th Album "Gingham Check" is now on music streaming! Please click here to download {item.name}'s solo member image.<br/></p>
-                                        )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                     <hr />
                                     {item.shihainin != undefined && (
@@ -660,7 +658,7 @@ function capitalizeFirstLetter(string) {
                                         <p className="mb-3 badge badge-pill badge-warning">CGM48 Captain</p>
                                     )}
                                      {item.ir != undefined && (
-                                        <CardActionArea className="mb-3" onClick={() => setIRtog(true)}>
+                                        <CardActionArea className="mb-3" onClick={() => v ? setIRtog(true) : null}>
                                             <p className="badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
                                         </CardActionArea>
                                     )}
@@ -704,7 +702,7 @@ function capitalizeFirstLetter(string) {
                                     <hr />
                                     <a className='text-dark' href={item.ref} target='_blank'>Reference from CGM48 official Site</a>
                                     <br />
-                                    {birthday && (
+                                    {v && birthday && (
                                         <div className='row p-3 mt-3'>
                                             <Button onClick={()=> PlaySong()}color="primary" variant="contained">Click here see effect</Button> 
                                             <div className='ml-3 pt-2'>

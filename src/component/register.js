@@ -7,6 +7,7 @@ import {
     TwitterAuthProvider,
     signInWithPopup,
     signOut,
+    deleteUser,
     OAuthProvider
   } from "firebase/auth";
   import auth from "../fbindex";

@@ -55,6 +55,17 @@ const RegisterMember = ({fet, setSec}) => {
         return (false)
     }
 
+    const otpprocess = (format) => {
+      Swal.fire({
+          title: "Success",
+          icon: 'success',
+          text: 'Registration complete.',
+        }).then(() => {
+          window.location.href = '/'
+        })
+
+    }
+
     const RegisterAPI = (obj) => {
         fetch(fet + '/cgm48/registerFanSpace', {
             method :'post',
@@ -63,23 +74,26 @@ const RegisterMember = ({fet, setSec}) => {
                 'Content-Type': 'application/json'
               },
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
                 setLoad(false)
-                if (JSON.parse(data).status != null) {
+                if (data == null) {
+                  deleteUser(obj.user)
                     Swal.fire({
                         title: "Error while login, please try again",
                         icon: 'error',
                         text: 'Please take for a while or contact us.',
                       })
                 } else {
-                    if (data == "2") {
+                    if (data.status == 2) {
+                      deleteUser(obj.user)
                         Swal.fire({
                             title: "Error while login, please try again",
                             icon: 'error',
                             text: 'Please take for a while or contact us.',
                           })
-                    } else if (data == "1") {
+                    } else if (data.status == 1) {
+                      deleteUser(obj.user)
                         Swal.fire({
                             title: "This login authentication is already used",
                             icon: 'error',
@@ -87,16 +101,11 @@ const RegisterMember = ({fet, setSec}) => {
                           })
                     } else {
                       setLoad(true)
-                        Swal.fire({
-                            title: "Success",
-                            icon: 'success',
-                            text: 'Registration complete.',
-                          }).then(() => {
-                            window.location.href = '/'
-                          })
+                      otpprocess(data.otp)
                     }
                 }
             }).catch(() => {
+              deleteUser(obj.user)
                 setLoad(false)
             })
     }

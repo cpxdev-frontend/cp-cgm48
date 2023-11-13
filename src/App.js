@@ -177,6 +177,7 @@ function App() {
   const [time, setTime] = React.useState(0);
   const [memDate, setMemBirth] = React.useState('');
 
+  const [ verify, setVerify] = React.useState(false)
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   
@@ -317,6 +318,7 @@ React.useEffect(() => {
           setKname(data.obj.name)
           setMemBirth(data.obj.birth)
           localStorage.setItem('i', data.uname)
+          setVerify(data.verified)
           // FetchWallet(fetdata, data.wallet)
         } else {
           setKami('-')
@@ -673,16 +675,29 @@ React.useEffect(() => {
               )}
                {login&& (
                  <ListItemIcon onClick={() => setMemDl(true)} className={(width >1200 ? 'mt-2' : '') + ' cur'}>
-                 <Badge
-                   overlap="circular"
-                   anchorOrigin={{
-                     vertical: 'bottom',
-                     horizontal: 'right',
-                   }}
-                   badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
-                 >
+                 {verify ? (
+                  <Badge
+                  overlap="circular"
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
+                >
+                 <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                </Badge>
+                 ) : (
+                  <Badge
+                  overlap="circular"
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  badgeContent={(<WarningIcon className='text-warning' />)}
+                >
                   <Avatar alt={localStorage.getItem("i")} src={Prof} />
-                 </Badge>
+                </Badge>
+                 )}
                  </ListItemIcon>
               )}
               </div>
@@ -861,17 +876,29 @@ React.useEffect(() => {
                 ) : (
                   <ListItem onClick={() => setMemDl(true)} button>
                   <ListItemIcon>
+                  {verify ? (
                   <Badge
-                    overlap="circular"
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'right',
-                    }}
-                    badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
-                  >
-                    <Avatar alt={localStorage.getItem("i")} src={Prof} />
-                  </Badge>
-                  
+                  overlap="circular"
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
+                >
+                 <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                </Badge>
+                 ) : (
+                  <Badge
+                  overlap="circular"
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  badgeContent={(<WarningIcon className='text-warning' />)}
+                >
+                  <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                </Badge>
+                 )}
                   </ListItemIcon>
                   <ListItemText primary={"You're logged in as " + checkUser() + " account"} secondary={localStorage.getItem("i")} />
                 </ListItem>
@@ -906,7 +933,7 @@ React.useEffect(() => {
                   <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   {
                     login && (
-                      <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
+                      <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} triggerUpdate={() =>  FetchKami(Fet().ul)} />} />
                     )
                   }
 
@@ -981,6 +1008,11 @@ React.useEffect(() => {
                      <ListItem className='text-info' button>
                        <ListItemText primary='Feature will be unavaliable when you not sign in' secondary='Choose and share your Kami-Oshi member, Fandom group view and add new event' />
                      </ListItem>
+                     {!verify && (
+                      <ListItem className='text-danger' button>
+                        <ListItemText primary={"Your account is unverified"} secondary="For keeping your account secure, please confirm your Fan Space Membership account to enjoy more feature of BNK48 Fan Space in 'Account Studio'"/>
+                      </ListItem>
+                     )}
            </DialogContent>
            <DialogActions>
            <Button onClick={(e) => {Signout(e)}} className="text-danger">

@@ -15,6 +15,9 @@ import {
   import { makeStyles } from '@material-ui/core/styles';
 import AOS from "aos";
 
+let api;
+let timerIntervalOTP;
+
 const useStyles = makeStyles((theme) => ({
     backdrop: {
       zIndex: theme.zIndex.drawer + 1,
@@ -58,13 +61,79 @@ const RegisterMember = ({fet, setSec}) => {
 
     const otpprocess = (format) => {
       Swal.fire({
-          title: "Success",
-          icon: 'success',
-          text: 'Registration complete.',
-        }).then(() => {
-          window.location.href = '/'
-        })
-
+        title: 'Please confirm to verify Fan Space Membership Account by enter OTP. Please check your email inbox.',
+        html: 'Please enter OTP in <strong></strong> second(s). OTP RefID is <b>' + format + '</b>',
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off',
+            placeholder: "Enter OTP which we sent to your current email",
+            maxlength: 6,
+            required: true
+        },
+        allowOutsideClick: false,
+        showDenyButton: true,
+        confirmButtonText: 'Confirm',
+        denyButtonText: `Cancel`,
+        timer: 180000,
+        didOpen: () => {
+            Swal.showLoading();
+            api = setTimeout(() => {
+                Swal.hideLoading();
+                clearTimeout(api);
+            }, 3000)
+            timerIntervalOTP = setInterval(() => {
+                Swal.getHtmlContainer().querySelector('strong')
+                    .textContent = (Swal.getTimerLeft() / 1000)
+                        .toFixed(0)
+            }, 100)
+        },
+        preConfirm: function (val) {
+            if (val.length === 0 || val.length < 6) {
+                Swal.showValidationMessage(`Please enter OTP to confirm changing`)
+            }
+            return { otpget: val };
+        },
+        didClose: () => {
+          if (Swal.getTimerLeft() < 100) {
+            Swal.fire({
+                title: 'OTP is expired',
+                text: 'Please try again.',
+                icon: "error"
+            })
+          }
+        },
+        willClose: () => {
+            clearTimeout(api);
+            clearInterval(timerIntervalOTP);
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+          setLoad(true)
+          fetch(fet + "/cgm48/setverify?i=" + JSON.parse(localStorage.getItem('loged')).user.uid + "&otp=" + result.value.otpget + "&refid=" + format, {
+            method: 'put'
+          })
+            .then(x => x.json())
+            .then(y => {
+                if (y.verified == true) {
+                  Swal.fire({
+                    title: "Success",
+                    icon: 'success',
+                    text: 'Registration complete.',
+                  }).then(() => {
+                    window.location.href = '/'
+                  })
+                } else {
+                    Swal.fire({
+                        title: 'Something went wrong',
+                        text: y.message,
+                        icon: "error"
+                    })
+                }
+            }).catch(() => {
+                
+            });
+        }
+      })
     }
 
     const RegisterAPI = (obj) => {

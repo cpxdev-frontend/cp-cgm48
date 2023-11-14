@@ -222,7 +222,7 @@ const AccountMana = ({fet, setSec, width, triggerUpdate}) => {
       if (data.verified == false) {
         Swal.fire({
           title: 'You cannot link more account',
-          text: lang == 'th' ? "กรุณายืนยันบัญชีผู้ใช้ก่อนเพิ่มบัญชีผู้ใช้สำหรับเข้าสู่ระบบ" : "Please confirm account before add more linked account",
+          text: "Please confirm account before add more linked account",
           icon: 'warning'
         })
         return;

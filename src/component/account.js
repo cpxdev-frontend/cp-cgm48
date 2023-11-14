@@ -118,6 +118,7 @@ const AccountMana = ({fet, setSec, width, triggerUpdate}) => {
                         }
                       },
                       willClose: () => {
+                        setLoad(false)
                           clearTimeout(api);
                           clearInterval(timerIntervalOTP);
                       }
@@ -129,6 +130,7 @@ const AccountMana = ({fet, setSec, width, triggerUpdate}) => {
                         })
                           .then(x => x.json())
                           .then(y => {
+                            setLoad(false)
                               if (y.verified == true) {
                                   Swal.fire({
                                       title: 'Verify success',

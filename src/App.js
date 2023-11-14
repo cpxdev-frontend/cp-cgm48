@@ -915,7 +915,7 @@ React.useEffect(() => {
                   <Route exact path="/" render={() => <Home fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
+                  <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} verify={verify} />} />
                   <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route path="/shihainin" render={() => <Shi fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() =>  FetchKami(Fet().ul)} width={width} />} />
                   <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
@@ -1011,7 +1011,7 @@ React.useEffect(() => {
                      </ListItem>
                      {!verify && (
                       <ListItem className='text-danger' button>
-                        <ListItemText primary={"Your account is unverified"} secondary="For keeping your account secure, please confirm your Fan Space Membership account to enjoy more feature of BNK48 Fan Space in 'Account Studio'"/>
+                        <ListItemText primary={"Your account is unverified"} secondary="For keeping your account secure, please confirm your Fan Space Membership account to enjoy more feature of CGM48 Fan Space in 'Account Studio'"/>
                       </ListItem>
                      )}
            </DialogContent>

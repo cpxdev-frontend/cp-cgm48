@@ -79,7 +79,7 @@ const fwoptions = {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-    const MemDetail = ({fet, kamio, setSec, triggerUpdate, width}) => {
+    const MemDetail = ({fet, kamio, setSec, triggerUpdate, width, verify}) => {
         let { c } = useParams()
 
         const classes = useStyles();
@@ -252,11 +252,19 @@ function capitalizeFirstLetter(string) {
                                         fetchLoad()
                                         triggerUpdate()
                                     } else {
-                                        Swal.fire({
-                                            title: "You just changed Kami-Oshi not long ago.",
-                                            icon: 'warning',
-                                            text: 'We recommend that you maybe change your Kami-Oshi on next month.',
-                                          })
+                                        if (verify) {
+                                            Swal.fire({
+                                                title: "You just changed Kami-Oshi not long ago.",
+                                                icon: 'warning',
+                                                text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                              })
+                                        } else {
+                                            Swal.fire({
+                                                title: "Fan Space Membership Account is not verified.",
+                                                icon: 'warning',
+                                                text: 'Please verify your account then choose or change your Kami-Oshi again.',
+                                              })
+                                        }
                                     }
                                 })
                                 .catch((error) => {
@@ -282,11 +290,19 @@ function capitalizeFirstLetter(string) {
                                 fetchLoad()
                                 triggerUpdate()
                             } else {
-                                Swal.fire({
-                                    title: "You just changed Kami-Oshi not long ago.",
-                                    icon: 'warning',
-                                    text: 'We recommend that you maybe change your Kami-Oshi on next month.',
-                                  })
+                                if (verify) {
+                                    Swal.fire({
+                                        title: "You just changed Kami-Oshi not long ago.",
+                                        icon: 'warning',
+                                        text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                      })
+                                } else {
+                                    Swal.fire({
+                                        title: "Fan Space Membership Account is not verified.",
+                                        icon: 'warning',
+                                        text: 'Please verify your account then choose or change your Kami-Oshi again.',
+                                      })
+                                }
                             }
                         })
                         .catch((error) => {
@@ -328,11 +344,19 @@ function capitalizeFirstLetter(string) {
                                                 fetchLoad()
                                                 triggerUpdate()
                                             } else {
-                                                Swal.fire({
-                                                    title: "You just changed Kami-Oshi not long ago.",
-                                                    icon: 'warning',
-                                                    text: 'We recommend that you maybe change your Kami-Oshi on next month.',
-                                                  })
+                                                if (verify) {
+                                                    Swal.fire({
+                                                        title: "You just changed Kami-Oshi not long ago.",
+                                                        icon: 'warning',
+                                                        text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                                      })
+                                                } else {
+                                                    Swal.fire({
+                                                        title: "Fan Space Membership Account is not verified.",
+                                                        icon: 'warning',
+                                                        text: 'Please verify your account then choose or change your Kami-Oshi again.',
+                                                      })
+                                                }
                                             }
                                         })
                                         .catch((error) => {
@@ -358,11 +382,19 @@ function capitalizeFirstLetter(string) {
                                         fetchLoad()
                                         triggerUpdate()
                                     } else {
-                                        Swal.fire({
-                                            title: "You just changed Kami-Oshi not long ago.",
-                                            icon: 'warning',
-                                            text: 'We recommend that you maybe change your Kami-Oshi on next month.',
-                                          })
+                                        if (verify) {
+                                            Swal.fire({
+                                                title: "You just changed Kami-Oshi not long ago.",
+                                                icon: 'warning',
+                                                text: 'We recommend that you maybe change your Kami-Oshi on next month.',
+                                              })
+                                        } else {
+                                            Swal.fire({
+                                                title: "Fan Space Membership Account is not verified.",
+                                                icon: 'warning',
+                                                text: 'Please verify your account then choose or change your Kami-Oshi again.',
+                                              })
+                                        }
                                     }
                                 })
                                 .catch((error) => {

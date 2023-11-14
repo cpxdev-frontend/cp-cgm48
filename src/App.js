@@ -314,12 +314,12 @@ React.useEffect(() => {
         setLogLoad(false)
         setOpen(false)
         setPro(data.img)
+        setVerify(data.verified)
         if (data.obj != 'none') {
           setKami(data.obj.img)
           setKname(data.obj.name)
           setMemBirth(data.obj.birth)
           localStorage.setItem('i', data.uname)
-          setVerify(data.verified)
           // FetchWallet(fetdata, data.wallet)
         } else {
           setKami('-')

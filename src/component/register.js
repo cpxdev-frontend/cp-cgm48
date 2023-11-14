@@ -59,7 +59,7 @@ const RegisterMember = ({fet, setSec}) => {
         return (false)
     }
 
-    const otpprocess = (format) => {
+    const otpprocess = (format, obj) => {
       Swal.fire({
         title: 'Please confirm to verify Fan Space Membership Account by enter OTP. Please check your email inbox.',
         html: 'Please enter OTP in <strong></strong> second(s). OTP RefID is <b>' + format + '</b>',
@@ -103,13 +103,14 @@ const RegisterMember = ({fet, setSec}) => {
           }
         },
         willClose: () => {
+          setLoad(false)
             clearTimeout(api);
             clearInterval(timerIntervalOTP);
         }
     }).then((result) => {
         if (result.isConfirmed) {
           setLoad(true)
-          fetch(fet + "/cgm48/setverify?i=" + JSON.parse(localStorage.getItem('loged')).user.uid + "&otp=" + result.value.otpget + "&refid=" + format, {
+          fetch(fet + "/cgm48/setverify?i=" + obj.user.uid + "&otp=" + result.value.otpget + "&refid=" + format, {
             method: 'put'
           })
             .then(x => x.json())
@@ -171,7 +172,7 @@ const RegisterMember = ({fet, setSec}) => {
                           })
                     } else {
                       setLoad(true)
-                      otpprocess(data.otp)
+                      otpprocess(data.otp, obj)
                     }
                 }
             }).catch(() => {

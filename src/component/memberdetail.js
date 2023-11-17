@@ -748,6 +748,13 @@ function capitalizeFirstLetter(string) {
                                             <label className='col-md-12 mt-3 text-muted'>Notes: Click Tweet Button to blessing her on Twitter (Twitter login required)</label>
                                         </div> 
                                     )}
+                                    {item.graduated === true && item.graduatedDate != undefined && (
+                                        <div className='border border-info pb-3 mt-2 pt-3 rounded text-center'>
+                                        <h6>
+                                          Member info of {item.name} CGM48 has been plan to removed from CGM48 Fan Space in {moment(item.graduatedDate + ' 00:00:00').utcOffset('+0700').local().format('DD MMMM YYYY HH:mm:ss')}.
+                                        </h6>
+                                      </div>
+                                     )}
                                 </div>
                         </Fade>
                     </Card>

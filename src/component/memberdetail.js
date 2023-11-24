@@ -839,7 +839,7 @@ function capitalizeFirstLetter(string) {
                                                 <p className='mt-1 mb-3'>
                                                     Event is coming soon in <b>{moment.unix(ita.timerange[0]).format('ddd DD MMMM yyyy H:mm A')} {moment().unix() >= ita.timerange[0] -259200 && moment().unix() < ita.timerange[0] && (
                                                     <i>
-                                                        <br /> Please be patient in {remainEvent(ita.timerange[0])}
+                                                        <br /> This event is soon in {remainEvent(ita.timerange[0])}
                                                     </i>
                                                 )}</b>
                                                 </p>

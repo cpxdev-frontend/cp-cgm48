@@ -318,7 +318,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                            <p className='mt-1 mb-3'>
                                Event is coming soon in <b>{moment.unix(nearest.timerange[0]).format('ddd DD MMMM yyyy H:mm A')} {moment().unix() >= nearest.timerange[0] -259200 && moment().unix() < nearest.timerange[0] && (
                                <i>
-                                   <br /> Please be patient in {remainEvent(nearest.timerange[0])}
+                                   <br /> This event is soon in {remainEvent(nearest.timerange[0])}
                                </i>
                            )}</b>
                            </p>

@@ -158,7 +158,7 @@ function capitalizeFirstLetter(string) {
                         //navigator.vibrate(1000);
                         setBirthday(true)
                         if (val == capitalizeFirstLetter(kamio)) {
-                            navigator.vibrate([500, 200]);
+                            navigator.vibrate([50, 50,50, 50,50, 50]);
                             JankenCong()
 
                             setTimeout(() => {

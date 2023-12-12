@@ -23,10 +23,12 @@ import {
 } from "firebase/auth";
 import auth from "./fbindex";
 
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
 import { AppBar, Toolbar,Typography, IconButton, Drawer, FormControlLabel, Switch, ListItem, ListItemIcon, Divider, ListItemText,
-Dialog, DialogActions, Button, DialogTitle, Fab, DialogContent, Avatar, Badge, CardContent, CardMedia, Slide, Grow, Fade, TextField, Menu, MenuItem } from '@material-ui/core';
+Dialog, DialogActions, Button, DialogTitle, Fab, DialogContent, Avatar, Badge, CardContent, CardMedia, BottomNavigation, BottomNavigationAction, Slide, Grow, Fade, TextField, Menu, MenuItem } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WarningIcon from '@material-ui/icons/Warning';
@@ -646,6 +648,7 @@ React.useEffect(() => {
 
   if (uri != '' && allDone) {
     return (<>
+    {window.innerWidth >= 700 && (
        <Slide in={localStorage.getItem('lowgraphic') == null && width > 1100 ? !open : true} timeout={600} direction='down'>
        <AppBar position="sticky" className='bnktheme app-barcurve'>
           <Toolbar>
@@ -705,6 +708,7 @@ React.useEffect(() => {
           </Toolbar>
         </AppBar>
        </Slide>
+    )}
 
         <Drawer
                   className={cls.drawer}
@@ -940,11 +944,55 @@ React.useEffect(() => {
 
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />
                 </BasicSwitch>
+
+
+                {
+        window.innerWidth < 700 && (
+          <BottomNavigation
+              value={1}
+              style={{position:'fixed', bottom:0, zIndex:1060, width:'100%'}}
+            >
+              <BottomNavigationAction style={{marginTop: -10}} onClick={() => History.goBack()} icon={<ArrowBackIosIcon />} />
+              <BottomNavigationAction onClick={() => setOpen(true)} icon={<img width='100%' src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgmlogo.png' />} />
+              <BottomNavigationAction style={{marginTop: kamiimg != '' && kamiimg != '-'? -15 : 0}} icon=
+                {login&& (
+                  <ListItemIcon onClick={() => setMemDl(true)} className={'cur'}>
+                  {
+                     verify ? (
+                       <Badge
+                     overlap="circular"
+                     anchorOrigin={{
+                       vertical: 'bottom',
+                       horizontal: 'right',
+                     }}
+                     badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
+                   >
+                     <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                   </Badge>
+                     ) : (
+                       <Badge
+                     overlap="circular"
+                     anchorOrigin={{
+                       vertical: 'bottom',
+                       horizontal: 'right',
+                     }}
+                     badgeContent={(<WarningIcon className='text-warning' />)}
+                   >
+                     <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                   </Badge>
+                     )
+                   }
+                  </ListItemIcon>
+               )} />
+            </BottomNavigation>
+        )
+      }
+
                 </div>
                 
                       
                   
-        <footer className={'fixed-bottom text-center text-dark bg-light pt-2'} ref={ref}>
+        <footer className={'fixed-bottom text-center text-dark bg-light pt-2'} style={{paddingBottom: window.innerWidth < 700 ? 60 :0}} ref={ref}>
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.
         </footer>

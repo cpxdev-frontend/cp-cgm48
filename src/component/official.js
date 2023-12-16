@@ -10,6 +10,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Offi = ({fet, setSec, width}) => {
     const [Loaded, setLoaded] = React.useState(false);
+    const [Loadinner, setLoadTweet] = React.useState(false);
     const [Arr, setArr] = React.useState([]);
     const [open, setOpen] = React.useState(false);
     const [para, setpara] = React.useState('');
@@ -38,11 +39,40 @@ const Offi = ({fet, setSec, width}) => {
         const re = text.replace(uri, '')
         return re
       }
+        // const hand = (order, val) => {
+        //     setOpen(order)
+        //     if (order == true) {
+        //         setpara(val)
+        //         setFet(true)
+        //     } else {
+        //         setFet(false)
+        //         setpara('')
+        //     }
+        // }
         const hand = (order, val) => {
             setOpen(order)
+
+            
             if (order == true) {
-                setpara(val)
-                setFet(true)
+
+                const api = 'https://corsproxy.io/?https://publish.twitter.com/oembed?url=https://twitter.com/cgm48official/status/' + getxurl(val.link)
+                setLoadTweet(true)
+                fetch(api, {
+                    method: 'get', // or 'PUT'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoadTweet(false)
+                        let a = val
+                        a.html = data.html
+                        setpara(a)
+                        setFet(true)
+                    })
+                    .catch((error) => {
+                        setLoadTweet(false)
+                    console.error('Error:', error);
+                    });
+
             } else {
                 setFet(false)
                 setpara('')
@@ -104,7 +134,7 @@ const Offi = ({fet, setSec, width}) => {
                        >
                            <DialogTitle id="alert-dialog-title">{'More tweet about "' + para.title.substring(0, 60) + '..."'}</DialogTitle>
                            <DialogContent>
-                           <Grow in={!fetLLoad} timeout={300}>
+                           {/* <Grow in={!fetLLoad} timeout={300}>
                                <div className='d-flex justify-content-center'>
                            <TwitterTweetEmbed
                                tweetId={getxurl(para.link)}
@@ -118,7 +148,8 @@ const Offi = ({fet, setSec, width}) => {
                                     <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                                     </div>
                                     </Zoom>
-                               )}
+                               )} */}
+                                 <Typography variant="p" dangerouslySetInnerHTML={{ __html:  para.html}}></Typography>
                            </DialogContent>
                            <DialogActions>
                            <Button onClick={() => hand('')} className="text-dark">

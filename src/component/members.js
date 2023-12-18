@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import moment from 'moment'
 import AOS from "aos";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const Memberlist = ({fet, setSec, width}) => {
     React.useEffect(() => {

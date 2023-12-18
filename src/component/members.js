@@ -193,7 +193,7 @@ const Memberlist = ({fet, setSec, width}) => {
              </Zoom>
             
              {Loaded ? (
-               <Grid container className='mt-3 justify-content-center'>
+               <Grid container className='mt-3 justify-content-center' spacing={2}>
                 {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
                   <Grid data-aos="zoom-in" item md={3} data-aos-duration="1000">
                       <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>
@@ -229,7 +229,7 @@ const Memberlist = ({fet, setSec, width}) => {
                 )}
                 </Grid>
             ) : (
-                <Grid container className='mt-3 justify-content-center'>
+                <Grid container className='mt-3 justify-content-center' spacing={2}>
                 <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>

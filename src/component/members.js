@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import vPack from './pack.json'
 import moment from 'moment'
 import AOS from "aos";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const Memberlist = ({fet, setSec, width}) => {
     React.useEffect(() => {
@@ -192,9 +193,9 @@ const Memberlist = ({fet, setSec, width}) => {
              </Zoom>
             
              {Loaded ? (
-               <Grid container className='mt-3 justify-content-center'>
+               <Grid container className='mt-3 justify-content-center' spacing={2}>
                 {mem.length > 0 ? mem.map((item, i) => (seGrad == 2 ? item.graduated == true : seGrad == 1 ? item.graduated == false : item.graduated != undefined) && (
-                  <Grid data-aos="zoom-in" item md={3}>
+                  <Grid data-aos="zoom-in" item md={3} data-aos-duration="1000">
                       <div className='mb-5 p-1' onClick={() => ChangeRoute(item.name)}>
                         <Card>
                             <CardActionArea>
@@ -228,9 +229,56 @@ const Memberlist = ({fet, setSec, width}) => {
                 )}
                 </Grid>
             ) : (
-                <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
-                </Zoom>
+                <Grid container className='mt-3 justify-content-center' spacing={2}>
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
+                <div className='mb-5 p-1'>
+                  <Card>
+                  <CardActionArea>
+                         <Skeleton variant="rect" height={300} />
+                          <CardContent>
+                              <h5><Skeleton variant="text" /></h5>
+                          </CardContent>
+                          </CardActionArea>
+                          </Card> 
+                      </div>
+                </Grid>
+          </Grid>
             )}
         </div>
         </>

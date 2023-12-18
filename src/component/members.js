@@ -230,7 +230,7 @@ const Memberlist = ({fet, setSec, width}) => {
                 </Grid>
             ) : (
                 <Grid container className='mt-3 justify-content-center'>
-                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>
@@ -242,7 +242,7 @@ const Memberlist = ({fet, setSec, width}) => {
                           </Card> 
                       </div>
                 </Grid>
-                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>
@@ -254,7 +254,7 @@ const Memberlist = ({fet, setSec, width}) => {
                           </Card> 
                       </div>
                 </Grid>
-                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>
@@ -266,7 +266,7 @@ const Memberlist = ({fet, setSec, width}) => {
                           </Card> 
                       </div>
                 </Grid>
-                <Grid item md={3} sm={12} data-aos="fade-in" data-aos-duration="200">
+                <Grid item md={3} xs={12} data-aos="fade-in" data-aos-duration="200">
                 <div className='mb-5 p-1'>
                   <Card>
                   <CardActionArea>

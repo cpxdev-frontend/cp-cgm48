@@ -992,7 +992,7 @@ React.useEffect(() => {
                 }}
                 style={{marginTop: -10}}
               >
-                <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                <Avatar alt={localStorage.getItem("i")} src={''} />
               </Badge>
                )} />
             </BottomNavigation>

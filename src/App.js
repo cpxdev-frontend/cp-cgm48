@@ -156,7 +156,7 @@ var url = new URL(window.location.href);
 var imgget = url.searchParams.get("imgstar");
 var iiake
 function App() {
-  const [Section, setSec] = React.useState('');
+  const [Section, setSec] = React.useState('CGM48 Fansite for everyone');
   const [con, setConnection] = React.useState(null);
   const cls = useStyles();
   const History = useHistory()

@@ -8,6 +8,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import { Alert, AlertTitle } from '@material-ui/lab';
+import Snowfall from 'react-snowfall'
 import "aos/dist/aos.css";
 
 import { HubConnectionBuilder } from "@microsoft/signalr";
@@ -1007,6 +1008,12 @@ React.useEffect(() => {
           Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.
         </footer>
+
+        <Snowfall
+        color="#fff"
+        snowflakeCount={window.innerWidth / 60}
+        style={{position: 'fixed'}}
+      />
 
 
         {localStorage.getItem("loged") != null && (

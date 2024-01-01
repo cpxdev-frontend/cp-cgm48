@@ -652,7 +652,7 @@ React.useEffect(() => {
     return (<>
      <Snackbar open={ny} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={6000} onClose={() => setNy(false)}>
       <Alert severity="info"  onClose={() => setNy(false)}>
-            <AlertTitle>Happy New Year 2024! Wishing all BNK48 Fan Space memberships and users happiness throughout the year and always in this Year of the Dragon.
+            <AlertTitle>Happy New Year 2024! Wishing all CGM48 Fan Space memberships and users happiness throughout the year and always in this Year of the Dragon.
             </AlertTitle>
             </Alert>
       </Snackbar>

@@ -181,7 +181,7 @@ function capitalizeFirstLetter(string) {
             const ms = end.diff(start)
             const date = moment.duration(ms)
             // execution
-            let f = Math.floor(date.asYears())  + ' Year(s) ' + moment.utc(ms).format("M") + ' Month(s) ' + moment.utc(ms).format("D") + ' Day(s)';
+            let f = Math.floor(date.asYears())  + ' Year(s) ' + (parseInt(moment.utc(ms).format("M")) - 1) + ' Month(s) ' + moment.utc(ms).format("D") + ' Day(s)';
             return f
         }
 

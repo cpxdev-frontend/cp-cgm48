@@ -1117,7 +1117,7 @@ transitionDuration={500}
   >
     
     {newspop.length > 1 ?
-    (<Carousel interval={newspop[cro].video != undefined && newspop[cro].video != "" ? 86400000 : 8000} onChange={(now, pr) => setCro(now)}>{
+    (<Carousel interval={newspop[cro].video != undefined && newspop[cro].video != "" ? 180000 : 8000} onChange={(now, pr) => setCro(now)}>{
       newspop.map((item, i) => (
         <>
         <DialogTitle id="alert-dialog-title">{item.title.includes("birthday") ? 'Birthday Celebration' : 'Advertisement'} - {item.title}</DialogTitle>

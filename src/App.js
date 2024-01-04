@@ -1122,7 +1122,11 @@ transitionDuration={500}
         <DialogTitle id="alert-dialog-title">{item.title.includes("birthday") ? 'Birthday Celebration' : 'Advertisement'} - {item.title}</DialogTitle>
           <DialogContent>
             <CardContent>
+            {item.video != undefined && item.video != "" ? (
+              <CardMedia src={item.video} component="iframe" width={"100%"} height={window.innerWidth * (0.4)} />
+            ) : (
               <CardMedia src={item.src} component="img" width={80} />
+            )}
               <Typography className='mt-3' variant="body2" component="p">
                   {item.desc}
               </Typography>
@@ -1174,7 +1178,11 @@ transitionDuration={500}
       <DialogTitle id="alert-dialog-title">{newspop[0].title.includes("birthday") ? 'Birthday Celebration' : 'Advertisement'} - {newspop[0].title}</DialogTitle>
         <DialogContent>
           <CardContent>
-            <CardMedia src={newspop[0].src} component="img" width={80} />
+          {newspop[0].video != undefined && newspop[0].video != "" ? (
+              <CardMedia src={newspop[0].video} component="iframe" width={80} />
+            ) : (
+              <CardMedia src={newspop[0].src} component="img" width={80} />
+            )}
             <Typography className='mt-3 tw' variant="body2" component="p">
                 {newspop[0].desc}
             </Typography>

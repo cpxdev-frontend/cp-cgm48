@@ -819,7 +819,11 @@ function capitalizeFirstLetter(string) {
                                 <Card className='mb-3' data-aos="fade-right">
                                     <CardContent className='row'>
                                         <div className='col-md-5'>
+                                        {ita.video != undefined && ita.video != "" ? (
+                                            <iframe src={ita.video} width="100%" height={window.innerWidth * (0.4)}></iframe>
+                                        ) : (
                                             <img src={ita.src} width="100%" />
+                                        )}
                                         </div>
                                         <div className='col-md mt-3'>
                                             <h4 data-aos="zoom-in-right">{ita.title}&nbsp;

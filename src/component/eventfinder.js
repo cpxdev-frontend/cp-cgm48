@@ -298,7 +298,11 @@ const Finder = ({fet, setSec, width, kamin}) => {
                <Card className='mb-5' data-aos="fade-right" id="card">
                <CardContent className='row'>
                    <div className='col-md-5'>
-                       <img src={nearest.src} width="100%" />
+                        {nearest.video != undefined && nearest.video != "" ? (
+                            <iframe src={nearest.video} width="100%" height={window.innerWidth * (0.4)}></iframe>
+                        ) : (
+                            <img src={nearest.src} width="100%" />
+                        )}
                    </div>
                    <div className='col-md mt-3'>
                        <h4 data-aos="zoom-in-right">{nearest.title}&nbsp;

@@ -760,12 +760,6 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
-                <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/janken', '_blank')} button>
-                  <ListItemIcon>
-                    <HowToVoteIcon />
-                  </ListItemIcon>
-                  <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' secondary='External link: BNK48 fan Space' />
-                </ListItem>
                 <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge4', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
@@ -802,11 +796,11 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="Official Update" />
                 </ListItem>
-                <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge3', '_blank')} button>
+                <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/janken', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
                   </ListItemIcon>
-                  <ListItemText primary='BNK48 12th Single General Election' secondary='External link: BNK48 fan Space' />
+                  <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' secondary='External link: BNK48 fan Space' />
                 </ListItem>
                 <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/requesthour' ? 'activeNav' : ''} button>
                   <ListItemIcon>

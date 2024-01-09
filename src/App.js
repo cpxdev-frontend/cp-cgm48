@@ -1011,11 +1011,6 @@ React.useEffect(() => {
           <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.
         </footer>
 
-        <Snowfall
-        color="#fff"
-        snowflakeCount={window.innerWidth / 60}
-        style={{position: 'fixed'}}
-      />
 
 
         {localStorage.getItem("loged") != null && (

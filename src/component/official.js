@@ -90,7 +90,7 @@ const Offi = ({fet, setSec, width}) => {
                 return url.replace("https://nitter.woodland.cafe/cgm48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.moomoo.me')) {
-                return url.replace("https://nitter.moomoo.me/cgm48official/status/", "").replace("#m", "")
+                return url.replace("http://nitter.moomoo.me/cgm48official/status/", "").replace("#m", "")
             }
             return url;
         }

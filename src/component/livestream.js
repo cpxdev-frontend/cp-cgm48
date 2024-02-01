@@ -174,9 +174,9 @@ const Stream = ({fet, setSec, width}) => {
                 </CardContent>
                 <CardContent>
                 {
-                  comment != null && comment.view != "" && (
-                    <CardContent className='text-center align-center'>
-                      <CardHeader title='Live Streaming Station' subheader='Comment from Youtube user' />
+                  comment != null && comment.view != "" && comin > -1 && (
+                    <CardContent className='text-left align-start'>
+                      <CardHeader title={<div dangerouslySetInnerHTML={{ __html: comment.comments[comin].snippet.textMessageDetails.messageText }}></div>} subheader={'Comment from Youtube user since ' + moment(comment.comments[comin].snippet.publishedAt).local().format('DD MMMM YYYY HH:mm:ss')} />
                   </CardContent>
                   )
                 }

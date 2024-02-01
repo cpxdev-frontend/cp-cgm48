@@ -356,7 +356,7 @@ React.useEffect(() => {
       setLive(false)
       return;
     }
-    fetch(fet + '/cgm48/getstreamlist?ch=2', {
+    fetch(fet + '/cgm48/getstreamlist?ch=3', {
       method :'post'
   })
       .then(response => response.json())

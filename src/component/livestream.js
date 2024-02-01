@@ -129,9 +129,11 @@ const Stream = ({fet, setSec, width}) => {
                     )}
 
                     {comment != null && comment.view != ""  && (
-                      <CardHeader title={(<span class="badge badge-pill badge-info">
-                      There are currently {numberWithCommasx(comment.view)} people(s) watching this live.</span>)} />
+                      <CardHeader title={window.innerWidth > 900 ? (<span class="badge badge-pill badge-info">
+                      There are currently {numberWithCommasx(comment.view)} people(s) watching this live.</span>) : (<span class="badge badge-pill badge-info">
+                      {numberWithCommasx(comment.view)} views</span>)} />
                     )}
+                
                 
                     <div className='container' data-aos="zoom-out-up">
                         {streaminfo != null && streaminfo[0].link != '' ? (

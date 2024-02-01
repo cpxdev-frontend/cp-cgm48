@@ -42,7 +42,7 @@ const Stream = ({fet, setSec, width}) => {
     const [Load, setLoad] = React.useState(true);
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
-        fetch(fet + '/cgm48/getstreamlist?ch=2', {
+        fetch(fet + '/cgm48/getstreamlist?ch=3', {
             method :'post'
         })
             .then(response => response.json())

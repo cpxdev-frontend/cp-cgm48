@@ -62,9 +62,13 @@ const Stream = ({fet, setSec, width}) => {
       })
           .then(response => response.json())
           .then(data => {
-            setCom(data)
+            const newData = {
+              view: data.view,
+              comments: data.comments.filter(x => !x.snippet.textMessageDetails.messageText.includes('::'))
+            }
+            setCom(newData)
 
-            setCurrentCom(Math.floor(Math.random() * data.comments.length))
+            setCurrentCom(Math.floor(Math.random() * newData.comments.length))
       })
     }
 

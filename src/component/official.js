@@ -80,17 +80,17 @@ const Offi = ({fet, setSec, width}) => {
         }
 
         function getxurl(url) {
-            if (url.includes('nitter.d420.de')) {
-                return url.replace("https://nitter.d420.de/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.soopy.moe')) {
+                return url.replace("https://nitter.soopy.moe/cgm48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.privacydev.net')) {
-                return url.replace("https://nitter.privacydev.net/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('n.opnxng.com')) {
+                return url.replace("http://n.opnxng.com/cgm48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.woodland.cafe')) {
-                return url.replace("https://nitter.woodland.cafe/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.jakefrosty.com')) {
+                return url.replace("http://nitter.jakefrosty.com/cgm48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.moomoo.me')) {
-                return url.replace("http://nitter.moomoo.me/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.holo-mix.com')) {
+                return url.replace("https://nitter.holo-mix.com/cgm48official/status/", "").replace("#m", "")
             }
             return url;
         }

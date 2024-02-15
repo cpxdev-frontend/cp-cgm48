@@ -687,7 +687,7 @@ function capitalizeFirstLetter(string) {
                                             <>
                                             {follower > -1 ? (
                                                 <Zoom in={true}>
-                                                    <p data-toggle="tooltip" data-placement="bottom" title={numberWithCommasx(follower)}>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : nFormatter(follower, 2)} gifts sent on IAM48 Application</p>
+                                                    <p data-toggle="tooltip" data-placement="bottom" title={item.name + ' CGM48 have ' +numberWithCommasx(follower) + "  gifts sent on IAM48 Application"}>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : nFormatter(follower, 1)} gifts sent on IAM48 Application</p>
                                                 </Zoom>
                                             ): (
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(fol)}>Something went wrong, please click here to refresh page</button>

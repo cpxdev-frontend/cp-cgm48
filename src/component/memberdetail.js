@@ -76,6 +76,21 @@ const fwoptions = {
     "Wishing you a wonderful day and all the most amazing things on your Big Day!"
 ]
 
+function nFormatter(num, digits) {
+    const lookup = [
+      { value: 1, symbol: "" },
+      { value: 1e3, symbol: "K" },
+      { value: 1e6, symbol: "M" },
+      { value: 1e9, symbol: "G" },
+      { value: 1e12, symbol: "T" },
+      { value: 1e15, symbol: "P" },
+      { value: 1e18, symbol: "E" }
+    ];
+    const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
+    const item = lookup.findLast(item => num >= item.value);
+    return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
+  }
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -672,7 +687,7 @@ function capitalizeFirstLetter(string) {
                                             <>
                                             {follower > -1 ? (
                                                 <Zoom in={true}>
-                                                    <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} gifts sent on IAM48 Application</p>
+                                                    <p data-toggle="tooltip" data-placement="bottom" title={numberWithCommasx(follower)}>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : nFormatter(follower, 2)} gifts sent on IAM48 Application</p>
                                                 </Zoom>
                                             ): (
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(fol)}>Something went wrong, please click here to refresh page</button>

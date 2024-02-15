@@ -672,7 +672,7 @@ function capitalizeFirstLetter(string) {
                                             <>
                                             {follower > -1 ? (
                                                 <Zoom in={true}>
-                                                    <p data-toggle="tooltip" data-placement="top" title="The number of followers on Instagram may be inaccurate because Spam protection system by Meta inc.">{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} followers on Instagram</p>
+                                                    <p>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommasx(follower)} gifts sent on IAM48 Application</p>
                                                 </Zoom>
                                             ): (
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(fol)}>Something went wrong, please click here to refresh page</button>

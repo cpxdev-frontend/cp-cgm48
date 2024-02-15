@@ -114,7 +114,7 @@ function capitalizeFirstLetter(string) {
 
             const fetchfollower = (name) => {
                  setFollow(true)
-                fetch(fet + '/cgm48/getfollower?name=' + name  , {
+                fetch(fet + '/tpop/getfollower?name=' + name  , {
                     method :'post'
                  })
                  .then(response => response.text())

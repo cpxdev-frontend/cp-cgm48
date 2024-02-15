@@ -117,9 +117,9 @@ function capitalizeFirstLetter(string) {
                 fetch(fet + '/tpop/getfollower?name=' + name  , {
                     method :'post'
                  })
-                 .then(response => response.text())
-                  .then(data => {
-                   setFol(data)
+                 .then(response => response.json())
+                 .then(data => {
+                  setFol(data.count)
                    setFollow(false)
                  }).catch(() => {
                     setFol(-1)

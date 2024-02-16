@@ -76,21 +76,6 @@ const fwoptions = {
     "Wishing you a wonderful day and all the most amazing things on your Big Day!"
 ]
 
-function nFormatter(num, digits) {
-    const lookup = [
-      { value: 1, symbol: "" },
-      { value: 1e3, symbol: "K" },
-      { value: 1e6, symbol: "M" },
-      { value: 1e9, symbol: "G" },
-      { value: 1e12, symbol: "T" },
-      { value: 1e15, symbol: "P" },
-      { value: 1e18, symbol: "E" }
-    ];
-    const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
-    const item = lookup.findLast(item => num >= item.value);
-    return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
-  }
-
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -108,6 +93,7 @@ function capitalizeFirstLetter(string) {
         const [change, setChange] = React.useState(false);
         const [birthday, setBirthday] = React.useState(false);
         const [kami, setKami] = React.useState(0);
+        const [follower2, setFol2] = React.useState(0);
         const [newspop, setNewspop] = React.useState(null);
         const [follower, setFol] = React.useState(0);
         const [countstep, setCount] = React.useState(false);
@@ -135,7 +121,8 @@ function capitalizeFirstLetter(string) {
             })
               .then(response => response.text())
               .then(data => {
-                setFol(data)
+                setFol(data.split(',')[1])
+                setFol2(data.split(',')[0])
                 setFollow(false)
               }).catch(() => {
                 setFol(-1)
@@ -687,7 +674,7 @@ function capitalizeFirstLetter(string) {
                                             <>
                                             {follower > -1 ? (
                                                 <Zoom in={true}>
-                                                    <p data-toggle="tooltip" data-placement="bottom" title={item.name + ' CGM48 have ' +numberWithCommasx(follower) + "  gifts sent on IAM48 Application"}>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : nFormatter(follower, 1)} gifts sent on IAM48 Application</p>
+                                                    <p data-toggle="tooltip" data-placement="bottom" title={item.name + ' CGM48 have ' +numberWithCommasx(follower2) + "  gifts sent on IAM48 Application"}>{countstep == false ? (<CountUp end={follower} onEnd={() => setCount(true)} duration={3} />) : numberWithCommas(follower)} gifts sent on IAM48 Application</p>
                                                 </Zoom>
                                             ): (
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(fol)}>Something went wrong, please click here to refresh page</button>

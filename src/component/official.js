@@ -84,13 +84,13 @@ const Offi = ({fet, setSec, width}) => {
                 return url.replace("http://nitter.esmailelbob.xyz/cgm48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.mint.lgbt')) {
-                return url.replace("http://nitter.mint.lgbt/cgm48official/status/", "").replace("#m", "")
+                return url.replace("https://nitter.mint.lgbt/cgm48official/status/", "").replace("#m", "")
             }
             if (url.includes('nitter.tux.pizza')) {
                 return url.replace("https://nitter.tux.pizza/cgm48official/status/", "").replace("#m", "")
             }
-            if (url.includes('nitter.tux.pizza')) {
-                return url.replace("https://nitter.tux.pizza/cgm48official/status/", "").replace("#m", "")
+            if (url.includes('nitter.no-logs.com')) {
+                return url.replace("http://nitter.no-logs.com/cgm48official/status/", "").replace("#m", "")
             }
             return url;
         }

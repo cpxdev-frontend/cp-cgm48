@@ -166,6 +166,7 @@ const fetchapi = () => {
                       <TableCell align="center">Band</TableCell>
                       <TableCell align="right">Team</TableCell>
                       <TableCell align="right">Token</TableCell>
+                      <TableCell align="right">Win Rate (%)</TableCell>
                     </TableRow>
                   </TableHead>
                   {data != null ? data.list.map((item, i) => (
@@ -197,6 +198,9 @@ const fetchapi = () => {
                           }
                            <TableCell align="right">
                           {numberWithCommas(item.token)}
+                          </TableCell>
+                          <TableCell align="right">
+                          {numberWithCommas((item.token / data.allToken) * 100)}
                           </TableCell>
                   </TableBody>
                   )): (

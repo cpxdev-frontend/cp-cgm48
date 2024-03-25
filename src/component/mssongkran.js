@@ -134,7 +134,7 @@ const fetchapi = () => {
                             ],
                             }}
                       />
-            </div> : <Skeleton height={800} width='100%' />}
+            </div> : <Skeleton height={400} width='100%' />}
         </div>
         <div className={'col-md-8' + (width < 700 ? ' mt-5' : '')}>
             {data != null ? <div>
@@ -152,7 +152,7 @@ const fetchapi = () => {
                               ],
                             }}
                       />
-            </div> : <Skeleton height={800} width='100%'  />}
+            </div> : <Skeleton height={400} width='100%'  />}
         </div>
 </div>
 <TableContainer className='mt-3'>

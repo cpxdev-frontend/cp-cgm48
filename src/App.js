@@ -762,6 +762,18 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary='Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
                 </ListItem>
+                <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <DonutSmallIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Ms Songkran 48 First Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
+                </ListItem>
+                <ListItem component={Link} to='/mssongkran48final' className={window.location.pathname == '/mssongkran48final' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <DonutSmallIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Ms Songkran 48 Final Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
+                </ListItem>
                 <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge4', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />

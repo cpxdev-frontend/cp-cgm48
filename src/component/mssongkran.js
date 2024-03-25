@@ -107,7 +107,7 @@ const fetchapi = () => {
 </div>
 <hr />
 <div className={'row mt-5' + (data == null ? ' chartfixed' : '')}>
-        <div className='col-md-4'>
+        {/* <div className='col-md-4'>
             {data != null ? <div>
                 <Doughnut
                 plugins={[ChartDataLabels]}
@@ -135,8 +135,8 @@ const fetchapi = () => {
                             }}
                       />
             </div> : <Skeleton height={400} width='100%' />}
-        </div>
-        <div className={'col-md-8' + (width < 700 ? ' mt-5' : '')}>
+        </div> */}
+        <div className={'col-md-12' + (width < 700 ? ' mt-5' : '')}>
             {data != null ? <div>
                 <Bar
                         data={{

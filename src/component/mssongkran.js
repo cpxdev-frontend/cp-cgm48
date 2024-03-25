@@ -1,6 +1,6 @@
 import React from 'react'
 import Skeleton from '@material-ui/lab/Skeleton';
-
+import { useHistory } from 'react-router-dom';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale,
     BarElement } from 'chart.js';
     import Table from '@material-ui/core/Table';
@@ -42,6 +42,7 @@ function numberWithCommas(x) {
 var ox;
 const SongChart = ({fet, setSec, width}) => {
     const classes = useStyles();
+    const History = useHistory()
     const [data, setData] = React.useState(null)
     const [fetready, setFet] = React.useState(false)
     const [bnk, setBnk] = React.useState([])
@@ -168,7 +169,7 @@ const fetchapi = () => {
                     </TableRow>
                   </TableHead>
                   {data != null ? data.list.map((item, i) => (
-                     <TableBody key={item.member + item.band} onClick={() => item.band.includes('BNK48') ? History.push('/member/' + item.member.toLowerCase()) : item.band.includes('CGM48') ? window.open('//cp-cgm48.pages.dev/member/' + item.member.toLowerCase(), '_target') : ''}
+                     <TableBody key={item.member + item.band} onClick={() => item.band.includes('CGM48') ? History.push('/member/' + item.member.toLowerCase()) : item.band.includes('BNK48') ? window.open('//cp-bnk48.pages.dev/member/' + item.member.toLowerCase(), '_target') : ''}
                         data-aos='fade-right'
                     >
                         <TableCell component="th" className={classes.rank}>

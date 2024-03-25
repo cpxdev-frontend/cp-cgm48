@@ -206,62 +206,62 @@ const fetchapi = () => {
                   )): (
                     <>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>
                     <TableBody>
-                        <TableCell colSpan={6} component="th">
+                        <TableCell colSpan={7} component="th">
                             <Skeleton height={70} width='100%' />
                         </TableCell>
                   </TableBody>

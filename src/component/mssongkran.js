@@ -115,7 +115,7 @@ const fetchapi = () => {
                         datalabels:{
                             color: '#454444',
                             formatter: (value, ctx) => {
-                                return numberWithCommas(value) + "\n("+ numberWithCommas((value / data.allToken)*100) + '%)';
+                                return data.onPie.labels[ctx.dataIndex] + "\n("+ numberWithCommas((value / data.allToken)*100) + '%)';
                               }
                         }
                     }

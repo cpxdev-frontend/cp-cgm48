@@ -54,6 +54,7 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 import EventIcon from '@material-ui/icons/Event';
+import DonutSmallIcon from '@material-ui/icons/DonutSmall';
 
 import Home from './component/home';
 import MemberList from './component/members';
@@ -73,6 +74,7 @@ import PageErr from './component/404'
 import Mana from './component/geevent/gemanage'
 import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
+import MsSongkran from './component/mssongkran';
 
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -754,6 +756,12 @@ React.useEffect(() => {
                   </ListItemIcon>
                   <ListItemText primary="News" />
                 </ListItem>
+                <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
+                  <ListItemIcon>
+                    <DonutSmallIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
+                </ListItem>
                 <ListItem component={Link} onClick={()=> window.open('//cp-bnk48.pages.dev/ge4', '_blank')} button>
                   <ListItemIcon>
                     <HowToVoteIcon />
@@ -938,7 +946,7 @@ React.useEffect(() => {
                       <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} triggerUpdate={() =>  FetchKami(Fet().ul)} />} />
                     )
                   }
-
+                  <Route path="/mssongkran48" render={() => <MsSongkran fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
                   <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />
                 </BasicSwitch>
 

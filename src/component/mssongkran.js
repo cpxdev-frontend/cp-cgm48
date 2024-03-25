@@ -83,7 +83,7 @@ const fetchapi = () => {
             })
             setTimeout(() => {
                 fetchapi()
-            }, 3000);
+            }, 1000);
     }, [])
 
 

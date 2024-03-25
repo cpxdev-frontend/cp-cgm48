@@ -15,6 +15,7 @@ import { Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import AOS from "aos";
 
 ChartJS.register(ArcElement,LinearScale, CategoryScale,
     BarElement, Tooltip, Legend);
@@ -64,6 +65,7 @@ const fetchapi = () => {
 }
 
     React.useEffect(() => {
+        AOS.init({ duration: 1000 });
         setSec('Ms. Songkran 48 Contest Result Virtualization')
         fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
             method :'get'

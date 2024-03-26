@@ -90,7 +90,8 @@ const fetchapi = () => {
     return ( <div className='container mt-4'>
 <div className='row'>
         <div className='col-md d-flex align-items-center'>
-            <h4>Ms. Songkran 48 Contest Realtime Result</h4>
+            <h4>Ms. Songkran 48 Contest Realtime Result (Final Round)</h4>
+            <p>Notes: These result are based on 70% of all the scores that will be used to decide in this round (The proportion of votes counted in the final round are 70% from your vote and 30% from the votes of the eliminated BNK48 and CGM48 members).</p>
         </div>
         <div className='col-md-auto'>
             <h6>All Transactions</h6>

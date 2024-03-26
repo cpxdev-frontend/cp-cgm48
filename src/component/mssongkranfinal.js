@@ -52,21 +52,21 @@ const SongChart = ({fet, setSec, width}) => {
 const fetchapi = () => {
     setData(null)
     setFet(false)
-    fetch(fet + '/cgm48/mssongkran', {
-        method :'get'
-    })
-        .then(response => response.json())
-        .then(data => {
-            setData(data)
-            setTimeout(() => {
-                setFet(true)
-            }, 10000);
-        }); 
+    // fetch(fet + '/cgm48/mssongkranfinal', {
+    //     method :'get'
+    // })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         setData(data)
+    //         setTimeout(() => {
+    //             setFet(true)
+    //         }, 10000);
+    //     }); 
 }
 
     React.useEffect(() => {
         AOS.init({ duration: 1000 });
-        setSec('Ms. Songkran 48 Contest Result Virtualization')
+        setSec('Ms. Songkran 48 Contest Final Result Virtualization')
         fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
             method :'get'
         })
@@ -107,7 +107,7 @@ const fetchapi = () => {
 </div>
 <hr />
 <div className={'row mt-5' + (data == null ? ' chartfixed' : '')}>
-        {/* <div className='col-md-4'>
+        <div className='col-md-4'>
             {data != null ? <div>
                 <Doughnut
                 plugins={[ChartDataLabels]}
@@ -135,24 +135,6 @@ const fetchapi = () => {
                             }}
                       />
             </div> : <Skeleton height={400} width='100%' />}
-        </div> */}
-        <div className={'col-md-12' + (width < 700 ? ' mt-5' : '')}>
-            {data != null ? <div>
-                <Bar
-                        data={{
-                            labels: data.onBar.labels,
-                            datasets: [
-                                {
-                                  label: 'BNK48 and CGM48 members',
-                                  data: data.onBar.data,
-                                  backgroundColor: data.onBar.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
-                                  borderColor: data.onBar.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
-                                  borderWidth: 0,
-                                },
-                              ],
-                            }}
-                      />
-            </div> : <Skeleton height={400} width='100%'  />}
         </div>
 </div>
 <TableContainer className='mt-3'>

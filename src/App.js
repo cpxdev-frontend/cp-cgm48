@@ -75,6 +75,7 @@ import Mana from './component/geevent/gemanage'
 import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
 import MsSongkran from './component/mssongkran';
+import MsSongkranF from './component/mssongkranfinal';
 
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';

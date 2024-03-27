@@ -91,6 +91,7 @@ const fetchapi = () => {
 <div className='row'>
         <div className='col-md d-flex align-items-center'>
             <h4>Ms. Songkran 48 Contest Realtime Result</h4>
+            {data != null ? <p>For transparency, on {moment.unix(1711774800).local().format('DD MMMM YYYY')} from {moment.unix(1711774800).local().format('HH:mm:ss')} to {moment.unix(1711803600).local().format('HH:mm:ss')} the system will display only scores and band names. Member names will not be displayed during that period until voting closes.</p> : <Skeleton />}
         </div>
         <div className='col-md-auto'>
             <h6>All Transactions</h6>

@@ -106,7 +106,7 @@ const fetchapi = () => {
             {data != null ? <p>{numberWithCommas(data.allCash)}</p> : <Skeleton />}
         </div>
         <div className='col-md-12'>
-            {data != null ? <p>For transparency, on {moment.unix(1711774800).local().format('DD MMMM YYYY')} from {moment.unix(1711774800).local().format('HH:mm:ss')} to {moment.unix(1711803600).local().format('HH:mm:ss')} the system will display only scores and band names. Member names will not be displayed during that period until voting closes.</p> : <Skeleton />}
+            {data != null ? <p>To ensure fairness and increase the enjoyment of voting, on {moment.unix(1711774800).local().format('DD MMMM YYYY')} from {moment.unix(1711774800).local().format('HH:mm:ss')} to {moment.unix(1711803600).local().format('HH:mm:ss')}. The system will display only scores and band names. Member names and Result table will not be displayed during that period until voting closes.</p> : <Skeleton />}
         </div>
 </div>
 <hr />

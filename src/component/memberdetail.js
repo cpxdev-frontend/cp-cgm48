@@ -680,12 +680,12 @@ function capitalizeFirstLetter(string) {
                                                 <button className='cur btn btn-info' onClick={() => fetchfollower(fol)}>Something went wrong, please click here to refresh page</button>
                                             )}
                                             </>
+                                        )} 
+                                        {item.headcaptain != undefined && (
+                                            <p className="mb-3 badge badge-pill badge-primary">CGM48 Captain</p>
                                         )}
                                     <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
-                                    
-                                    {item.headcaptain != undefined && (
-                                        <p className="mb-3 badge badge-pill badge-primary">CGM48 Captain</p>
-                                    )}
+                                   
                                     <hr />
                                     {item.shihainin != undefined && (
                                     <CardActionArea className="mb-3" onClick={() => History.push('/shihainin')}>

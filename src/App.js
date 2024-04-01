@@ -75,7 +75,6 @@ import Mana from './component/geevent/gemanage'
 import RegisCom from './component/register';
 import Fenetwork from './component/48groupnetwork';
 import MsSongkran from './component/mssongkran';
-import MsSongkranF from './component/mssongkranfinal';
 
 import Fet from './fetch'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
@@ -762,12 +761,6 @@ React.useEffect(() => {
                     <DonutSmallIcon />
                   </ListItemIcon>
                   <ListItemText primary='Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
-                </ListItem>
-                <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
-                  <ListItemIcon>
-                    <DonutSmallIcon />
-                  </ListItemIcon>
-                  <ListItemText primary='Ms Songkran 48 First Round (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
                 </ListItem>
                 <ListItem component={Link} to='/mssongkran48final' className={window.location.pathname == '/mssongkran48final' ? 'activeNav' : ''} button>
                   <ListItemIcon>

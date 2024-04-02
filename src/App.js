@@ -1009,8 +1009,8 @@ React.useEffect(() => {
                       
                   
         <footer className={'fixed-bottom text-center text-dark bg-light pt-2'} style={{paddingBottom: window.innerWidth < 700 ? 70 :0}} ref={ref}>
-          Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
-          <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.
+        <small>Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
+        <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.</small>
         </footer>
 
 

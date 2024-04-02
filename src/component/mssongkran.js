@@ -63,17 +63,17 @@ const fetchapi = () => {
         .then(response => response.json())
         .then(data => {
             setData(data)
-            fetch(fet + '/cgm48/tkxlist/0xa8E49Dce482E68df7D89509b4810dc466bd6f24A?chartLimit=6', {
-                method :'post'
-            })
-                .then(response => response.json())
-                .then(datax => {
-                    setData2(datax)
-                    setTimeout(() => {
-                        setFet(true)
-                    }, 10000);
-                }); 
         }); 
+        fetch(fet + '/cgm48/tkxlist/0xa8E49Dce482E68df7D89509b4810dc466bd6f24A?chartLimit=6', {
+          method :'post'
+      })
+          .then(response => response.json())
+          .then(datax => {
+              setData2(datax)
+          }); 
+          setTimeout(() => {
+              setFet(true)
+          }, 30000);
 }
 
     React.useEffect(() => {

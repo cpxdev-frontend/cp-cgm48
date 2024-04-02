@@ -141,13 +141,13 @@ const fetchapi = () => {
             {data != null ? <div>
                 <Bar
                         data={{
-                            labels: data.onBar.labels,
+                            labels: data.onChart.labels,
                             datasets: [
                                 {
                                   label: 'BNK48 and CGM48 members',
-                                  data: data.onBar.data,
-                                  backgroundColor: data.onBar.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
-                                  borderColor: data.onBar.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
+                                  data: data.onChart.data,
+                                  backgroundColor: data.onChart.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
+                                  borderColor: data.onChart.labels.map((x) => x.includes('CGM48') ? '#49C5A8' : '#cb96c2'),
                                   borderWidth: 0,
                                 },
                               ],

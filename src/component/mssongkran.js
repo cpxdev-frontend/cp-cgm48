@@ -313,7 +313,7 @@ return ( <div className='container mt-4'>
                           {numberWithCommas(item.token)}
                           </TableCell>
                           <TableCell align="right">
-                          {numberWithCommas((item.token / data.allToken) * 100)}
+                          {numberWithCommas((item.token / data2.allToken) * 100)}
                           </TableCell>
                   </TableBody>
                   )): (

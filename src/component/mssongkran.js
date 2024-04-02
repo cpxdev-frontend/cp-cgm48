@@ -54,7 +54,7 @@ const fetchapi = () => {
     setData(null)
     setFet(false)
     fetch(fet + '/cgm48/tkxlist/0xE4629861b811d23Afde5E4476DFA79003C0E83d1', {
-        method :'get'
+        method :'post'
     })
         .then(response => response.json())
         .then(data => {

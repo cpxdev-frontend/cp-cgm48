@@ -53,7 +53,7 @@ const SongChart = ({fet, setSec, width}) => {
 const fetchapi = () => {
     setData(null)
     setFet(false)
-    fetch(fet + '/cgm48/mssongkran', {
+    fetch(fet + '/cgm48/tkxlist/0xE4629861b811d23Afde5E4476DFA79003C0E83d1', {
         method :'get'
     })
         .then(response => response.json())
@@ -95,7 +95,7 @@ const fetchapi = () => {
         </div>
         <div className='col-md-auto'>
             <h6>All Transactions</h6>
-            {data != null ? <p>{data.transactions.transaction_count}</p> : <Skeleton />}
+            {data != null ? <p>{data.transactions.transactions_count}</p> : <Skeleton />}
         </div>
         <div className='col-md-auto'>
             <h6>All Spent Tokens</h6>
@@ -104,9 +104,6 @@ const fetchapi = () => {
         <div className='col-md-auto'>
             <h6>All Est. Spent Amount (THB)</h6>
             {data != null ? <p>{numberWithCommas(data.allCash)}</p> : <Skeleton />}
-        </div>
-        <div className='col-md-12'>
-            {data != null ? <p>To ensure fairness and increase the enjoyment of voting, on {moment.unix(1711774800).local().format('DD MMMM YYYY')} from {moment.unix(1711774800).local().format('HH:mm:ss')} to {moment.unix(1711803600).local().format('HH:mm:ss')}. The system will display only scores and band names. Member names and Result table will not be displayed during that period until voting closes.</p> : <Skeleton />}
         </div>
 </div>
 <hr />
@@ -174,29 +171,29 @@ const fetchapi = () => {
                     </TableRow>
                   </TableHead>
                   {data != null && bnk.length > 0 && cgm.length > 0 ? data.list.map((item, i) => (
-                     <TableBody key={item.member + item.band} onClick={() => item.band.includes('CGM48') ? History.push('/member/' + item.member.toLowerCase()) : item.band.includes('BNK48') ? window.open('//cp-bnk48.pages.dev/member/' + item.member.toLowerCase(), '_target') : ''}
+                     <TableBody key={item.header + item.desc} onClick={() => item.desc.includes('CGM48') ? History.push('/member/' + item.header.toLowerCase()) : item.desc.includes('BNK48') ? window.open('//cp-bnk48.pages.dev/member/' + item.header.toLowerCase(), '_target') : ''}
                         data-aos='fade-right'
                     >
                         <TableCell component="th" className={classes.rank}>
                           {i + 1}
                         </TableCell>
                         <TableCell align="center" className={classes.img}>
-                        <img src={item.band.includes('BNK48') ? bnk.filter(x => x.name == item.member)[0].img : cgm.filter(x => x.name == item.member)[0].img} className={classes.large + ' cir avatarlimit'} />
+                        <img src={item.desc.includes('BNK48') ? bnk.filter(x => x.name == item.header)[0].img : cgm.filter(x => x.name == item.header)[0].img} className={classes.large + ' cir avatarlimit'} />
                           </TableCell>
                           <TableCell align="center">
-                          {item.band.includes('BNK48') ? bnk.filter(x => x.name == item.member)[0].fullnameEn[0] : cgm.filter(x => x.name == item.member)[0].fullnameEn[0]}  {item.band.includes('BNK48') ? bnk.filter(x => x.name == item.member)[0].fullnameEn[1] : cgm.filter(x => x.name == item.member)[0].fullnameEn[1]} ({item.member})
+                          {item.desc.includes('BNK48') ? bnk.filter(x => x.name == item.header)[0].fullnameEn[0] : cgm.filter(x => x.name == item.header)[0].fullnameEn[0]}  {item.desc.includes('BNK48') ? bnk.filter(x => x.name == item.header)[0].fullnameEn[1] : cgm.filter(x => x.name == item.header)[0].fullnameEn[1]} ({item.header})
                           </TableCell>
                           <TableCell align="center">
-                          {item.band}
+                          {item.desc}
                           </TableCell>
                           {
-                            item.band.includes('CGM48') ? (
+                            item.desc.includes('CGM48') ? (
                               <TableCell align="right">
-                              {item.team == "" ? 'None' : (item.band.includes('BNK48') ? bnk.filter(x => x.name == item.member)[0].team : cgm.filter(x => x.name == item.member)[0].team)}
+                              {item.team == "" ? 'None' : (item.desc.includes('BNK48') ? bnk.filter(x => x.name == item.header)[0].team : cgm.filter(x => x.name == item.header)[0].team)}
                               </TableCell>
                             ) : (
                               <TableCell align="right">
-                              {item.team == "" ? 'None' : (item.band.includes('BNK48') ? bnk.filter(x => x.name == item.member)[0].team[0] : cgm.filter(x => x.name == item.member)[0].team[0])}
+                              {item.team == "" ? 'None' : (item.desc.includes('BNK48') ? bnk.filter(x => x.name == item.header)[0].team[0] : cgm.filter(x => x.name == item.header)[0].team[0])}
                               </TableCell>
                             )
                           }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Fade, Grow, CardActionArea, Typography, Zoom, Link, Breadcrumbs, Button, Drawer, ButtonGroup, IconButton, Slide, CardContent, List , Grid,Backdrop,Avatar } from '@material-ui/core';
+import { Card, Fade, Grow, CardActionArea, CardHeader , Typography, Zoom, Link, Breadcrumbs, Button, Drawer, ButtonGroup, IconButton, Slide, CardContent, List , Grid,Backdrop,Avatar } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -34,6 +34,10 @@ var pm = new Audio('https://cdn.pixabay.com/download/audio/2022/03/14/audio_a791
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 const fwoptions = {
     speed: 3,
@@ -106,6 +110,7 @@ function capitalizeFirstLetter(string) {
         const [GEPoster, setGEPoster] = React.useState('');
         const [GEPro, setGEPromote] = React.useState('');
         const [fol, setFollowName] = React.useState('');
+        const [live, setLive] = React.useState(null);
 
 
         const numberWithCommasx = (x) => {
@@ -476,7 +481,28 @@ function capitalizeFirstLetter(string) {
                     if (data.response == 'Not found this member in record.') {
                         History.push("/")
                     } else {
-                        getJanken(data.response.name)
+                        if (localStorage.getItem("loged") != null) {
+                            fetch(fet + '/cgm48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + data.response.name, {
+                                method :'post'
+                            })
+                                .then(response => response.json())
+                                .then(dataads => {
+                                    if (dataads.status) {
+                                        if (dataads.isLive) {
+                                            setLive(dataads)
+                                        }
+                                    } else {
+                                        Swal.fire({
+                                            title: "System error",
+                                            text: "Contact support",
+                                            icon: 'error',
+                                          })
+                                    }
+                                }).catch(() => {
+                                    setNewspop([])
+                                })
+                        }
+
                         fetch(fet + '/cgm48/getadsupdate', {
                             method :'post'
                         })
@@ -640,6 +666,16 @@ function capitalizeFirstLetter(string) {
                 </ButtonGroup>
                 }>
                 </Snackbar>
+
+                <Snackbar open={live != null} autoHideDuration={10000} onClose={() => setLive(null)} anchorOrigin={{ vertical: 'top',
+    horizontal: 'center'}}>
+        <Alert severity="info">
+            {live != null && (
+            <CardHeader title={<h6>{live.member} CGM48 is LIVE now on IAM48 Application. Let's watch it!</h6>} subheader={live.desc} />
+            )}
+        </Alert>
+        </Snackbar>
+
             <div className="pt-5 pb-2">
                 <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' CGM48' : 'Fetching Header'}</h3>
                 <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">

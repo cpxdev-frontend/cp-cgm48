@@ -199,6 +199,7 @@ function App() {
   const [footerHeight, setFooterH] = React.useState(0)
   
   const [cro, setCro] = React.useState(0)
+  const [live, setKamiLive] = React.useState(false);
 
   const [width, setRealwidth] = React.useState(window.innerWidth);
   function handleWindowResize() {
@@ -242,6 +243,32 @@ function App() {
       setFooterH(ref.current.clientHeight)
     } 
   })
+
+  React.useEffect(() => {
+    if (MemberDl && kamin != "-" && kamin != "") {
+      fetch('https://cpxdevservice.onrender.com/cgm48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + kamin, {
+        method :'post'
+    })
+        .then(response => response.json())
+        .then(dataads => {
+            if (dataads.status) {
+                if (dataads.isLive) {
+                  setKamiLive(true)
+                } else {
+                  setKamiLive(false)
+                }
+            } else {
+                Swal.fire({
+                    title: "System error",
+                    text: "Contact support",
+                    icon: 'error',
+                  })
+            }
+        }).catch(() => {
+            setNewspop([])
+        })
+    }
+  }, [MemberDl])
   
   React.useEffect(() => {
     const newConnection = new HubConnectionBuilder()
@@ -1037,7 +1064,18 @@ React.useEffect(() => {
               setMemDl(false)
            }} button>
                <ListItemIcon>
-               <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
+               <Badge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      color="error"
+                      className="mr-4"
+                      badgeContent={live ? 'LIVE' : null}
+                    >
+                    <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
+                    </Badge>
              </ListItemIcon>
              <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' CGM48'} secondary={newspop.length > 0 && newspop.filter(x => ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] == 0) || ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] > 0 && moment().unix() <= x.timerange[1])).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length +' incoming event(s). Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
               </ListItem>

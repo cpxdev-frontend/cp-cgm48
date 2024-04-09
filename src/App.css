@@ -250,3 +250,6 @@ iframe[id*="twitter-widget"] {
   .chartfixed{
     margin-top: -80px !important;
   }
+  .MuiBadge-colorError{
+    margin-top: -10px !important;
+  }

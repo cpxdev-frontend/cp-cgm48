@@ -667,7 +667,10 @@ function capitalizeFirstLetter(string) {
                 }>
                 </Snackbar>
 
-                <Snackbar open={live != null} autoHideDuration={10000} onClose={() => setLive(null)} anchorOrigin={{ vertical: 'top',
+                <Snackbar open={live != null} autoHideDuration={10000} onClose={() => {
+            window.open('https://app.bnk48.com/member-live/' + live.link, '_blank')
+            setLive(null)
+        }} anchorOrigin={{ vertical: 'top',
     horizontal: 'center'}}>
         <Alert severity="info">
             {live != null && (

@@ -295,7 +295,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
   {
     kamin != "" && kamin !="-" && (
       <>
-        <CardHeader title={(<h3 data-aos="flip-up">Current BNK48 Members LIVE Streaming in IAM48 Application</h3>)} className='mb-5' />
+        <CardHeader title={(<h3 data-aos="flip-up">Current CGM48 Members LIVE Streaming in IAM48 Application</h3>)} className='mb-5' />
       {
         LIVEmem != null ? (
           <div className='row ml-3 mr-3 justify-content-center'>
@@ -322,7 +322,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
           </div>
         ) : (
           <div className='row ml-3 mr-3 justify-content-center'>
-            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
           </div>
         )
       }

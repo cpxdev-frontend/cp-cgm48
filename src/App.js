@@ -281,134 +281,62 @@ function App() {
 }, []);
 
 React.useEffect(() => {
-  if (con) {
-      con.start()
-          .then(result => {
-            con.on("responsestatus", function (res) {
-              if (res =='ok') {
-                setOffline(false)
-              } else {
-                setOffline(true)
-                setTimeout(() => {
-                  fetch(Fet().ul + '/home/status', {
-                    method :'get'
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                      if (data == "OK") {
-                          setOffline(false)
-                      } 
-                        setpopup(false)
-                        document.getElementById("root").style.display = "none";
-                          Swal.fire({
-                            title: 'System is under maintenance',
-                            text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
-                            icon: 'error',
-                            allowOutsideClick: false,
-                            showConfirmButton: true,
-                            confirmButtonText: 'Refresh'
-                          }).then(() => {
-                            window.location.reload()
-                          })
-                    }).catch(() => {
-                      setpopup(false)
-                        document.getElementById("root").style.display = "none";
-                          Swal.fire({
-                            title: 'System is under maintenance',
-                            text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
-                            icon: 'error',
-                            allowOutsideClick: false,
-                            showConfirmButton: true,
-                            confirmButtonText: 'Refresh'
-                          }).then(() => {
-                            window.location.reload()
-                          })
-                    })
-                }, 5000);
-              }
-          })
-          })
-          .catch(e => {
-            setOffline(true)
-            setTimeout(() => {
-              fetch(Fet().ul + '/home/status', {
-                method :'get'
-            })
-                .then(response => response.text())
-                .then(data => {
-                  if (data == "OK") {
-                      setOffline(false)
-                  } 
-                    setpopup(false)
-                    document.getElementById("root").style.display = "none";
-                      Swal.fire({
-                        title: 'System is under maintenance',
-                        text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
-                        icon: 'error',
-                        allowOutsideClick: false,
-                        showConfirmButton: true,
-                        confirmButtonText: 'Refresh'
-                      }).then(() => {
-                        window.location.reload()
-                      })
-                }).catch(() => {
-                  setpopup(false)
-                    document.getElementById("root").style.display = "none";
-                      Swal.fire({
-                        title: 'System is under maintenance',
-                        text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
-                        icon: 'error',
-                        allowOutsideClick: false,
-                        showConfirmButton: true,
-                        confirmButtonText: 'Refresh'
-                      }).then(() => {
-                        window.location.reload()
-                      })
-                })
-            }, 5000);
-          });
-          
-          con.onclose(error => {
-            setOffline(true)
-            setTimeout(() => {
-              fetch(Fet().ul + '/home/status', {
-                method :'get'
-            })
-                .then(response => response.text())
-                .then(data => {
-                  if (data == "OK") {
-                      setOffline(false)
-                  } 
-                    setpopup(false)
-                    document.getElementById("root").style.display = "none";
-                      Swal.fire({
-                        title: 'System is under maintenance',
-                        text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
-                        icon: 'error',
-                        allowOutsideClick: false,
-                        showConfirmButton: true,
-                        confirmButtonText: 'Refresh'
-                      }).then(() => {
-                        window.location.reload()
-                      })
-                }).catch(() => {
-                  setpopup(false)
-                    document.getElementById("root").style.display = "none";
-                      Swal.fire({
-                        title: 'System is under maintenance',
-                        text: 'Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.',
-                        icon: 'error',
-                        allowOutsideClick: false,
-                        showConfirmButton: true,
-                        confirmButtonText: 'Refresh'
-                      }).then(() => {
-                        window.location.reload()
-                      })
-                })
-            }, 5000);
+  fetch(Fet().ul + '/home/status', {
+    method :'get'
+})
+    .then(response => response.text())
+    .then(data => {
+      if (data == "OK") {
+          setOffline(false)
+      } else {
+        setpopup(false);
+        document.getElementById("root").style.display = "none";
+        Swal.fire({
+          title: "System is under maintenance",
+          text: "Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.",
+          icon: "error",
+          allowOutsideClick: false,
+          showConfirmButton: true,
+          confirmButtonText: "Refresh",
+        }).then(() => {
+          window.location.reload();
         });
-  }
-}, [con, offline]);
+      }
+    }).catch(() => {
+      setpopup(false);
+        document.getElementById("root").style.display = "none";
+        Swal.fire({
+          title: "System is under maintenance",
+          text: "Please check your internet connection and try again. Or you can contact us at cpxdev@outlook.com for ask more information.",
+          icon: "error",
+          allowOutsideClick: false,
+          showConfirmButton: true,
+          confirmButtonText: "Refresh",
+        }).then(() => {
+          window.location.reload();
+        });
+    })
+ setInterval(() => {
+  fetch(Fet().ul + '/home/status', {
+    method :'get'
+})
+    .then(response => response.text())
+    .then(data => {
+      if (data == "OK") {
+          setOffline(false)
+          if (login == null) {
+            window.location.reload()
+          }
+      } else {
+        setpopup(false)
+        setOffline(true)
+      }
+    }).catch(() => {
+      setpopup(false)
+        setOffline(true)
+    })
+ }, 5000);
+}, []);
 
 
    React.useEffect(() => {
@@ -759,7 +687,7 @@ React.useEffect(() => {
 
   if (uri != '' && allDone) {
     return (<>
-    <Snackbar open={offline} anchorOrigin={{ vertical: 'top',
+    <Snackbar open={offline}  ModalProps={{ onBackdropClick: false }} anchorOrigin={{ vertical: 'top',
     horizontal: 'center'}}>
         <Alert severity="warning">
           <CardHeader title="Reconnecting to service" subheader="You leave from platform just on minutes." />

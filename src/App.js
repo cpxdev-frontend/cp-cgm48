@@ -26,6 +26,7 @@ import auth from "./fbindex";
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
+import MuiAlert from '@material-ui/lab/Alert';
 import 'sweetalert2/dist/sweetalert2.min.css'
 import moment from 'moment'
 import { AppBar, Toolbar,Typography, IconButton, Drawer, FormControlLabel, Switch, ListItem, ListItemIcon, Divider, ListItemText,
@@ -84,6 +85,10 @@ import Swal from 'sweetalert2'
 var checkloop;
 const drawerWidth = 240;
 const Client = '961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com'
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   sm: {

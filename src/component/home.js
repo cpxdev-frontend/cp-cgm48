@@ -285,7 +285,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
               </Card> 
            </div>
       )) : (
-          <h6 data-aos="zoom-out">No BNK48 member birthday in today.</h6>
+          <h6 data-aos="zoom-out">No CGM48 member birthday in today.</h6>
       )}
       </div>
   ) : (
@@ -317,7 +317,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
                  </Card> 
               </div>
           )) : (
-              <h6>No BNK48 member(s) LIVE right now. Please come back later.</h6>
+              <h6>No CGM48 member(s) LIVE right now. Please come back later.</h6>
           )}
           </div>
         ) : (
@@ -352,7 +352,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
              </Card> 
           </div>
       )) : (
-          <h6>No BNK48 member birthday in today.</h6>
+          <h6>No CGM48 member birthday in today.</h6>
       )}
       </div>
   ) : (

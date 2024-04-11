@@ -285,7 +285,9 @@ React.useEffect(() => {
       con.start()
           .then(result => {
             con.on("responsestatus", function (res) {
-              if (res =='fail') {
+              if (res =='ok') {
+                setOffline(false)
+              } else {
                 setOffline(true)
                 setTimeout(() => {
                   fetch(Fet().ul + '/home/status', {
@@ -323,8 +325,6 @@ React.useEffect(() => {
                           })
                     })
                 }, 5000);
-              } else {
-                setOffline(false)
               }
           })
           })
@@ -408,7 +408,7 @@ React.useEffect(() => {
             }, 5000);
         });
   }
-}, [con]);
+}, [con, offline]);
 
 
    React.useEffect(() => {

@@ -5,7 +5,7 @@ import { Typography, ListItem, Zoom, ListItemText,
     import moment from 'moment'
     import AOS from "aos";
 
-const HomeCom = ({fet, gp, ImgThumb, stream, setSec, width}) => {
+const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
     const History = useHistory()
     const [Loaded1, setLoaded1] = React.useState(false);
     const [Loaded2, setLoaded2] = React.useState(false);
@@ -15,10 +15,34 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec, width}) => {
     const [samplemem, setMem] = React.useState([]);
     const [highMV, setMV] = React.useState([]);
     const [GenRan, setGenRan] = React.useState(0);
+    const [LIVEmem, setLivemem] = React.useState(null);
+    const [memlist, setMemList] = React.useState([]);
 
   React.useEffect(() => {
     setSec('Homepage')
   },[])
+
+  React.useEffect(() => {
+    if (kamin != "" && kamin != "-") {
+      setLivemem(null)
+      fetch(fet + '/bnk48/getmemberlivelist?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString(), {
+        method :'post'
+    })
+        .then(response => response.json())
+        .then(data => {
+          setLivemem(data)
+        });
+    } else {
+      setLivemem([])
+    }
+    fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+      method :'get'
+  })
+      .then(response => response.json())
+      .then(data => {
+        setMemList(data.response)
+      })
+  },[kamin])
 
   function ordinal_suffix_of(i) {
     var j = i % 10,
@@ -267,6 +291,44 @@ const HomeCom = ({fet, gp, ImgThumb, stream, setSec, width}) => {
   ) : (
     <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center' />
   )}
+   <hr/>
+  {
+    kamin != "" && kamin !="-" && (
+      <>
+        <CardHeader title={(<h3 data-aos="flip-up">Current BNK48 Members LIVE Streaming in IAM48 Application</h3>)} className='mb-5' />
+      {
+        LIVEmem != null ? (
+          <div className='row ml-3 mr-3 justify-content-center'>
+          {LIVEmem.length > 0 ? LIVEmem.map((item, i) => (
+              <div data-aos="zoom-in-down" className='col-md-3 mb-5'>
+              <Card>
+              <CardActionArea onClick={() => window.open('https://app.bnk48.com/member-live/' + item.link, '_blank')}>
+              <CardMedia
+                    src={memlist.filter(x => x.name == item.name.toLowerCase())[0].img}
+                    component="img"
+                    className={item.graduated == true ? 'grayimg' : ''}
+                    />
+                  <CardContent>
+                      <h5>{memlist.filter(x => x.name == item.name.toLowerCase())[0].name}</h5>
+                      <small className='text-muted'>{item.desc}</small>
+                      <p>{moment.utc(item.livestarted).local().format('M')}</p>
+                  </CardContent>
+                </CardActionArea>
+                 </Card> 
+              </div>
+          )) : (
+              <h6>No BNK48 member(s) LIVE right now. Please come back later.</h6>
+          )}
+          </div>
+        ) : (
+          <div className='row ml-3 mr-3 justify-content-center'>
+            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center' />
+          </div>
+        )
+      }
+      </>
+    )
+  }
   <hr />
   <CardHeader title={(<h3 data-aos="flip-up">Sample Members</h3>)} subheader={GenRan != 0 ? ordinal_suffix_of(GenRan) + ' Generation' : ''} className='mb-5' />
   {Loaded2 ? (

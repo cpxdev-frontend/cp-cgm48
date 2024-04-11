@@ -25,7 +25,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
   React.useEffect(() => {
     if (kamin != "" && kamin != "-") {
       setLivemem(null)
-      fetch(fet + '/bnk48/getmemberlivelist?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString(), {
+      fetch(fet + '/cgm48/getmemberlivelist?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString(), {
         method :'post'
     })
         .then(response => response.json())
@@ -35,7 +35,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
     } else {
       setLivemem([])
     }
-    fetch(fet + '/bnk48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
+    fetch(fet + '/cgm48/memberlist?tstamp=' + Math.floor( new Date().getTime()  / 1000), {
       method :'get'
   })
       .then(response => response.json())
@@ -300,22 +300,22 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
         LIVEmem != null ? (
           <div className='row ml-3 mr-3 justify-content-center'>
           {LIVEmem.length > 0 ? LIVEmem.map((item, i) => (
-              <div data-aos="zoom-in-down" className='col-md-3 mb-5'>
-              <Card>
-              <CardActionArea onClick={() => window.open('https://app.bnk48.com/member-live/' + item.link, '_blank')}>
-              <CardMedia
-                    src={memlist.filter(x => x.name == item.name.toLowerCase())[0].img}
-                    component="img"
-                    className={item.graduated == true ? 'grayimg' : ''}
-                    />
-                  <CardContent>
-                      <h5>{memlist.filter(x => x.name == item.name.toLowerCase())[0].name}</h5>
-                      <small className='text-muted'>{item.desc}</small>
-                      <p>{moment.utc(item.livestarted).local().format('M')}</p>
-                  </CardContent>
-                </CardActionArea>
-                 </Card> 
-              </div>
+             <div data-aos="zoom-in-down" className='col-md-3 mb-5'>
+             <Card>
+             <CardActionArea onClick={() => window.open('https://app.bnk48.com/member-live/' + item.link, '_blank')}>
+             <CardMedia
+                   src={memlist.filter(x => x.name == item.member)[0].img}
+                   component="img"
+                   className={item.graduated == true ? 'grayimg' : ''}
+                   />
+                 <CardContent>
+                     <h5>{item.member}</h5>
+                     <small className='text-muted'>LIVE since {moment.utc(item.livestarted).local().format('DD MMM YYYY HH:mm')}</small>
+                     <p>{item.desc}</p>
+                 </CardContent>
+               </CardActionArea>
+                </Card> 
+             </div>
           )) : (
               <h6>No CGM48 member(s) LIVE right now. Please come back later.</h6>
           )}

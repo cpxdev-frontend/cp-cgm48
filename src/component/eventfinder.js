@@ -251,7 +251,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                 }
                 const marker = JSON.parse(JSON.stringify(e.target._popups[0]._lngLat));
                 let d = null;
-                
+                data = data.slice().sort((a, b) => a.timerange[0] - b.timerange[0]);
                 for (let i=0; i< data.length; i++){
                     if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                         if (data[i].place.includes('IAMP') ) {

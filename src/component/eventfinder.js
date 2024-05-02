@@ -189,7 +189,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
           .then((data) => {
             if (map.current != null) {
               let geo = []
-              data = data.slice().sort((a, b) => a.timerange[0] - b.timerange[0]);
+              data = data.slice().sort((a, b) => b.timerange[0] - a.timerange[0]);
               for (let i=0; i< data.length; i++){
                 if (data[i].place.includes('IAMP') || (!data[i].place.includes('IAMP') && data[i].locate != null) && data[i].timerange[1] > 0) {
                     if (data[i].place.includes('IAMP') ) {

@@ -165,7 +165,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
           map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
-            center: [100.4935089, 13.7524938],
+            center: [98.996512, 18.76794],
             zoom: 7,
             maxZoom:20,
             minZoom: 1

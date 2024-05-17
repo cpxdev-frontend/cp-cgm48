@@ -567,7 +567,6 @@ function App() {
           } else {
             setLogLoad(false)
             setLogin(false)
-            deleteUser(result.user);
             Swal.fire({
               title: 'User not found',
               text: 'This user don\'t be register to our system. please try again.',

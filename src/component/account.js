@@ -280,7 +280,7 @@ const AccountMana = ({fet, setSec, width, triggerUpdate}) => {
                             setLoad(true)
                           Fetch()
                         } else {
-                            deleteUser(result.user)
+                            // deleteUser(result.user)
                             Swal.fire({
                                 title: "Error while link account, please try again",
                                 icon: 'error',
@@ -288,7 +288,7 @@ const AccountMana = ({fet, setSec, width, triggerUpdate}) => {
                               })
                         }
                     }).catch(() => {
-                      deleteUser(result.user)
+                      // deleteUser(result.user)
                         setLoad(false)
                         Swal.fire({
                             title: "Error while link account, please try again",

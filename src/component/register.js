@@ -149,7 +149,7 @@ const RegisterMember = ({fet, setSec}) => {
             .then(data => {
                 setLoad(false)
                 if (data == null) {
-                  deleteUser(obj.user)
+                  // deleteUser(obj.user)
                     Swal.fire({
                         title: "Error while login, please try again",
                         icon: 'error',
@@ -157,14 +157,14 @@ const RegisterMember = ({fet, setSec}) => {
                       })
                 } else {
                     if (data.status == 2) {
-                      deleteUser(obj.user)
+                      // deleteUser(obj.user)
                         Swal.fire({
                             title: "Error while login, please try again",
                             icon: 'error',
                             text: 'Please take for a while or contact us.',
                           })
                     } else if (data.status == 1) {
-                      deleteUser(obj.user)
+                      // deleteUser(obj.user)
                         Swal.fire({
                             title: "This login authentication is already used",
                             icon: 'error',
@@ -176,7 +176,7 @@ const RegisterMember = ({fet, setSec}) => {
                     }
                 }
             }).catch(() => {
-              deleteUser(obj.user)
+              // deleteUser(obj.user)
                 setLoad(false)
             })
     }

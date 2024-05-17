@@ -201,7 +201,7 @@ function App() {
   const [footerHeight, setFooterH] = React.useState(0)
   
   const [cro, setCro] = React.useState(0)
-  const [live, setKamiLive] = React.useState(false);
+  const [live, setKamiLive] = React.useState(null);
 
   const [width, setRealwidth] = React.useState(window.innerWidth);
   function handleWindowResize() {
@@ -254,11 +254,9 @@ function App() {
         .then(response => response.json())
         .then(dataads => {
             if (dataads.status) {
-                if (dataads.isLive) {
-                  setKamiLive(true)
-                } else {
-                  setKamiLive(false)
-                }
+              if (dataads.isLive || dataads.isPS) {
+                setKamiLive(dataads)
+              }
             } else {
                 Swal.fire({
                     title: "System error",
@@ -1028,7 +1026,7 @@ function App() {
                       }}
                       color="error"
                       className="mr-4"
-                      badgeContent={live ? 'LIVE' : null}
+                      badgeContent={live != null && live.isLive ? 'LIVE' : null}
                     >
                     <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
                     </Badge>
@@ -1043,23 +1041,10 @@ function App() {
                        <ListItemText primary="You don't have any Kami-Oshi" secondary='Please choose your member which you love only once person.' />
                        </ListItem>
              )}
-              {/* {tokenID != '' ? (
-           <ListItem onClick={() => {
-            navigator.clipboard.writeText(tokenID);
-            alert('Your Wallet code has copied to clipboard');
-           }} button>
-             <ListItemText primary={'Your Token balance' + (point < 0.01 && tokenID != '' ? ' (Your BNK token is insufficient)' : '')} secondary={point + ' Token (s)'} />
-             </ListItem>
-             ) : (
-               <>
-                 <ListItem>
-                       <ListItemText primary="Now you can also check BNK Token balance from this site" secondary='Please enter your iAM wallet code below in first time (Check it in iAM48 application)' />
-                       </ListItem>
-                <ListItem>
-                      <ListItemText primary={(<TextField value={survey} onChange={(e) => setSur(e.target.value)} fullWidth label="Enter your wallet code here" disabled={TokenLoad} />)} secondary={TokenLoad == false ? (<Button onClick={() => setTokenDialog()} variant="contained" className='mt-1' color='primary'>Add</Button>):(<img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" className='mt-2' width="40px" />)} />
-                </ListItem>
-               </>
-             )} */}
+           {live != null && live.isPS && (
+           <ListItem button className="text-success">
+             <ListItemText primary={kamin + ' CGM48 is pre-scheduled to LIVE on IAM48 Application'} secondary={'She is planned to LIVE in ' + moment(live.livestarted).local().format('DD MMMM YYYY HH:mm') + '. However, This schedule to change as appropriate.'} />
+             </ListItem>)}
                     {kamin != "-" && memDate == moment.unix(time).local().format('YYYY-M-DD') && (
                       <ListItem className='text-muted' button>
                         <ListItemText primary={"Today is " + kamin + " Birthday. Click her profile to view info and bless her on Twitter."}/>

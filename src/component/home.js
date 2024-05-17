@@ -299,7 +299,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
       {
         LIVEmem != null ? (
           <div className='row ml-3 mr-3 justify-content-center'>
-          {LIVEmem.length > 0 ? LIVEmem.map((item, i) => (
+          {LIVEmem.length > 0 && LIVEmem.filter(x => x.isLive == true).length > 0 ? LIVEmem.map((item, i) => (
              <div data-aos="zoom-in-down" className='col-md-3 mb-5'>
              <Card>
              <CardActionArea onClick={() => window.open('https://app.bnk48.com/member-live/' + item.link, '_blank')}>

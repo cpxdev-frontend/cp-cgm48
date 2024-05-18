@@ -1223,29 +1223,14 @@ transitionDuration={500}
       {width > 900 ? (
          <div className="row">
          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
-           <div className="col pr-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/1.jpg" width="100%" />
-           </div>
-         </Fade>
-         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 200 : 300 }}>
-           <div className="col p-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/2.jpg" width="100%" />
-           </div>
-         </Fade>
-         <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 300 : 200 }}>
-           <div className="col p-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/3.jpg" width="100%" />
-           </div>
-         </Fade>
-           <Fade in={styleFade != 0 ? true : false}  timeout={400} style={{ transitionDelay: styleFade == 2 ? 400 :  0 }}>
-           <div className="col pl-0">
-               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/big/4.jpg" width="100%" />
+           <div className="col">
+               <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/ltlandingpc.png" width="100%" />
            </div>
          </Fade>
          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-            <AlertTitle>CGM48 2nd Album "Hisashiburino Lip Gloss" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+            <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
                Double click or tap on image to skip this page
              </Alert>
              </div>
@@ -1253,8 +1238,8 @@ transitionDuration={500}
          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
          <div className={cls.fabButton}>
              <Alert severity="info">
-            <AlertTitle>CGM48 2nd Album "Hisashiburino Lip Gloss" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
-                     Double click/tap here on image or wait 5 seconds to skip this page
+             <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+               Double click or tap on image to skip this page
              </Alert>
              </div>
          </Grow>
@@ -1262,65 +1247,23 @@ transitionDuration={500}
       ) : (
         <div className="row">
         <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/1.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1250 : 450 }}>
-          <div className="col p-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/2.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1350 : 550 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/3.jpg" width="100%" />
-          </div>
-        </Fade>
-          <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 250 :  650 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/4.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1150 :  750 }}>
-          <div className="col p-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/5.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1450 :  850 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/6.jpg" width="100%" />
-          </div>
-        </Fade>
-          <div className="w-100"></div>
-          <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 350 :  950 }}>
-          <div className="col pr-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/7.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1050 :  1050 }}>
-          <div className="col p-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/8.jpg" width="100%" />
-          </div>
-        </Fade>
-        <Fade in={styleFade != 0 ? true : false}  timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 1550 :  1150 }}>
-          <div className="col pl-0">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/mobile/9.jpg" width="100%" />
+          <div className="col">
+              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/ltlandingmobile.jpg" width="100%" />
           </div>
         </Fade>
         <Grow in={uri != '' && geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>CGM48 2nd Album "Hisashiburino Lip Gloss" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
-              Double click or tap on image to skip this page
+            <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+               Double click or tap on image to skip this page
             </Alert>
             </div>
         </Grow>
         <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
         <div className={cls.fabButton}>
             <Alert severity="info">
-            <AlertTitle>CGM48 2nd Album "Hisashiburino Lip Gloss" on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
-                    Double click/tap here on image or wait 5 seconds to skip this page
+            <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+               Double click or tap on image to skip this page
             </Alert>
             </div>
         </Grow>

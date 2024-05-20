@@ -502,7 +502,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                               <p className='pt-2'>CGM48 Member(s):&nbsp;</p>
                               <AvatarGroup max={6}>
                               {mainitem.memtag.map((img) => (
-                                  <Avatar alt={img} className="cur" onClick={() => window.open('/member/' + img, '_blank')} src={bnk.path + img + bnk.type} />
+                                  <Avatar alt={img} className="cur" onClick={() => window.open('/member/' + img, '_blank')} src={cgm.path + img + cgm.type} />
                               ))}
                           </AvatarGroup>
                               </div>
@@ -511,7 +511,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                           <div className='container mt-2 row'>
                               <p className='pt-2'>CGM48 Member(s):&nbsp;</p>
                               <AvatarGroup max={6}>
-                              <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket/main/bnk48/sing16all.png" />
+                              <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5ebaa7af2bdebd06a916aae51df" />
                           </AvatarGroup>
                               </div>
                          )}
@@ -535,7 +535,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
      )  : (
             <div className='text-center'>
             <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
-            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/bnk-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
             </Zoom>
             </div>
         )}

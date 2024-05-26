@@ -117,7 +117,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
           ) : (
          <div data-aos="zoom-out">
             <Fade in={true} timeout={900}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm4thalbum.png" width={width} />
+                <img src="https://i.scdn.co/image/ab67618600001016c97ddcdef5391fab6c0e619b" width={width} />
                </Fade>
               </div>
           )}

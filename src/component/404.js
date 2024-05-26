@@ -10,7 +10,7 @@ const ErrCom = ({setSec, width}) => {
         <>
           <div class="video-background">
           <Fade in={true} timeout={800}>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/cgm4thalbum.png"  width={width} />
+                <img src="https://i.scdn.co/image/ab67618600001016c97ddcdef5391fab6c0e619b"  width={width} />
               </Fade>
               </div>
 

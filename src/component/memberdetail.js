@@ -508,15 +508,9 @@ function capitalizeFirstLetter(string) {
                         })
                             .then(response => response.json())
                             .then(dataads => {
-                                if (data.response.ge != "") {
-                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
-                                    setNewspop(obj)
-                                    fetchfollower(data.follower)
-                                } else {
-                                    const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1)
-                                    setNewspop(obj)
-                                    fetchfollower(data.follower)
-                                }
+                                const obj = dataads.filter(x => x.memtag.indexOf(c.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('gen' + data.response.gen) > -1 || x.memtag.indexOf('team_' + data.response.team.toLowerCase()) > -1)
+                                setNewspop(obj)
+                                fetchfollower(data.follower)
                             }).catch(() => {
                                 setNewspop([])
                             })

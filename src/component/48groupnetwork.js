@@ -30,7 +30,7 @@ const Memberlist = ({fet, setSec, width}) => {
           minZoom: 0
           });
           
-          fetch('https://cpxdevservice.onrender.com/cgm48/fortyeightgnetwork')
+          fetch('https://cpxdev-w7d4.onrender.com/cgm48/fortyeightgnetwork')
           .then(response => response.json())
           .then((res) => {
             if (map.current != null) {

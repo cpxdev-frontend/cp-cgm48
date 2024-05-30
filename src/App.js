@@ -248,7 +248,7 @@ function App() {
 
   React.useEffect(() => {
     if (MemberDl && kamin != "-" && kamin != "") {
-      fetch('https://cpxdevservice.onrender.com/cgm48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + kamin, {
+      fetch('https://cpxdev-w7d4.onrender.com/cgm48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid +'&mem=' + kamin, {
         method :'post'
     })
         .then(response => response.json())
@@ -272,7 +272,7 @@ function App() {
   
   React.useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-        .withUrl("https://cpxdevservice.onrender.com/status")
+        .withUrl("https://cpxdev-w7d4.onrender.com/status")
         .build();
 
     setConnection(newConnection);

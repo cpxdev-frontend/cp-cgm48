@@ -730,7 +730,7 @@ function capitalizeFirstLetter(string) {
                                     )}
                                     <br />
                                     {item.captain != undefined && (
-                                        <p className="mb-3 badge badge-pill badge-warning">BNK48 {item.captain}</p>
+                                        <p className="mb-3 badge badge-pill badge-warning">CGM48 {item.captain}</p>
                                     )}
                                      {item.ir != undefined && (
                                         <CardActionArea className="mb-3" onClick={() => v ? setIRtog(true) : null}>

@@ -21,12 +21,8 @@
             "label": "Choose Stage Team"
         },
         {
-          "value": "BIII",
-          "label": "B Three (BIII)"
-        },
-        {
-          "value": "NV",
-          "label": "N Five (NV)"
+          "value": "C",
+          "label": "C"
         },
         {
             "value": "Trainee",
@@ -45,19 +41,7 @@
         {
             "value": 2,
             "label": "2nd Generation"
-        },
-        {
-            "value": 3,
-          "label": "3rd Generation"
-          },
-          {
-              "value": 4,
-            "label": "4th Generation"
-            },
-            {
-                "value": 5,
-              "label": "5th Generation"
-              }
+        }
       ],
       "graduation": [
         {

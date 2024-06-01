@@ -304,7 +304,7 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
              <Card>
              <CardActionArea onClick={() => window.open('https://app.bnk48.com/member-live/' + item.link, '_blank')}>
              <CardMedia
-                   src={memlist.filter(x => x.name.toLowerCase() == item.member.toLowerCase())[0].img}
+                   src={memlist.filter(x => x.name.toLowerCase() == item.member.toLowerCase()).length == 0 ? '':memlist.filter(x => x.name.toLowerCase() == item.member.toLowerCase())[0].img}
                    component="img"
                    className={item.graduated == true ? 'grayimg' : ''}
                    />

@@ -34,6 +34,7 @@ Dialog, DialogActions, Button, DialogTitle, Fab, DialogContent, Avatar, Badge, C
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WarningIcon from '@material-ui/icons/Warning';
+import { Fireworks } from 'fireworks-js/dist/react'
 
 import HomeIcon from '@material-ui/icons/Home';
 import CloseIcon from '@material-ui/icons/Close';
@@ -85,6 +86,23 @@ import Swal from 'sweetalert2'
 var checkloop;
 const drawerWidth = 240;
 const Client = '961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com'
+
+const anni = '09-02';
+
+const fwoptions = {
+  explosion: 5,
+  intensity:1,
+  traceSpeed: 1.6
+}
+
+const fwstyle = {
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  position: 'fixed',
+  background: 'transperent'
+}
 
 const useStyles = makeStyles((theme) => ({
   sm: {
@@ -627,6 +645,9 @@ function App() {
 
   if (uri != '' && allDone) {
     return (<>
+     {moment().format('DD-MM') == anni && (
+      <Fireworks options={fwoptions} style={fwstyle} />
+      )}
     <Snackbar open={offline}  ModalProps={{ onBackdropClick: false }} anchorOrigin={{ vertical: 'top',
     horizontal: 'center'}}>
         <Alert severity="warning">
@@ -644,7 +665,7 @@ function App() {
             )}
             <div className='cur' onClick={()=> History.push('/')}>
               <Typography variant='h5' className='title'>
-               CGM48 Fans Space
+              {moment().format('DD-MM') == anni ? "CGM48 " + ordinal_suffix_of(new Date().getFullYear() - 2017) + ' Anniversary' : 'CGM48 Fans Space'}
               </Typography>
             </div>
                 <div className={cls.search + ' mt-2'}>

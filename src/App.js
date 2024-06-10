@@ -1042,7 +1042,7 @@ function App() {
            aria-describedby="alert-dialog-description"
           
        >
-           <DialogTitle id="alert-dialog-title">Are you sure to sign-out</DialogTitle>
+           <DialogTitle id="alert-dialog-title">Account Menu</DialogTitle>
            <DialogContent>
              {kamin != undefined && kamin != '' && kamin != '-' ? (
            <ListItem onClick={() => {

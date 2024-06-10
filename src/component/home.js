@@ -310,7 +310,11 @@ const HomeCom = ({fet, kamin, gp, ImgThumb, stream, setSec, width}) => {
                    />
                  <CardContent>
                      <h5>{item.member}</h5>
-                     <small className='text-muted'>LIVE since {moment.utc(item.livestarted).local().format('DD MMM YYYY HH:mm')}</small>
+                     {moment().unix() >= moment.utc(item.livestarted).unix() ? (
+                      <small className='text-muted'>LIVE since {moment.utc(item.livestarted).local().format('DD MMM YYYY HH:mm')}</small>
+                      ) : (
+                        <small className='text-muted'>LIVE will started in {moment.utc(item.livestarted).local().format('DD MMM YYYY HH:mm')}</small>
+                      )}
                      <p>{item.desc}</p>
                  </CardContent>
                </CardActionArea>

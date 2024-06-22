@@ -182,7 +182,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
               trackUserLocation: true,
             })
             );
-          fetch('https://cpxdev-w7d4.onrender.com/cgm48/getadsupdate',{
+          fetch('https://cpxdevweb.onrender.com/cgm48/getadsupdate',{
             method: 'post'
           })
           .then(response => response.json())

@@ -684,9 +684,17 @@ function App() {
                 </IconButton>
               )}
               <div className='cur' onClick={() => History.push('/')}>
-                <Typography variant='h5' className='title'>
-                  {moment().format('DD-MM') == anni ? "CGM48 " + ordinal_suffix_of(new Date().getFullYear() - 2017) + ' Anniversary' : 'CGM48 Fans Space'}
-                </Typography>
+              {
+                    moment().format('DD-MM') == '16-07' ? (
+                      <Typography variant="h5" className="title">
+                        {'CPXDev Day | CGM48 Fans Space'}
+                      </Typography>
+                    ) : (
+                      <Typography variant="h5" className="title">
+                        {moment().format('DD-MM') == anni ? "CGM48 " + ordinal_suffix_of(new Date().getFullYear() - 2017) + ' Anniversary' : 'CGM48 Fans Space'}
+                      </Typography>
+                    )
+                  }
               </div>
               <div className={cls.search + ' mt-2'}>
                 {width > 1200 && (

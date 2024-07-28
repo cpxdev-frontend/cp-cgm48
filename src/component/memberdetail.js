@@ -782,7 +782,7 @@ function capitalizeFirstLetter(string) {
                                             <Button onClick={()=> PlaySong()}color="primary" variant="contained">Click here see effect</Button> 
                                             <div className='ml-3 pt-2'>
                                             <Share 
-                                                  url={"https://cgm48fan.cpxdev.tk/member/" + item.name.toLowerCase()}
+                                                  url={"https://cp-cgm48.pages.dev/member/" + item.name.toLowerCase()}
                                                   options={{ text: "(You can custom your blessing here)", hashtags: item.name+"CGM48,fanspaceplatform,48groupthailand", size:"large"}}
                                                 id='blessingshare'
                                             />

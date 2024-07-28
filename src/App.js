@@ -779,15 +779,6 @@ function App() {
             </ListItemIcon>
             <ListItemText primary='Shihainin House' />
           </ListItem>
-          <ListItem
-            component={Link}
-            onClick={() => window.open('https://cp-nekowar.pages.dev')}
-            button>
-            <ListItemIcon>
-              <SportsIcon />
-            </ListItemIcon>
-            <ListItemText primary="BNK48 and CGM48 3rd Sport Day - Neko War" secondary='External Link: https://cp-nekowar.pages.dev' />
-          </ListItem>
           <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
             <ListItemIcon>
               <DonutSmallIcon />

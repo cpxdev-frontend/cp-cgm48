@@ -443,19 +443,6 @@ function capitalizeFirstLetter(string) {
             if (c != null && c != "") {
                 setSec('Loading Member description')
 
-                fetch(fet + '/cgm48/getge4poster?name=' + c.toLowerCase()  , {
-                    method :'post'
-                 })
-                 .then(response => response.json())
-                  .then(data => {
-                    if (data.status == true) {
-                        setGEPoster(data.src)
-                        setGEPromote(data.video)
-                    }
-                 }).catch(() => {
-                    
-                  });
-
                 if (localStorage.getItem("loged") != null) {
                     fetch(fet + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString()  , {
                       method :'get'
@@ -732,11 +719,7 @@ function capitalizeFirstLetter(string) {
                                     {item.captain != undefined && (
                                         <p className="mb-3 badge badge-pill badge-warning">CGM48 {item.captain}</p>
                                     )}
-                                     {item.ir != undefined && (
-                                        <CardActionArea className="mb-3" onClick={() => v ? setIRtog(true) : null}>
-                                            <p className="badge badge-pill badge-info"  data-toggle="tooltip" data-placement="top" title={'[Independent Records] ' + item.ir.desc}>{item.ir.title}</p>
-                                        </CardActionArea>
-                                    )}
+                                   
                                     <>
                                         <h6><LocationOnIcon fontSize="small"/> {item.province}</h6>
                                         {birthday ? (

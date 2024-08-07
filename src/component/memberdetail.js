@@ -489,8 +489,8 @@ function capitalizeFirstLetter(string) {
                                     setNewspop([])
                                 })
                         }
-
-                        fetch(fet + '/cgm48/getadsupdate', {
+                        const resp = data.response;
+                        fetch(fet + '/cgm48/getadsupdateformem?n=' + resp.name.toLowerCase() + '&g=' + resp.gen + '&t=' + resp.team.toLowerCase(), {
                             method :'post'
                         })
                             .then(response => response.json())

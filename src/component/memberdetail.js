@@ -635,19 +635,6 @@ function capitalizeFirstLetter(string) {
 
         return (  
         <>
-          <Snackbar open={v && GEPoster != '' ? true : false}  anchorOrigin={{ vertical:  window.innerWidth > 700 ? 'top' : 'bottom', horizontal:'center' }}
-                message={capitalizeFirstLetter(mem) +' CGM48 is candidated of BNK48 16th Single Senbatsu General Election. Click VIEW to see her poster.'}
-                action={
-                    <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-                       <Button onClick={()=> showge4(GEPoster)}>View Poster</Button>
-                        <Button onClick={()=> showge4Promote(GEPro)}>View Video Promote</Button>
-                    <IconButton size="small" onClick={() => setGEPoster('')} aria-label="close" color="inherit">
-                <CloseIcon fontSize="small" />
-                </IconButton>
-                </ButtonGroup>
-                }>
-                </Snackbar>
-
                 <Snackbar open={live != null} autoHideDuration={10000} onClose={() => setLive(null)} anchorOrigin={{ vertical: 'top',
     horizontal: 'center'}}>
         <Alert severity="info" onClick={() => {
@@ -678,13 +665,11 @@ function capitalizeFirstLetter(string) {
                             </Fade>
                             <Card className={(width > 600 ? ' m-5' : ' m-3') + " pb-2 bnktheme row"} key={i}>
                               <div className={width > 1600 ? 'col-md-3 mb-1' : 'col-lg-3 mb-1'}>
-                                <Zoom in={true} timeout={600} style={{ transitionDelay: 0}}>
-                                        <div className='p-3 pt-5'>
+                              <div className='p-3 pt-5' data-aos="zoom-in" data-aos-duration="800">
                                         <Avatar src={item.img} style={{width: '100%', height: '100%'}} />
                                         </div>
-                                </Zoom>
                             </div>
-                            <Fade in={true} timeout={1200} style={{ transitionDelay: 600}}>
+                            <div data-aos="fade-in" data-aos-duration="1500">
                                 <div className='col-md mt-5 mb-5'>
                                     <h4>{item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]</h4>
                                         
@@ -782,7 +767,7 @@ function capitalizeFirstLetter(string) {
                                       </div>
                                      )}
                                 </div>
-                        </Fade>
+                        </div>
                     </Card>
                     {
                     item.ir != undefined && (

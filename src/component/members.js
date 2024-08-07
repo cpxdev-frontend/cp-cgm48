@@ -98,8 +98,10 @@ const Memberlist = ({ fet, setSec, width }) => {
             const data = Arr.filter(x => (x.name.toLowerCase()).includes(txt));
             setmem(data)
         }
-        setPagin(1)
-        _DATA.jump(1);
+        if (pageset > 1) {
+            setPagin(1)
+            _DATA.jump(1);
+           }
     }
 
     const handleChangeGroup = (event) => {
@@ -112,8 +114,10 @@ const Memberlist = ({ fet, setSec, width }) => {
         } else {
             setFilter([])
         }
-        setPagin(1)
-        _DATA.jump(1);
+        if (pageset > 1) {
+            setPagin(1)
+            _DATA.jump(1);
+           }
     };
 
     const onSearch = () => {
@@ -136,8 +140,10 @@ const Memberlist = ({ fet, setSec, width }) => {
                     setmem(newfilter)
                 }
             }
-            setPagin(1)
-            _DATA.jump(1);
+            if (pageset > 1) {
+                setPagin(1)
+                _DATA.jump(1);
+               }
         }
     }
 
@@ -148,8 +154,10 @@ const Memberlist = ({ fet, setSec, width }) => {
             setGr('-')
             setFr('-')
             setSearch('')
-            setPagin(1)
-            _DATA.jump(1);
+            if (pageset > 1) {
+                setPagin(1)
+                _DATA.jump(1);
+               }
         }
     }
 

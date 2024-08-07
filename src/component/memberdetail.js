@@ -660,7 +660,7 @@ function capitalizeFirstLetter(string) {
         </Alert>
         </Snackbar>
 
-            <div className="pt-5 pb-2">
+            <div className="pt-5 pb-2" data-aos="zoom-in" data-aos-duration="300">
                 <h3 className={width > 600 ? ' ml-5' : ' ml-3'}>{mem != '' ? 'About ' + capitalizeFirstLetter(mem) + ' CGM48' : 'Fetching Header'}</h3>
                 <Breadcrumbs className={width > 600 ? ' ml-5' : ' ml-3'} aria-label="breadcrumb">
                     <Link color="inherit" onClick={() => History.push("/memberlist")}>

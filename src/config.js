@@ -1,4 +1,4 @@
-export const bnklink = "https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk17thsing/";
+export const bnklink = "https://ucjgycqgnxeuujucorsm.supabase.co/storage/v1/object/public/bnk48.profile/";
 export const bnktype = ".jpg";
-export const cgmlink = "https://cdn.statically.io/gl/cpx2017/iamprofile@main/cgm7th/";
+export const cgmlink = "https://ucjgycqgnxeuujucorsm.supabase.co/storage/v1/object/public/cgm48.profile/";
 export const cgmtype = ".jpg";

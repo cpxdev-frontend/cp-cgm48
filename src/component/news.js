@@ -101,7 +101,7 @@ const News = ({fet, setSec, width}) => {
       ) : (
         <Zoom in={Loaded ? false : true} timeout={{ enter: 200, exit: 200}}>
             <div className='text-center'>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
             </div>
         </Zoom>
       )}

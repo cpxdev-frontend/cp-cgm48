@@ -40,7 +40,7 @@ const IRBio = ({fet, irItem, width}) => {
               left: '45%',
               top: '45%',
             }}>
-            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" />
+            <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="50px" />
           </div>
   
        );

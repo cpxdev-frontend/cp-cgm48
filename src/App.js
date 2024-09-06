@@ -880,7 +880,7 @@ function App() {
           loginLoad ? (
             <ListItem onClick={() => setMemDl(true)} button>
               <ListItemIcon>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="40px" />
+                <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="40px" />
               </ListItemIcon>
               <ListItemText primary="Signing in" />
             </ListItem>
@@ -982,7 +982,7 @@ function App() {
               style={{ position: 'fixed', bottom: 0, zIndex: 1060, width: '100%', borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: '#ace8cc' }}
             >
               <BottomNavigationAction style={{ marginTop: -10 }} onClick={() => History.goBack()} icon={<ArrowBackIosIcon />} />
-              <BottomNavigationAction style={{ width: 500, height: 80, marginTop: -16, backgroundColor: '#ace8cc', borderRadius: '50%' }} onClick={() => setOpen(true)} icon={<img width='100%' src='https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgmlogo.png' />} />
+              <BottomNavigationAction style={{ width: 500, height: 80, marginTop: -16, backgroundColor: '#ace8cc', borderRadius: '50%' }} onClick={() => setOpen(true)} icon={<img width='100%' src='https://d3hhrps04devi8.cloudfront.net/main/cgmlogo.png' />} />
               <BottomNavigationAction style={{ marginTop: kamiimg != '' && kamiimg != '-' ? -15 : 0 }} icon=
                 {login ? (
                   <ListItemIcon onClick={() => setMemDl(true)} className={'cur'}>
@@ -1267,7 +1267,7 @@ function App() {
         <div className="row">
           <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
             <div className="col">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/ltlandingpc.png" width="100%" />
+              <img src="https://d3hhrps04devi8.cloudfront.net/cgm48/ltlandingpc.png" width="100%" />
             </div>
           </Fade>
           <Grow in={uri != '' && geready ? true : false} timeout={1000}>
@@ -1291,7 +1291,7 @@ function App() {
         <div className="row">
           <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}>
             <div className="col">
-              <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/cgm48/ltlandingmobile.jpg" width="100%" />
+              <img src="https://d3hhrps04devi8.cloudfront.net/cgm48/ltlandingmobile.jpg" width="100%" />
             </div>
           </Fade>
           <Grow in={uri != '' && geready ? true : false} timeout={1000}>

@@ -56,7 +56,7 @@ const MusicSt = ({fet, setSec, width}) => {
         {Loaded && (
         <Zoom in={Loaded} timeout={{ enter: 200, exit: 200}}>
           <Card className='p-5 text-center mt-5'>
-                <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-5 mb-5' />
+                <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="50px" className='text-center mt-5 mb-5' />
                 Connect to service
           </Card>
          </Zoom>

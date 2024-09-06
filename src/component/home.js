@@ -347,7 +347,7 @@ const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {
           </>
         ) : (
           <img
-            src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg"
+            src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
             width="50px"
             className="text-center"
           />
@@ -425,7 +425,7 @@ const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {
           </div>
         ) : (
           <img
-            src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg"
+            src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
             width="50px"
             className="text-center"
           />
@@ -507,7 +507,7 @@ const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {
             ) : (
               <div className="row ml-3 mr-3 justify-content-center">
                 <img
-                  src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg"
+                  src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
                   width="50px"
                   className="text-center"
                 />
@@ -556,7 +556,7 @@ const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {
           </div>
         ) : (
           <img
-            src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg"
+            src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
             width="50px"
             className="text-center"
           />

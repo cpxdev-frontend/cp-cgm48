@@ -291,7 +291,7 @@ const RegisterMember = ({fet, setSec}) => {
                  </div>
             </div>
             <Backdrop className={classes.backdrop} open={Load}>
-            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" />
+            <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="50px" />
         </Backdrop>
         </div>
     )

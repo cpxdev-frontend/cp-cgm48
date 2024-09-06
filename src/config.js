@@ -1,4 +1,4 @@
-export const bnklink = "https://d2m23ocr3g32v7.cloudfront.net/bnk48/";
+export const bnklink = "https://d3hhrps04devi8.cloudfront.net/bnk48profile/";
 export const bnktype = ".jpg";
-export const cgmlink = "https://d2m23ocr3g32v7.cloudfront.net/cgm48/";
+export const cgmlink = "https://d3hhrps04devi8.cloudfront.net/cgm48profile/";
 export const cgmtype = ".jpg";

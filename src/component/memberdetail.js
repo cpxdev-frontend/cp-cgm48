@@ -692,7 +692,7 @@ function capitalizeFirstLetter(string) {
                                          {item.headcaptain != undefined && (
                                             <br />
                                         )}
-                                    <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
+                                    <Button onClick={() => Subsc(mem)} className={(kami == 1 ? 'bg-primary' : 'text-dark') + ' mt-3'} variant="contained" disabled={kami == 1 ? false : true}>{kami == 0 && <img className='pb-1' src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="20px" />} {kami == 2 ? "She's your Kami-Oshi" : kami == 1 ? 'Set as Kami-Oshi' : 'Loading Status'}</Button> 
                                    
                                     <hr />
                                     {item.shihainin != undefined && (
@@ -946,11 +946,11 @@ function capitalizeFirstLetter(string) {
                
                 <Zoom in={newspop == null || memLive == null ? true : false} timeout={{ enter: 200, exit: 200}}>
                         <div className='text-center pb-3'>
-                            <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
+                            <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="50px" className='text-center mt-3 mb-5' />
                         </div>
                     </Zoom>
                     <Backdrop className={classes.backdrop} open={change}>
-                        <img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="50px" />
+                        <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="50px" />
                     </Backdrop>
             </div>
         </>

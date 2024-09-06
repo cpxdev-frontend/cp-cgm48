@@ -106,7 +106,7 @@ const RequestHr = ({fet, setSec, width}) => {
           {
             arr == null ? (
               <TableBody>
-              <TableCell colSpan={5} align='center'><img src="https://cdn.statically.io/gl/cpx2017/cpxcdnbucket@main/main/cgm-circular.svg" width="40px" /></TableCell>
+              <TableCell colSpan={5} align='center'><img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="40px" /></TableCell>
         </TableBody>
             ) : ((arr.length == 0) ? (
               <TableBody>

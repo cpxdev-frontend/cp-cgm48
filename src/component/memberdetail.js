@@ -575,7 +575,7 @@ function capitalizeFirstLetter(string) {
             if (localStorage.getItem("loged") == null) {
                 Swal.fire({
                    title: "BNK48 4th Album Image",
-                   text: "This content is exclusively for BNK48 Fan Space Membership only, please login as Google Account and try again",
+                   text: "This content is exclusively for CGM48 Fan Space Membership only, please login as Google Account and try again",
                    icon: 'error',
                  })
                } else {

@@ -286,7 +286,7 @@ const Memberlist = ({ fet, setSec, width }) => {
                 : seGrad == 1
                 ? mem.filter((x) => x.graduated == false).length
                 : mem.length}{" "}
-              matched BNK48 members
+              matched CGM48 members
             </CardContent>
           </Card>
         </Zoom>

@@ -1267,13 +1267,13 @@ function App() {
         <div className="row">
           <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
             <div className="col">
-              <img src="https://d3hhrps04devi8.cloudfront.net/cgm48/ltlandingpc.png" width="100%" />
+              <img src="https://pbs.twimg.com/media/GWjR7s-aoAERRoj?format=jpg&name=4096x4096" width="100%" />
             </div>
           </Fade>
           <Grow in={uri != '' && geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
-                <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+              <AlertTitle>CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ" will be avaliable on Music Streaming Platform soon</AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
             </div>
@@ -1281,7 +1281,7 @@ function App() {
           <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
-                <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+                <AlertTitle>CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ" will be avaliable on Music Streaming Platform soon</AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
             </div>

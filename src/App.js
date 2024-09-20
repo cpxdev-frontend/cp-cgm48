@@ -779,6 +779,12 @@ function App() {
             </ListItemIcon>
             <ListItemText primary='Shihainin House' />
           </ListItem>
+          <ListItem component={Link} onClick={() => window.open('https://lookerstudio.google.com/reporting/19bdaf0b-e90f-4577-bc28-12cab7240788/page/p_3z5tiil5kd', '_blank')} button>
+            <ListItemIcon>
+              <TheatersIcon />
+            </ListItemIcon>
+            <ListItemText primary='BNK48 and CGM48 Request Hour 2024' />
+          </ListItem>
           <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
             <ListItemIcon>
               <DonutSmallIcon />
@@ -826,12 +832,6 @@ function App() {
               <HowToVoteIcon />
             </ListItemIcon>
             <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' secondary='External link: BNK48 fan Space' />
-          </ListItem>
-          <ListItem component={Link} to='/requesthour' className={window.location.pathname == '/requesthour' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <TheatersIcon />
-            </ListItemIcon>
-            <ListItemText primary='BNK48 and CGM48 Request Hour 2022' />
           </ListItem>
           <ListItem component={Link} to='/api' className={window.location.pathname == '/api' ? 'activeNav' : ''} button>
             <ListItemIcon>

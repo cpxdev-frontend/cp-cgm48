@@ -1,5 +1,5 @@
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
 import {
   BrowserRouter,
   Route,
@@ -7,105 +7,134 @@ import {
   Switch as BasicSwitch,
   useHistory,
 } from "react-router-dom";
-import { Alert, AlertTitle } from '@material-ui/lab';
-import Snowfall from 'react-snowfall'
+import { Alert, AlertTitle } from "@material-ui/lab";
+import Snowfall from "react-snowfall";
 import "aos/dist/aos.css";
 
 import { HubConnectionBuilder } from "@microsoft/signalr";
 
-import 'mapbox-gl/dist/mapbox-gl.css';
+import "mapbox-gl/dist/mapbox-gl.css";
 import {
   GoogleAuthProvider,
   TwitterAuthProvider,
   signInWithPopup,
   signOut,
   OAuthProvider,
-  deleteUser
+  deleteUser,
 } from "firebase/auth";
 import auth from "./fbindex";
 
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
-import MuiAlert from '@material-ui/lab/Alert';
-import 'sweetalert2/dist/sweetalert2.min.css'
-import moment from 'moment'
+import MuiAlert from "@material-ui/lab/Alert";
+import "sweetalert2/dist/sweetalert2.min.css";
+import moment from "moment";
 import {
-  AppBar, Toolbar, Typography, IconButton, Drawer, FormControlLabel, Switch, ListItem, ListItemIcon, Divider, ListItemText,
-  Dialog, DialogActions, Button, DialogTitle, Fab, DialogContent, Avatar, Badge, CardContent, CardMedia, Snackbar, BottomNavigation, BottomNavigationAction, Slide, Grow, Fade, CardHeader, Menu, MenuItem
-} from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import WarningIcon from '@material-ui/icons/Warning';
-import { Fireworks } from 'fireworks-js/dist/react'
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Drawer,
+  FormControlLabel,
+  Switch,
+  ListItem,
+  ListItemIcon,
+  Divider,
+  ListItemText,
+  Dialog,
+  DialogActions,
+  Button,
+  DialogTitle,
+  Fab,
+  DialogContent,
+  Avatar,
+  Badge,
+  CardContent,
+  CardMedia,
+  Snackbar,
+  BottomNavigation,
+  BottomNavigationAction,
+  Slide,
+  Grow,
+  Fade,
+  CardHeader,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import WarningIcon from "@material-ui/icons/Warning";
+import { Fireworks } from "fireworks-js/dist/react";
 
-import HomeIcon from '@material-ui/icons/Home';
-import CloseIcon from '@material-ui/icons/Close';
-import MenuIcon from '@material-ui/icons/Menu';
-import PeopleIcon from '@material-ui/icons/People';
-import ListAltIcon from '@material-ui/icons/ListAlt';
-import AcUnitIcon from '@material-ui/icons/AcUnit'
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import LanguageIcon from '@material-ui/icons/Language';
-import DnsIcon from '@material-ui/icons/Dns';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import HowToVoteIcon from '@material-ui/icons/HowToVote';
-import CodeIcon from '@material-ui/icons/Code';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import LiveTvIcon from '@material-ui/icons/LiveTv';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import MusicNoteIcon from '@material-ui/icons/MusicNote';
-import TheatersIcon from '@material-ui/icons/Theaters';
-import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
-import EventIcon from '@material-ui/icons/Event';
-import SportsIcon from '@material-ui/icons/Sports';
-import DonutSmallIcon from '@material-ui/icons/DonutSmall';
+import HomeIcon from "@material-ui/icons/Home";
+import CloseIcon from "@material-ui/icons/Close";
+import MenuIcon from "@material-ui/icons/Menu";
+import PeopleIcon from "@material-ui/icons/People";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import LanguageIcon from "@material-ui/icons/Language";
+import DnsIcon from "@material-ui/icons/Dns";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import HowToVoteIcon from "@material-ui/icons/HowToVote";
+import CodeIcon from "@material-ui/icons/Code";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import LiveTvIcon from "@material-ui/icons/LiveTv";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import MusicNoteIcon from "@material-ui/icons/MusicNote";
+import TheatersIcon from "@material-ui/icons/Theaters";
+import AssignmentReturnedIcon from "@material-ui/icons/AssignmentReturned";
+import EventIcon from "@material-ui/icons/Event";
+import SportsIcon from "@material-ui/icons/Sports";
+import DonutSmallIcon from "@material-ui/icons/DonutSmall";
 
-import Home from './component/home';
-import MemberList from './component/members';
-import Shi from './component/shihainin';
-import LiveCom from './component/livestream'
-import MamSam from './component/memberdetail';
-import News from './component/news';
-import MvCom from './component/music';
-import MusicCom from './component/streaming';
-import EventFind from './component/eventfinder';
-import Account from './component/account';
-import Offici from './component/official';
-import Api from './component/apisupport';
-import FollowCom from './component/follow';
-import RequestCom from './component/requesthour'
-import PageErr from './component/404'
-import Mana from './component/geevent/gemanage'
-import RegisCom from './component/register';
-import Fenetwork from './component/48groupnetwork';
-import MsSongkran from './component/mssongkran';
+import Home from "./component/home";
+import MemberList from "./component/members";
+import Shi from "./component/shihainin";
+import LiveCom from "./component/livestream";
+import MamSam from "./component/memberdetail";
+import News from "./component/news";
+import MvCom from "./component/music";
+import MusicCom from "./component/streaming";
+import EventFind from "./component/eventfinder";
+import Account from "./component/account";
+import Offici from "./component/official";
+import Api from "./component/apisupport";
+import FollowCom from "./component/follow";
+import RequestCom from "./component/requesthour";
+import PageErr from "./component/404";
+import Mana from "./component/geevent/gemanage";
+import RegisCom from "./component/register";
+import Fenetwork from "./component/48groupnetwork";
+import MsSongkran from "./component/mssongkran";
 
-import Fet from './fetch'
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
-import Carousel from 'react-material-ui-carousel'
-import Swal from 'sweetalert2'
+import Fet from "./fetch";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import Carousel from "react-material-ui-carousel";
+import Swal from "sweetalert2";
 
 var checkloop;
 const drawerWidth = 240;
-const Client = '961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com'
+const Client =
+  "961896647339-roenm2ee6i60ed2rhbe2sqee0unlqj0f.apps.googleusercontent.com";
 
-const anni = '09-02';
+const anni = "09-02";
 
 const fwoptions = {
   explosion: 5,
   intensity: 1,
-  traceSpeed: 1.6
-}
+  traceSpeed: 1.6,
+};
 
 const fwstyle = {
   top: 0,
   left: 0,
-  width: '100%',
-  height: '100%',
-  position: 'fixed',
-  background: 'transperent'
-}
+  width: "100%",
+  height: "100%",
+  position: "fixed",
+  background: "transperent",
+};
 
 const useStyles = makeStyles((theme) => ({
   sm: {
@@ -118,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     right: theme.spacing(1),
-    position: 'absolute',
+    position: "absolute",
   },
   drawer: {
     width: drawerWidth,
@@ -128,21 +157,21 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 2),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   fab: {
-    position: 'fixed',
+    position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
-    zIndex: 600
+    zIndex: 600,
   },
   fabButton: {
-    position: 'fixed',
+    position: "fixed",
     zIndex: 500,
     bottom: 30,
     left: window.innerWidth > 600 ? 100 : 20,
@@ -163,65 +192,64 @@ const SmallAvatar = withStyles((theme) => ({
   },
 }))(Avatar);
 
-
 const timesch = {
   regis: {
     open: 1641834000,
-    close: 1643043599
+    close: 1643043599,
   },
   vote: {
     open: 1646888400,
-    close: 1649307600
+    close: 1649307600,
   },
   preannoun: 1647000000,
-  announ: 1649473200
-}
+  announ: 1649473200,
+};
 
 var url = new URL(window.location.href);
 var imgget = url.searchParams.get("imgstar");
-var iiake
+var iiake;
 function App() {
-  const [Section, setSec] = React.useState('CGM48 Fansite for everyone');
+  const [Section, setSec] = React.useState("CGM48 Fansite for everyone");
   const [con, setConnection] = React.useState(null);
   const cls = useStyles();
-  const History = useHistory()
-  const [Reduce, setReduce] = React.useState(false)
-  const [EvtPop, setpopup] = React.useState(true)
-  const [offline, setOffline] = React.useState(false)
+  const History = useHistory();
+  const [Reduce, setReduce] = React.useState(false);
+  const [EvtPop, setpopup] = React.useState(true);
+  const [offline, setOffline] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [ny, setNy] = React.useState(true)
-  const [uri, setUri] = React.useState('');
+  const [ny, setNy] = React.useState(true);
+  const [uri, setUri] = React.useState("");
   const [login, setLogin] = React.useState(false);
   const [MemberDl, setMemDl] = React.useState(false);
   const [loginLoad, setLogLoad] = React.useState(false);
-  const [kamiimg, setKami] = React.useState('');
-  const [kamin, setKname] = React.useState('');
-  const [survey, setSur] = React.useState('');
-  const [ImgThumb, setImageThumb] = React.useState('');
+  const [kamiimg, setKami] = React.useState("");
+  const [kamin, setKname] = React.useState("");
+  const [survey, setSur] = React.useState("");
+  const [ImgThumb, setImageThumb] = React.useState("");
   const [spcLive, setLive] = React.useState(false);
   const [geready, setReadyGE] = React.useState(false);
   const [newspop, setNewspop] = React.useState([]);
   const [memUpdate, setUpdate] = React.useState([]);
   const [stream, setStream] = React.useState(null);
-  const [tokenID, setToken] = React.useState('');
+  const [tokenID, setToken] = React.useState("");
   const [time, setTime] = React.useState(0);
-  const [memDate, setMemBirth] = React.useState('');
+  const [memDate, setMemBirth] = React.useState("");
 
-  const [verify, setVerify] = React.useState(false)
+  const [verify, setVerify] = React.useState(false);
 
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [TokenLoad, setLoadToken] = React.useState(false);
   const [allDone, setAllDone] = React.useState(false);
   const [styleFade, setSty] = React.useState(0);
 
-  const [Prof, setPro] = React.useState('');
-  const [adsClose, setAdsBth] = React.useState(false)
+  const [Prof, setPro] = React.useState("");
+  const [adsClose, setAdsBth] = React.useState(false);
 
-  const ref = React.useRef(null)
-  const [footerHeight, setFooterH] = React.useState(0)
+  const ref = React.useRef(null);
+  const [footerHeight, setFooterH] = React.useState(0);
 
-  const [cro, setCro] = React.useState(0)
+  const [cro, setCro] = React.useState(0);
   const [live, setKamiLive] = React.useState(null);
 
   const [width, setRealwidth] = React.useState(window.innerWidth);
@@ -231,31 +259,31 @@ function App() {
 
   React.useEffect(() => {
     iiake = setInterval(function () {
-      if (Fet().ul != '') {
-        clearInterval(iiake)
+      if (Fet().ul != "") {
+        clearInterval(iiake);
 
-        fetch(Fet().ul + '/tpop/time', {
-          method: 'get'
+        fetch(Fet().ul + "/tpop/time", {
+          method: "get",
         })
-          .then(response => response.text())
-          .then(data => {
-            setTime(parseInt(data))
-          }).catch(() => {
-
+          .then((response) => response.text())
+          .then((data) => {
+            setTime(parseInt(data));
           })
+          .catch(() => {});
       }
     }, 10);
-  }, [])
+  }, []);
 
   React.useEffect(() => {
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener("resize", handleWindowResize);
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
   React.useEffect(() => {
-    const currentP = document.documentElement.scrollTop || document.body.scrollTop;
+    const currentP =
+      document.documentElement.scrollTop || document.body.scrollTop;
     window.scrollTo(0, currentP + 1);
     window.scrollTo(0, currentP - 1);
     window.scrollTo(0, currentP);
@@ -263,33 +291,40 @@ function App() {
 
   React.useEffect(() => {
     if (ref.current != null) {
-      setFooterH(ref.current.clientHeight)
+      setFooterH(ref.current.clientHeight);
     }
-  })
+  });
 
   React.useEffect(() => {
     if (MemberDl && kamin != "-" && kamin != "") {
-      fetch('https://cpxdevweb.onrender.com/cgm48/getmemberlivestatus?i=' + JSON.parse(localStorage.getItem("loged")).user.uid + '&mem=' + kamin, {
-        method: 'post'
-      })
-        .then(response => response.json())
-        .then(dataads => {
+      fetch(
+        "https://cpxdevweb.onrender.com/cgm48/getmemberlivestatus?i=" +
+          JSON.parse(localStorage.getItem("loged")).user.uid +
+          "&mem=" +
+          kamin,
+        {
+          method: "post",
+        }
+      )
+        .then((response) => response.json())
+        .then((dataads) => {
           if (dataads.status) {
             if (dataads.isLive || dataads.isPS) {
-              setKamiLive(dataads)
+              setKamiLive(dataads);
             }
           } else {
             Swal.fire({
               title: "System error",
               text: "Contact support",
-              icon: 'error',
-            })
+              icon: "error",
+            });
           }
-        }).catch(() => {
-          setNewspop([])
         })
+        .catch(() => {
+          setNewspop([]);
+        });
     }
-  }, [MemberDl])
+  }, [MemberDl]);
 
   // React.useEffect(() => {
   //   const newConnection = new HubConnectionBuilder()
@@ -299,267 +334,298 @@ function App() {
   //   setConnection(newConnection);
   // }, []);
 
-
-
   React.useEffect(() => {
     if (ref.current != null) {
-      setFooterH(ref.current.clientHeight)
+      setFooterH(ref.current.clientHeight);
     }
-  })
+  });
 
   const FetchKami = (fetdata) => {
     if (localStorage.getItem("loged") != null) {
-      fetch(fetdata + '/cgm48/getcgmkami?i=' + (JSON.parse(localStorage.getItem("loged")).user.uid).toString(), {
-        method: 'get'
-      })
-        .then(response => response.json())
-        .then(data => {
-          setLogLoad(false)
-          setOpen(false)
-          setPro(data.img)
-          setVerify(data.verified)
-          if (data.obj != 'none') {
-            setKami(data.obj.img)
-            setKname(data.obj.name)
-            setMemBirth(data.obj.birth)
-            localStorage.setItem('i', data.uname)
+      fetch(
+        fetdata +
+          "/cgm48/getcgmkami?i=" +
+          JSON.parse(localStorage.getItem("loged")).user.uid.toString(),
+        {
+          method: "get",
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setLogLoad(false);
+          setOpen(false);
+          setPro(data.img);
+          setVerify(data.verified);
+          if (data.obj != "none") {
+            setKami(data.obj.img);
+            setKname(data.obj.name);
+            setMemBirth(data.obj.birth);
+            localStorage.setItem("i", data.uname);
             // FetchWallet(fetdata, data.wallet)
           } else {
-            setKami('-')
-            localStorage.setItem('i', data.uname)
-            setKname('-')
+            setKami("-");
+            localStorage.setItem("i", data.uname);
+            setKname("-");
           }
-          setLogin(true)
+          setLogin(true);
         });
     }
-  }
-
+  };
 
   React.useEffect(() => {
-    document.title = Section + ' | CGM48 Fans Space'
-  }, [Section])
+    document.title = Section + " | CGM48 Fans Space";
+  }, [Section]);
 
   const ReduceAction = () => {
     if (localStorage.getItem("lowgraphic") == null) {
-      localStorage.setItem("lowgraphic", "")
-      setReduce(true)
+      localStorage.setItem("lowgraphic", "");
+      setReduce(true);
     } else {
-      localStorage.removeItem("lowgraphic")
-      setReduce(false)
+      localStorage.removeItem("lowgraphic");
+      setReduce(false);
     }
-  }
+  };
 
   const FetLive = (fet) => {
-    if (window.location.pathname.includes('/mana')) {
-      setLive(false)
+    if (window.location.pathname.includes("/mana")) {
+      setLive(false);
       return;
     }
-    fetch(fet + '/cgm48/getstreamlist?ch=3', {
-      method: 'post'
+    fetch(fet + "/cgm48/getstreamlist?ch=3", {
+      method: "post",
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.length == 1 && data[0].link == '') {
-          setLive(false)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length == 1 && data[0].link == "") {
+          setLive(false);
         } else {
-          if (data.filter(x => x.link != '').length == 2) {
+          if (data.filter((x) => x.link != "").length == 2) {
             const randomNumber = Math.random();
             if (randomNumber < 0.5) {
-              setStream(data[0])
-              setImageThumb(data[0].src)
+              setStream(data[0]);
+              setImageThumb(data[0].src);
             } else {
-              setStream(data[1])
-              setImageThumb(data[1].src)
+              setStream(data[1]);
+              setImageThumb(data[1].src);
             }
           } else {
-            setStream(data[0])
-            setImageThumb(data[0].src)
+            setStream(data[0]);
+            setImageThumb(data[0].src);
           }
-          setLive(true)
+          setLive(true);
         }
-      }).catch(() => {
-        setLive(false)
       })
-  }
+      .catch(() => {
+        setLive(false);
+      });
+  };
 
   const FetchPopNews = (fet) => {
     if (sessionStorage.getItem("ads") == null) {
-      setpopup(true)
+      setpopup(true);
     } else {
-      setpopup(false)
+      setpopup(false);
     }
 
-    fetch(fet + '/cgm48/getadsupdate', {
-      method: 'post'
+    fetch(fet + "/cgm48/getadsupdate", {
+      method: "post",
     })
-      .then(response => response.json())
-      .then(data => {
-
-
-        fetch(fet + '/cgm48/getmemberbybirth?tz=' + Intl.DateTimeFormat().resolvedOptions().timeZone, {
-          method: 'post'
-        })
-          .then(response => response.json())
-          .then(dres => {
-            sessionStorage.setItem("ads", 'i')
+      .then((response) => response.json())
+      .then((data) => {
+        fetch(
+          fet +
+            "/cgm48/getmemberbybirth?tz=" +
+            Intl.DateTimeFormat().resolvedOptions().timeZone,
+          {
+            method: "post",
+          }
+        )
+          .then((response) => response.json())
+          .then((dres) => {
+            sessionStorage.setItem("ads", "i");
             if (dres.count == 0) {
-              let tempd = []
-              const withprio = data.filter(x => x.priority != undefined);
-              const nonprio = data.filter(x => x.priority == undefined);
+              let tempd = [];
+              const withprio = data.filter((x) => x.priority != undefined);
+              const nonprio = data.filter((x) => x.priority == undefined);
               for (let iw = 0; iw < withprio.length; iw++) {
-                tempd.push(withprio[iw])
+                tempd.push(withprio[iw]);
               }
 
               for (let ij = 0; ij < nonprio.length; ij++) {
-                tempd.push(nonprio[ij])
+                tempd.push(nonprio[ij]);
               }
-              setNewspop(tempd)
-              if (kamin !== '') {
-                setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
+              setNewspop(tempd);
+              if (kamin !== "") {
+                setUpdate(
+                  tempd.filter(
+                    (x) =>
+                      x.memtag.indexOf(kamin.toLowerCase()) ||
+                      x.memtag.indexOf("All")
+                  )
+                );
               }
             } else {
-              let tempd = []
-              const withprio = data.filter(x => x.priority != undefined);
-              const nonprio = data.filter(x => x.priority == undefined);
+              let tempd = [];
+              const withprio = data.filter((x) => x.priority != undefined);
+              const nonprio = data.filter((x) => x.priority == undefined);
               for (let iw = 0; iw < withprio.length; iw++) {
-                tempd.push(withprio[iw])
+                tempd.push(withprio[iw]);
               }
               for (let i = 0; i < dres.response.length; i++) {
                 if (dres.response[i].graduated == false) {
                   tempd.push({
-                    title: 'Happy birthday! ' + dres.response[i].name + ' CGM48',
-                    desc: 'Today is her birthday! Let\'s celebrate each other together.',
-                    link: '/member/' + dres.response[i].name.toLowerCase(),
+                    title:
+                      "Happy birthday! " + dres.response[i].name + " CGM48",
+                    desc: "Today is her birthday! Let's celebrate each other together.",
+                    link: "/member/" + dres.response[i].name.toLowerCase(),
                     src: dres.response[i].img,
-                    place: '',
+                    place: "",
                     timerange: [
-                      moment(dres.response[i].birth + " 00:00:00", "YYYY-MM-DD HH:mm:ss").unix(),
-                      moment(dres.response[i].birth + " 23:59:59", "YYYY-MM-DD HH:mm:ss").unix()
+                      moment(
+                        dres.response[i].birth + " 00:00:00",
+                        "YYYY-MM-DD HH:mm:ss"
+                      ).unix(),
+                      moment(
+                        dres.response[i].birth + " 23:59:59",
+                        "YYYY-MM-DD HH:mm:ss"
+                      ).unix(),
                     ],
-                    memtag: [
-                      dres.response[i].name.toLowerCase()
-                    ]
-                  })
+                    memtag: [dres.response[i].name.toLowerCase()],
+                  });
                 }
               }
               for (let ij = 0; ij < nonprio.length; ij++) {
-                tempd.push(nonprio[ij])
+                tempd.push(nonprio[ij]);
               }
-              setNewspop(tempd)
-              if (kamin !== '') {
-                setUpdate(tempd.filter(x => x.memtag.indexOf(kamin.toLowerCase()) || x.memtag.indexOf('All')))
+              setNewspop(tempd);
+              if (kamin !== "") {
+                setUpdate(
+                  tempd.filter(
+                    (x) =>
+                      x.memtag.indexOf(kamin.toLowerCase()) ||
+                      x.memtag.indexOf("All")
+                  )
+                );
               }
             }
-          }).catch(() => {
           })
-      }).catch(() => {
+          .catch(() => {});
       })
-  }
+      .catch(() => {});
+  };
 
   const pageDirect = (link) => {
-    if (link.includes('https:') || link.includes('http:')) {
-      window.open(link, '_blank')
+    if (link.includes("https:") || link.includes("http:")) {
+      window.open(link, "_blank");
     } else {
-      History.push(link)
+      History.push(link);
     }
-  }
+  };
 
   React.useEffect(() => {
     function isOdd() {
-      const ran = Math.floor((Math.random() * 1000) + 1);
+      const ran = Math.floor(Math.random() * 1000 + 1);
       return Math.abs(ran % 2) == 1;
     }
 
-    setSty(isOdd() == true ? 2 : 1)
+    setSty(isOdd() == true ? 2 : 1);
     if (localStorage.getItem("lowgraphic") == null) {
-      setReduce(false)
+      setReduce(false);
     } else {
-      setReduce(true)
+      setReduce(true);
     }
     if (localStorage.getItem("loged") == null) {
-      setLogin(false)
+      setLogin(false);
     } else {
-      setLogin(true)
+      setLogin(true);
     }
 
-    if (sessionStorage.getItem('ads') == null) {
-      setReadyGE(true)
+    if (sessionStorage.getItem("ads") == null) {
+      setReadyGE(true);
     } else {
-      setReadyGE(false)
+      setReadyGE(false);
     }
 
     var dem = setInterval(function () {
-      if (Fet().ul !== '') {
+      if (Fet().ul !== "") {
         setTimeout(() => {
-          setAdsBth(true)
+          setAdsBth(true);
         }, 2500);
-        clearInterval(dem)
+        clearInterval(dem);
         var timeo = setInterval(function () {
-          if (sessionStorage.getItem('ads') != null) {
-            clearInterval(timeo)
-            setAllDone(true)
+          if (sessionStorage.getItem("ads") != null) {
+            clearInterval(timeo);
+            setAllDone(true);
           }
         }, 4500);
-        setUri(Fet().ul)
-        FetchKami(Fet().ul)
-        if (window.location.pathname.includes('/mana')) {
-          setLive(false)
+        setUri(Fet().ul);
+        FetchKami(Fet().ul);
+        if (window.location.pathname.includes("/mana")) {
+          setLive(false);
         } else {
-          FetLive(Fet().ul)
+          FetLive(Fet().ul);
         }
-        FetchPopNews(Fet().ul)
+        FetchPopNews(Fet().ul);
       }
     }, 10);
 
     setInterval(function () {
-      if (Fet().ul !== '') {
-        if (window.location.pathname.includes('/mana')) {
-          setLive(false)
+      if (Fet().ul !== "") {
+        if (window.location.pathname.includes("/mana")) {
+          setLive(false);
         } else {
-          FetLive(Fet().ul)
+          FetLive(Fet().ul);
         }
       }
     }, 60000);
-  }, [])
-
+  }, []);
 
   const responseGoogle = (response) => {
-    localStorage.setItem("loged", JSON.stringify(response.profileObj))
-    fetch(Fet().ul + '/cgm48/addFanMember?i=' + (JSON.parse(localStorage.getItem("loged")).googleId).toString() + "&usname=" + (JSON.parse(localStorage.getItem("loged")).name).toString() + "&email=" + (JSON.parse(localStorage.getItem("loged")).email).toString(), {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    })
-      .then(response => response.text())
-      .then(data => {
+    localStorage.setItem("loged", JSON.stringify(response.profileObj));
+    fetch(
+      Fet().ul +
+        "/cgm48/addFanMember?i=" +
+        JSON.parse(localStorage.getItem("loged")).googleId.toString() +
+        "&usname=" +
+        JSON.parse(localStorage.getItem("loged")).name.toString() +
+        "&email=" +
+        JSON.parse(localStorage.getItem("loged")).email.toString(),
+      {
+        method: "POST", // or 'PUT'
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => response.text())
+      .then((data) => {
         if (data == "false") {
-          FetchKami(Fet().ul)
-          setLogin(true)
-          setLogLoad(false)
-          setOpen(false)
+          FetchKami(Fet().ul);
+          setLogin(true);
+          setLogLoad(false);
+          setOpen(false);
         } else {
-          alert("System will be temporary error for a while. Please try again")
-          setLogLoad(false)
-          setMemDl(false)
-          setLogin(false)
-          localStorage.removeItem("loged")
-          setOpen(false)
+          alert("System will be temporary error for a while. Please try again");
+          setLogLoad(false);
+          setMemDl(false);
+          setLogin(false);
+          localStorage.removeItem("loged");
+          setOpen(false);
         }
       })
       .catch((error) => {
-        alert("System will be temporary error for a while. Please try again")
-        setLogLoad(false)
-        setMemDl(false)
-        setLogin(false)
-        localStorage.removeItem("loged")
-        setOpen(false)
+        alert("System will be temporary error for a while. Please try again");
+        setLogLoad(false);
+        setMemDl(false);
+        setLogin(false);
+        localStorage.removeItem("loged");
+        setOpen(false);
       });
-  }
+  };
 
   const loginAction = (action) => {
-    let provider = null
+    let provider = null;
     switch (action) {
       case 1:
         provider = new GoogleAuthProvider();
@@ -573,78 +639,77 @@ function App() {
       default:
         return;
     }
-    setLogLoad(true)
+    setLogLoad(true);
     signInWithPopup(auth, provider)
       .then((result) => {
-        fetch(Fet().ul + '/cgm48/checklogin?i=' + result.user.uid, {
-          method: 'get'
+        fetch(Fet().ul + "/cgm48/checklogin?i=" + result.user.uid, {
+          method: "get",
         })
-          .then(response => response.text())
-          .then(data => {
-            setAnchorEl(null)
-            if (data == 'true') {
+          .then((response) => response.text())
+          .then((data) => {
+            setAnchorEl(null);
+            if (data == "true") {
               localStorage.setItem("loged", JSON.stringify(result));
-              FetchKami(Fet().ul)
+              FetchKami(Fet().ul);
             } else {
-              setLogLoad(false)
-              setLogin(false)
+              setLogLoad(false);
+              setLogin(false);
               Swal.fire({
-                title: 'User not found',
-                text: 'This user don\'t be register to our system. please try again.',
-                icon: 'error'
-              })
+                title: "User not found",
+                text: "This user don't be register to our system. please try again.",
+                icon: "error",
+              });
             }
           });
       })
       .catch((error) => {
         // Handle error.
-        setAnchorEl(null)
-        setOpen(false)
-        setLogLoad(false)
-        setMemDl(false)
+        setAnchorEl(null);
+        setOpen(false);
+        setLogLoad(false);
+        setMemDl(false);
         Swal.fire({
-          title: 'Login error or canceled by user',
-          text: 'For exclusive feature. You need to login Fan Space Membership.',
-          icon: 'warning'
-        })
+          title: "Login error or canceled by user",
+          text: "For exclusive feature. You need to login Fan Space Membership.",
+          icon: "warning",
+        });
       });
-  }
+  };
 
   const errorlog = (response) => {
-    setLogLoad(false)
+    setLogLoad(false);
     console.log(response);
-  }
+  };
 
   const Signout = (response) => {
-    setLogLoad(false)
-    setMemDl(false)
-    setLogin(false)
-    localStorage.removeItem("loged")
-    localStorage.removeItem("i")
-    setOpen(false)
-    setKname('')
-    setKami('')
-    if (window.location.pathname == '/account') {
-      History.push('/')
+    setLogLoad(false);
+    setMemDl(false);
+    setLogin(false);
+    localStorage.removeItem("loged");
+    localStorage.removeItem("i");
+    setOpen(false);
+    setKname("");
+    setKami("");
+    if (window.location.pathname == "/account") {
+      History.push("/");
     }
-  }
-
+  };
 
   const checkUser = () => {
     if (window.localStorage.getItem("loged") != null) {
       switch (JSON.parse(window.localStorage.getItem("loged")).providerId) {
         case "google.com":
-          return "Google"
+          return "Google";
         case "microsoft.com":
-          return "Microsoft"
+          return "Microsoft";
         case "yahoo.com":
-          return "Yahoo"
+          return "Yahoo";
         default:
           break;
       }
     }
-    return ''
-  }
+    return "";
+  };
 
   function ordinal_suffix_of(i) {
     var j = i % 10,
@@ -661,226 +726,384 @@ function App() {
     return i + "th";
   }
 
-  if (uri != '' && allDone) {
-    return (<>
-      {moment().format('DD-MM') == anni && (
-        <Fireworks options={fwoptions} style={fwstyle} />
-      )}
-      <Snackbar open={offline} ModalProps={{ onBackdropClick: false }} anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'center'
-      }}>
-        <Alert severity="warning">
-          <CardHeader title="Reconnecting to service" subheader="You leave from platform just on minutes." />
-        </Alert>
-      </Snackbar>
-      {window.innerWidth >= 700 && (
-        <Slide in={localStorage.getItem('lowgraphic') == null && width > 1100 ? !open : true} timeout={600} direction='down'>
-          <AppBar position="sticky" className='bnktheme app-barcurve'>
-            <Toolbar>
-              {open == false && (
-                <IconButton onClick={() => setOpen(true)} edge="start" color="inherit" aria-label="menu">
-                  <MenuIcon />
-                </IconButton>
-              )}
-              <div className='cur' onClick={() => History.push('/')}>
-              {
-                    moment().format('DD-MM') == '16-07' ? (
-                      <Typography variant="h5" className="title">
-                        {'CPXDev Day | CGM48 Fans Space'}
-                      </Typography>
-                    ) : (
-                      <Typography variant="h5" className="title">
-                        {moment().format('DD-MM') == anni ? "CGM48 " + ordinal_suffix_of(new Date().getFullYear() - 2017) + ' Anniversary' : 'CGM48 Fans Space'}
-                      </Typography>
-                    )
-                  }
-              </div>
-              <div className={cls.search + ' mt-2'}>
-                {width > 1200 && (
-                  <FormControlLabel
-                    className={login ? 'pb-3' : ''}
-                    control={
-                      <Switch
-                        checked={Reduce}
-                        name="reduce"
-                        onChange={() => ReduceAction()}
-                        color="secondary"
-                      />
-                    }
-                    label={Reduce ? "Focus on Efficiency" : "Focus on Modern"}
-                  />
-                )}
-                {login && (
-                  <ListItemIcon onClick={() => setMemDl(true)} className={(width > 1200 ? 'mt-2' : '') + ' cur'}>
-                    {verify ? (
-                      <Badge
-                        overlap="circular"
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'right',
-                        }}
-                        badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
-                      >
-                        <Avatar alt={localStorage.getItem("i")} src={Prof} />
-                      </Badge>
-                    ) : (
-                      <Badge
-                        overlap="circular"
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'right',
-                        }}
-                        badgeContent={(<WarningIcon className='text-warning' />)}
-                      >
-                        <Avatar alt={localStorage.getItem("i")} src={Prof} />
-                      </Badge>
-                    )}
-                  </ListItemIcon>
-                )}
-              </div>
-            </Toolbar>
-          </AppBar>
-        </Slide>
-      )}
-
-      <Drawer
-        className={cls.drawer}
-        variant="temporary"
-        color="primary"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: cls.drawerPaper,
-        }}
-      >
-        <div className={cls.drawerHeader} position="fixed">
-          <IconButton onClick={() => setOpen(false)} size="large">
-            <CloseIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <d onClick={() => setOpen(false)}>
-          <ListItem component={Link} className={window.location.pathname == '/' ? 'activeNav' : ''} to='/' button>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-          <ListItem component={Link} to='/memberlist' className={window.location.pathname == '/memberlist' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Members" />
-          </ListItem>
-          <ListItem component={Link} to='/shihainin' className={window.location.pathname == '/shihainin' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary='Shihainin House' />
-          </ListItem>
-          <ListItem component={Link} onClick={() => window.open('https://lookerstudio.google.com/reporting/19bdaf0b-e90f-4577-bc28-12cab7240788/page/p_3z5tiil5kd', '_blank')} button>
-            <ListItemIcon>
-              <TheatersIcon />
-            </ListItemIcon>
-            <ListItemText primary='BNK48 and CGM48 Request Hour 2024' />
-          </ListItem>
-          <ListItem component={Link} to='/mssongkran48' className={window.location.pathname == '/mssongkran48' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <DonutSmallIcon />
-            </ListItemIcon>
-            <ListItemText primary='Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)' />
-          </ListItem>
-          <ListItem component={Link} onClick={() => window.open('//cp-bnk48.pages.dev/ge4', '_blank')} button>
-            <ListItemIcon>
-              <HowToVoteIcon />
-            </ListItemIcon>
-            <ListItemText primary='BNK48 16th Single General Election' secondary='External link: BNK48 fan Space' />
-          </ListItem>
-          <ListItem component={Link} to='/livestream' className={window.location.pathname == '/livestream' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <LiveTvIcon className={spcLive ? 'text-success' : ''} />
-            </ListItemIcon>
-            <ListItemText primary="Special Live" secondary={spcLive ? 'Livestream is launching' : ''} />
-          </ListItem>
-          <ListItem component={Link} to='/mv' className={window.location.pathname == '/mv' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <YouTubeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Music Video" />
-          </ListItem>
-          <ListItem component={Link} to='/event' className={window.location.pathname == '/event' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <EventIcon />
-            </ListItemIcon>
-            <ListItemText primary='Event Finder' />
-          </ListItem>
-          <ListItem component={Link} to='/music' className={window.location.pathname == '/music' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <MusicNoteIcon />
-            </ListItemIcon>
-            <ListItemText primary="Released album and single" />
-          </ListItem>
-          <ListItem component={Link} to='/officialupdate' className={window.location.pathname == '/officialupdate' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <LanguageIcon />
-            </ListItemIcon>
-            <ListItemText primary="Official Update" />
-          </ListItem>
-          <ListItem component={Link} onClick={() => window.open('//cp-bnk48.pages.dev/janken', '_blank')} button>
-            <ListItemIcon>
-              <HowToVoteIcon />
-            </ListItemIcon>
-            <ListItemText primary='BNK48 and CGM48 Janken Tournament 2023' secondary='External link: BNK48 fan Space' />
-          </ListItem>
-          <ListItem component={Link} to='/api' className={window.location.pathname == '/api' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <CodeIcon />
-            </ListItemIcon>
-            <ListItemText primary='API' />
-          </ListItem>
-          <ListItem component={Link} to='/follow' className={window.location.pathname == '/follow' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <ThumbUpAltIcon />
-            </ListItemIcon>
-            <ListItemText primary='Follow and Support' />
-          </ListItem>
-          <ListItem onClick={() => {
-            setOpen(false)
-            Swal.fire({
-              title: 'Region mode will enhance system performance. Current region connection has been referenced by IP address',
-              showDenyButton: true,
-              confirmButtonText: 'View System Status',
-              denyButtonText: `Close`,
-              icon: 'info',
-              iconColor: '#49C5A8'
-            }).then((result) => {
-              /* Read more about isConfirmed, isDenied below */
-              if (result.isConfirmed) {
-                window.open('//cp-cpxdevstatus.vercel.app', '_blank')
-              }
-            })
-          }} button>
-            <ListItemIcon>
-              <DnsIcon />
-            </ListItemIcon>
-            <ListItemText primary={'Region: ' + Fet().nme} />
-          </ListItem>
-        </d>
-        <Divider />
-        {!login && (
-          <ListItem component={Link} to='/register' className={window.location.pathname == '/register' ? 'activeNav' : ''} button>
-            <ListItemIcon>
-              <AssignmentReturnedIcon />
-            </ListItemIcon>
-            <ListItemText primary='Register Membership' secondary='Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need' />
-          </ListItem>
+  if (uri != "" && allDone) {
+    return (
+      <>
+        {moment().format("DD-MM") == anni && (
+          <Fireworks options={fwoptions} style={fwstyle} />
         )}
-        {
-          loginLoad ? (
+        <Snackbar
+          open={offline}
+          ModalProps={{ onBackdropClick: false }}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <Alert severity="warning">
+            <CardHeader
+              title="Reconnecting to service"
+              subheader="You leave from platform just on minutes."
+            />
+          </Alert>
+        </Snackbar>
+        {window.innerWidth >= 700 && (
+          <Slide
+            in={
+              localStorage.getItem("lowgraphic") == null && width > 1100
+                ? !open
+                : true
+            }
+            timeout={600}
+            direction="down"
+          >
+            <AppBar position="sticky" className="bnktheme app-barcurve">
+              <Toolbar>
+                {open == false && (
+                  <IconButton
+                    onClick={() => setOpen(true)}
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                )}
+                <div className="cur" onClick={() => History.push("/")}>
+                  {moment().format("DD-MM") == "16-07" ? (
+                    <Typography variant="h5" className="title">
+                      {"CPXDev Day | CGM48 Fans Space"}
+                    </Typography>
+                  ) : (
+                    <Typography variant="h5" className="title">
+                      {moment().format("DD-MM") == anni
+                        ? "CGM48 " +
+                          ordinal_suffix_of(new Date().getFullYear() - 2017) +
+                          " Anniversary"
+                        : "CGM48 Fans Space"}
+                    </Typography>
+                  )}
+                </div>
+                <div className={cls.search + " mt-2"}>
+                  {width > 1200 && (
+                    <FormControlLabel
+                      className={login ? "pb-3" : ""}
+                      control={
+                        <Switch
+                          checked={Reduce}
+                          name="reduce"
+                          onChange={() => ReduceAction()}
+                          color="secondary"
+                        />
+                      }
+                      label={Reduce ? "Focus on Efficiency" : "Focus on Modern"}
+                    />
+                  )}
+                  {login && (
+                    <ListItemIcon
+                      onClick={() => setMemDl(true)}
+                      className={(width > 1200 ? "mt-2" : "") + " cur"}
+                    >
+                      {verify ? (
+                        <Badge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          badgeContent={
+                            kamiimg != "" && kamiimg != "-" ? (
+                              <img
+                                src={kamiimg}
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title={'"' + kamin + '" is your Kami-Oshi'}
+                                className={
+                                  cls.sm +
+                                  " border border-white rounded-circle cir avatarlimit"
+                                }
+                              />
+                            ) : (
+                              ""
+                            )
+                          }
+                        >
+                          <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                        </Badge>
+                      ) : (
+                        <Badge
+                          overlap="circular"
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          badgeContent={
+                            <WarningIcon className="text-warning" />
+                          }
+                        >
+                          <Avatar alt={localStorage.getItem("i")} src={Prof} />
+                        </Badge>
+                      )}
+                    </ListItemIcon>
+                  )}
+                </div>
+              </Toolbar>
+            </AppBar>
+          </Slide>
+        )}
+
+        <Drawer
+          className={cls.drawer}
+          variant="temporary"
+          color="primary"
+          anchor="left"
+          open={open}
+          classes={{
+            paper: cls.drawerPaper,
+          }}
+        >
+          <div className={cls.drawerHeader} position="fixed">
+            <IconButton onClick={() => setOpen(false)} size="large">
+              <CloseIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <d onClick={() => setOpen(false)}>
+            <ListItem
+              component={Link}
+              className={window.location.pathname == "/" ? "activeNav" : ""}
+              to="/"
+              button
+            >
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/memberlist"
+              className={
+                window.location.pathname == "/memberlist" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Members" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/shihainin"
+              className={
+                window.location.pathname == "/shihainin" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Shihainin House" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              onClick={() =>
+                window.open(
+                  "https://lookerstudio.google.com/reporting/19bdaf0b-e90f-4577-bc28-12cab7240788/page/p_3z5tiil5kd",
+                  "_blank"
+                )
+              }
+              button
+            >
+              <ListItemIcon>
+                <TheatersIcon />
+              </ListItemIcon>
+              <ListItemText primary="BNK48 and CGM48 Request Hour 2024" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/mssongkran48"
+              className={
+                window.location.pathname == "/mssongkran48" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <DonutSmallIcon />
+              </ListItemIcon>
+              <ListItemText primary="Ms Songkran 48 (รายงานผลกิจกรรม มหาเทวีสงกรานต์ ๔๘)" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              onClick={() => window.open("//cp-bnk48.pages.dev/ge4", "_blank")}
+              button
+            >
+              <ListItemIcon>
+                <HowToVoteIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="BNK48 16th Single General Election"
+                secondary="External link: BNK48 fan Space"
+              />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/livestream"
+              className={
+                window.location.pathname == "/livestream" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <LiveTvIcon className={spcLive ? "text-success" : ""} />
+              </ListItemIcon>
+              <ListItemText
+                primary="Special Live"
+                secondary={spcLive ? "Livestream is launching" : ""}
+              />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/mv"
+              className={window.location.pathname == "/mv" ? "activeNav" : ""}
+              button
+            >
+              <ListItemIcon>
+                <YouTubeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Music Video" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/event"
+              className={
+                window.location.pathname == "/event" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <EventIcon />
+              </ListItemIcon>
+              <ListItemText primary="Event Finder" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/music"
+              className={
+                window.location.pathname == "/music" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <MusicNoteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Released album and single" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/officialupdate"
+              className={
+                window.location.pathname == "/officialupdate" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <LanguageIcon />
+              </ListItemIcon>
+              <ListItemText primary="Official Update" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              onClick={() =>
+                window.open("//cp-bnk48.pages.dev/janken", "_blank")
+              }
+              button
+            >
+              <ListItemIcon>
+                <HowToVoteIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="BNK48 and CGM48 Janken Tournament 2023"
+                secondary="External link: BNK48 fan Space"
+              />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/api"
+              className={window.location.pathname == "/api" ? "activeNav" : ""}
+              button
+            >
+              <ListItemIcon>
+                <CodeIcon />
+              </ListItemIcon>
+              <ListItemText primary="API" />
+            </ListItem>
+            <ListItem
+              component={Link}
+              to="/follow"
+              className={
+                window.location.pathname == "/follow" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <ThumbUpAltIcon />
+              </ListItemIcon>
+              <ListItemText primary="Follow and Support" />
+            </ListItem>
+            <ListItem
+              onClick={() => {
+                setOpen(false);
+                Swal.fire({
+                  title:
+                    "Region mode will enhance system performance. Current region connection has been referenced by IP address",
+                  showDenyButton: true,
+                  confirmButtonText: "View System Status",
+                  denyButtonText: `Close`,
+                  icon: "info",
+                  iconColor: "#49C5A8",
+                }).then((result) => {
+                  /* Read more about isConfirmed, isDenied below */
+                  if (result.isConfirmed) {
+                    window.open("//cp-cpxdevstatus.vercel.app", "_blank");
+                  }
+                });
+              }}
+              button
+            >
+              <ListItemIcon>
+                <DnsIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Region: " + Fet().nme} />
+            </ListItem>
+          </d>
+          <Divider />
+          {!login && (
+            <ListItem
+              component={Link}
+              to="/register"
+              className={
+                window.location.pathname == "/register" ? "activeNav" : ""
+              }
+              button
+            >
+              <ListItemIcon>
+                <AssignmentReturnedIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Register Membership"
+                secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
+              />
+            </ListItem>
+          )}
+          {loginLoad ? (
             <ListItem onClick={() => setMemDl(true)} button>
               <ListItemIcon>
-                <img src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg" width="40px" />
+                <img
+                  src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
+                  width="40px"
+                />
               </ListItemIcon>
               <ListItemText primary="Signing in" />
             </ListItem>
@@ -888,12 +1111,17 @@ function App() {
             <>
               {!login ? (
                 <>
-                  <ListItem onClick={(e) => setAnchorEl(e.currentTarget)} button>
+                  <ListItem
+                    onClick={(e) => setAnchorEl(e.currentTarget)}
+                    button
+                  >
                     <ListItemIcon>
                       <VpnKeyIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Login Fan Space Membership"
-                      secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need" />
+                    <ListItemText
+                      primary="Login Fan Space Membership"
+                      secondary="Easy login to Fan Space Membership via Google, Microsoft and Yahoo Account. No Password need"
+                    />
                   </ListItem>
                   <Menu
                     id="lock-menu"
@@ -902,9 +1130,15 @@ function App() {
                     open={Boolean(anchorEl)}
                     onClose={() => setAnchorEl(null)}
                   >
-                    <MenuItem onClick={(e) => loginAction(1)}>Google Account</MenuItem>
-                    <MenuItem onClick={(e) => loginAction(2)}>Microsoft Account</MenuItem>
-                    <MenuItem onClick={(e) => loginAction(3)}>Yahoo Account</MenuItem>
+                    <MenuItem onClick={(e) => loginAction(1)}>
+                      Google Account
+                    </MenuItem>
+                    <MenuItem onClick={(e) => loginAction(2)}>
+                      Microsoft Account
+                    </MenuItem>
+                    <MenuItem onClick={(e) => loginAction(3)}>
+                      Yahoo Account
+                    </MenuItem>
                   </Menu>
                 </>
               ) : (
@@ -914,10 +1148,25 @@ function App() {
                       <Badge
                         overlap="circular"
                         anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'right',
+                          vertical: "bottom",
+                          horizontal: "right",
                         }}
-                        badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
+                        badgeContent={
+                          kamiimg != "" && kamiimg != "-" ? (
+                            <img
+                              src={kamiimg}
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title={'"' + kamin + '" is your Kami-Oshi'}
+                              className={
+                                cls.sm +
+                                " border border-white rounded-circle cir avatarlimit"
+                              }
+                            />
+                          ) : (
+                            ""
+                          )
+                        }
                       >
                         <Avatar alt={localStorage.getItem("i")} src={Prof} />
                       </Badge>
@@ -925,76 +1174,284 @@ function App() {
                       <Badge
                         overlap="circular"
                         anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'right',
+                          vertical: "bottom",
+                          horizontal: "right",
                         }}
-                        badgeContent={(<WarningIcon className='text-warning' />)}
+                        badgeContent={<WarningIcon className="text-warning" />}
                       >
                         <Avatar alt={localStorage.getItem("i")} src={Prof} />
                       </Badge>
                     )}
                   </ListItemIcon>
-                  <ListItemText primary={"You're logged in as " + checkUser() + " account"} secondary={localStorage.getItem("i")} />
+                  <ListItemText
+                    primary={"You're logged in as " + checkUser() + " account"}
+                    secondary={localStorage.getItem("i")}
+                  />
                 </ListItem>
               )}
             </>
-          )
-        }
+          )}
+        </Drawer>
+        <div style={{ marginBottom: footerHeight + "px" }}>
+          <BasicSwitch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Home
+                  kamin={kamin}
+                  fet={Fet().ul}
+                  gp={Reduce}
+                  ImgThumb={ImgThumb}
+                  stream={stream}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/memberlist"
+              render={() => (
+                <MemberList
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/livestream"
+              render={() => (
+                <LiveCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/member/:c"
+              render={() => (
+                <MamSam
+                  fet={Fet().ul}
+                  kamio={kamin}
+                  setSec={(v) => setSec(v)}
+                  triggerUpdate={() => FetchKami(Fet().ul)}
+                  width={width}
+                  verify={verify}
+                />
+              )}
+            />
+            <Route
+              path="/news"
+              render={() => (
+                <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/shihainin"
+              render={() => (
+                <Shi
+                  fet={Fet().ul}
+                  kamio={kamin}
+                  setSec={(v) => setSec(v)}
+                  triggerUpdate={() => FetchKami(Fet().ul)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/mv"
+              render={() => (
+                <MvCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/music"
+              render={() => (
+                <MusicCom
+                  gp={Reduce}
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/officialupdate"
+              render={() => (
+                <Offici
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/api"
+              render={() => (
+                <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/mana"
+              render={() => (
+                <Mana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />
+              )}
+            />
+            <Route
+              path="/event"
+              render={() => (
+                <EventFind
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                  kamin={kamin}
+                />
+              )}
+            />
+            <Route
+              path="/follow"
+              render={() => (
+                <FollowCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              path="/requesthour"
+              render={() => (
+                <RequestCom
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            {!login && (
+              <Route
+                path="/register"
+                render={() => (
+                  <RegisCom
+                    fet={Fet().ul}
+                    setSec={(v) => setSec(v)}
+                    width={width}
+                    triggerUpdate={() => FetchKami(Fet().ul)}
+                  />
+                )}
+              />
+            )}
+            <Route
+              path="/48group"
+              render={() => (
+                <Fenetwork
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            {login && (
+              <Route
+                path="/account"
+                render={() => (
+                  <Account
+                    fet={Fet().ul}
+                    setSec={(v) => setSec(v)}
+                    width={width}
+                    triggerUpdate={() => FetchKami(Fet().ul)}
+                  />
+                )}
+              />
+            )}
+            <Route
+              path="/mssongkran48"
+              render={() => (
+                <MsSongkran
+                  fet={Fet().ul}
+                  setSec={(v) => setSec(v)}
+                  width={width}
+                />
+              )}
+            />
+            <Route
+              exact
+              render={() => <PageErr setSec={(v) => setSec(v)} width={width} />}
+            />
+          </BasicSwitch>
 
-
-      </Drawer>
-      <div style={{ marginBottom: footerHeight + 'px' }}>
-        <BasicSwitch>
-          <Route exact path="/" render={() => <Home kamin={kamin} fet={Fet().ul} gp={Reduce} ImgThumb={ImgThumb} stream={stream} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/memberlist" render={() => <MemberList fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/livestream" render={() => <LiveCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/member/:c" render={() => <MamSam fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() => FetchKami(Fet().ul)} width={width} verify={verify} />} />
-          <Route path="/news" render={() => <News fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/shihainin" render={() => <Shi fet={Fet().ul} kamio={kamin} setSec={(v) => setSec(v)} triggerUpdate={() => FetchKami(Fet().ul)} width={width} />} />
-          <Route path="/mv" render={() => <MvCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/music" render={() => <MusicCom gp={Reduce} fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/officialupdate" render={() => <Offici fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/api" render={() => <Api fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/mana" render={() => <Mana fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/event" render={() => <EventFind fet={Fet().ul} setSec={(v) => setSec(v)} width={width} kamin={kamin} />} />
-          <Route path="/follow" render={() => <FollowCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route path="/requesthour" render={() => <RequestCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          {
-            !login && (
-              <Route path="/register" render={() => <RegisCom fet={Fet().ul} setSec={(v) => setSec(v)} width={width} triggerUpdate={() => FetchKami(Fet().ul)} />} />
-            )
-          }
-          <Route path="/48group" render={() => <Fenetwork fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          {
-            login && (
-              <Route path="/account" render={() => <Account fet={Fet().ul} setSec={(v) => setSec(v)} width={width} triggerUpdate={() => FetchKami(Fet().ul)} />} />
-            )
-          }
-          <Route path="/mssongkran48" render={() => <MsSongkran fet={Fet().ul} setSec={(v) => setSec(v)} width={width} />} />
-          <Route exact render={() => <PageErr setSec={(v) => setSec(v)} width={width} />} />
-        </BasicSwitch>
-
-
-        {
-          window.innerWidth < 700 && (
+          {window.innerWidth < 700 && (
             <BottomNavigation
               value={1}
-              style={{ position: 'fixed', bottom: 0, zIndex: 1060, width: '100%', borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: '#ace8cc' }}
+              style={{
+                position: "fixed",
+                bottom: 0,
+                zIndex: 1060,
+                width: "100%",
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+                backgroundColor: "#ace8cc",
+              }}
             >
-              <BottomNavigationAction style={{ marginTop: -10 }} onClick={() => History.goBack()} icon={<ArrowBackIosIcon />} />
-              <BottomNavigationAction style={{ width: 500, height: 80, marginTop: -16, backgroundColor: '#ace8cc', borderRadius: '50%' }} onClick={() => setOpen(true)} icon={<img width='100%' src='https://d3hhrps04devi8.cloudfront.net/main/cgmlogo.png' />} />
-              <BottomNavigationAction style={{ marginTop: kamiimg != '' && kamiimg != '-' ? -15 : 0 }} icon=
-                {login ? (
-                  <ListItemIcon onClick={() => setMemDl(true)} className={'cur'}>
-                    {
-                      verify ? (
+              <BottomNavigationAction
+                style={{ marginTop: -10 }}
+                onClick={() => History.goBack()}
+                icon={<ArrowBackIosIcon />}
+              />
+              <BottomNavigationAction
+                style={{
+                  width: 500,
+                  height: 80,
+                  marginTop: -16,
+                  backgroundColor: "#ace8cc",
+                  borderRadius: "50%",
+                }}
+                onClick={() => setOpen(true)}
+                icon={
+                  <img
+                    width="100%"
+                    src="https://d3hhrps04devi8.cloudfront.net/main/cgmlogo.png"
+                  />
+                }
+              />
+              <BottomNavigationAction
+                style={{ marginTop: kamiimg != "" && kamiimg != "-" ? -15 : 0 }}
+                icon={
+                  login ? (
+                    <ListItemIcon
+                      onClick={() => setMemDl(true)}
+                      className={"cur"}
+                    >
+                      {verify ? (
                         <Badge
                           overlap="circular"
                           anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'right',
+                            vertical: "bottom",
+                            horizontal: "right",
                           }}
-                          badgeContent={kamiimg != '' && kamiimg != '-' ? <img src={kamiimg} data-toggle="tooltip" data-placement="top" title={"\"" + kamin + "\" is your Kami-Oshi"} className={cls.sm + ' border border-white rounded-circle cir avatarlimit'} /> : ''}
+                          badgeContent={
+                            kamiimg != "" && kamiimg != "-" ? (
+                              <img
+                                src={kamiimg}
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title={'"' + kamin + '" is your Kami-Oshi'}
+                                className={
+                                  cls.sm +
+                                  " border border-white rounded-circle cir avatarlimit"
+                                }
+                              />
+                            ) : (
+                              ""
+                            )
+                          }
                         >
                           <Avatar alt={localStorage.getItem("i")} src={Prof} />
                         </Badge>
@@ -1002,286 +1459,557 @@ function App() {
                         <Badge
                           overlap="circular"
                           anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'right',
+                            vertical: "bottom",
+                            horizontal: "right",
                           }}
-                          badgeContent={(<WarningIcon className='text-warning' />)}
+                          badgeContent={
+                            <WarningIcon className="text-warning" />
+                          }
                         >
                           <Avatar alt={localStorage.getItem("i")} src={Prof} />
                         </Badge>
-                      )
-                    }
-                  </ListItemIcon>
-                ) : (
-                  <Badge
-                    overlap="circular"
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'right',
-                    }}
-                    style={{ marginTop: -10 }}
-                  >
-                    <Avatar alt={localStorage.getItem("i")} src={''} />
-                  </Badge>
-                )} />
-            </BottomNavigation>
-          )
-        }
-
-      </div>
-
-
-
-      <footer className={'fixed-bottom text-center text-dark bg-light pt-2'} style={{ paddingBottom: window.innerWidth < 700 ? 70 : 0 }} ref={ref}>
-        <p style={{ fontSize: 12 }}>Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
-          <br /> All BNK48 and CGM48 contents are licensed by Independent Artist Management (iAM). These member images and all events poster is objective for CGM48 supporting only.</p>
-      </footer>
-
-
-
-      {localStorage.getItem("loged") != null && (
-        <Dialog
-          open={localStorage.getItem("loged") != null ? MemberDl : false}
-          onClose={() => setMemDl(false)}
-          fullWidth={true}
-          maxWidth='sm'
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-
-        >
-          <DialogTitle id="alert-dialog-title">Account Menu</DialogTitle>
-          <DialogContent>
-            {kamin != undefined && kamin != '' && kamin != '-' ? (
-              <ListItem onClick={() => {
-                const last = window.location.href
-                History.push("/member/" + kamin.toLowerCase())
-                if (last.includes('/member/')) {
-                  History.go(0)
+                      )}
+                    </ListItemIcon>
+                  ) : (
+                    <Badge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      style={{ marginTop: -10 }}
+                    >
+                      <Avatar alt={localStorage.getItem("i")} src={""} />
+                    </Badge>
+                  )
                 }
-                setMemDl(false)
-              }} button>
-                <ListItemIcon>
-                  <Badge
-                    overlap="circular"
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    color="error"
-                    className="mr-4"
-                    badgeContent={live != null && live.isLive ? 'LIVE' : null}
-                  >
-                    <img src={kamiimg} className={cls.lg + ' border border-white rounded-circle cir avatarlimit'} />
-                  </Badge>
-                </ListItemIcon>
-                <ListItemText primary={'Your Kami-Oshi is ' + kamin + ' CGM48'} secondary={newspop.length > 0 && newspop.filter(x => ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] == 0) || ((x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1) && x.timerange[1] > 0 && moment().unix() <= x.timerange[1])).length > 0 ? 'Your Kami-Oshi have ' + newspop.filter(x => x.memtag.indexOf(kamin.toLowerCase()) > -1 || x.memtag.indexOf('All') > -1 || x.memtag.indexOf('ge') > -1).length + ' incoming event(s). Click here to check it!' : 'Click here to see more description of your Kami-Oshi'} />
-              </ListItem>
-            ) : (
-              <ListItem button>
-                <ListItemIcon>
-                  <Avatar src="" />
-                </ListItemIcon>
-                <ListItemText primary="You don't have any Kami-Oshi" secondary='Please choose your member which you love only once person.' />
-              </ListItem>
-            )}
-            {live != null && live.isPS && (
-              <ListItem button className="text-success">
-                <ListItemText primary={kamin + ' CGM48 is pre-scheduled to LIVE on IAM48 Application'} secondary={'She is planned to LIVE in ' + moment(live.livestarted).local().format('DD MMMM YYYY HH:mm') + '. However, This schedule to change as appropriate.'} />
-              </ListItem>)}
-            {kamin != "-" && memDate == moment.unix(time).local().format('YYYY-M-DD') && (
-              <ListItem className='text-muted' button>
-                <ListItemText primary={"Today is " + kamin + " Birthday. Click her profile to view info and bless her on Twitter."} />
-              </ListItem>
-            )}
-            <ListItem className='text-info' button>
-              <ListItemText primary='Feature will be unavaliable when you not sign in' secondary='Choose and share your Kami-Oshi member, Fandom group view and add new event' />
-            </ListItem>
-            {!verify && (
-              <ListItem className='text-danger' button>
-                <ListItemText primary={"Your account is unverified"} secondary="For keeping your account secure, please confirm your Fan Space Membership account to enjoy more feature of CGM48 Fan Space in 'Account Studio'" />
-              </ListItem>
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={(e) => { Signout(e) }} className="text-danger">
-              Sign out
-            </Button>
-            <Button onClick={(e) => { History.push('/account'); setMemDl(false); setOpen(false) }} className="text-dark">
-              Account Studio
-            </Button>
-            <Button onClick={(e) => { setMemDl(false) }} className="text-dark">
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      )}
+              />
+            </BottomNavigation>
+          )}
+        </div>
 
-      {newspop.length > 0 && window.location.pathname != '/mana' && window.location.pathname != '/member' && (
-        <Dialog
-          open={EvtPop}
-          onClose={() => {
-            setpopup(false)
-            sessionStorage.setItem("ads", 'i')
-          }}
-          maxWidth='md'
-          scroll='body'
-          TransitionComponent={Grow}
-          transitionDuration={500}
+        <footer
+          className={"fixed-bottom text-center text-dark bg-light pt-2"}
+          style={{ paddingBottom: window.innerWidth < 700 ? 70 : 0 }}
+          ref={ref}
         >
+          <p style={{ fontSize: 12 }}>
+            Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
+            <br /> All BNK48 and CGM48 contents are licensed by Independent
+            Artist Management (iAM). These member images and all events poster
+            is objective for CGM48 supporting only.
+          </p>
+        </footer>
 
-          {newspop.length > 1 ?
-            (<Carousel interval={newspop[cro].video != undefined && newspop[cro].video != "" ? 180000 : 8000} onChange={(now, pr) => setCro(now)}>{
-              newspop.map((item, i) => (
+        {localStorage.getItem("loged") != null && (
+          <Dialog
+            open={localStorage.getItem("loged") != null ? MemberDl : false}
+            onClose={() => setMemDl(false)}
+            fullWidth={true}
+            maxWidth="sm"
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">Account Menu</DialogTitle>
+            <DialogContent>
+              {kamin != undefined && kamin != "" && kamin != "-" ? (
+                <ListItem
+                  onClick={() => {
+                    const last = window.location.href;
+                    History.push("/member/" + kamin.toLowerCase());
+                    if (last.includes("/member/")) {
+                      History.go(0);
+                    }
+                    setMemDl(false);
+                  }}
+                  button
+                >
+                  <ListItemIcon>
+                    <Badge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      color="error"
+                      className="mr-4"
+                      badgeContent={live != null && live.isLive ? "LIVE" : null}
+                    >
+                      <img
+                        src={kamiimg}
+                        className={
+                          cls.lg +
+                          " border border-white rounded-circle cir avatarlimit"
+                        }
+                      />
+                    </Badge>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Your Kami-Oshi is " + kamin + " CGM48"}
+                    secondary={
+                      newspop.length > 0 &&
+                      newspop.filter(
+                        (x) =>
+                          ((x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
+                            x.memtag.indexOf("All") > -1 ||
+                            x.memtag.indexOf("ge") > -1) &&
+                            x.timerange[1] == 0) ||
+                          ((x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
+                            x.memtag.indexOf("All") > -1 ||
+                            x.memtag.indexOf("ge") > -1) &&
+                            x.timerange[1] > 0 &&
+                            moment().unix() <= x.timerange[1])
+                      ).length > 0
+                        ? "Your Kami-Oshi have " +
+                          newspop.filter(
+                            (x) =>
+                              x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
+                              x.memtag.indexOf("All") > -1 ||
+                              x.memtag.indexOf("ge") > -1
+                          ).length +
+                          " incoming event(s). Click here to check it!"
+                        : "Click here to see more description of your Kami-Oshi"
+                    }
+                  />
+                </ListItem>
+              ) : (
+                <ListItem button>
+                  <ListItemIcon>
+                    <Avatar src="" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="You don't have any Kami-Oshi"
+                    secondary="Please choose your member which you love only once person."
+                  />
+                </ListItem>
+              )}
+              {live != null && live.isPS && (
+                <ListItem button className="text-success">
+                  <ListItemText
+                    primary={
+                      kamin +
+                      " CGM48 is pre-scheduled to LIVE on IAM48 Application"
+                    }
+                    secondary={
+                      "She is planned to LIVE in " +
+                      moment(live.livestarted)
+                        .local()
+                        .format("DD MMMM YYYY HH:mm") +
+                      ". However, This schedule to change as appropriate."
+                    }
+                  />
+                </ListItem>
+              )}
+              {kamin != "-" &&
+                memDate == moment.unix(time).local().format("YYYY-M-DD") && (
+                  <ListItem className="text-muted" button>
+                    <ListItemText
+                      primary={
+                        "Today is " +
+                        kamin +
+                        " Birthday. Click her profile to view info and bless her on Twitter."
+                      }
+                    />
+                  </ListItem>
+                )}
+              <ListItem className="text-info" button>
+                <ListItemText
+                  primary="Feature will be unavaliable when you not sign in"
+                  secondary="Choose and share your Kami-Oshi member, Fandom group view and add new event"
+                />
+              </ListItem>
+              {!verify && (
+                <ListItem className="text-danger" button>
+                  <ListItemText
+                    primary={"Your account is unverified"}
+                    secondary="For keeping your account secure, please confirm your Fan Space Membership account to enjoy more feature of CGM48 Fan Space in 'Account Studio'"
+                  />
+                </ListItem>
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={(e) => {
+                  Signout(e);
+                }}
+                className="text-danger"
+              >
+                Sign out
+              </Button>
+              <Button
+                onClick={(e) => {
+                  History.push("/account");
+                  setMemDl(false);
+                  setOpen(false);
+                }}
+                className="text-dark"
+              >
+                Account Studio
+              </Button>
+              <Button
+                onClick={(e) => {
+                  setMemDl(false);
+                }}
+                className="text-dark"
+              >
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+        )}
+
+        {newspop.length > 0 &&
+          window.location.pathname != "/mana" &&
+          window.location.pathname != "/member" && (
+            <Dialog
+              open={EvtPop}
+              onClose={() => {
+                setpopup(false);
+                sessionStorage.setItem("ads", "i");
+              }}
+              maxWidth="md"
+              scroll="body"
+              TransitionComponent={Grow}
+              transitionDuration={500}
+            >
+              {newspop.length > 1 ? (
+                <Carousel
+                  interval={
+                    newspop[cro].video != undefined && newspop[cro].video != ""
+                      ? 180000
+                      : 8000
+                  }
+                  onChange={(now, pr) => setCro(now)}
+                >
+                  {newspop.map((item, i) => (
+                    <>
+                      <DialogTitle id="alert-dialog-title">
+                        {item.title.includes("birthday")
+                          ? "Birthday Celebration"
+                          : "Advertisement"}{" "}
+                        - {item.title}
+                      </DialogTitle>
+                      <DialogContent>
+                        <CardContent>
+                          {item.video != undefined && item.video != "" ? (
+                            <CardMedia
+                              src={item.video}
+                              component="iframe"
+                              width={"100%"}
+                              height={window.innerWidth * 0.4}
+                            />
+                          ) : (
+                            <CardMedia
+                              src={item.src}
+                              component="img"
+                              width={80}
+                            />
+                          )}
+                          <Typography
+                            className="mt-3"
+                            variant="body2"
+                            component="p"
+                          >
+                            {item.desc}
+                          </Typography>
+                          {item.timerange[0] > 0 && item.timerange[1] == 0 && (
+                            <p className="mt-1 mb-3">
+                              This event has been started since{" "}
+                              <b>
+                                {moment
+                                  .unix(item.timerange[0])
+                                  .format("ddd DD MMMM yyyy")}
+                              </b>
+                            </p>
+                          )}
+                          {item.timerange[0] > 0 &&
+                            item.timerange[1] > 0 &&
+                            item.timerange[0] < item.timerange[1] && (
+                              <p className="mt-1 mb-3">
+                                This event has been started in{" "}
+                                <b>
+                                  {moment
+                                    .unix(item.timerange[0])
+                                    .format("ddd DD MMMM yyyy H:mm A")}
+                                </b>{" "}
+                                to{" "}
+                                <b>
+                                  {moment
+                                    .unix(item.timerange[1])
+                                    .format("ddd DD MMMM yyyy H:mm A")}
+                                </b>
+                              </p>
+                            )}
+
+                          <a
+                            onClick={() => pageDirect(item.link)}
+                            className="mt-1 hoversense"
+                          >
+                            Reference Link
+                          </a>
+                          <br />
+                          {item.place != "" && item.place.includes("IAMP") && (
+                            <a
+                              href={item.placeobj.ref}
+                              target="_blank"
+                              className="mt-1"
+                              data-toggle="tooltip"
+                              data-placement="down"
+                              title={item.placeobj.placeDesc}
+                            >
+                              <LocationOnIcon /> Location:{" "}
+                              {item.placeobj.placeName +
+                                ", " +
+                                item.placeobj.placeProvince}
+                            </a>
+                          )}
+                          {item.place != "" && !item.place.includes("IAMP") && (
+                            <a
+                              href={item.place}
+                              target="_blank"
+                              className="mt-1"
+                            >
+                              <LocationOnIcon /> Where is this event?
+                            </a>
+                          )}
+                          <br />
+                          {item.memtag.length > 0 && (
+                            <div>
+                              Member included{" "}
+                              {item.memtag.map((nametag, ii) => (
+                                <a
+                                  className="hoversense"
+                                  onClick={() =>
+                                    nametag == "All" || nametag == "ge"
+                                      ? History.push("/memberlist")
+                                      : nametag.includes("gen")
+                                      ? History.push(
+                                          "/memberlist?filter=gen&val=" +
+                                            nametag.replace("gen", "")
+                                        )
+                                      : nametag.includes("team_")
+                                      ? History.push(
+                                          "/memberlist?filter=team&val=" +
+                                            nametag.replace("team_", "")
+                                        )
+                                      : History.push("/member/" + nametag)
+                                  }
+                                >
+                                  {nametag == "ge"
+                                    ? "All 48 winners of BNK48 12th Single Senbutsu General Election"
+                                    : nametag.includes("gen") === true
+                                    ? "BNK48 Generation " +
+                                      nametag.replace("gen", "")
+                                    : nametag.includes("team_")
+                                    ? "Team " +
+                                      nametag.replace("team_", "").toUpperCase()
+                                    : ii == 0
+                                    ? capitalizeFirstLetter(nametag)
+                                    : ", " + capitalizeFirstLetter(nametag)}
+                                </a>
+                              ))}
+                            </div>
+                          )}
+                        </CardContent>
+                      </DialogContent>
+                    </>
+                  ))}
+                </Carousel>
+              ) : (
                 <>
-                  <DialogTitle id="alert-dialog-title">{item.title.includes("birthday") ? 'Birthday Celebration' : 'Advertisement'} - {item.title}</DialogTitle>
+                  <DialogTitle id="alert-dialog-title">
+                    {newspop[0].title.includes("birthday")
+                      ? "Birthday Celebration"
+                      : "Advertisement"}{" "}
+                    - {newspop[0].title}
+                  </DialogTitle>
                   <DialogContent>
                     <CardContent>
-                      {item.video != undefined && item.video != "" ? (
-                        <CardMedia src={item.video} component="iframe" width={"100%"} height={window.innerWidth * (0.4)} />
+                      {newspop[0].video != undefined &&
+                      newspop[0].video != "" ? (
+                        <CardMedia
+                          src={newspop[0].video}
+                          component="iframe"
+                          width={80}
+                        />
                       ) : (
-                        <CardMedia src={item.src} component="img" width={80} />
+                        <CardMedia
+                          src={newspop[0].src}
+                          component="img"
+                          width={80}
+                        />
                       )}
-                      <Typography className='mt-3' variant="body2" component="p">
-                        {item.desc}
+                      <Typography
+                        className="mt-3 tw"
+                        variant="body2"
+                        component="p"
+                      >
+                        {newspop[0].desc}
                       </Typography>
-                      {item.timerange[0] > 0 && item.timerange[1] == 0 && (
-                        <p className='mt-1 mb-3'>
-                          This event has been started since <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy')}</b>
-                        </p>
-                      )}
-                      {item.timerange[0] > 0 && item.timerange[1] > 0 && item.timerange[0] < item.timerange[1] && (
-                        <p className='mt-1 mb-3'>
-                          This event has been started in <b>{moment.unix(item.timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(item.timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
-                        </p>
-                      )}
 
-                      <a onClick={() => pageDirect(item.link)} className='mt-1 hoversense'>
+                      {newspop[0].timerange[0] > 0 &&
+                        newspop[0].timerange[1] == 0 && (
+                          <p className="mt-1 mb-3">
+                            This event has been started since{" "}
+                            <b>
+                              {moment
+                                .unix(newspop[0].timerange[0])
+                                .format("ddd DD MMMM yyyy")}
+                            </b>
+                          </p>
+                        )}
+                      {newspop[0].timerange[0] > 0 &&
+                        newspop[0].timerange[1] > 0 &&
+                        newspop[0].timerange[0] < newspop[0].timerange[1] && (
+                          <p className="mt-1 mb-3">
+                            This event has been started in{" "}
+                            <b>
+                              {moment
+                                .unix(newspop[0].timerange[0])
+                                .format("ddd DD MMMM yyyy H:mm A")}
+                            </b>{" "}
+                            to{" "}
+                            <b>
+                              {moment
+                                .unix(newspop[0].timerange[1])
+                                .format("ddd DD MMMM yyyy H:mm A")}
+                            </b>
+                          </p>
+                        )}
+                      <a
+                        onClick={() => pageDirect(newspop[0].link)}
+                        className="mt-1 hoversense"
+                      >
                         Reference Link
                       </a>
                       <br />
-                      {
-                        item.place != '' && item.place.includes('IAMP') && (
-                          <a href={item.placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={item.placeobj.placeDesc}>
-                            <LocationOnIcon /> Location: {item.placeobj.placeName + ", " + item.placeobj.placeProvince}
+                      {newspop[0].place != "" &&
+                        newspop[0].place.includes("IAMP") && (
+                          <a
+                            href={newspop[0].placeobj.ref}
+                            target="_blank"
+                            className="mt-1"
+                            data-toggle="tooltip"
+                            data-placement="down"
+                            title={newspop[0].placeobj.placeDesc}
+                          >
+                            <LocationOnIcon /> Location:{" "}
+                            {newspop[0].placeobj.placeName +
+                              ", " +
+                              newspop[0].placeobj.placeProvince}
                           </a>
-                        )
-                      }
-                      {
-                        item.place != '' && !item.place.includes('IAMP') && (
-                          <a href={item.place} target='_blank' className='mt-1'>
+                        )}
+                      {newspop[0].place != "" &&
+                        !newspop[0].place.includes("IAMP") && (
+                          <a
+                            href={newspop[0].place}
+                            target="_blank"
+                            className="mt-1"
+                          >
                             <LocationOnIcon /> Where is this event?
                           </a>
-                        )
-                      }
-                      <br />
-                      {item.memtag.length > 0 && (<div>
-                        Member included {
-                          (item.memtag.map((nametag, ii) => (
-                            <a className='hoversense' onClick={() => nametag == 'All' || nametag == 'ge' ? History.push("/memberlist") : nametag.includes('gen') ? History.push("/memberlist?filter=gen&val=" + nametag.replace("gen", "")) : nametag.includes('team_') ? History.push("/memberlist?filter=team&val=" + nametag.replace("team_", "")) : History.push("/member/" + nametag)}>
-                              {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : nametag.includes('gen') === true ? 'BNK48 Generation ' + nametag.replace("gen", "") : nametag.includes('team_') ? 'Team ' + nametag.replace("team_", "").toUpperCase() : (ii == 0 ? capitalizeFirstLetter(nametag) : ', ' + capitalizeFirstLetter(nametag))}
+                        )}
+                      {newspop[0].memtag.length > 0 && (
+                        <div>
+                          Member included{" "}
+                          {newspop[0].memtag.map((nametag, ii) => (
+                            <a
+                              className="hoversense"
+                              onClick={() =>
+                                nametag == "All" || nametag == "ge"
+                                  ? History.push("/memberlist")
+                                  : nametag.includes("gen")
+                                  ? History.push(
+                                      "/memberlist?filter=gen&val=" +
+                                        nametag.replace("gen", "")
+                                    )
+                                  : nametag.includes("team_")
+                                  ? History.push(
+                                      "/memberlist?filter=team&val=" +
+                                        nametag.replace("team_", "")
+                                    )
+                                  : History.push("/member?name=" + nametag)
+                              }
+                            >
+                              {nametag == "ge"
+                                ? "All 48 winners of BNK48 12th Single Senbutsu General Election"
+                                : ii == 0
+                                ? capitalizeFirstLetter(nametag)
+                                : nametag.includes("gen")
+                                ? "BNK48 Generation " +
+                                  nametag.replace("gen", "")
+                                : nametag.includes("team_")
+                                ? "Team " +
+                                  nametag.replace("team_", "").toUpperCase()
+                                : ", " + capitalizeFirstLetter(nametag)}
                             </a>
-                          )))
-                        }
-                      </div>)}
+                          ))}
+                        </div>
+                      )}
                     </CardContent>
                   </DialogContent>
                 </>
-              ))
-            }</Carousel>) : (
-              <>
-                <DialogTitle id="alert-dialog-title">{newspop[0].title.includes("birthday") ? 'Birthday Celebration' : 'Advertisement'} - {newspop[0].title}</DialogTitle>
-                <DialogContent>
-                  <CardContent>
-                    {newspop[0].video != undefined && newspop[0].video != "" ? (
-                      <CardMedia src={newspop[0].video} component="iframe" width={80} />
-                    ) : (
-                      <CardMedia src={newspop[0].src} component="img" width={80} />
-                    )}
-                    <Typography className='mt-3 tw' variant="body2" component="p">
-                      {newspop[0].desc}
-                    </Typography>
+              )}
 
-                    {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] == 0 && (
-                      <p className='mt-1 mb-3'>
-                        This event has been started since <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy')}</b>
-                      </p>
-                    )}
-                    {newspop[0].timerange[0] > 0 && newspop[0].timerange[1] > 0 && newspop[0].timerange[0] < newspop[0].timerange[1] && (
-                      <p className='mt-1 mb-3'>
-                        This event has been started in <b>{moment.unix(newspop[0].timerange[0]).format('ddd DD MMMM yyyy H:mm A')}</b> to <b>{moment.unix(newspop[0].timerange[1]).format('ddd DD MMMM yyyy H:mm A')}</b>
-                      </p>
-                    )}
-                    <a onClick={() => pageDirect(newspop[0].link)} className='mt-1 hoversense'>
-                      Reference Link
-                    </a>
-                    <br />
-                    {
-                      newspop[0].place != '' && newspop[0].place.includes('IAMP') && (
-                        <a href={newspop[0].placeobj.ref} target='_blank' className='mt-1' data-toggle="tooltip" data-placement="down" title={newspop[0].placeobj.placeDesc}>
-                          <LocationOnIcon /> Location: {newspop[0].placeobj.placeName + ", " + newspop[0].placeobj.placeProvince}
-                        </a>
-                      )
-                    }
-                    {
-                      newspop[0].place != '' && !newspop[0].place.includes('IAMP') && (
-                        <a href={newspop[0].place} target='_blank' className='mt-1'>
-                          <LocationOnIcon /> Where is this event?
-                        </a>
-                      )
-                    }
-                    {newspop[0].memtag.length > 0 && (<div>
-                      Member included {
-                        (newspop[0].memtag.map((nametag, ii) => (
-                          <a className='hoversense' onClick={() => nametag == 'All' || nametag == 'ge' ? History.push("/memberlist") : nametag.includes('gen') ? History.push("/memberlist?filter=gen&val=" + nametag.replace("gen", "")) : nametag.includes('team_') ? History.push("/memberlist?filter=team&val=" + nametag.replace("team_", "")) : History.push("/member?name=" + nametag)}>
-                            {nametag == 'ge' ? 'All 48 winners of BNK48 12th Single Senbutsu General Election' : (ii == 0 ? capitalizeFirstLetter(nametag) : nametag.includes('gen') ? 'BNK48 Generation ' + nametag.replace("gen", "") : nametag.includes('team_') ? 'Team ' + nametag.replace("team_", "").toUpperCase() : ', ' + capitalizeFirstLetter(nametag))}
-                          </a>
-                        )))
-                      }
-                    </div>)}
-                  </CardContent>
-                </DialogContent>
-              </>
-            )}
-
-          <DialogActions>
-            <Button onClick={() => {
-              setpopup(false)
-            }} className="text-dark">
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      )}
-    </>
-    )
+              <DialogActions>
+                <Button
+                  onClick={() => {
+                    setpopup(false);
+                  }}
+                  className="text-dark"
+                >
+                  Close
+                </Button>
+              </DialogActions>
+            </Dialog>
+          )}
+      </>
+    );
   }
 
   return (
     <div className="container mt-5 mb-5">
       {adsClose && (
-        <Fab onClick={() => setAllDone(true)} className={cls.fab} color='primary'>
+        <Fab
+          onClick={() => setAllDone(true)}
+          className={cls.fab}
+          color="primary"
+        >
           Skip
         </Fab>
       )}
       {width > 900 ? (
         <div className="row">
-          <Fade in={styleFade != 0 ? true : false} timeout={400} style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
+          <Fade
+            in={styleFade != 0 ? true : false}
+            timeout={400}
+            style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}
+          >
             <div className="col">
-              <img src="https://pbs.twimg.com/media/GWjR7s-aoAERRoj?format=jpg&name=4096x4096" width="100%" />
+              <img
+                src="https://pbs.twimg.com/media/GWjR7s-aoAERRoj?format=jpg&name=4096x4096"
+                width="100%"
+              />
             </div>
           </Fade>
-          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
+          <Grow in={uri != "" && geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
-              <AlertTitle>CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ" will be avaliable on Music Streaming Platform soon</AlertTitle>
+                <AlertTitle>
+                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
+                  will be avaliable on Music Streaming Platform soon
+                </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
             </div>
           </Grow>
-          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
+          <Grow in={uri != "" && !geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
-                <AlertTitle>CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ" will be avaliable on Music Streaming Platform soon</AlertTitle>
+                <AlertTitle>
+                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
+                  will be avaliable on Music Streaming Platform soon
+                </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
             </div>
@@ -1289,23 +2017,36 @@ function App() {
         </div>
       ) : (
         <div className="row">
-          <Fade in={styleFade != 0 ? true : false} timeout={styleFade == 2 ? 300 : 500} style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}>
+          <Fade
+            in={styleFade != 0 ? true : false}
+            timeout={styleFade == 2 ? 300 : 500}
+            style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}
+          >
             <div className="col">
-              <img src="https://d3hhrps04devi8.cloudfront.net/cgm48/ltlandingmobile.jpg" width="100%" />
+              <img
+                src="https://d3hhrps04devi8.cloudfront.net/cgm48/sing8phone.jpg"
+                width="100%"
+              />
             </div>
           </Fade>
-          <Grow in={uri != '' && geready ? true : false} timeout={1000}>
+          <Grow in={uri != "" && geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
-                <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+                <AlertTitle>
+                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
+                  will be avaliable on Music Streaming Platform soon
+                </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
             </div>
           </Grow>
-          <Grow in={uri != '' && !geready ? true : false} timeout={1000}>
+          <Grow in={uri != "" && !geready ? true : false} timeout={1000}>
             <div className={cls.fabButton}>
               <Alert severity="info">
-                <AlertTitle>CGM48 7th Single "Love Trip" will be avaliable soon on both Youtube Music Video and Music Streaming Platform soon</AlertTitle>
+                <AlertTitle>
+                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
+                  will be avaliable on Music Streaming Platform soon
+                </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
             </div>
@@ -1313,14 +2054,7 @@ function App() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default App;
-
-
-
-
-
-
-

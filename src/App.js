@@ -1987,7 +1987,7 @@ function App() {
           >
             <div className="col">
               <img
-                src="https://pbs.twimg.com/media/GWjR7s-aoAERRoj?format=jpg&name=4096x4096"
+                src="https://pbs.twimg.com/media/GX-cY6IaUAI24Vw?format=jpg&name=large"
                 width="100%"
               />
             </div>

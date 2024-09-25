@@ -205,7 +205,7 @@ const Shihainin = ({ fet, kamio, setSec, triggerUpdate, width }) => {
 
   const remainEvent = (unixStart) => {
     let start = moment().unix(); // some random moment in time (in ms)
-    const difference = unixStart - start * 1000;
+    const difference = unixStart * 1000 - start * 1000;
 
     // Calculate days
     const days =

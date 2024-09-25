@@ -37,12 +37,36 @@ const Finder = ({fet, setSec, width, kamin}) => {
     const map = React.useRef(null);
 
     const remainEvent = (unixStart) => {
-        let start = moment(); // some random moment in time (in ms)
-        let end = moment.unix(unixStart); // some random moment after start (in ms)
-        const ms = end.diff(start)
-        const date = moment.duration(ms)
+        let start = moment().unix(); // some random moment in time (in ms)
+        const difference = unixStart - start * 1000;
+
+        // Calculate days
+        const days =
+          difference / (1000 * 60 * 60 * 24) >
+          Math.floor(difference / (1000 * 60 * 60 * 24))
+            ? Math.floor(difference / (1000 * 60 * 60 * 24))
+            : Math.floor(difference / (1000 * 60 * 60 * 24)) - 1;
+      
+        // Get remaining milliseconds after removing days
+        const remainingMilliseconds = difference % (1000 * 60 * 60 * 24);
+      
+        // Calculate hours
+        const hours =
+          remainingMilliseconds / (1000 * 60 * 60) >
+          Math.floor(remainingMilliseconds / (1000 * 60 * 60))
+            ? Math.floor(remainingMilliseconds / (1000 * 60 * 60))
+            : Math.floor(remainingMilliseconds / (1000 * 60 * 60)) - 1;
+      
+        // Get remaining milliseconds after removing hours
+        const remainingMinutes = remainingMilliseconds % (1000 * 60 * 60);
+      
+        // Calculate minutes
+        const minutes =
+          remainingMinutes / (1000 * 60) > Math.round(remainingMinutes / (1000 * 60))
+            ? Math.round(remainingMinutes / (1000 * 60)) + 1
+            : Math.round(remainingMinutes / (1000 * 60));
         // execution
-        let f = Math.floor(date.asDays()) + ' Day(s) ' + moment.utc(ms).format("H") + ' Hour(s) ' + moment.utc(ms).format("mm") + ' Minute(s) ';
+        let f = days + ' Day(s) ' + hours + ' Hour(s) ' + minutes + ' Minute(s) ';
         return f
     }
 

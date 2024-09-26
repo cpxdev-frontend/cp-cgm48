@@ -21,9 +21,9 @@ import AOS from "aos";
 // const defaultvideo =
 //   "https://www.youtube.com/embed/tvab7_OjBOw?autoplay=1&mute=1&controls=0&loop=1&playlist=tvab7_OjBOw";
 const defaultTheme =
-  "https://pbs.twimg.com/media/GRo6e9rbMAQnBhL?format=webp&name=large";
+  "https://pbs.twimg.com/media/GYaDj7zaMAAxhFe?format=jpg&name=large";
 const defaultvideo =
-  "https://www.youtube.com/embed/LJsFfZhEzYY?autoplay=1&mute=1&controls=0&loop=1&playlist=LJsFfZhEzYY";
+  "https://www.youtube.com/embed/uoQuu9NcnGU?autoplay=1&mute=1&controls=0&loop=1&playlist=uoQuu9NcnGU";
 const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {
   const History = useHistory();
   const [Loaded1, setLoaded1] = React.useState(false);

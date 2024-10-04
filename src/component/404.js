@@ -10,7 +10,7 @@ const ErrCom = ({setSec, width}) => {
         <>
           <div class="video-background">
           <Fade in={true} timeout={800}>
-                <img src="https://i.scdn.co/image/ab67618600001016c97ddcdef5391fab6c0e619b"  width={width} />
+                <img src="https://i.scdn.co/image/ab67618600001016c2994cce3910cf0ef40d7653"  width={width} />
               </Fade>
               </div>
 

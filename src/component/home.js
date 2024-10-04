@@ -17,7 +17,7 @@ import moment from "moment";
 import AOS from "aos";
 
 // const defaultTheme =
-//   "https://i.scdn.co/image/ab67618600001016c97ddcdef5391fab6c0e619b";
+//   "https://i.scdn.co/image/ab67618600001016c2994cce3910cf0ef40d7653";
 // const defaultvideo =
 //   "https://www.youtube.com/embed/tvab7_OjBOw?autoplay=1&mute=1&controls=0&loop=1&playlist=tvab7_OjBOw";
 const defaultTheme =

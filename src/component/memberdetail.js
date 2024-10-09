@@ -23,6 +23,7 @@ import {
   Avatar,
 } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Confetti from "react-confetti";
 import CloseIcon from "@material-ui/icons/Close";
 import Dialog from "@material-ui/core/Dialog";
 import CountUp from "react-countup";
@@ -129,8 +130,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   const [v, setV] = React.useState(false);
 
   const [play, onPlay] = React.useState(false);
-  const [GEPoster, setGEPoster] = React.useState("");
-  const [GEPro, setGEPromote] = React.useState("");
+  const [birthdayEff, setBirthdayEff] = React.useState(false);
   const [fol, setFollowName] = React.useState("");
   const [live, setLive] = React.useState(null);
 
@@ -193,10 +193,10 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
           const i = arr.findIndex((x) => x.name == val);
           if (i > -1) {
             //navigator.vibrate(1000);
+              JankenCong();
             setBirthday(true);
             if (val == capitalizeFirstLetter(kamio)) {
               navigator.vibrate([50, 50, 50, 50, 50, 50]);
-              JankenCong();
 
               setTimeout(() => {
                 if (localStorage.getItem("kamibirth") == null) {
@@ -220,7 +220,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
 
   const PlaySong = () => {
     if (pm.paused) {
-      pm.play();
       onPlay(true);
       if ("mediaSession" in navigator) {
         navigator.mediaSession.metadata = new window.MediaMetadata({
@@ -230,12 +229,9 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
           album: "CGM48 Fans Space platform",
         });
       }
-      var loop = setInterval(function () {
-        if (pm.paused) {
-          clearInterval(loop);
+      setTimeout(function () {
           onPlay(false);
-        }
-      }, 100);
+      }, 5000);
     }
   };
 
@@ -847,9 +843,11 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
             {arr.length > 0 &&
               arr.map((item, i) => (
                 <div>
-                  <Fade in={play} timeout={{ enter: 300, exit: 500 }}>
-                    <Fireworks options={fwoptions} style={fwstyle} />
-                  </Fade>
+                  <Confetti
+                    numberOfPieces={play ? 400 : 0}
+                    initialVelocityY={2500}
+                    style={{ position: "fixed" }}
+                  />
                   <Card
                     className={
                       (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"

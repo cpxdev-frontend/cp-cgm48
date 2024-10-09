@@ -191,7 +191,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
           const i = arr.findIndex((x) => x.name == val);
           if (i > -1) {
             //navigator.vibrate(1000);
-              JankenCong();
+            JankenCong();
             setBirthday(true);
             if (val == capitalizeFirstLetter(kamio)) {
               navigator.vibrate([50, 50, 50, 50, 50, 50]);
@@ -217,7 +217,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   };
 
   const PlaySong = () => {
-    if (pm.paused) {
+    if (play == false) {
       onPlay(true);
       if ("mediaSession" in navigator) {
         navigator.mediaSession.metadata = new window.MediaMetadata({
@@ -228,7 +228,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         });
       }
       setTimeout(function () {
-          onPlay(false);
+        onPlay(false);
       }, 5000);
     }
   };
@@ -719,76 +719,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   }
   const tokenrateexchange = 90;
 
-  const session4thAl = (url) => {
-    if (localStorage.getItem("loged") == null) {
-      Swal.fire({
-        title: "BNK48 4th Album Image",
-        text: "This content is exclusively for CGM48 Fan Space Membership only, please login as Google Account and try again",
-        icon: "error",
-      });
-    } else {
-      const img =
-        "https://cdn.statically.io/gl/cpx2017/iamprofile@main/bnk4thalbum/pcpop/" +
-        url.name.toLowerCase() +
-        ".png";
-      Swal.fire({
-        title: 'BNK48 4th Album "Gingham Check" Image',
-        imageUrl: img,
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Download",
-        denyButtonColor: "#3AA504",
-        denyButtonText: "Listening it!",
-        footer:
-          "You can hold tap or right click on image then save it to your phone or PC",
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          window.open(img, "_blank");
-        } else if (result.isDenied) {
-          window.open("https://bnk48.bfan.link/0810-GinghamCheckTH", "_blank");
-        }
-      });
-    }
-  };
-
-  const showge4Promote = (u) => {
-    Swal.fire({
-      title: "BNK48 16th Single Senbatsu General Election Promote Video",
-      html:
-        '<iframe width="100%" height="315" src="' +
-        u +
-        '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-      confirmButtonText: "Go to GE4 Lobby page",
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        History.push("/ge4");
-      }
-    });
-  };
-
-  const showge4 = (u) => {
-    Swal.fire({
-      title: "BNK48 16th Single Senbatsu General Election Poster Image",
-      imageUrl: u,
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Download",
-      denyButtonColor: "#3AA504",
-      denyButtonText: "Go to GE4 Lobby page",
-      footer:
-        "You can hold tap or right click on image then save it to your phone or PC",
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        window.open(u, "_blank");
-      } else if (result.isDenied) {
-        window.open("https://cp-bnk48.pages.dev/ge4", "_blank");
-      }
-    });
-  };
-
   return (
     <>
       <Snackbar
@@ -819,6 +749,11 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         </Alert>
       </Snackbar>
 
+      <Confetti
+        numberOfPieces={play ? 400 : 0}
+        initialVelocityY={2500}
+        style={{ position: "fixed" }}
+      />
       <div className="pt-5 pb-2" data-aos="zoom-in" data-aos-duration="300">
         <h3 className={width > 600 ? " ml-5" : " ml-3"}>
           {mem != ""
@@ -841,11 +776,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
             {arr.length > 0 &&
               arr.map((item, i) => (
                 <div>
-                  <Confetti
-                    numberOfPieces={play ? 400 : 0}
-                    initialVelocityY={2500}
-                    style={{ position: "fixed" }}
-                  />
                   <Card
                     className={
                       (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"

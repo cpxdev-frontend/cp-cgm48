@@ -725,7 +725,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         open={live != null}
         autoHideDuration={10000}
         onClose={() => setLive(null)}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}>
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
         <Alert
           severity="info"
           onClick={() => {
@@ -734,7 +735,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
               "_blank"
             );
             setLive(null);
-          }}>
+          }}
+        >
           {live != null && (
             <CardHeader
               title={
@@ -762,7 +764,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
         </h3>
         <Breadcrumbs
           className={width > 600 ? " ml-5" : " ml-3"}
-          aria-label="breadcrumb">
+          aria-label="breadcrumb"
+        >
           <Link color="inherit" onClick={() => History.push("/memberlist")}>
             Members
           </Link>
@@ -780,269 +783,273 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                     className={
                       (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"
                     }
-                    key={i}>
+                    key={i}
+                  >
                     <div
                       className={
                         width > 1600 ? "col-md-3 mb-1" : "col-lg-3 mb-1"
-                      }>
+                      }
+                    >
                       <div
                         className="p-3 pt-5"
                         data-aos="zoom-in"
-                        data-aos-duration="800">
+                        data-aos-duration="800"
+                      >
                         <Avatar
                           src={item.img}
                           style={{ width: "100%", height: "100%" }}
                         />
                       </div>
                     </div>
-                    <div data-aos="fade-in" data-aos-duration="1500">
-                      <div className="col-md mt-5 mb-5">
-                        <h4>
-                          {item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}
-                          ]
-                        </h4>
+                    <div
+                      className="col-md mt-5 mb-5"
+                      data-aos="fade-in"
+                      data-aos-duration="1500"
+                    >
+                      <h4>
+                        {item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
+                      </h4>
 
-                        {loadfollow ? (
-                          <Skeleton />
+                      {loadfollow ? (
+                        <Skeleton />
+                      ) : (
+                        <>
+                          {follower > -1 ? (
+                            <Zoom in={true}>
+                              <p
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title={
+                                  item.name +
+                                  " CGM48 have " +
+                                  numberWithCommasx(follower2) +
+                                  "  gifts sent on IAM48 Application"
+                                }
+                              >
+                                {countstep == false ? (
+                                  <CountUp
+                                    end={follower}
+                                    onEnd={() => setCount(true)}
+                                    duration={3}
+                                  />
+                                ) : (
+                                  numberWithCommas(follower)
+                                )}{" "}
+                                gift rated on IAM48 Application
+                              </p>
+                            </Zoom>
+                          ) : (
+                            <button
+                              className="cur btn btn-info"
+                              onClick={() => fetchfollower(fol)}
+                            >
+                              Something went wrong, please click here to refresh
+                              page
+                            </button>
+                          )}
+                        </>
+                      )}
+                      {item.headcaptain != undefined && (
+                        <p className="mb-3 badge badge-pill badge-primary">
+                          CGM48 Captain
+                        </p>
+                      )}
+                      {item.headcaptain != undefined && <br />}
+                      <Button
+                        onClick={() => Subsc(mem)}
+                        className={
+                          (kami == 1 ? "bg-primary" : "text-dark") + " mt-3"
+                        }
+                        variant="contained"
+                        disabled={kami == 1 ? false : true}
+                      >
+                        {kami == 0 && (
+                          <img
+                            className="pb-1"
+                            src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
+                            width="20px"
+                          />
+                        )}{" "}
+                        {kami == 2
+                          ? "She's your Kami-Oshi"
+                          : kami == 1
+                          ? "Set as Kami-Oshi"
+                          : "Loading Status"}
+                      </Button>
+
+                      <hr />
+                      {item.shihainin != undefined && (
+                        <CardActionArea
+                          className="mb-3"
+                          onClick={() => History.push("/shihainin")}
+                        >
+                          <p
+                            class="badge text-light"
+                            style={{ backgroundColor: "#BF953F" }}
+                          >
+                            CGM48 Manager (Shihainin)
+                          </p>
+                        </CardActionArea>
+                      )}
+                      <br />
+                      {item.captain != undefined && (
+                        <p className="mb-3 badge badge-pill badge-warning">
+                          CGM48 {item.captain}
+                        </p>
+                      )}
+
+                      <>
+                        <h6>
+                          <LocationOnIcon fontSize="small" /> {item.province}
+                        </h6>
+                        {birthday ? (
+                          <h6>
+                            <CakeIcon fontSize="small" /> Today is her birthday!
+                            (
+                            {new Date().getFullYear() -
+                              new Date(item.birthday).getFullYear() +
+                              " years old"}
+                            )
+                          </h6>
                         ) : (
                           <>
-                            {follower > -1 ? (
-                              <Zoom in={true}>
-                                <p
-                                  data-toggle="tooltip"
-                                  data-placement="bottom"
-                                  title={
-                                    item.name +
-                                    " CGM48 have " +
-                                    numberWithCommasx(follower2) +
-                                    "  gifts sent on IAM48 Application"
-                                  }>
-                                  {countstep == false ? (
-                                    <CountUp
-                                      end={follower}
-                                      onEnd={() => setCount(true)}
-                                      duration={3}
-                                    />
-                                  ) : (
-                                    numberWithCommas(follower)
-                                  )}{" "}
-                                  gift rated on IAM48 Application
-                                </p>
-                              </Zoom>
+                            {moment(item.birthday).format("M") ==
+                              new Date().getMonth() + 1 &&
+                            parseInt(moment(item.birthday).format("D")) -
+                              new Date().getDate() >
+                              0 ? (
+                              <h6>
+                                <CakeIcon fontSize="small" />{" "}
+                                {moment(item.birthday).format("DD MMMM YYYY") +
+                                  " (" +
+                                  (parseInt(moment(item.birthday).format("D")) -
+                                    new Date().getDate()) +
+                                  " day(s) to go)"}
+                              </h6>
                             ) : (
-                              <button
-                                className="cur btn btn-info"
-                                onClick={() => fetchfollower(fol)}>
-                                Something went wrong, please click here to
-                                refresh page
-                              </button>
+                              <h6>
+                                <CakeIcon fontSize="small" />{" "}
+                                {moment(item.birthday).format("DD MMMM YYYY")}
+                              </h6>
                             )}
                           </>
                         )}
-                        {item.headcaptain != undefined && (
-                          <p className="mb-3 badge badge-pill badge-primary">
-                            CGM48 Captain
-                          </p>
-                        )}
-                        {item.headcaptain != undefined && <br />}
-                        <Button
-                          onClick={() => Subsc(mem)}
-                          className={
-                            (kami == 1 ? "bg-primary" : "text-dark") + " mt-3"
-                          }
-                          variant="contained"
-                          disabled={kami == 1 ? false : true}>
-                          {kami == 0 && (
-                            <img
-                              className="pb-1"
-                              src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"
-                              width="20px"
-                            />
-                          )}{" "}
-                          {kami == 2
-                            ? "She's your Kami-Oshi"
-                            : kami == 1
-                            ? "Set as Kami-Oshi"
-                            : "Loading Status"}
-                        </Button>
-
-                        <hr />
-                        {item.shihainin != undefined && (
-                          <CardActionArea
-                            className="mb-3"
-                            onClick={() => History.push("/shihainin")}>
-                            <p
-                              class="badge text-light"
-                              style={{ backgroundColor: "#BF953F" }}>
-                              CGM48 Manager (Shihainin)
-                            </p>
-                          </CardActionArea>
-                        )}
-                        <br />
-                        {item.captain != undefined && (
-                          <p className="mb-3 badge badge-pill badge-warning">
-                            CGM48 {item.captain}
-                          </p>
-                        )}
-
-                        <>
-                          <h6>
-                            <LocationOnIcon fontSize="small" /> {item.province}
-                          </h6>
-                          {birthday ? (
-                            <h6>
-                              <CakeIcon fontSize="small" /> Today is her
-                              birthday! (
-                              {new Date().getFullYear() -
-                                new Date(item.birthday).getFullYear() +
-                                " years old"}
-                              )
-                            </h6>
-                          ) : (
-                            <>
-                              {moment(item.birthday).format("M") ==
-                                new Date().getMonth() + 1 &&
-                              parseInt(moment(item.birthday).format("D")) -
-                                new Date().getDate() >
-                                0 ? (
-                                <h6>
-                                  <CakeIcon fontSize="small" />{" "}
-                                  {moment(item.birthday).format(
-                                    "DD MMMM YYYY"
-                                  ) +
-                                    " (" +
-                                    (parseInt(
-                                      moment(item.birthday).format("D")
-                                    ) -
-                                      new Date().getDate()) +
-                                    " day(s) to go)"}
-                                </h6>
-                              ) : (
-                                <h6>
-                                  <CakeIcon fontSize="small" />{" "}
-                                  {moment(item.birthday).format("DD MMMM YYYY")}
-                                </h6>
-                              )}
-                            </>
-                          )}
-                          {!item.graduated && (
-                            <>
-                              <p>
-                                <GroupIcon fontSize="small" />{" "}
-                                {item.team != "" ? item.team : "Trainee"}
-                              </p>
-                              <p>
-                                <AccountCircleIcon fontSize="small" />{" "}
-                                {ordinal_suffix_of(item.gen)} Generation
-                              </p>
-                            </>
-                          )}
-                          <p>
-                            <FavoriteIcon fontSize="small" />
-                            &nbsp;
-                            {item.favorite.length > 0
-                              ? item.favorite.map((its, i) =>
-                                  i == item.favorite.length - 1
-                                    ? its
-                                    : its + ", "
-                                )
-                              : "None"}
-                          </p>
-                          <p>
-                            <NaturePeopleIcon fontSize="small" />
-                            &nbsp;
-                            {item.hobby.length > 0
-                              ? item.hobby.map((its, i) =>
-                                  i == item.hobby.length - 1 ? its : its + ", "
-                                )
-                              : "None"}
-                          </p>
-                          {item.graduated && (
+                        {!item.graduated && (
+                          <>
                             <p>
-                              <PanToolIcon fontSize="small" /> Graduated
+                              <GroupIcon fontSize="small" />{" "}
+                              {item.team != "" ? item.team : "Trainee"}
                             </p>
-                          )}
-                          {!item.graduated && (
-                            <>
-                              Follow her:&nbsp;
-                              <a
-                                className="text-light"
-                                href={item.follow[0]}
-                                target="_blank">
-                                <FacebookIcon />
-                              </a>
-                              <a
-                                className="text-light"
-                                href={item.follow[1]}
-                                target="_blank">
-                                <InstagramIcon />
-                              </a>
-                              <a
-                                className="text-light"
-                                href={
-                                  "https://app.bnk48.com/members/cgm48/" +
-                                  item.name.toLowerCase()
-                                }
-                                target="_blank">
-                                <PhoneIphoneIcon />
-                              </a>
-                            </>
-                          )}
-                        </>
-                        <hr />
-                        <a
-                          className="text-dark"
-                          href={item.ref}
-                          target="_blank">
-                          Reference from CGM48 official Site
-                        </a>
-                        <br />
-                        {v && birthday && (
-                          <div className="row p-3 mt-3">
-                            <Button
-                              onClick={() => PlaySong()}
-                              color="primary"
-                              variant="contained">
-                              Click here see effect
-                            </Button>
-                            <div className="ml-3 pt-2">
-                              <Share
-                                url={
-                                  "https://cp-cgm48.pages.dev/member/" +
-                                  item.name.toLowerCase()
-                                }
-                                options={{
-                                  text: "(You can custom your blessing here)",
-                                  hashtags:
-                                    item.name +
-                                    "CGM48,fanspaceplatform,48groupthailand",
-                                  size: "large",
-                                }}
-                                id="blessingshare"
-                              />
-                            </div>
-                            <br />
-                            <label className="col-md-12 mt-3 text-muted">
-                              Notes: Click Tweet Button to blessing her on
-                              Twitter (Twitter login required)
-                            </label>
+                            <p>
+                              <AccountCircleIcon fontSize="small" />{" "}
+                              {ordinal_suffix_of(item.gen)} Generation
+                            </p>
+                          </>
+                        )}
+                        <p>
+                          <FavoriteIcon fontSize="small" />
+                          &nbsp;
+                          {item.favorite.length > 0
+                            ? item.favorite.map((its, i) =>
+                                i == item.favorite.length - 1 ? its : its + ", "
+                              )
+                            : "None"}
+                        </p>
+                        <p>
+                          <NaturePeopleIcon fontSize="small" />
+                          &nbsp;
+                          {item.hobby.length > 0
+                            ? item.hobby.map((its, i) =>
+                                i == item.hobby.length - 1 ? its : its + ", "
+                              )
+                            : "None"}
+                        </p>
+                        {item.graduated && (
+                          <p>
+                            <PanToolIcon fontSize="small" /> Graduated
+                          </p>
+                        )}
+                        {!item.graduated && (
+                          <>
+                            Follow her:&nbsp;
+                            <a
+                              className="text-light"
+                              href={item.follow[0]}
+                              target="_blank"
+                            >
+                              <FacebookIcon />
+                            </a>
+                            <a
+                              className="text-light"
+                              href={item.follow[1]}
+                              target="_blank"
+                            >
+                              <InstagramIcon />
+                            </a>
+                            <a
+                              className="text-light"
+                              href={
+                                "https://app.bnk48.com/members/cgm48/" +
+                                item.name.toLowerCase()
+                              }
+                              target="_blank"
+                            >
+                              <PhoneIphoneIcon />
+                            </a>
+                          </>
+                        )}
+                      </>
+                      <hr />
+                      <a className="text-dark" href={item.ref} target="_blank">
+                        Reference from CGM48 official Site
+                      </a>
+                      <br />
+                      {v && birthday && (
+                        <div className="row p-3 mt-3">
+                          <Button
+                            onClick={() => PlaySong()}
+                            color="primary"
+                            variant="contained"
+                          >
+                            Click here see effect
+                          </Button>
+                          <div className="ml-3 pt-2">
+                            <Share
+                              url={
+                                "https://cp-cgm48.pages.dev/member/" +
+                                item.name.toLowerCase()
+                              }
+                              options={{
+                                text: "(You can custom your blessing here)",
+                                hashtags:
+                                  item.name +
+                                  "CGM48,fanspaceplatform,48groupthailand",
+                                size: "large",
+                              }}
+                              id="blessingshare"
+                            />
+                          </div>
+                          <br />
+                          <label className="col-md-12 mt-3 text-muted">
+                            Notes: Click Tweet Button to blessing her on Twitter
+                            (Twitter login required)
+                          </label>
+                        </div>
+                      )}
+                      {item.graduated === true &&
+                        item.graduatedDate != undefined && (
+                          <div className="border border-info pb-3 mt-2 pt-3 rounded text-center">
+                            <h6>
+                              Member info of {item.name} CGM48 has been plan to
+                              removed from CGM48 Fan Space in{" "}
+                              {moment(item.graduatedDate + " 00:00:00")
+                                .utcOffset("+0700")
+                                .local()
+                                .format("DD MMMM YYYY HH:mm:ss")}
+                              .
+                            </h6>
                           </div>
                         )}
-                        {item.graduated === true &&
-                          item.graduatedDate != undefined && (
-                            <div className="border border-info pb-3 mt-2 pt-3 rounded text-center">
-                              <h6>
-                                Member info of {item.name} CGM48 has been plan
-                                to removed from CGM48 Fan Space in{" "}
-                                {moment(item.graduatedDate + " 00:00:00")
-                                  .utcOffset("+0700")
-                                  .local()
-                                  .format("DD MMMM YYYY HH:mm:ss")}
-                                .
-                              </h6>
-                            </div>
-                          )}
-                      </div>
                     </div>
                   </Card>
                   {item.ir != undefined && (
@@ -1055,7 +1062,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                       onClose={() => setIRtog(false)}
                       classes={{
                         paper: classes.drawerPaper,
-                      }}>
+                      }}
+                    >
                       <IRBio fet={fet} irItem={item.ir} />
                     </Drawer>
                   )}
@@ -1068,9 +1076,11 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
               <Card
                 className={
                   (width > 600 ? " m-5" : " m-3") + " pb-2 bnktheme row"
-                }>
+                }
+              >
                 <div
-                  className={width > 1600 ? "col-md-4 mb-1" : "col-lg-4 mb-1"}>
+                  className={width > 1600 ? "col-md-4 mb-1" : "col-lg-4 mb-1"}
+                >
                   <Skeleton height={530} />
                 </div>
                 <div className="col-md mt-5 mb-5">
@@ -1127,7 +1137,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                           <iframe
                             src={ita.video}
                             width="100%"
-                            height={window.innerWidth * 0.4}></iframe>
+                            height={window.innerWidth * 0.4}
+                          ></iframe>
                         ) : (
                           <img src={ita.src} width="100%" />
                         )}
@@ -1213,7 +1224,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                             className="mt-1"
                             data-toggle="tooltip"
                             data-placement="down"
-                            title={ita.placeobj.placeDesc}>
+                            title={ita.placeobj.placeDesc}
+                          >
                             <LocationOnIcon /> Location:{" "}
                             {ita.placeobj.placeName +
                               ", " +
@@ -1278,7 +1290,8 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
 
         <Zoom
           in={newspop == null || memLive == null ? true : false}
-          timeout={{ enter: 200, exit: 200 }}>
+          timeout={{ enter: 200, exit: 200 }}
+        >
           <div className="text-center pb-3">
             <img
               src="https://d3hhrps04devi8.cloudfront.net/main/cgm-circular.svg"

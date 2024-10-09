@@ -110,7 +110,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   let { c } = useParams();
 
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
   const [irtog, setIRtog] = React.useState(false);
   const History = useHistory();
   const [mem, setmem] = React.useState("");
@@ -130,7 +129,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   const [v, setV] = React.useState(false);
 
   const [play, onPlay] = React.useState(false);
-  const [birthdayEff, setBirthdayEff] = React.useState(false);
   const [fol, setFollowName] = React.useState("");
   const [live, setLive] = React.useState(null);
 

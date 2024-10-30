@@ -434,7 +434,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                         <div className='container mt-2 row'>
                             <p className='pt-2'>CGM48 Member(s):&nbsp;</p>
                             <AvatarGroup max={6}>
-                            <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5eb638bebe9062d286046c1c496" />
+                            <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5eb868f31a0ed08c93a2bf36d7e" />
                         </AvatarGroup>
                             </div>
                        )}
@@ -535,7 +535,7 @@ const Finder = ({fet, setSec, width, kamin}) => {
                           <div className='container mt-2 row'>
                               <p className='pt-2'>CGM48 Member(s):&nbsp;</p>
                               <AvatarGroup max={6}>
-                              <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5eb638bebe9062d286046c1c496" />
+                              <Avatar className="cur" onClick={() => window.open('/memberlist', '_blank')} alt="all" src="https://i.scdn.co/image/ab6761610000e5eb868f31a0ed08c93a2bf36d7e" />
                           </AvatarGroup>
                               </div>
                          )}

@@ -29,7 +29,7 @@ if (randomNumber < 5) {
         ul = 'https://cpxdevweb.onrender.com'
                 reg = 'Worldwide'
 } else {
-        ul = 'https://cpxdevweb.azurewebsites.net'
+        ul = 'https://cpxdevweb2.onrender.com'
                 reg = 'Worldwide'
 }
 

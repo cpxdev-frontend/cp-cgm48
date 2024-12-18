@@ -24,12 +24,20 @@ var reg = 'Loading';
 //     }
 // });
 
+// const randomNumber = Math.floor(Math.random() * 10) + 1;
+// if (randomNumber < 5) {
+//         ul = 'https://cpxdevweb.onrender.com'
+//                 reg = 'Worldwide'
+// } else {
+//         ul = 'https://cpxdevweb2.onrender.com'
+//                 reg = 'Worldwide'
+// }
 const randomNumber = Math.floor(Math.random() * 10) + 1;
 if (randomNumber < 5) {
-        ul = 'https://cpxdevweb.onrender.com'
+        ul = 'https://cpxdevweb.azurewebsites.net'
                 reg = 'Worldwide'
 } else {
-        ul = 'https://cpxdevweb2.onrender.com'
+        ul = 'https://cpxdevweb.azurewebsites.net'
                 reg = 'Worldwide'
 }
 

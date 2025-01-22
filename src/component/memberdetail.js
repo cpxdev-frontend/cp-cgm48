@@ -139,19 +139,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
   const fetchfollower = (name) => {
     setFollowName(name);
     setFollow(true);
-    fetch(fet + "/cgm48/getfollower?name=" + name, {
-      method: "post",
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        setFol(data.split(",")[1]);
-        setFol2(data.split(",")[0]);
-        setFollow(false);
-      })
-      .catch(() => {
-        setFol(-1);
-        setFollow(false);
-      });
+    setFollow(false);
   };
 
   const fetchLoad = () => {
@@ -810,45 +798,6 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                         {item.fullnameEn[0]} {item.fullnameEn[1]} [{item.name}]
                       </h4>
 
-                      {loadfollow ? (
-                        <Skeleton />
-                      ) : (
-                        <>
-                          {follower > -1 ? (
-                            <Zoom in={true}>
-                              <p
-                                data-toggle="tooltip"
-                                data-placement="bottom"
-                                title={
-                                  item.name +
-                                  " CGM48 have " +
-                                  numberWithCommasx(follower2) +
-                                  "  gifts sent on IAM48 Application"
-                                }
-                              >
-                                {countstep == false ? (
-                                  <CountUp
-                                    end={follower}
-                                    onEnd={() => setCount(true)}
-                                    duration={3}
-                                  />
-                                ) : (
-                                  numberWithCommas(follower)
-                                )}{" "}
-                                gift rated on IAM48 Application
-                              </p>
-                            </Zoom>
-                          ) : (
-                            <button
-                              className="cur btn btn-info"
-                              onClick={() => fetchfollower(fol)}
-                            >
-                              Something went wrong, please click here to refresh
-                              page
-                            </button>
-                          )}
-                        </>
-                      )}
                       {item.headcaptain != undefined && (
                         <p className="mb-3 badge badge-pill badge-primary">
                           CGM48 Captain

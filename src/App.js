@@ -1987,7 +1987,7 @@ function App() {
           >
             <div className="col">
               <img
-                src="https://pbs.twimg.com/media/GX-cY6IaUAI24Vw?format=jpg&name=large"
+                src="https://img.youtube.com/vi/sadWF6TG78Y/maxresdefault.jpg"
                 width="100%"
               />
             </div>
@@ -1996,8 +1996,9 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
-                  will be avaliable on Music Streaming Platform soon
+                  CGM48 9th Single "Totsuzen Do Love Me -
+                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
+                  Platform soon
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
@@ -2007,8 +2008,9 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
-                  will be avaliable on Music Streaming Platform soon
+                  CGM48 9th Single "Totsuzen Do Love Me -
+                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
+                  Platform soon
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
@@ -2024,7 +2026,7 @@ function App() {
           >
             <div className="col">
               <img
-                src="https://d3hhrps04devi8.cloudfront.net/cgm48/sing8phone.jpg"
+                src="https://pbs.twimg.com/media/GjK8PCQaQAARhvT?format=webp&name=large"
                 width="100%"
               />
             </div>
@@ -2033,8 +2035,9 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
-                  will be avaliable on Music Streaming Platform soon
+                  CGM48 9th Single "Totsuzen Do Love Me -
+                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
+                  Platform soon
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
@@ -2044,8 +2047,9 @@ function App() {
             <div className={cls.fabButton}>
               <Alert severity="info">
                 <AlertTitle>
-                  CGM48 8th Single "Sakura MinnadeTabeta - ซากุระแห่งความทรงจำ"
-                  will be avaliable on Music Streaming Platform soon
+                  CGM48 9th Single "Totsuzen Do Love Me -
+                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
+                  Platform soon
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>

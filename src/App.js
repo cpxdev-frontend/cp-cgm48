@@ -738,8 +738,7 @@ function App() {
           anchorOrigin={{
             vertical: "top",
             horizontal: "center",
-          }}
-        >
+          }}>
           <Alert severity="warning">
             <CardHeader
               title="Reconnecting to service"
@@ -755,8 +754,7 @@ function App() {
                 : true
             }
             timeout={600}
-            direction="down"
-          >
+            direction="down">
             <AppBar position="sticky" className="bnktheme app-barcurve">
               <Toolbar>
                 {open == false && (
@@ -764,8 +762,7 @@ function App() {
                     onClick={() => setOpen(true)}
                     edge="start"
                     color="inherit"
-                    aria-label="menu"
-                  >
+                    aria-label="menu">
                     <MenuIcon />
                   </IconButton>
                 )}
@@ -802,8 +799,7 @@ function App() {
                   {login && (
                     <ListItemIcon
                       onClick={() => setMemDl(true)}
-                      className={(width > 1200 ? "mt-2" : "") + " cur"}
-                    >
+                      className={(width > 1200 ? "mt-2" : "") + " cur"}>
                       {verify ? (
                         <Badge
                           overlap="circular"
@@ -826,8 +822,7 @@ function App() {
                             ) : (
                               ""
                             )
-                          }
-                        >
+                          }>
                           <Avatar alt={localStorage.getItem("i")} src={Prof} />
                         </Badge>
                       ) : (
@@ -839,8 +834,7 @@ function App() {
                           }}
                           badgeContent={
                             <WarningIcon className="text-warning" />
-                          }
-                        >
+                          }>
                           <Avatar alt={localStorage.getItem("i")} src={Prof} />
                         </Badge>
                       )}
@@ -860,8 +854,7 @@ function App() {
           open={open}
           classes={{
             paper: cls.drawerPaper,
-          }}
-        >
+          }}>
           <div className={cls.drawerHeader} position="fixed">
             <IconButton onClick={() => setOpen(false)} size="large">
               <CloseIcon />
@@ -873,8 +866,7 @@ function App() {
               component={Link}
               className={window.location.pathname == "/" ? "activeNav" : ""}
               to="/"
-              button
-            >
+              button>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
@@ -886,8 +878,7 @@ function App() {
               className={
                 window.location.pathname == "/memberlist" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <PeopleIcon />
               </ListItemIcon>
@@ -899,8 +890,7 @@ function App() {
               className={
                 window.location.pathname == "/shihainin" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <AccountCircleIcon />
               </ListItemIcon>
@@ -914,8 +904,7 @@ function App() {
                   "_blank"
                 )
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <TheatersIcon />
               </ListItemIcon>
@@ -927,8 +916,7 @@ function App() {
               className={
                 window.location.pathname == "/mssongkran48" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <DonutSmallIcon />
               </ListItemIcon>
@@ -937,8 +925,7 @@ function App() {
             <ListItem
               component={Link}
               onClick={() => window.open("//cp-bnk48.pages.dev/ge4", "_blank")}
-              button
-            >
+              button>
               <ListItemIcon>
                 <HowToVoteIcon />
               </ListItemIcon>
@@ -953,8 +940,7 @@ function App() {
               className={
                 window.location.pathname == "/livestream" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <LiveTvIcon className={spcLive ? "text-success" : ""} />
               </ListItemIcon>
@@ -967,8 +953,7 @@ function App() {
               component={Link}
               to="/mv"
               className={window.location.pathname == "/mv" ? "activeNav" : ""}
-              button
-            >
+              button>
               <ListItemIcon>
                 <YouTubeIcon />
               </ListItemIcon>
@@ -980,8 +965,7 @@ function App() {
               className={
                 window.location.pathname == "/event" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <EventIcon />
               </ListItemIcon>
@@ -993,8 +977,7 @@ function App() {
               className={
                 window.location.pathname == "/music" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <MusicNoteIcon />
               </ListItemIcon>
@@ -1006,8 +989,7 @@ function App() {
               className={
                 window.location.pathname == "/officialupdate" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <LanguageIcon />
               </ListItemIcon>
@@ -1018,8 +1000,7 @@ function App() {
               onClick={() =>
                 window.open("//cp-bnk48.pages.dev/janken", "_blank")
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <HowToVoteIcon />
               </ListItemIcon>
@@ -1032,8 +1013,7 @@ function App() {
               component={Link}
               to="/api"
               className={window.location.pathname == "/api" ? "activeNav" : ""}
-              button
-            >
+              button>
               <ListItemIcon>
                 <CodeIcon />
               </ListItemIcon>
@@ -1045,8 +1025,7 @@ function App() {
               className={
                 window.location.pathname == "/follow" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <ThumbUpAltIcon />
               </ListItemIcon>
@@ -1070,8 +1049,7 @@ function App() {
                   }
                 });
               }}
-              button
-            >
+              button>
               <ListItemIcon>
                 <DnsIcon />
               </ListItemIcon>
@@ -1086,8 +1064,7 @@ function App() {
               className={
                 window.location.pathname == "/register" ? "activeNav" : ""
               }
-              button
-            >
+              button>
               <ListItemIcon>
                 <AssignmentReturnedIcon />
               </ListItemIcon>
@@ -1113,8 +1090,7 @@ function App() {
                 <>
                   <ListItem
                     onClick={(e) => setAnchorEl(e.currentTarget)}
-                    button
-                  >
+                    button>
                     <ListItemIcon>
                       <VpnKeyIcon />
                     </ListItemIcon>
@@ -1128,8 +1104,7 @@ function App() {
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
-                    onClose={() => setAnchorEl(null)}
-                  >
+                    onClose={() => setAnchorEl(null)}>
                     <MenuItem onClick={(e) => loginAction(1)}>
                       Google Account
                     </MenuItem>
@@ -1166,8 +1141,7 @@ function App() {
                           ) : (
                             ""
                           )
-                        }
-                      >
+                        }>
                         <Avatar alt={localStorage.getItem("i")} src={Prof} />
                       </Badge>
                     ) : (
@@ -1177,8 +1151,7 @@ function App() {
                           vertical: "bottom",
                           horizontal: "right",
                         }}
-                        badgeContent={<WarningIcon className="text-warning" />}
-                      >
+                        badgeContent={<WarningIcon className="text-warning" />}>
                         <Avatar alt={localStorage.getItem("i")} src={Prof} />
                       </Badge>
                     )}
@@ -1398,8 +1371,7 @@ function App() {
                 borderTopLeftRadius: 20,
                 borderTopRightRadius: 20,
                 backgroundColor: "#ace8cc",
-              }}
-            >
+              }}>
               <BottomNavigationAction
                 style={{ marginTop: -10 }}
                 onClick={() => History.goBack()}
@@ -1427,8 +1399,7 @@ function App() {
                   login ? (
                     <ListItemIcon
                       onClick={() => setMemDl(true)}
-                      className={"cur"}
-                    >
+                      className={"cur"}>
                       {verify ? (
                         <Badge
                           overlap="circular"
@@ -1451,8 +1422,7 @@ function App() {
                             ) : (
                               ""
                             )
-                          }
-                        >
+                          }>
                           <Avatar alt={localStorage.getItem("i")} src={Prof} />
                         </Badge>
                       ) : (
@@ -1464,8 +1434,7 @@ function App() {
                           }}
                           badgeContent={
                             <WarningIcon className="text-warning" />
-                          }
-                        >
+                          }>
                           <Avatar alt={localStorage.getItem("i")} src={Prof} />
                         </Badge>
                       )}
@@ -1477,8 +1446,7 @@ function App() {
                         vertical: "bottom",
                         horizontal: "right",
                       }}
-                      style={{ marginTop: -10 }}
-                    >
+                      style={{ marginTop: -10 }}>
                       <Avatar alt={localStorage.getItem("i")} src={""} />
                     </Badge>
                   )
@@ -1491,8 +1459,7 @@ function App() {
         <footer
           className={"fixed-bottom text-center text-dark bg-light pt-2"}
           style={{ paddingBottom: window.innerWidth < 700 ? 70 : 0 }}
-          ref={ref}
-        >
+          ref={ref}>
           <p style={{ fontSize: 12 }}>
             Copyright {new Date().getFullYear()}, CPXDevStudio Allright Reserved
             <br /> All BNK48 and CGM48 contents are licensed by Independent
@@ -1508,8 +1475,7 @@ function App() {
             fullWidth={true}
             maxWidth="sm"
             aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
+            aria-describedby="alert-dialog-description">
             <DialogTitle id="alert-dialog-title">Account Menu</DialogTitle>
             <DialogContent>
               {kamin != undefined && kamin != "" && kamin != "-" ? (
@@ -1522,8 +1488,7 @@ function App() {
                     }
                     setMemDl(false);
                   }}
-                  button
-                >
+                  button>
                   <ListItemIcon>
                     <Badge
                       overlap="circular"
@@ -1533,8 +1498,9 @@ function App() {
                       }}
                       color="error"
                       className="mr-4"
-                      badgeContent={live != null && live.isLive ? "LIVE" : null}
-                    >
+                      badgeContent={
+                        live != null && live.isLive ? "LIVE" : null
+                      }>
                       <img
                         src={kamiimg}
                         className={
@@ -1632,8 +1598,7 @@ function App() {
                 onClick={(e) => {
                   Signout(e);
                 }}
-                className="text-danger"
-              >
+                className="text-danger">
                 Sign out
               </Button>
               <Button
@@ -1642,16 +1607,14 @@ function App() {
                   setMemDl(false);
                   setOpen(false);
                 }}
-                className="text-dark"
-              >
+                className="text-dark">
                 Account Studio
               </Button>
               <Button
                 onClick={(e) => {
                   setMemDl(false);
                 }}
-                className="text-dark"
-              >
+                className="text-dark">
                 Close
               </Button>
             </DialogActions>
@@ -1670,8 +1633,7 @@ function App() {
               maxWidth="md"
               scroll="body"
               TransitionComponent={Grow}
-              transitionDuration={500}
-            >
+              transitionDuration={500}>
               {newspop.length > 1 ? (
                 <Carousel
                   interval={
@@ -1679,8 +1641,7 @@ function App() {
                       ? 180000
                       : 8000
                   }
-                  onChange={(now, pr) => setCro(now)}
-                >
+                  onChange={(now, pr) => setCro(now)}>
                   {newspop.map((item, i) => (
                     <>
                       <DialogTitle id="alert-dialog-title">
@@ -1708,8 +1669,7 @@ function App() {
                           <Typography
                             className="mt-3"
                             variant="body2"
-                            component="p"
-                          >
+                            component="p">
                             {item.desc}
                           </Typography>
                           {item.timerange[0] > 0 && item.timerange[1] == 0 && (
@@ -1743,8 +1703,7 @@ function App() {
 
                           <a
                             onClick={() => pageDirect(item.link)}
-                            className="mt-1 hoversense"
-                          >
+                            className="mt-1 hoversense">
                             Reference Link
                           </a>
                           <br />
@@ -1755,8 +1714,7 @@ function App() {
                               className="mt-1"
                               data-toggle="tooltip"
                               data-placement="down"
-                              title={item.placeobj.placeDesc}
-                            >
+                              title={item.placeobj.placeDesc}>
                               <LocationOnIcon /> Location:{" "}
                               {item.placeobj.placeName +
                                 ", " +
@@ -1767,8 +1725,7 @@ function App() {
                             <a
                               href={item.place}
                               target="_blank"
-                              className="mt-1"
-                            >
+                              className="mt-1">
                               <LocationOnIcon /> Where is this event?
                             </a>
                           )}
@@ -1793,8 +1750,7 @@ function App() {
                                             nametag.replace("team_", "")
                                         )
                                       : History.push("/member/" + nametag)
-                                  }
-                                >
+                                  }>
                                   {nametag == "ge"
                                     ? "All 48 winners of BNK48 12th Single Senbutsu General Election"
                                     : nametag.includes("gen") === true
@@ -1842,8 +1798,7 @@ function App() {
                       <Typography
                         className="mt-3 tw"
                         variant="body2"
-                        component="p"
-                      >
+                        component="p">
                         {newspop[0].desc}
                       </Typography>
 
@@ -1878,8 +1833,7 @@ function App() {
                         )}
                       <a
                         onClick={() => pageDirect(newspop[0].link)}
-                        className="mt-1 hoversense"
-                      >
+                        className="mt-1 hoversense">
                         Reference Link
                       </a>
                       <br />
@@ -1891,8 +1845,7 @@ function App() {
                             className="mt-1"
                             data-toggle="tooltip"
                             data-placement="down"
-                            title={newspop[0].placeobj.placeDesc}
-                          >
+                            title={newspop[0].placeobj.placeDesc}>
                             <LocationOnIcon /> Location:{" "}
                             {newspop[0].placeobj.placeName +
                               ", " +
@@ -1904,8 +1857,7 @@ function App() {
                           <a
                             href={newspop[0].place}
                             target="_blank"
-                            className="mt-1"
-                          >
+                            className="mt-1">
                             <LocationOnIcon /> Where is this event?
                           </a>
                         )}
@@ -1929,8 +1881,7 @@ function App() {
                                         nametag.replace("team_", "")
                                     )
                                   : History.push("/member?name=" + nametag)
-                              }
-                            >
+                              }>
                               {nametag == "ge"
                                 ? "All 48 winners of BNK48 12th Single Senbutsu General Election"
                                 : ii == 0
@@ -1956,8 +1907,7 @@ function App() {
                   onClick={() => {
                     setpopup(false);
                   }}
-                  className="text-dark"
-                >
+                  className="text-dark">
                   Close
                 </Button>
               </DialogActions>
@@ -1973,8 +1923,7 @@ function App() {
         <Fab
           onClick={() => setAllDone(true)}
           className={cls.fab}
-          color="primary"
-        >
+          color="primary">
           Skip
         </Fab>
       )}
@@ -1983,8 +1932,7 @@ function App() {
           <Fade
             in={styleFade != 0 ? true : false}
             timeout={400}
-            style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}
-          >
+            style={{ transitionDelay: styleFade == 2 ? 0 : 400 }}>
             <div className="col">
               <img
                 src="https://img.youtube.com/vi/sadWF6TG78Y/maxresdefault.jpg"
@@ -1997,8 +1945,8 @@ function App() {
               <Alert severity="info">
                 <AlertTitle>
                   CGM48 9th Single "Totsuzen Do Love Me -
-                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
-                  Platform soon
+                  โทษทีนะ...รักกันได้ไหม?" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
@@ -2009,8 +1957,8 @@ function App() {
               <Alert severity="info">
                 <AlertTitle>
                   CGM48 9th Single "Totsuzen Do Love Me -
-                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
-                  Platform soon
+                  โทษทีนะ...รักกันได้ไหม?" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
@@ -2022,8 +1970,7 @@ function App() {
           <Fade
             in={styleFade != 0 ? true : false}
             timeout={styleFade == 2 ? 300 : 500}
-            style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}
-          >
+            style={{ transitionDelay: styleFade == 2 ? 0 : 350 }}>
             <div className="col">
               <img
                 src="https://pbs.twimg.com/media/GjK8PCQaQAARhvT?format=webp&name=large"
@@ -2036,8 +1983,8 @@ function App() {
               <Alert severity="info">
                 <AlertTitle>
                   CGM48 9th Single "Totsuzen Do Love Me -
-                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
-                  Platform soon
+                  โทษทีนะ...รักกันได้ไหม?" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>
@@ -2048,8 +1995,8 @@ function App() {
               <Alert severity="info">
                 <AlertTitle>
                   CGM48 9th Single "Totsuzen Do Love Me -
-                  โทษทีนะ...รักกันได้ไหม?" will be avaliable on Music Streaming
-                  Platform soon
+                  โทษทีนะ...รักกันได้ไหม?" has been out on music streaming
+                  platform. And Music Video on Youtube.
                 </AlertTitle>
                 Double click or tap on image to skip this page
               </Alert>

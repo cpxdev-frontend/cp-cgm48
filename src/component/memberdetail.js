@@ -869,7 +869,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                               0 ? (
                               <h6>
                                 <CakeIcon fontSize="small" />{" "}
-                                {moment(item.birthday).format("DD MMMM YYYY") +
+                                {moment(item.birthday, "YYYY-M-DD").format("DD MMMM YYYY") +
                                   " (" +
                                   (parseInt(moment(item.birthday).format("D")) -
                                     new Date().getDate()) +

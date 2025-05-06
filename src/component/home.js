@@ -387,30 +387,30 @@ const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {
                         <h5>{item.name}</h5>
                         <p>
                           Birthday:{" "}
-                          {moment(item.birthday).format("DD MMMM YYYY")} (
-                          {moment(item.birthday).format("M") ==
+                          {moment(item.birthday, 'YYYY-M-DD').format("DD MMMM YYYY")} (
+                          {moment(item.birthday, 'YYYY-M-DD').format("M") ==
                             new Date().getMonth() + 1 &&
-                          parseInt(moment(item.birthday).format("D")) -
+                          parseInt(moment(item.birthday, 'YYYY-M-DD').format("D")) -
                             new Date().getDate() >
                             0
                             ? new Date().getFullYear() -
-                              new Date(item.birthday).getFullYear() +
+                              new Date(item.birthday, 'YYYY-M-DD').getFullYear() +
                               " years old | " +
-                              (parseInt(moment(item.birthday).format("D")) -
+                              (parseInt(moment(item.birthday, 'YYYY-M-DD').format("D")) -
                                 new Date().getDate() ==
                               1
                                 ? "in tomorrow"
-                                : parseInt(moment(item.birthday).format("D")) -
+                                : parseInt(moment(item.birthday, 'YYYY-M-DD').format("D")) -
                                   new Date().getDate() +
                                   " day(s) to go")
-                            : moment(item.birthday).format("DD MMMM") ==
+                            : moment(item.birthday, 'YYYY-M-DD').format("DD MMMM") ==
                               moment().format("DD MMMM")
                             ? "Happy " +
                               (new Date().getFullYear() -
-                                new Date(item.birthday).getFullYear()) +
+                                new Date(item.birthday, 'YYYY-M-DD').getFullYear()) +
                               " years old!"
                             : new Date().getFullYear() -
-                              new Date(item.birthday).getFullYear() +
+                              new Date(item.birthday, 'YYYY-M-DD').getFullYear() +
                               " years old | already passed"}
                           )
                         </p>

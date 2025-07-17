@@ -856,7 +856,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
                             <CakeIcon fontSize="small" /> Today is her birthday!
                             (
                             {new Date().getFullYear() -
-                              new Date(item.birthday, "YYYY-M-DD").getFullYear() +
+                              new Date(moment(item.birthday, "YYYY-M-DD")).getFullYear() +
                               " years old"}
                             )
                           </h6>

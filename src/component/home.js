@@ -21,7 +21,7 @@ import AOS from "aos";
 // const defaultvideo =
 //   "https://www.youtube.com/embed/tvab7_OjBOw?autoplay=1&mute=1&controls=0&loop=1&playlist=tvab7_OjBOw";
 const defaultTheme =
-  "https://image-cdn-fa.spotifycdn.com/image/ab676186000001949441c2b3ca6eb6010709a20e";
+  "https://image-cdn-ak.spotifycdn.com/image/ab6761860000eab1c2994cce3910cf0ef40d7653";
 const defaultvideo =
   "https://www.youtube.com/embed/uoQuu9NcnGU?autoplay=1&mute=1&controls=0&loop=1&playlist=uoQuu9NcnGU";
 const HomeCom = ({ fet, kamin, gp, ImgThumb, stream, setSec, width }) => {

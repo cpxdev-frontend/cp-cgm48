@@ -35,10 +35,6 @@
             "label": "Choose Generation"
         },
         {
-          "value": 1,
-          "label": "1st Generation"
-        },
-        {
             "value": 2,
             "label": "2nd Generation"
         },

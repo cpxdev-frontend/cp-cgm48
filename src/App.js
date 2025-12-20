@@ -580,7 +580,9 @@ function App() {
     }, 60000);
 
     setTimeout(() => {
-      alert("CGM48 Fan Space platform will be discontinued on January 1, 2026. We have provided an open API for non-profit use of accessing CGM48 member profile data. Thank you for your continued support.");
+      alert(
+        "CGM48 Fan Space platform will be move to new platform soon in January 1, 2026. And this platform will be discontinued in this year."
+      );
     }, 5000);
   }, []);
 

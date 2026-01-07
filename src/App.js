@@ -277,7 +277,7 @@ function App() {
   React.useEffect(() => {const now = moment();
     const newYear2026 = moment("2026-01-01");
     if (now.isAfter(newYear2026)) {
-      window.location.href = "https://the48thfan.onrender.com";
+      window.location.href = "https://the48thfan.onrender.com?ref=cgm48";
     }
     window.addEventListener("resize", handleWindowResize);
     return () => {

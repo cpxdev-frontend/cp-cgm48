@@ -4,4 +4,4 @@
 
 CGM48 Fan Space is sub-project of Fan Space project. Our objective are merge CGM48 fanclub from around the world to join this platform at once.
 
-CGM48 is the sister's Idol-group of BNK48 since 2019 (about 3 years ago). Band location is at Chiangmai, Thailand. The Parent Band called "AKB48" from Japan. Current CGM48 members include 22 members and 5 generations (4 generations in actived) (Latest update in February 2026). CGM48 is managed and imported format undered by Independent Artist Management Co.,Ltd (iAM).
+CGM48 is the sister's Idol-group of BNK48 since 2019 (about 7 years ago). Band location is at Chiangmai, Thailand. The Parent Band called "AKB48" from Japan. Current CGM48 members include 22 members and 5 generations (4 generations in actived) (Latest update in February 2026). CGM48 is managed and imported format undered by Independent Artist Management Co.,Ltd (iAM).

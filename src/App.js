@@ -280,7 +280,7 @@ function App() {
     if (now.isAfter(newYear2026)) {
       Swal.fire({
         title:
-          "BNK48 Fan Space is currently deprecated, do you want to go new Fan Space site?",
+          "CGM48 Fan Space is currently deprecated, do you want to go new Fan Space site?",
         showCancelButton: true,
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */

@@ -274,10 +274,20 @@ function App() {
     }, 10);
   }, []);
 
-  React.useEffect(() => {const now = moment();
+  React.useEffect(() => {
+    const now = moment();
     const newYear2026 = moment("2026-01-01");
     if (now.isAfter(newYear2026)) {
-      window.location.href = "https://48th.cpxdev.qzz.io?ref=cgm48";
+      Swal.fire({
+        title:
+          "BNK48 Fan Space is currently deprecated, do you want to go new Fan Space site?",
+        showCancelButton: true,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location.href = "https://48th.cpxdev.dpdns.org?ref=cgm48";
+        }
+      });
     }
     window.addEventListener("resize", handleWindowResize);
     return () => {
@@ -308,7 +318,7 @@ function App() {
           kamin,
         {
           method: "post",
-        }
+        },
       )
         .then((response) => response.json())
         .then((dataads) => {
@@ -352,7 +362,7 @@ function App() {
           JSON.parse(localStorage.getItem("loged")).user.uid.toString(),
         {
           method: "get",
-        }
+        },
       )
         .then((response) => response.json())
         .then((data) => {
@@ -442,7 +452,7 @@ function App() {
             Intl.DateTimeFormat().resolvedOptions().timeZone,
           {
             method: "post",
-          }
+          },
         )
           .then((response) => response.json())
           .then((dres) => {
@@ -464,8 +474,8 @@ function App() {
                   tempd.filter(
                     (x) =>
                       x.memtag.indexOf(kamin.toLowerCase()) ||
-                      x.memtag.indexOf("All")
-                  )
+                      x.memtag.indexOf("All"),
+                  ),
                 );
               }
             } else {
@@ -487,11 +497,11 @@ function App() {
                     timerange: [
                       moment(
                         dres.response[i].birth + " 00:00:00",
-                        "YYYY-MM-DD HH:mm:ss"
+                        "YYYY-MM-DD HH:mm:ss",
                       ).unix(),
                       moment(
                         dres.response[i].birth + " 23:59:59",
-                        "YYYY-MM-DD HH:mm:ss"
+                        "YYYY-MM-DD HH:mm:ss",
                       ).unix(),
                     ],
                     memtag: [dres.response[i].name.toLowerCase()],
@@ -507,8 +517,8 @@ function App() {
                   tempd.filter(
                     (x) =>
                       x.memtag.indexOf(kamin.toLowerCase()) ||
-                      x.memtag.indexOf("All")
-                  )
+                      x.memtag.indexOf("All"),
+                  ),
                 );
               }
             }
@@ -585,7 +595,7 @@ function App() {
 
     setTimeout(() => {
       alert(
-        "CGM48 Fan Space platform will be move to new platform soon in January 1, 2026. And this platform will be discontinued in this year."
+        "CGM48 Fan Space platform will be move to new platform soon in January 1, 2026. And this platform will be discontinued in this year.",
       );
     }, 5000);
   }, []);
@@ -606,7 +616,7 @@ function App() {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-      }
+      },
     )
       .then((response) => response.text())
       .then((data) => {
@@ -921,7 +931,7 @@ function App() {
               onClick={() =>
                 window.open(
                   "https://lookerstudio.google.com/reporting/19bdaf0b-e90f-4577-bc28-12cab7240788/page/p_3z5tiil5kd",
-                  "_blank"
+                  "_blank",
                 )
               }
               button
@@ -1568,14 +1578,14 @@ function App() {
                             x.memtag.indexOf("All") > -1 ||
                             x.memtag.indexOf("ge") > -1) &&
                             x.timerange[1] > 0 &&
-                            moment().unix() <= x.timerange[1])
+                            moment().unix() <= x.timerange[1]),
                       ).length > 0
                         ? "Your Kami-Oshi have " +
                           newspop.filter(
                             (x) =>
                               x.memtag.indexOf(kamin.toLowerCase()) > -1 ||
                               x.memtag.indexOf("All") > -1 ||
-                              x.memtag.indexOf("ge") > -1
+                              x.memtag.indexOf("ge") > -1,
                           ).length +
                           " incoming event(s). Click here to check it!"
                         : "Click here to see more description of your Kami-Oshi"
@@ -1795,12 +1805,12 @@ function App() {
                                       : nametag.includes("gen")
                                       ? History.push(
                                           "/memberlist?filter=gen&val=" +
-                                            nametag.replace("gen", "")
+                                            nametag.replace("gen", ""),
                                         )
                                       : nametag.includes("team_")
                                       ? History.push(
                                           "/memberlist?filter=team&val=" +
-                                            nametag.replace("team_", "")
+                                            nametag.replace("team_", ""),
                                         )
                                       : History.push("/member/" + nametag)
                                   }
@@ -1931,12 +1941,12 @@ function App() {
                                   : nametag.includes("gen")
                                   ? History.push(
                                       "/memberlist?filter=gen&val=" +
-                                        nametag.replace("gen", "")
+                                        nametag.replace("gen", ""),
                                     )
                                   : nametag.includes("team_")
                                   ? History.push(
                                       "/memberlist?filter=team&val=" +
-                                        nametag.replace("team_", "")
+                                        nametag.replace("team_", ""),
                                     )
                                   : History.push("/member?name=" + nametag)
                               }

@@ -510,6 +510,7 @@ const MemDetail = ({ fet, kamio, setSec, triggerUpdate, width, verify }) => {
 
   React.useEffect(() => {
     AOS.init({ duration: 1000 });
+    window.location.href = "https://48th.cpxdev.dpdns.org/member/cgm48/" + c;
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
     if (c != null && c != "") {
